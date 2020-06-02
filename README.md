@@ -20,3 +20,22 @@ If for some reason a post needs to be reapproved after automated removal, simply
 - Check for underage properly. It can only detect lolicon/shotacon.
 - Check for more subtle forms of unwholesomeness. The bot can only detect and remove extreme tags.
 - Scan links in the comments for this stuff. I'll implement that if it's wanted.
+
+## Required to run: config.json
+config.json needs 7 strings to run:
+- username (account username)
+- password (tied to username)
+- id (tied to reddit app)
+- secret (tied to reddit app)
+- agent (look up PRAW User-Agent: should look something like `platform:com.example.myappname:v1.2.3 (by u/YourName)`)
+- subreddit (the subreddit this bot's running on)
+- suffix (the suffix of the bot that's appended to every message)
+
+## Also required to run: posts.db
+Posts.db needs two tables, each with the following columns (in that order).
+- posts
+  - url
+  - source
+  - timeposted
+- commonreposts
+  - source
