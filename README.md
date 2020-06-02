@@ -31,7 +31,7 @@ config.json needs 7 strings to run:
 - subreddit (the subreddit this bot's running on)
 - suffix (the suffix of the bot that's appended to every message)
 
-## Also required to run: posts.db
+## Also required to run: posts.db (SQLite database)
 Posts.db needs two tables, each with the following columns (in that order).
 - posts
   - url
