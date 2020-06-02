@@ -1,8 +1,11 @@
-import pprint
+import json
 
 from praw.models import Submission
 
 import process_comment
+
+
+config = json.load(open('config.json'))
 
 
 async def process_post(submission: Submission):
@@ -22,8 +25,7 @@ async def process_post(submission: Submission):
 async def ask_for_sauce(submission: Submission):
 	comment = submission.reply('**Reply to this comment** with the source, in regular link format, '
 	                           'such as  \n```\nhttps://nhentai.net/g/(numbers).\n```\nIf you feel like your post '
-	                           'has no applicable source, reply with "None".\n\n'
-	                           '*I am not a bot. I am being forced to mod this sub. Please send food and water*')
+	                           'has no applicable source, reply with "None".\n\n' + config['suffix'])
 	if comment is None:
 		print('Something wacky happened')
 		return
