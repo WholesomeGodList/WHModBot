@@ -1,7 +1,8 @@
 # WHModBot
-A modbot for r/wholesomehentai.
 [![Python Version](https://img.shields.io/badge/python-3.8.2-blue)](https://www.python.org/downloads/release/python-382/)
 [![GPLv3 license](https://img.shields.io/github/license/WholesomeGodList/WHModBot)](http://perso.crans.org/besson/LICENSE.html)
+
+A modbot for r/wholesomehentai.
 
 ## Brief description of how the bot works:
 Every time someone posts to the subreddit, the bot will post and pin a comment asking for the source. Once a source is provided by the OP (by replying to that pin), the comment asking for the source will be edited into either a removal and a reason for removal, or a comment linking to the source and providing info (if the source is to nhentai).
