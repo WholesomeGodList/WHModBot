@@ -21,7 +21,11 @@ If for some reason a post needs to be reapproved after automated removal, simply
 - Check for more subtle forms of unwholesomeness. The bot can only detect and remove extreme tags.
 - Scan links in the comments for this stuff. I'll implement that if it's wanted.
 
-## Required to run: config.json
+## Setup:
+Set both config.json and posts.db up.
+Populate posts.db's commonreposts table with a bunch of links to commonreposts.
+
+### Required to run: config.json
 config.json needs 7 strings to run:
 - username (account username)
 - password (tied to username)
@@ -31,11 +35,20 @@ config.json needs 7 strings to run:
 - subreddit (the subreddit this bot's running on)
 - suffix (the suffix of the bot that's appended to every message)
 
-## Also required to run: posts.db (SQLite database)
+### Also required to run: posts.db (SQLite database)
 Posts.db needs two tables, each with the following columns (in that order).
 - posts
-  - url
-  - source
-  - timeposted
+  - url (text)
+  - source (text)
+  - timeposted (integer)
 - commonreposts
-  - source
+  - source (text)
+
+Source is the link to the source given in the post, url is the link to the post, and timeposted is a UNIX timestamp.
+
+### Further setup
+Install the dependencies of this project by doing
+```
+pip install -r requirements.txt
+```
+Then, to run the project, run `main.py`. It will keep running the moderation bot until stopped.
