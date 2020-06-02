@@ -1,5 +1,6 @@
 import json
 import time
+import asyncio
 
 import praw
 
@@ -7,7 +8,7 @@ import process_comment
 import process_post
 
 
-def main():
+async def main():
 	print("Loading config file...")
 	config = json.load(open('config.json'))
 
@@ -21,6 +22,10 @@ def main():
 
 	subreddit = reddit.subreddit(config['subreddit'])
 
+	if not subreddit.user_is_moderator:
+		print("User is not a moderator. Exiting...")
+		return
+
 	comment_stream = subreddit.stream.comments(pause_after=-1)
 	submission_stream = subreddit.stream.submissions(pause_after=-1)
 
@@ -33,15 +38,15 @@ def main():
 				break
 			if comment.created_utc < start_time:
 				continue
-			process_comment.process_comment(comment)
+			await process_comment.process_comment(comment)
 
 		for submission in submission_stream:
 			if submission is None:
 				break
 			if submission.created_utc < start_time:
 				continue
-			process_post.process_post(submission)
+			await process_post.process_post(submission)
 
 
 if __name__ == '__main__':
-	main()
+	asyncio.run(main())

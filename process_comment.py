@@ -1,5 +1,4 @@
 import re
-import asyncio
 import json
 import sqlite3
 from sqlite3 import Error
@@ -29,7 +28,7 @@ def create_connection(path):
 	connection = None
 	try:
 		connection = sqlite3.connect(path)
-		print("Connected to SQLite posts database")
+		print("Connected to the posts database")
 	except Error as e:
 		print(f"The error '{e}' occurred")
 
@@ -41,20 +40,21 @@ c = conn.cursor()
 config = json.load(open('config.json'))
 
 
-def process_comment(comment: Comment):
+async def process_comment(comment: Comment):
 	global pending_sauces
 
-	# Mod override
-	if not comment.is_root and comment.distinguished and comment.parent().name == config['username']:
+	# Mod override - if the user is a moderator, has "override" in his comment, and
+	if not comment.is_root and comment.author.name in comment.subreddit.moderator() and "override" in comment.body:
 		print("Moderator override activated.")
+
 		# Validate the URL
 		url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
-		url_verify = url_extractor.search(comment.body)
+		url_verify = url_extractor.search(comment.body.replace("override", "").strip())
 
 		if not url_verify:
 			# no URL present, so we execute the british
 			comment.reply("That doesn't seem to be a valid URL. Try again?"
-			              '\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*')
+			              f'\n\n{config["suffix"]}')
 			return
 
 		# Handle any wacky Markdown, and enforce HTTPS
@@ -62,10 +62,11 @@ def process_comment(comment: Comment):
 
 		if 'nhentai.net' in url:
 			try:
-				magazine, market, data = asyncio.run(nhentai_fetcher.check_link(comment.body))
+				magazine, market, data = await nhentai_fetcher.check_link(url)
 			except Exception:
+				print("Invalid page.")
 				comment.reply("That doesn't seem to be a valid nhentai page. Try again?"
-				              '\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*')
+				              f'\n\n{config["suffix"]}')
 				return
 
 			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{', '.join(data[3])}\n\n"
@@ -74,21 +75,27 @@ def process_comment(comment: Comment):
 
 			comment.parent().edit(
 				f"The source OP provided:  \n> <{url}>\n\n"
-				f'**{data[0]}** by {data[1]}  \n^{data[5]} pages\n\n{parodies}{characters}{tags}'
-				'*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+				f'**{data[0]}**  \nby {data[1]}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}'
+				f'{config["suffix"]}'
 			)
 
 		else:
 			comment.parent().edit(
 				f"The source OP provided:  \n> <{url}>\n\n"
-				'*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+				f'{config["suffix"]}'
 			)
 
 		# The post is good.
+		print('Updating database and cleaning up...')
+		c.execute('SELECT * FROM posts WHERE url=?', (url,))
+		if c.fetchone():
+			c.execute('DELETE FROM posts WHERE url=?', (url,))
 		c.execute('INSERT INTO posts VALUES (?, ?, ?)',
 		          (comment.submission.permalink, url, comment.submission.created_utc))
 		conn.commit()
-		del pending_sauces[comment.submission.id]
+		
+		# Reapprove the post
+		comment.submission.mod.approve()
 
 	# If this is the reply to a sauce request, handle it
 	elif not comment.is_root and comment.submission.id in pending_sauces:
@@ -104,7 +111,7 @@ def process_comment(comment: Comment):
 			if comment.body.lower() == 'none':
 				comment.parent().edit(
 					'OP has indicated that there is no applicable source.'
-					'\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+					f'\n\n{config["suffix"]}'
 				)
 				del pending_sauces[comment.submission.id]
 				return
@@ -116,7 +123,7 @@ def process_comment(comment: Comment):
 			if not url_verify:
 				# no URL present, so we execute the british
 				comment.reply("That doesn't seem to be a valid URL. Try again?"
-				              '\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*')
+				              f'\n\n{config["suffix"]}')
 				return
 
 			# Handle any wacky Markdown, and enforce HTTPS
@@ -128,10 +135,10 @@ def process_comment(comment: Comment):
 			if is_common_repost:  # if this tuple even exists, it's uh oh stinky
 				# It's a really common repost. Kill it.
 				comment.parent().edit(
-					'The link you provided is a **very common repost** on this subreddit.  \n'
-					'Please read our list of common reposts [here](https://www.reddit.com/r/wholesomehentai/comments/cjmiy4/list_of_common_reposts_and_common_licensed/), to avoid'
+					'The link you provided is a **very common repost** on this subreddit.\n\n'
+					'Please read our [list of common reposts](https://www.reddit.com/r/wholesomehentai/comments/cjmiy4/list_of_common_reposts_and_common_licensed/), to avoid '
 					'posting common reposts in the future.'
-					'\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+					f'\n\n{config["suffix"]}'
 				)
 				comment.submission.mod.remove(spam=False, mod_note='Really common repost.')
 				del pending_sauces[comment.submission.id]
@@ -154,9 +161,9 @@ def process_comment(comment: Comment):
 					# It's not been long enough since the last post. Link them to the last post and delete the entry.
 					print('It\'s a recent repost. Removing...')
 					comment.parent().edit(
-						f'The link you provided has [already been posted]({post[0]}) recently.  \n'
+						f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
 						'Please search before posting to avoid posting reposts in the future.'
-						'\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+						f'\n\n{config["suffix"]}'
 					)
 
 					# Remove it and get rid of the post tracker
@@ -168,22 +175,22 @@ def process_comment(comment: Comment):
 				# hoo boy
 				print('nhentai URL detected, parsing info / magazines')
 				try:
-					magazine, market, data = asyncio.run(nhentai_fetcher.check_link(comment.body))
+					magazine, market, data = await nhentai_fetcher.check_link(url)
 				except Exception:
 					print("Invalid page.")
 					comment.reply("That doesn't seem to be a valid nhentai page. Try again?"
-					              '\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*')
+					              f'\n\n{config["suffix"]}')
 					return
 
 				if magazine:
 					# It's licensed!
 					print("Licensed magazine detected.")
 					comment.parent().edit(
-						f'The provided source is licensed! It appears in the licensed magazine issue `{magazine}`.  \n'
+						f'The provided source is licensed! It appears in the licensed magazine issue `{magazine}`.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
 						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)'
 						''
-						'\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+						f'\n\n{config["suffix"]}'
 					)
 
 					# Remove it and get rid of the post tracker
@@ -195,11 +202,11 @@ def process_comment(comment: Comment):
 					# It literally has 2d-market.com in the title.
 					print("2d-market in title.")
 					comment.parent().edit(
-						f'The provided source is licensed! It has `2d-market.com` in the title.  \n'
+						f'The provided source is licensed! It has `2d-market.com` in the title.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
 						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)'
 						''
-						'\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+						f'\n\n{config["suffix"]}'
 					)
 
 					# Remove it and get rid of the post tracker
@@ -216,11 +223,11 @@ def process_comment(comment: Comment):
 					# Oh no, there's an illegal tag!
 					print("Illegal tags detected: " + ', '.join(detected_tags))
 					comment.parent().edit(
-						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```'
-						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either'
-						'a mistagged doujin or a wholesome exception.'
+						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
+						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
+						'a mistagged doujin or a wholesome exception. '
 						'Otherwise, make sure you understand Rules 1 and 5.'
-						'\n\n*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+						f'\n\n{config["suffix"]}'
 					)
 
 					# Remove it and get rid of the post tracker
@@ -234,13 +241,13 @@ def process_comment(comment: Comment):
 
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>\n\n"
-					f'**{data[0]}** by {data[1]}  \n^{data[5]} pages\n\n{parodies}{characters}{tags}'
-					'*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+					f'**{data[0]}**  \nby {data[1]}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}'
+					f'{config["suffix"]}'
 				)
 			else:
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>\n\n"
-					'*I am not a bot. I am being forced to mod this sub. Please send food and water*'
+					f'{config["suffix"]}'
 				)
 
 			# If we made it here, the post is good. Clean up any trackers and add a post entry to the database.

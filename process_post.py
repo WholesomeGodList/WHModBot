@@ -5,12 +5,8 @@ from praw.models import Submission
 import process_comment
 
 
-def process_post(submission: Submission):
+async def process_post(submission: Submission):
 	print("New post: " + submission.title)
-	# If the submission has the green shield, no touchy touchy
-	if submission.distinguished:
-		print("Mod post. Skipping...")
-		return
 
 	# Do not respond to memes!
 	# Or non-image posts.
@@ -20,10 +16,10 @@ def process_post(submission: Submission):
 		return
 
 	print("This is an actual post, asking for sauce...")
-	ask_for_sauce(submission)
+	await ask_for_sauce(submission)
 
 
-def ask_for_sauce(submission: Submission):
+async def ask_for_sauce(submission: Submission):
 	comment = submission.reply('**Reply to this comment** with the source, in regular link format, '
 	                           'such as  \n```\nhttps://nhentai.net/g/(numbers).\n```\nIf you feel like your post '
 	                           'has no applicable source, reply with "None".\n\n'
