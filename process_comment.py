@@ -59,6 +59,8 @@ async def process_comment(comment: Comment):
 
 		# Handle any wacky Markdown, and enforce HTTPS
 		url = url_verify.group(1).strip(')').replace('http://', 'https://')
+		if not url[-1] == "/":
+			url = url + "/"
 
 		if 'nhentai.net' in url:
 			try:
@@ -87,9 +89,9 @@ async def process_comment(comment: Comment):
 
 		# The post is good.
 		print('Updating database and cleaning up...')
-		c.execute('SELECT * FROM posts WHERE url=?', (url,))
+		c.execute('SELECT * FROM posts WHERE source=?', (url,))
 		if c.fetchone():
-			c.execute('DELETE FROM posts WHERE url=?', (url,))
+			c.execute('DELETE FROM posts WHERE source=?', (url,))
 		c.execute('INSERT INTO posts VALUES (?, ?, ?)',
 		          (comment.submission.permalink, url, comment.submission.created_utc))
 		conn.commit()
@@ -128,6 +130,8 @@ async def process_comment(comment: Comment):
 
 			# Handle any wacky Markdown, and enforce HTTPS
 			url = url_verify.group(1).strip(')').replace('http://', 'https://')
+			if not url[-1] == "/":
+				url = url + "/"
 
 			# Check if the post is a repost or not
 			c.execute('SELECT * FROM commonreposts WHERE source=?', (url,))
