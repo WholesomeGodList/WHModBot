@@ -1,8 +1,10 @@
 import json
 import time
 import asyncio
+import traceback
 
 import praw
+from prawcore import ResponseException
 
 import process_comment
 import process_post
@@ -33,19 +35,22 @@ async def main():
 
 	# Scan all new posts and comments
 	while True:
-		for comment in comment_stream:
-			if comment is None:
-				break
-			if comment.created_utc < start_time:
-				continue
-			await process_comment.process_comment(comment)
+		try:
+			for comment in comment_stream:
+				if comment is None:
+					break
+				if comment.created_utc < start_time:
+					continue
+				await process_comment.process_comment(comment)
 
-		for submission in submission_stream:
-			if submission is None:
-				break
-			if submission.created_utc < start_time:
-				continue
-			await process_post.process_post(submission)
+			for submission in submission_stream:
+				if submission is None:
+					break
+				if submission.created_utc < start_time:
+					continue
+				await process_post.process_post(submission)
+		except ResponseException:
+			traceback.print_exc()
 
 
 if __name__ == '__main__':
