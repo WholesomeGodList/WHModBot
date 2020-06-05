@@ -17,10 +17,26 @@ unwholesome_tags = [
 	'guro',
 	'scat',
 	'mind break',
-	'bestiality'
+	'bestiality',
+	'snuff',
+	'abortion',
+	'brain fuck',
+	'eye penetration',
+	'necrophilia',
+	'vore',
+	'blackmail',
+	'torture',
+	'infantilism',
+	'corruption',
+	'moral degeneration',
+	'vomit',
+	'cannibalism',
+	'urethra insertion'
 ]
 underage_parodies = [
-	'my hero academia'
+	'my hero academia',
+	'love live',
+	'toradora'
 ]
 
 
@@ -228,8 +244,30 @@ async def process_comment(comment: Comment):
 					print("Illegal tags detected: " + ', '.join(detected_tags))
 					comment.parent().edit(
 						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
+						'These tags are banned because they are almost never wholesome. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
 						'a mistagged doujin or a wholesome exception. '
+						'Otherwise, make sure you understand Rules 1 and 5.'
+						f'\n\n{config["suffix"]}'
+					)
+
+					# Remove it and get rid of the post tracker
+					comment.submission.mod.remove(spam=False, mod_note=f'Has the illegal tag(s): {", ".join(detected_tags)}')
+					del pending_sauces[comment.submission.id]
+					return
+
+				detected_parodies = []
+				for parody in data[3]:
+					if parody in underage_parodies:
+						detected_parodies.append(parody)
+
+				if len(detected_parodies) != 0:
+					# Oh no, there's an illegal parody!
+					print("Illegal tags detected: " + ', '.join(detected_tags))
+					comment.parent().edit(
+						f'The provided source has the disallowed parodies:\n```\n{", ".join(detected_parodies)}\n```\n'
+						'These parodies are banned because they are almost always underage.'
+						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is an of-age exception. '
 						'Otherwise, make sure you understand Rules 1 and 5.'
 						f'\n\n{config["suffix"]}'
 					)
