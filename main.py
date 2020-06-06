@@ -39,7 +39,6 @@ async def main():
 
 	start_time = time.time()
 
-
 	# Scan all new posts and comments
 	while True:
 		try:

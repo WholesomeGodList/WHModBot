@@ -85,7 +85,7 @@ async def process_comment(comment: Comment):
 
 		else:
 			# Handle any wacky Markdown, and enforce HTTPS
-			url = url_verify.group(1).strip(')').replace('http://', 'https://')
+			url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://')
 
 		if not url[-1] == "/":
 			url = url + "/"
@@ -169,7 +169,7 @@ async def process_comment(comment: Comment):
 
 			else:
 				# Handle any wacky Markdown, and enforce HTTPS
-				url = url_verify.group(1).strip(')').replace('http://', 'https://')
+				url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://')
 
 			if not url[-1] == "/":
 				url = url + "/"
