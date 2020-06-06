@@ -63,9 +63,15 @@ async def process_comment(comment: Comment):
 	if not comment.is_root and comment.author.name in comment.subreddit.moderator() and "override" in comment.body:
 		print("Moderator override activated.")
 
+		# get rid of any override leftovers
+		body = comment.body.replace('override', '').strip()
+
 		# Validate the URL
 		url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
-		url_verify = url_extractor.search(comment.body.replace("override", "").strip())
+		url_verify = url_extractor.search(body)
+
+		nhentai_url_extractor = re.compile(r'(https?://nhentai.net/g/\d{1,6}/?)')
+		nhentai_url = nhentai_url_extractor.search(body)
 
 		if not url_verify:
 			# no URL present, so we execute the british
@@ -73,8 +79,14 @@ async def process_comment(comment: Comment):
 			              f'\n\n{config["suffix"]}')
 			return
 
-		# Handle any wacky Markdown, and enforce HTTPS
-		url = url_verify.group(1).strip(')').replace('http://', 'https://')
+		if nhentai_url:
+			# it's an nhentai url, don't bother with other stuff
+			url = nhentai_url.group(1).replace('http://', 'https://')
+
+		else:
+			# Handle any wacky Markdown, and enforce HTTPS
+			url = url_verify.group(1).strip(')').replace('http://', 'https://')
+
 		if not url[-1] == "/":
 			url = url + "/"
 
@@ -111,6 +123,10 @@ async def process_comment(comment: Comment):
 		c.execute('INSERT INTO posts VALUES (?, ?, ?)',
 		          (comment.submission.permalink, url, comment.submission.created_utc))
 		conn.commit()
+
+		# clean up
+		if comment.submission.id in pending_sauces:
+			del pending_sauces[comment.submission.id]
 		
 		# Reapprove the post
 		comment.submission.mod.approve()
@@ -138,14 +154,23 @@ async def process_comment(comment: Comment):
 			url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
 			url_verify = url_extractor.search(comment.body)
 
+			nhentai_url_extractor = re.compile(r'(https?://nhentai.net/g/\d{1,6}/?)')
+			nhentai_url = nhentai_url_extractor.search(comment.body)
+
 			if not url_verify:
 				# no URL present, so we execute the british
 				comment.reply("That doesn't seem to be a valid URL. Try again?"
 				              f'\n\n{config["suffix"]}')
 				return
 
-			# Handle any wacky Markdown, and enforce HTTPS
-			url = url_verify.group(1).strip(')').replace('http://', 'https://')
+			if nhentai_url:
+				#it's an nhentai url, don't bother with other stuff
+				url = nhentai_url.group(1).replace('http://', 'https://')
+
+			else:
+				# Handle any wacky Markdown, and enforce HTTPS
+				url = url_verify.group(1).strip(')').replace('http://', 'https://')
+
 			if not url[-1] == "/":
 				url = url + "/"
 
@@ -198,6 +223,7 @@ async def process_comment(comment: Comment):
 					magazine, market, data = await nhentai_fetcher.check_link(url)
 				except Exception:
 					print("Invalid page.")
+					print(url)
 					comment.reply("That doesn't seem to be a valid nhentai page. Try again?"
 					              f'\n\n{config["suffix"]}')
 					return
