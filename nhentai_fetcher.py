@@ -2,6 +2,7 @@ import re
 
 import aiohttp
 from bs4 import BeautifulSoup
+import asyncio
 
 
 def date_num_compare(magazine, issue):
@@ -86,19 +87,18 @@ async def process_site(link):
 		resp = await session.get(link)
 		page = await resp.text()
 		soup = BeautifulSoup(page, 'html.parser')
-		titles = soup.find_all('h1')
+		title = soup.find_all('h1')[0].get_text()
 
 		tag_extractor = re.compile(r"/tag/(.*)/")
 		artist_extractor = re.compile(r"/artist/(.*)/")
 		parody_extractor = re.compile(r"/parody/(.*)/")
 		character_extractor = re.compile(r"/character/(.*)/")
-		page_extractor = re.compile(r"(\d+)\s*pages")
+		page_extractor = re.compile(r"/search/\?q=pages.*")
 		link_pile = soup.find_all('a', href=tag_extractor)
 		artist_pile = soup.find_all('a', href=artist_extractor)
 		parody_pile = soup.find_all('a', href=parody_extractor)
 		character_pile = soup.find_all('a', href=character_extractor)
-
-		pages = int(page_extractor.search(page).group(1))
+		pages = int(soup.find('a', class_='tag', href=page_extractor).find('span', class_='name').string.strip())
 
 		tags = list()
 		artists = list()
@@ -124,7 +124,8 @@ async def process_site(link):
 			character_match = re.match(character_extractor, characterlink["href"])
 			characters.append(character_match.group(1).replace("-", " "))
 
-		return titles[0].string, tags, ', '.join(artists), parodies, characters, pages
+		print([title, tags, ', '.join(artists), parodies, characters, pages])
+		return title, tags, ', '.join(artists), parodies, characters, pages
 
 
 async def check_link(link):
@@ -181,3 +182,6 @@ async def check_link(link):
 		return magazine_name.upper() + " " + magazine_issue, market, [parsed_title, artists, tags, parodies, characters, pages]
 	else:
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages]
+
+
+# print(asyncio.run(check_link('https://nhentai.net/g/316234')))
