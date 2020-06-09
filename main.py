@@ -6,9 +6,20 @@ import traceback
 import praw
 from termcolor import cprint
 from prawcore import ResponseException
+from praw.models.util import stream_generator
+from praw.models import Submission
+from praw.models import Comment
 
 import process_comment
 import process_post
+
+
+def submissions_and_comments(subreddit, **kwargs):
+	results = []
+	results.extend(subreddit.new(**kwargs))
+	results.extend(subreddit.comments(**kwargs))
+	results.sort(key=lambda post: post.created_utc, reverse=True)
+	return results
 
 
 async def main():
@@ -38,8 +49,10 @@ async def main():
 	submission_stream = subreddit.stream.submissions(pause_after=-1)
 
 	start_time = time.time()
+	stream = stream_generator(lambda **kwargs: submissions_and_comments(subreddit, **kwargs))
 
 	# Scan all new posts and comments
+	"""
 	while True:
 		try:
 			for comment in comment_stream:
@@ -57,6 +70,16 @@ async def main():
 				await process_post.process_post(submission)
 		except ResponseException:
 			traceback.print_exc()
+			continue
+	"""
+
+	for post in stream:
+		if post.created_utc < start_time:
+			continue
+		if isinstance(post, Submission):
+			await process_post.process_post(post)
+		elif isinstance(post, Comment):
+			await process_comment.process_comment(post)
 
 
 if __name__ == '__main__':
