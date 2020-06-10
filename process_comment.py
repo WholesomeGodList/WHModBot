@@ -4,6 +4,7 @@ import sqlite3
 from sqlite3 import Error
 
 from praw.models import Comment
+from praw import Reddit
 
 import nhentai_fetcher
 
@@ -56,7 +57,7 @@ c = conn.cursor()
 config = json.load(open('config.json'))
 
 
-async def process_comment(comment: Comment):
+async def process_comment(comment: Comment, reddit: Reddit):
 	global pending_sauces
 
 	# Mod override - if the user is a moderator, has "override" in his comment, and
@@ -203,18 +204,23 @@ async def process_comment(comment: Comment):
 					conn.commit()
 					print('It\'s been long enough since this was last posted!')
 				else:
-					# It's not been long enough since the last post. Link them to the last post and delete the entry.
-					print('It\'s a recent repost. Removing...')
-					comment.parent().edit(
-						f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
-						'Please search before posting to avoid posting reposts in the future.'
-						f'\n\n{config["suffix"]}'
-					)
+					old_submission = reddit.submission(url=f'https://reddit.com{post[0]}')
+					if old_submission.author.name == temp['author']:
+						# It's the same person. It's fine.
+						print('OP is the same person. Ignoring...')
+					else:
+						# It's not been long enough since the last post. Link them to the last post and delete the entry.
+						print('It\'s a recent repost. Removing...')
+						comment.parent().edit(
+							f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
+							'Please search before posting to avoid posting reposts in the future.'
+							f'\n\n{config["suffix"]}'
+						)
 
-					# Remove it and get rid of the post tracker
-					comment.submission.mod.remove(spam=False, mod_note='Repost.')
-					del pending_sauces[comment.submission.id]
-					return
+						# Remove it and get rid of the post tracker
+						comment.submission.mod.remove(spam=False, mod_note='Repost.')
+						del pending_sauces[comment.submission.id]
+						return
 
 			if 'nhentai.net' in url:
 				# hoo boy

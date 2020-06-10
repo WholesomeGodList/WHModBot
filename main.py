@@ -45,8 +45,8 @@ async def main():
 
 	print('User is a moderator. Scanning started...')
 
-	comment_stream = subreddit.stream.comments(pause_after=-1)
-	submission_stream = subreddit.stream.submissions(pause_after=-1)
+	# comment_stream = subreddit.stream.comments(pause_after=-1)
+	# submission_stream = subreddit.stream.submissions(pause_after=-1)
 
 	start_time = time.time()
 	stream = stream_generator(lambda **kwargs: submissions_and_comments(subreddit, **kwargs))
@@ -79,7 +79,7 @@ async def main():
 		if isinstance(post, Submission):
 			await process_post.process_post(post)
 		elif isinstance(post, Comment):
-			await process_comment.process_comment(post)
+			await process_comment.process_comment(post, reddit)
 
 
 if __name__ == '__main__':
