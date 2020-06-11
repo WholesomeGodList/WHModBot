@@ -54,3 +54,4 @@ async def ask_for_sauce(submission: Submission):
 	comment.mod.distinguish(how='yes', sticky=True)
 	process_comment.register_pending_sauce(submission.author.name, submission.id, comment.id)
 	c.execute('INSERT INTO allposts VALUES (?)', (submission.id,))
+	conn.commit()
