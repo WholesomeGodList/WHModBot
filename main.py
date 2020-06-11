@@ -6,20 +6,9 @@ import traceback
 import praw
 from termcolor import cprint
 from prawcore import ResponseException
-from praw.models.util import stream_generator
-from praw.models import Submission
-from praw.models import Comment
 
 import process_comment
 import process_post
-
-
-def submissions_and_comments(subreddit, **kwargs):
-	results = []
-	results.extend(subreddit.new(**kwargs))
-	results.extend(subreddit.comments(**kwargs))
-	results.sort(key=lambda post: post.created_utc, reverse=True)
-	return results
 
 
 async def main():
