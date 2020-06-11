@@ -47,7 +47,7 @@ async def main():
 					break
 				if comment.created_utc < start_time:
 					continue
-				await process_comment.process_comment(comment)
+				await process_comment.process_comment(comment, reddit)
 
 			for submission in submission_stream:
 				if submission is None:

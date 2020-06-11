@@ -165,7 +165,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				return
 
 			if nhentai_url:
-				#it's an nhentai url, don't bother with other stuff
+				# it's an nhentai url, don't bother with other stuff
 				url = nhentai_url.group(1).replace('http://', 'https://')
 
 			else:
