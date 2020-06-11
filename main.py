@@ -45,14 +45,12 @@ async def main():
 
 	print('User is a moderator. Scanning started...')
 
-	# comment_stream = subreddit.stream.comments(pause_after=-1)
-	# submission_stream = subreddit.stream.submissions(pause_after=-1)
+	comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
+	submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
 
 	start_time = time.time()
-	stream = stream_generator(lambda **kwargs: submissions_and_comments(subreddit, **kwargs))
 
 	# Scan all new posts and comments
-	"""
 	while True:
 		try:
 			for comment in comment_stream:
@@ -71,16 +69,6 @@ async def main():
 		except ResponseException:
 			traceback.print_exc()
 			continue
-	"""
-
-	for post in stream:
-		if post.created_utc < start_time:
-			continue
-		if isinstance(post, Submission):
-			await process_post.process_post(post)
-		elif isinstance(post, Comment):
-			await process_comment.process_comment(post, reddit)
-
 
 if __name__ == '__main__':
 	asyncio.run(main())
