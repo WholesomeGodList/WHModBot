@@ -208,6 +208,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					if old_submission.author.name == temp['author']:
 						# It's the same person. It's fine.
 						print('OP is the same person. Ignoring...')
+						c.execute('DELETE FROM posts WHERE source=?', (url,))
+						conn.commit()
 					else:
 						# It's not been long enough since the last post. Link them to the last post and delete the entry.
 						print('It\'s a recent repost. Removing...')
