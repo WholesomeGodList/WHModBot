@@ -57,6 +57,7 @@ async def main():
 				await process_post.process_post(submission)
 		except ResponseException:
 			traceback.print_exc()
+			await main()
 			continue
 
 if __name__ == '__main__':
