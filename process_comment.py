@@ -9,7 +9,6 @@ from praw import Reddit
 
 import nhentai_fetcher
 
-pending_sauces = {}
 unwholesome_tags = [
 	'shotacon',
 	'lolicon',
@@ -59,8 +58,6 @@ config = json.load(open('config.json'))
 
 
 async def process_comment(comment: Comment, reddit: Reddit):
-	global pending_sauces
-
 	# Mod override - if the user is a moderator, has "override" in his comment, and
 	if not comment.is_root and comment.author.name in comment.subreddit.moderator() and "override" in comment.body:
 		print("Moderator override activated.")
@@ -124,21 +121,19 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			c.execute('DELETE FROM posts WHERE source=?', (url,))
 		c.execute('INSERT INTO posts VALUES (?, ?, ?)',
 		          (comment.submission.permalink, url, comment.submission.created_utc))
+		c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 		conn.commit()
-
-		# clean up
-		if comment.submission.id in pending_sauces:
-			del pending_sauces[comment.submission.id]
 		
 		# Reapprove the post
 		comment.submission.mod.approve()
 
 	# If this is the reply to a sauce request, handle it
-	elif not comment.is_root and comment.submission.id in pending_sauces:
-		temp = pending_sauces[comment.submission.id]
+	elif not comment.is_root and c.execute('SELECT * FROM pendingposts WHERE submission_id=?', (comment.submission.id,)).fetchone():
+		c.execute('SELECT * FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+		submission_id, author, comment_id = c.fetchone()
 
 		# Normal handling
-		if temp['comment_id'] == comment.parent_id[3:] and temp['author'] == comment.author.name:
+		if comment_id == comment.parent_id[3:] and author == comment.author.name:
 			# It's a reply to a sauce request.
 			print("Sauce reply found.")
 			print(comment.body)
@@ -149,7 +144,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					'OP has indicated that there is no applicable source.'
 					f'\n\n{config["suffix"]}'
 				)
-				del pending_sauces[comment.submission.id]
+				c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+				conn.commit()
 				return
 
 			# Validate the URL
@@ -188,7 +184,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					f'\n\n{config["suffix"]}'
 				)
 				comment.submission.mod.remove(spam=False, mod_note='Really common repost.')
-				del pending_sauces[comment.submission.id]
+				c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+				conn.commit()
 				return
 
 			# Check if the post is a repost that isn't that common
@@ -206,7 +203,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print('It\'s been long enough since this was last posted!')
 				else:
 					old_submission = reddit.submission(url=f'https://reddit.com{post[0]}')
-					if old_submission.author.name == temp['author']:
+					if old_submission.author.name == author:
 						# It's the same person. It's fine.
 						print('OP is the same person. Ignoring...')
 						c.execute('DELETE FROM posts WHERE source=?', (url,))
@@ -222,7 +219,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 						# Remove it and get rid of the post tracker
 						comment.submission.mod.remove(spam=False, mod_note='Repost.')
-						del pending_sauces[comment.submission.id]
+						c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+						conn.commit()
 						return
 
 			if 'nhentai.net' in url:
@@ -255,7 +253,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					# Remove it and get rid of the post tracker
 					comment.submission.mod.remove(spam=False, mod_note=f'Licensed, appears in magazine {magazine}')
-					del pending_sauces[comment.submission.id]
+					c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+					conn.commit()
 					return
 
 				if market:
@@ -271,7 +270,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					# Remove it and get rid of the post tracker
 					comment.submission.mod.remove(spam=False, mod_note=f'Licensed, appears in magazine {magazine}')
-					del pending_sauces[comment.submission.id]
+					c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+					conn.commit()
 					return
 
 				detected_tags = []
@@ -293,7 +293,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					# Remove it and get rid of the post tracker
 					comment.submission.mod.remove(spam=False, mod_note=f'Has the illegal tag(s): {", ".join(detected_tags)}')
-					del pending_sauces[comment.submission.id]
+					c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+					conn.commit()
 					return
 
 				detected_parodies = []
@@ -314,7 +315,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					# Remove it and get rid of the post tracker
 					comment.submission.mod.remove(spam=False, mod_note=f'Has the illegal tag(s): {", ".join(detected_tags)}')
-					del pending_sauces[comment.submission.id]
+					c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+					conn.commit()
 					return
 
 				parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{', '.join(data[3])}\n\n"
@@ -336,10 +338,5 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			print('Updating database and cleaning up...')
 			c.execute('INSERT INTO posts VALUES (?, ?, ?)',
 			          (comment.submission.permalink, url, comment.submission.created_utc))
+			c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 			conn.commit()
-			del pending_sauces[comment.submission.id]
-
-
-def register_pending_sauce(author: str, submission_id: str, comment_id: str):
-	global pending_sauces
-	pending_sauces[submission_id] = {'author': author, 'comment_id': comment_id}
