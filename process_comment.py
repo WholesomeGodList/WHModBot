@@ -1,6 +1,7 @@
 import re
 import json
 import sqlite3
+import asyncio
 from sqlite3 import Error
 
 from praw.models import Comment
@@ -227,14 +228,19 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			if 'nhentai.net' in url:
 				# hoo boy
 				print('nhentai URL detected, parsing info / magazines')
-				try:
-					magazine, market, data = await nhentai_fetcher.check_link(url)
-				except Exception:
-					print("Invalid page.")
-					print(url)
-					comment.reply("That doesn't seem to be a valid nhentai page. Try again?"
-					              f'\n\n{config["suffix"]}')
-					return
+
+				for attempt in range(3):
+					try:
+						magazine, market, data = await nhentai_fetcher.check_link(url)
+						break
+					except Exception:
+						if attempt == 2:
+							print("Invalid page.")
+							print(url)
+							comment.reply("Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. Try again?" f'\n\n{config["suffix"]}')
+							return
+						else:
+							await asyncio.sleep(1)
 
 				if magazine:
 					# It's licensed!
