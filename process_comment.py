@@ -203,7 +203,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print('It\'s been long enough since this was last posted!')
 				else:
 					old_submission = reddit.submission(url=f'https://reddit.com{post[0]}')
-					if old_submission.author.name == author:
+					if (not old_submission.removed) and ((not (old_submission and old_submission.author)) or (old_submission.author.name == author)):
 						# It's the same person. It's fine.
 						print('OP is the same person. Ignoring...')
 						c.execute('DELETE FROM posts WHERE source=?', (url,))
