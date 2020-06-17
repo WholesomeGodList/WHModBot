@@ -84,7 +84,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 		else:
 			# Handle any wacky Markdown, and enforce HTTPS
-			url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://')
+			url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://').split("](")[0]
 
 		if not url[-1] == "/":
 			url = url + "/"
@@ -152,7 +152,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
 			url_verify = url_extractor.search(comment.body)
 
-			nhentai_url_extractor = re.compile(r'(https?://nhentai.net/g/\d{1,6}/?)')
+			nhentai_url_extractor = re.compile(r'(https?://nhentai\.net/g/\d{1,6}/?)')
 			nhentai_url = nhentai_url_extractor.search(comment.body)
 
 			if not url_verify:
@@ -167,7 +167,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			else:
 				# Handle any wacky Markdown, and enforce HTTPS
-				url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://')
+				url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://').split("](")[0]
 
 			if not url[-1] == "/":
 				url = url + "/"
