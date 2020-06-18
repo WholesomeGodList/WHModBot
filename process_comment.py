@@ -124,8 +124,12 @@ async def process_comment(comment: Comment, reddit: Reddit):
 		c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 		conn.commit()
 		
-		# Reapprove the post
-		comment.submission.mod.approve()
+		# Reapprove the post if it was removed
+		if comment.submission.removed:
+			print("This post was removed. Reapproving...")
+			comment.submission.mod.approve()
+		else:
+			print("This post was not removed. Ignoring...")
 
 	# If this is the reply to a sauce request, handle it
 	elif not comment.is_root and c.execute('SELECT * FROM pendingposts WHERE submission_id=?', (comment.submission.id,)).fetchone():
