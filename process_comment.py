@@ -32,7 +32,9 @@ unwholesome_tags = [
 	'moral degeneration',
 	'vomit',
 	'cannibalism',
-	'urethra insertion'
+	'urethra insertion',
+	'webtoon',
+	'forbidden content'
 ]
 underage_parodies = [
 	'my hero academia',
@@ -288,10 +290,10 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal tags detected: " + ', '.join(detected_tags))
 					comment.parent().edit(
 						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
-						'These tags are banned because they are almost never wholesome. '
+						'These tags are banned because they are either almost never wholesome or almost always licensed.'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
-						'a mistagged doujin or a wholesome exception. '
-						'Otherwise, make sure you understand Rules 1 and 5.'
+						'a mistagged doujin or a wholesome/unlicensed exception. '
+						'Otherwise, make sure you understand Rules 1, 4, and 5.'
 						f'\n\n{config["suffix"]}'
 					)
 
@@ -308,7 +310,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 				if len(detected_parodies) != 0:
 					# Oh no, there's an illegal parody!
-					print("Illegal tags detected: " + ', '.join(detected_tags))
+					print("Illegal tags detected: " + ', '.join(detected_parodies))
 					comment.parent().edit(
 						f'The provided source has the disallowed parodies:\n```\n{", ".join(detected_parodies)}\n```\n'
 						'These parodies are banned because they are almost always underage.'
