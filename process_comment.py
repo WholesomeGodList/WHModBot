@@ -346,3 +346,10 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			          (comment.submission.permalink, url, comment.submission.created_utc))
 			c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 			conn.commit()
+
+
+def remove_post(comment: Comment, message: str, mod_note: str, strike: bool):
+	comment.parent().edit(message + f'\n\n{config["suffix"]}')
+	comment.submission.mod.remove(spam=False, mod_note=mod_note)
+	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+
