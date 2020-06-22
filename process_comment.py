@@ -183,14 +183,16 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			is_common_repost = c.fetchone()
 			if is_common_repost:  # if this tuple even exists, it's uh oh stinky
 				# It's a really common repost. Kill it.
-				comment.parent().edit(
+				print('Common repost detected!')
+
+				remove_post(comment,
 					'The link you provided is a **very common repost** on this subreddit.\n\n'
 					'Please read our [list of common reposts](https://www.reddit.com/r/wholesomehentai/comments/cjmiy4/list_of_common_reposts_and_common_licensed/), to avoid '
-					'posting common reposts in the future.'
-					f'\n\n{config["suffix"]}'
+					'posting common reposts in the future.',
+					'Really common repost.',
+					True
 				)
-				comment.submission.mod.remove(spam=False, mod_note='Really common repost.')
-				c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+
 				conn.commit()
 				return
 
@@ -217,16 +219,15 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					else:
 						# It's not been long enough since the last post. Link them to the last post and delete the entry.
 						print('It\'s a recent repost. Removing...')
-						comment.parent().edit(
+
+						remove_post(comment,
 							f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
 							'Please search before posting to avoid posting reposts in the future.'
-							f'\n\n{config["suffix"]}'
+							f'\n\n{config["suffix"]}',
+							'Repost.',
+							True
 						)
 
-						# Remove it and get rid of the post tracker
-						comment.submission.mod.remove(spam=False, mod_note='Repost.')
-						c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
-						conn.commit()
 						return
 
 			if 'nhentai.net' in url:
@@ -249,35 +250,29 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				if magazine:
 					# It's licensed!
 					print("Licensed magazine detected.")
-					comment.parent().edit(
+
+					remove_post(comment,
 						f'The provided source is licensed! It appears in the licensed magazine issue `{magazine}`.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
-						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)'
-						''
-						f'\n\n{config["suffix"]}'
+						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)',
+						f'Licensed, appears in magazine {magazine}',
+						True
 					)
 
-					# Remove it and get rid of the post tracker
-					comment.submission.mod.remove(spam=False, mod_note=f'Licensed, appears in magazine {magazine}')
-					c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
-					conn.commit()
 					return
 
 				if market:
 					# It literally has 2d-market.com in the title.
 					print("2d-market in title.")
-					comment.parent().edit(
+
+					remove_post(comment,
 						f'The provided source is licensed! It has `2d-market.com` in the title.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
-						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)'
-						''
-						f'\n\n{config["suffix"]}'
+						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)',
+						f'Licensed, appears in magazine {magazine}',
+						True
 					)
 
-					# Remove it and get rid of the post tracker
-					comment.submission.mod.remove(spam=False, mod_note=f'Licensed, appears in magazine {magazine}')
-					c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
-					conn.commit()
 					return
 
 				detected_tags = []
@@ -288,19 +283,17 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				if len(detected_tags) != 0:
 					# Oh no, there's an illegal tag!
 					print("Illegal tags detected: " + ', '.join(detected_tags))
-					comment.parent().edit(
+					
+					remove_post(comment,
 						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
 						'These tags are banned because they are either almost never wholesome or almost always licensed.'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
 						'a mistagged doujin or a wholesome/unlicensed exception. '
-						'Otherwise, make sure you understand Rules 1, 4, and 5.'
-						f'\n\n{config["suffix"]}'
+						'Otherwise, make sure you understand Rules 1, 4, and 5.',
+						f'Has the illegal tag(s): {", ".join(detected_tags)}',
+						True
 					)
 
-					# Remove it and get rid of the post tracker
-					comment.submission.mod.remove(spam=False, mod_note=f'Has the illegal tag(s): {", ".join(detected_tags)}')
-					c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
-					conn.commit()
 					return
 
 				detected_parodies = []
@@ -311,18 +304,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				if len(detected_parodies) != 0:
 					# Oh no, there's an illegal parody!
 					print("Illegal tags detected: " + ', '.join(detected_parodies))
-					comment.parent().edit(
+
+					remove_post(comment, 
 						f'The provided source has the disallowed parodies:\n```\n{", ".join(detected_parodies)}\n```\n'
 						'These parodies are banned because they are almost always underage.'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is an of-age exception. '
-						'Otherwise, make sure you understand Rules 1 and 5.'
-						f'\n\n{config["suffix"]}'
-					)
+						'Otherwise, make sure you understand Rules 1 and 5.',
+						f'Has the illegal tag(s): {", ".join(detected_tags)}', True)
 
-					# Remove it and get rid of the post tracker
-					comment.submission.mod.remove(spam=False, mod_note=f'Has the illegal tag(s): {", ".join(detected_tags)}')
-					c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
-					conn.commit()
 					return
 
 				parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{', '.join(data[3])}\n\n"
@@ -352,4 +341,5 @@ def remove_post(comment: Comment, message: str, mod_note: str, strike: bool):
 	comment.parent().edit(message + f'\n\n{config["suffix"]}')
 	comment.submission.mod.remove(spam=False, mod_note=mod_note)
 	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+	conn.commit()
 
