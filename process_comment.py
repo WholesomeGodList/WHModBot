@@ -82,29 +82,13 @@ async def process_comment(comment: Comment, reddit: Reddit):
 		# get rid of any override leftovers
 		body = comment.body.replace('override', '').strip()
 
-		# Validate the URL
-		url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
-		url_verify = url_extractor.search(body)
+		url = extract_url(body)
 
-		nhentai_url_extractor = re.compile(r'(https?://nhentai.net/g/\d{1,6}/?)')
-		nhentai_url = nhentai_url_extractor.search(body)
-
-		if not url_verify:
+		if not url:
 			# no URL present, so we execute the british
 			comment.reply("That doesn't seem to be a valid URL. Try again?"
 			              f'\n\n{config["suffix"]}')
 			return
-
-		if nhentai_url:
-			# it's an nhentai url, don't bother with other stuff
-			url = nhentai_url.group(1).replace('http://', 'https://')
-
-		else:
-			# Handle any wacky Markdown, and enforce HTTPS
-			url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://').split("](")[0]
-
-		if not url[-1] == "/":
-			url = url + "/"
 
 		if 'nhentai.net' in url:
 			try:
@@ -133,9 +117,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 		# The post is good.
 		print('Updating database and cleaning up...')
-		c.execute('SELECT * FROM posts WHERE source=?', (url,))
-		if c.fetchone():
-			c.execute('DELETE FROM posts WHERE source=?', (url,))
+		c.execute('DELETE FROM posts WHERE source=?', (url,))
 		approve_post(reddit, comment, url)
 
 		# Reapprove the post if it was removed
@@ -166,36 +148,13 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				conn.commit()
 				return
 
-			# Validate the URL
-			url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
-			url_verify = url_extractor.search(comment.body)
+			url = extract_url(comment.body)
 
-			nhentai_url_extractor = re.compile(r'(https?://nhentai\.net/g/\d{1,6}/?)')
-			nhentai_url = nhentai_url_extractor.search(comment.body)
-
-			markdown_extractor = re.compile(r'\[.*\]\(.*\)')
-			markdown_url = markdown_extractor.search(comment.body)
-
-			if not url_verify:
+			if not url:
 				# no URL present, so we execute the british
 				comment.reply("That doesn't seem to be a valid URL. Try again?"
 				              f'\n\n{config["suffix"]}')
 				return
-
-			if nhentai_url:
-				# it's an nhentai url, don't bother with other stuff
-				url = nhentai_url.group(1).replace('http://', 'https://')
-
-			elif markdown_url:
-				# it's a markdown URL, don't bother with other stuff
-				url = markdown_url.group(1).replace('http://', 'https://')
-
-			else:
-				# Handle any wacky Markdown, and enforce HTTPS
-				url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://').split("](")[0]
-
-			if not url[-1] == "/":
-				url = url + "/"
 
 			# Handle any licensed sites here
 			for site in licensed_sites:
@@ -399,7 +358,7 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 		print("Updating usernotes...")
 		usernotespage = reddit.subreddit(config['subreddit']).wiki["usernotes"]
 		usernotescontent = json.loads(usernotespage.content_md)
-		usernotes = json.loads(zlib.decompress(base64.decodebytes(usernotescontent["blob"].encode())))
+		usernotes = decode_blob(usernotescontent['blob'])
 		username = comment.submission.author.name
 
 		if username in usernotes:
@@ -421,13 +380,20 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 				}]
 			}
 
-		compress = zlib.compressobj(zlib.Z_DEFAULT_COMPRESSION, method=zlib.DEFLATED, wbits=15, memLevel=8, strategy=zlib.Z_DEFAULT_STRATEGY)
-		compressed_data = compress.compress(json.dumps(usernotes, separators=(',', ':')).encode())
-		compressed_data += compress.flush()
-		usernotescontent["blob"] = base64.b64encode(compressed_data)
-
+		usernotescontent["blob"] = encode_blob(usernotes)
 		usernotespage.edit(content=json.dumps(usernotescontent, separators=(',', ':')))
 		print('User notes updated.')
+
+
+def decode_blob(blob: str):
+	return json.loads(zlib.decompress(base64.decodebytes(blob.encode())))
+
+
+def encode_blob(json_blob: dict):
+	compress = zlib.compressobj(zlib.Z_DEFAULT_COMPRESSION, method=zlib.DEFLATED, wbits=15, memLevel=8, strategy=zlib.Z_DEFAULT_STRATEGY)
+	compressed_data = compress.compress(json.dumps(json_blob, separators=(',', ':')).encode())
+	compressed_data += compress.flush()
+	return str(base64.b64encode(compressed_data, 'utf-8'))
 
 
 def approve_post(reddit: Reddit, comment: Comment, url: str):
@@ -465,3 +431,35 @@ def update_wiki(reddit: Reddit):
 	repostspage = reddit.subreddit(config['subreddit']).wiki['posts']
 	repostspage.edit(content=wiki_text)
 	print('Wiki page generated.')
+
+
+def extract_url(body: str):
+	# Validate the URL
+	url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
+	url_verify = url_extractor.search(body)
+
+	if not url_verify:
+		return None
+
+	nhentai_url_extractor = re.compile(r'(https?://nhentai\.net/g/\d{1,6}/?)')
+	nhentai_url = nhentai_url_extractor.search(body)
+
+	markdown_extractor = re.compile(r'\[.*\]\((.*)\)')
+	markdown_url = markdown_extractor.search(body)
+
+	if nhentai_url:
+		# it's an nhentai url, don't bother with other stuff
+		url = nhentai_url.group(1).replace('http://', 'https://')
+
+	elif markdown_url:
+		# it's a markdown URL, don't bother with other stuff
+		url = markdown_url.group(1).replace('http://', 'https://')
+
+	else:
+		# Find the first URL, and enforce HTTPS
+		url = url_verify.group(1).replace('http://', 'https://')
+
+	if not url[-1] == "/":
+		url = url + "/"
+
+	return url
