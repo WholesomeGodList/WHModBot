@@ -132,7 +132,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 		if c.fetchone():
 			c.execute('DELETE FROM posts WHERE source=?', (url,))
 		approve_post(reddit, comment, url)
-		
+
 		# Reapprove the post if it was removed
 		if comment.submission.removed:
 			print("This post was removed. Reapproving...")
@@ -197,6 +197,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					'Please read our [list of common reposts](https://www.reddit.com/r/wholesomehentai/comments/cjmiy4/list_of_common_reposts_and_common_licensed/), to avoid '
 					'posting common reposts in the future.',
 					'Really common repost.',
+				    'Rule 10 - Common Repost',
 					True
 				)
 
@@ -231,6 +232,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							'Please search before posting to avoid posting reposts in the future.'
 							f'\n\n{config["suffix"]}',
 							'Repost.',
+						    'Rule 10 - Repost',
 							True
 						)
 
@@ -262,6 +264,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
 						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)',
 						f'Licensed, appears in magazine {magazine}',
+					    f'Rule 4 - Licensed (appears in {magazine})',
 						True
 					)
 
@@ -275,7 +278,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						f'The provided source is licensed! It has `2d-market.com` in the title.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
 						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)',
-						f'Licensed, appears in magazine {magazine}',
+						f'Licensed, has 2d-market.com in title',
+					    f'Rule 4 - Licensed (2d-market.com in title)',
 						True
 					)
 
@@ -288,7 +292,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					    'This subreddit only allows English submissions, as most people cannot understand other languages.\n\n'
 					    f'If you believe this was a mistake, you can [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).',
 					    'Not English',
-					    True
+					    'Rule 2 - Non-English Source',
+					    False
 					)
 
 					return
@@ -301,7 +306,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				if len(detected_tags) != 0:
 					# Oh no, there's an illegal tag!
 					print("Illegal tags detected: " + ', '.join(detected_tags))
-					
+
 					remove_post(reddit, comment,
 						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
 						'These tags are banned because they are either almost never wholesome or almost always licensed.'
@@ -324,7 +329,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					# Oh no, there's an illegal parody!
 					print("Illegal tags detected: " + ', '.join(detected_parodies))
 
-					remove_post(reddit, comment, 
+					remove_post(reddit, comment,
 						f'The provided source has the disallowed parodies:\n```\n{", ".join(detected_parodies)}\n```\n'
 						'These parodies are banned because they are almost always underage.'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is an of-age exception. '
@@ -363,38 +368,38 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 	conn.commit()
 
 	# Time to update the usernotes...
-	print("Updating usernotes...")
-	usernotespage = reddit.subreddit(config['subreddit']).wiki["usernotes"]
-	usernotescontent = json.loads(usernotespage.content_md)
-	usernotes = json.loads(zlib.decompress(base64.decodebytes(usernotescontent["blob"].encode())))
-	username = comment.submission.author.name
+	if strike:
+		print("Updating usernotes...")
+		usernotespage = reddit.subreddit(config['subreddit']).wiki["usernotes"]
+		usernotescontent = json.loads(usernotespage.content_md)
+		usernotes = json.loads(zlib.decompress(base64.decodebytes(usernotescontent["blob"].encode())))
+		username = comment.submission.author.name
 
-	if username in usernotes:
-		usernotes[username]['ns'].append({
-			'l': f'l,{comment.submission.id}',
-			'm': 2,
-			'n': note_message,
-			't': int(time.time()),
-			'w': 0
-		})
-	else:
-		usernotes[username] = {
-			'ns': [{
+		if username in usernotes:
+			usernotes[username]['ns'].append({
 				'l': f'l,{comment.submission.id}',
 				'm': 2,
 				'n': note_message,
 				't': int(time.time()),
 				'w': 0
-			}]
-		}
+			})
+		else:
+			usernotes[username] = {
+				'ns': [{
+					'l': f'l,{comment.submission.id}',
+					'm': 2,
+					'n': note_message,
+					't': int(time.time()),
+					'w': 0
+				}]
+			}
 
-	compress = zlib.compressobj(zlib.Z_DEFAULT_COMPRESSION, method=zlib.DEFLATED, wbits=15, memLevel=8,
-	                            strategy=zlib.Z_DEFAULT_STRATEGY)
-	compressed_data = compress.compress(json.dumps(usernotes, separators=(',', ':')).encode())
-	compressed_data += compress.flush()
-	usernotescontent["blob"] = base64.b64encode(compressed_data)
+		compress = zlib.compressobj(zlib.Z_DEFAULT_COMPRESSION, method=zlib.DEFLATED, wbits=15, memLevel=8, strategy=zlib.Z_DEFAULT_STRATEGY)
+		compressed_data = compress.compress(json.dumps(usernotes, separators=(',', ':')).encode())
+		compressed_data += compress.flush()
+		usernotescontent["blob"] = base64.b64encode(compressed_data)
 
-	usernotespage.edit(content=json.dumps(usernotescontent, separators=(',', ':')))
+		usernotespage.edit(content=json.dumps(usernotescontent, separators=(',', ':')))
 
 
 def approve_post(reddit: Reddit, comment: Comment, url: str):
