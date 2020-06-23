@@ -51,6 +51,11 @@ underage_parodies = [
 	'persona 4',
 	'persona 5'
 ]
+licensed_sites = [
+	'hentai.cafe',
+	'hc.fyi',
+	'hentainexus'
+]
 
 
 def create_connection(path):
@@ -168,6 +173,9 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			nhentai_url_extractor = re.compile(r'(https?://nhentai\.net/g/\d{1,6}/?)')
 			nhentai_url = nhentai_url_extractor.search(comment.body)
 
+			markdown_extractor = re.compile(r'\[.*\]\(.*\)')
+			markdown_url = markdown_extractor.search(comment.body)
+
 			if not url_verify:
 				# no URL present, so we execute the british
 				comment.reply("That doesn't seem to be a valid URL. Try again?"
@@ -178,12 +186,31 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				# it's an nhentai url, don't bother with other stuff
 				url = nhentai_url.group(1).replace('http://', 'https://')
 
+			elif markdown_url:
+				# it's a markdown URL, don't bother with other stuff
+				url = markdown_url.group(1).replace('http://', 'https://')
+
 			else:
 				# Handle any wacky Markdown, and enforce HTTPS
 				url = url_verify.group(1).strip('(').strip(')').strip('[').strip(']').replace('http://', 'https://').split("](")[0]
 
 			if not url[-1] == "/":
 				url = url + "/"
+
+			# Handle any licensed sites here
+			for site in licensed_sites:
+				if site in url:
+					print("It's a licensed site.")
+					remove_post(reddit, comment,
+					    'The link you provided links to a site that solely rips licensed content. As such, it breaks rule 4.\n\n'
+					    'Please read our [guide on how to spot licensed doujins](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)'
+					    ' to avoid making this mistake in the future.',
+					    'Licensed link',
+					    'Rule 4 - Linked to hentai.cafe/hentainexus',
+					    True
+					)
+
+					return
 
 			# Check if the post is a repost or not
 			c.execute('SELECT * FROM commonreposts WHERE source=?', (url,))

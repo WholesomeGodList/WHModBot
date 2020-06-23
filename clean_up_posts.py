@@ -37,4 +37,7 @@ for row in records:
 		print("This submission was removed.")
 		c.execute('DELETE FROM posts WHERE source=?', (row[1],))
 c.execute('DELETE FROM posts WHERE timeposted<?', (int(time.time()) - (8 * 604800),))
+c.execute("DELETE FROM posts WHERE source LIKE '%hc.fyi%'")
+c.execute("DELETE FROM posts WHERE source LIKE '%hentainexus%'")
+c.execute("DELETE FROM posts WHERE source LIKE '%hentai.cafe%'")
 conn.commit()
