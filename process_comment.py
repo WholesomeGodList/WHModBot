@@ -2,8 +2,12 @@ import re
 import json
 import sqlite3
 import asyncio
-from sqlite3 import Error
+import time
+import zlib
+import base64
+import datetime
 
+from sqlite3 import Error
 from praw.models import Comment
 from praw import Reddit
 
@@ -39,7 +43,13 @@ unwholesome_tags = [
 underage_parodies = [
 	'my hero academia',
 	'love live',
-	'toradora'
+	'toradora',
+	'pokemon',
+	'persona',
+	'persona 2',
+	'persona 3',
+	'persona 4',
+	'persona 5'
 ]
 
 
@@ -47,7 +57,7 @@ def create_connection(path):
 	connection = None
 	try:
 		connection = sqlite3.connect(path)
-		print("Connected to the posts database")
+		print("Connected to the posts database in process_comment")
 	except Error as e:
 		print(f"The error '{e}' occurred")
 
@@ -121,10 +131,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 		c.execute('SELECT * FROM posts WHERE source=?', (url,))
 		if c.fetchone():
 			c.execute('DELETE FROM posts WHERE source=?', (url,))
-		c.execute('INSERT INTO posts VALUES (?, ?, ?)',
-		          (comment.submission.permalink, url, comment.submission.created_utc))
-		c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
-		conn.commit()
+		approve_post(reddit, comment, url)
 		
 		# Reapprove the post if it was removed
 		if comment.submission.removed:
@@ -185,7 +192,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				# It's a really common repost. Kill it.
 				print('Common repost detected!')
 
-				remove_post(comment,
+				remove_post(reddit, comment,
 					'The link you provided is a **very common repost** on this subreddit.\n\n'
 					'Please read our [list of common reposts](https://www.reddit.com/r/wholesomehentai/comments/cjmiy4/list_of_common_reposts_and_common_licensed/), to avoid '
 					'posting common reposts in the future.',
@@ -193,7 +200,6 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					True
 				)
 
-				conn.commit()
 				return
 
 			# Check if the post is a repost that isn't that common
@@ -220,7 +226,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						# It's not been long enough since the last post. Link them to the last post and delete the entry.
 						print('It\'s a recent repost. Removing...')
 
-						remove_post(comment,
+						remove_post(reddit, comment,
 							f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
 							'Please search before posting to avoid posting reposts in the future.'
 							f'\n\n{config["suffix"]}',
@@ -251,7 +257,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					# It's licensed!
 					print("Licensed magazine detected.")
 
-					remove_post(comment,
+					remove_post(reddit, comment,
 						f'The provided source is licensed! It appears in the licensed magazine issue `{magazine}`.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
 						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)',
@@ -265,12 +271,24 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					# It literally has 2d-market.com in the title.
 					print("2d-market in title.")
 
-					remove_post(comment,
+					remove_post(reddit, comment,
 						f'The provided source is licensed! It has `2d-market.com` in the title.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
 						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)',
 						f'Licensed, appears in magazine {magazine}',
 						True
+					)
+
+					return
+
+				if data[6] != "english":
+					print("The language of this doujin does not seem to be English.")
+					remove_post(reddit, comment,
+					    'The provided source does not seem to be in English.\n\n'
+					    'This subreddit only allows English submissions, as most people cannot understand other languages.\n\n'
+					    f'If you believe this was a mistake, you can [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).',
+					    'Not English',
+					    True
 					)
 
 					return
@@ -284,13 +302,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					# Oh no, there's an illegal tag!
 					print("Illegal tags detected: " + ', '.join(detected_tags))
 					
-					remove_post(comment,
+					remove_post(reddit, comment,
 						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
 						'These tags are banned because they are either almost never wholesome or almost always licensed.'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
 						'a mistagged doujin or a wholesome/unlicensed exception. '
 						'Otherwise, make sure you understand Rules 1, 4, and 5.',
 						f'Has the illegal tag(s): {", ".join(detected_tags)}',
+					    f'Rule 1/4/5 - Has the tags {", ".join(detected_tags)}',
 						True
 					)
 
@@ -305,12 +324,15 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					# Oh no, there's an illegal parody!
 					print("Illegal tags detected: " + ', '.join(detected_parodies))
 
-					remove_post(comment, 
+					remove_post(reddit, comment, 
 						f'The provided source has the disallowed parodies:\n```\n{", ".join(detected_parodies)}\n```\n'
 						'These parodies are banned because they are almost always underage.'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is an of-age exception. '
-						'Otherwise, make sure you understand Rules 1 and 5.',
-						f'Has the illegal tag(s): {", ".join(detected_tags)}', True)
+						'Otherwise, make sure you understand Rule 1.',
+						f'Has the illegal tag(s): {", ".join(detected_parodies)}',
+					    f'Rule 1 - Has the parodies {", ".join(detected_parodies)}',
+						True
+					)
 
 					return
 
@@ -331,15 +353,81 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			# If we made it here, the post is good. Clean up any trackers and add a post entry to the database.
 			print('Updating database and cleaning up...')
-			c.execute('INSERT INTO posts VALUES (?, ?, ?)',
-			          (comment.submission.permalink, url, comment.submission.created_utc))
-			c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
-			conn.commit()
+			approve_post(reddit, comment, url)
 
 
-def remove_post(comment: Comment, message: str, mod_note: str, strike: bool):
+def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, note_message: str, strike: bool):
 	comment.parent().edit(message + f'\n\n{config["suffix"]}')
 	comment.submission.mod.remove(spam=False, mod_note=mod_note)
 	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 	conn.commit()
 
+	# Time to update the usernotes...
+	print("Updating usernotes...")
+	usernotespage = reddit.subreddit(config['subreddit']).wiki["usernotes"]
+	usernotescontent = json.loads(usernotespage.content_md)
+	usernotes = json.loads(zlib.decompress(base64.decodebytes(usernotescontent["blob"].encode())))
+	username = comment.submission.author.name
+
+	if username in usernotes:
+		usernotes[username]['ns'].append({
+			'l': f'l,{comment.submission.id}',
+			'm': 2,
+			'n': note_message,
+			't': int(time.time()),
+			'w': 0
+		})
+	else:
+		usernotes[username] = {
+			'ns': [{
+				'l': f'l,{comment.submission.id}',
+				'm': 2,
+				'n': note_message,
+				't': int(time.time()),
+				'w': 0
+			}]
+		}
+
+	compress = zlib.compressobj(zlib.Z_DEFAULT_COMPRESSION, method=zlib.DEFLATED, wbits=15, memLevel=8,
+	                            strategy=zlib.Z_DEFAULT_STRATEGY)
+	compressed_data = compress.compress(json.dumps(usernotes, separators=(',', ':')).encode())
+	compressed_data += compress.flush()
+	usernotescontent["blob"] = base64.b64encode(compressed_data)
+
+	usernotespage.edit(content=json.dumps(usernotescontent))
+
+
+def approve_post(reddit: Reddit, comment: Comment, url: str):
+	c.execute('INSERT INTO posts VALUES (?, ?, ?)',
+	          (comment.submission.permalink, url, comment.submission.created_utc))
+	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+
+	# Prune old posts
+	c.execute('DELETE FROM posts WHERE timeposted<?', (int(time.time()) - (8 * 604800),))
+	conn.commit()
+
+	# Now to rebuild the wiki page...
+	update_wiki(reddit)
+
+
+def update_wiki(reddit: Reddit):
+	print("Generating wiki page...")
+	c.execute('SELECT * FROM posts ORDER BY timeposted DESC')
+	all_posts = c.fetchall()
+	wiki_text = (
+		'# **Posts and Common Reposts**\n\n'
+		'## **Common Reposts**\n\n'
+		'*Coming soon(TM)*\n\n'
+		'## **Post List**\n\n'
+		'*This list is auto-generated by the bot, and includes all posts from the last 8 weeks.  \nMake sure that your post is not'
+		' already in this list before you post, or it will be removed upon posting.*\n\n'
+		'*All timestamps are in UTC.*\n\n'
+		'| Source Given | Time Posted | Post Link |\n'
+		'|-|-|-|\n'
+	)
+	id_extractor = re.compile(r'/comments/([^/]*)/')
+	for post in all_posts:
+		wiki_text += f'| {post[1]} | {datetime.datetime.utcfromtimestamp(post[2]).strftime("%b %d, %Y %I:%M %p")} | https://redd.it/{id_extractor.search(post[0]).group(1)} |\n'
+
+	repostspage = reddit.subreddit(config['subreddit']).wiki['posts']
+	repostspage.edit(content=wiki_text)

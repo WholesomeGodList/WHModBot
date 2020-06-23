@@ -7,9 +7,11 @@ import pprint
 import praw
 from termcolor import cprint
 from prawcore import ResponseException
+from praw.models.reddit.subreddit import SubredditModerationStream
 
 import process_comment
 import process_post
+import process_removal
 
 
 async def main():
@@ -37,6 +39,7 @@ async def main():
 
 	comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
 	submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
+	mod_log_stream = subreddit.mod.stream.log(action="removelink", pause_after=-1, skip_existing=True)
 
 	start_time = time.time()
 
@@ -56,10 +59,23 @@ async def main():
 				if submission.created_utc < start_time:
 					continue
 				await process_post.process_post(submission)
+
+			for link_removal in mod_log_stream:
+				if link_removal is None:
+					break
+				if link_removal.created_utc < start_time:
+					continue
+				process_removal.process_removal(link_removal)
+
 		except ResponseException:
 			traceback.print_exc()
 			await main()
 			continue
+
+		except Exception:
+			traceback.print_exc()
+			continue
+
 
 if __name__ == '__main__':
 	asyncio.run(main())

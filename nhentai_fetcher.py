@@ -61,7 +61,7 @@ licensed_magazines = {
 	"x-eros": [date_num_compare, None, None, 30, -1],
 	"shitsurakuten": [date_num_compare, "2016-04", "9999-99", None, None],
 	"kairakuten beast": [date_num_compare, "2016-12", "9999-99", None, None],
-	"bavel": [always_licensed],
+	"bavel": [date_num_compare, "2017-06", "9999-99", None, None],
 	"europa": [date_num_compare, "2017-04", "9999-99", 11, -1],
 	"girls form": [date_num_compare, None, None, 13, 16],
 	"happining": [always_licensed],
@@ -94,10 +94,12 @@ async def process_site(link):
 		parody_extractor = re.compile(r"/parody/(.*)/")
 		character_extractor = re.compile(r"/character/(.*)/")
 		page_extractor = re.compile(r"/search/\?q=pages.*")
+		language_extractor = re.compile(r"/language/(.*)/")
 		link_pile = soup.find_all('a', href=tag_extractor)
 		artist_pile = soup.find_all('a', href=artist_extractor)
 		parody_pile = soup.find_all('a', href=parody_extractor)
 		character_pile = soup.find_all('a', href=character_extractor)
+		language_pile = soup.find_all('a', href=language_extractor)
 		pages = int(soup.find('a', class_='tag', href=page_extractor).find('span', class_='name').string.strip())
 
 		tags = list()
@@ -124,12 +126,18 @@ async def process_site(link):
 			character_match = re.match(character_extractor, characterlink["href"])
 			characters.append(character_match.group(1).replace("-", " "))
 
-		print([title, tags, ', '.join(artists), parodies, characters, pages])
-		return title, tags, ', '.join(artists), parodies, characters, pages
+		for langlink in language_pile:
+			lang_match = re.match(language_extractor, langlink["href"])
+			lang = lang_match.group(1)
+			if lang != "translated":
+				language = lang
+
+		print([title, tags, ', '.join(artists), parodies, characters, pages, language])
+		return title, tags, ', '.join(artists), parodies, characters, pages, language
 
 
 async def check_link(link):
-	title, tags, artists, parodies, characters, pages = await process_site(link)
+	title, tags, artists, parodies, characters, pages, lang = await process_site(link)
 
 	pattern_extractor = re.compile(
 		r"^(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|\{.*?})\s*)*(?:[^[|\](){}<>]*\s*\|\s*)?([^\[|\](){}<>]*?)(\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|\{.*?})\s*)*$")
@@ -179,9 +187,9 @@ async def check_link(link):
 	market = "2d-market.com" in title
 
 	if licensed:
-		return magazine_name.upper() + " " + magazine_issue, market, [parsed_title, artists, tags, parodies, characters, pages]
+		return magazine_name.upper() + " " + magazine_issue, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 	else:
-		return None, market, [parsed_title, artists, tags, parodies, characters, pages]
+		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
 
 # print(asyncio.run(check_link('https://nhentai.net/g/316234')))

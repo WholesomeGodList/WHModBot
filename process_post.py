@@ -11,7 +11,7 @@ def create_connection(path):
 	connection = None
 	try:
 		connection = sqlite3.connect(path)
-		print("Connected to the posts database")
+		print("Connected to the posts database in process_post")
 	except Error as e:
 		print(f"The error '{e}' occurred")
 
