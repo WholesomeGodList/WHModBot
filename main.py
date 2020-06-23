@@ -65,7 +65,7 @@ async def main():
 					break
 				if link_removal.created_utc < start_time:
 					continue
-				process_removal.process_removal(link_removal)
+				process_removal.process_removal(link_removal, reddit)
 
 		except ResponseException:
 			traceback.print_exc()

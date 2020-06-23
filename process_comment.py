@@ -400,6 +400,7 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 		usernotescontent["blob"] = base64.b64encode(compressed_data)
 
 		usernotespage.edit(content=json.dumps(usernotescontent, separators=(',', ':')))
+		print('User notes updated.')
 
 
 def approve_post(reddit: Reddit, comment: Comment, url: str):
@@ -436,3 +437,4 @@ def update_wiki(reddit: Reddit):
 
 	repostspage = reddit.subreddit(config['subreddit']).wiki['posts']
 	repostspage.edit(content=wiki_text)
+	print('Wiki page generated.')
