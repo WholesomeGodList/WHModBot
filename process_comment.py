@@ -394,7 +394,7 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 	compressed_data += compress.flush()
 	usernotescontent["blob"] = base64.b64encode(compressed_data)
 
-	usernotespage.edit(content=json.dumps(usernotescontent))
+	usernotespage.edit(content=json.dumps(usernotescontent, separators=(',', ':')))
 
 
 def approve_post(reddit: Reddit, comment: Comment, url: str):
