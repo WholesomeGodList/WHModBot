@@ -1,10 +1,9 @@
-import re
-import praw
 from praw import reddit
 import sqlite3
 from sqlite3 import Error
 
 import process_comment
+
 
 def create_connection(path):
 	connection = None

@@ -2,7 +2,6 @@ import json
 
 from praw.models import Submission
 
-import process_comment
 import sqlite3
 from sqlite3 import Error
 
