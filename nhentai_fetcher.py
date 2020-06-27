@@ -87,7 +87,7 @@ async def process_site(link):
 		resp = await session.get(link)
 		page = await resp.text()
 		soup = BeautifulSoup(page, 'html.parser')
-		title = soup.find_all('h1')[0].get_text()
+		title = soup.find_all('h1', class_="title")[0].get_text()
 
 		tag_extractor = re.compile(r"/tag/(.*)/")
 		artist_extractor = re.compile(r"/artist/(.*)/")

@@ -1,4 +1,5 @@
 import json
+import re
 
 from praw.models import Submission
 
@@ -37,6 +38,18 @@ async def process_post(submission: Submission):
 	c.execute('SELECT * FROM allposts WHERE id=?', (submission.id,))
 	if c.fetchone():
 		print("Duplicate post. Not sure how this happened, but it did.")
+
+	# Make sure they have an author in the post.
+	author_matcher = re.compile(r'.*\[.*\].*')
+	if not author_matcher.match(submission.title):
+		comment = submission.reply("**Post titles must have the author in square brackets.**\n\n To avoid getting your post removed, make sure the author is in the "
+		                 "title (i.e. [Author] Title).\n\n" + config['suffix'])
+
+		if comment is not None:
+			comment.mod.distinguish(how='yes', sticky=True)
+
+		submission.mod.remove(mod_note="No author provided")
+		return
 
 	print("This is an actual post, asking for sauce...")
 	await ask_for_sauce(submission)
