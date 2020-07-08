@@ -7,7 +7,8 @@ import pprint
 import praw
 from termcolor import cprint
 from prawcore import ResponseException
-from praw.models.reddit.subreddit import SubredditModerationStream
+from http.client import HTTPException
+from prawcore import RequestException
 
 import process_comment
 import process_post
@@ -36,6 +37,8 @@ async def main():
 		return
 
 	print('User is a moderator. Scanning started...')
+
+	process_comment.update_wiki(reddit)
 
 	comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
 	submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
@@ -69,6 +72,19 @@ async def main():
 
 		except ResponseException:
 			traceback.print_exc()
+			await asyncio.sleep(10)
+			await main()
+			continue
+
+		except HTTPException:
+			traceback.print_exc()
+			await asyncio.sleep(10)
+			await main()
+			continue
+
+		except RequestException:
+			traceback.print_exc()
+			await asyncio.sleep(10)
 			await main()
 			continue
 

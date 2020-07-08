@@ -49,7 +49,8 @@ underage_parodies = [
 	'persona 2',
 	'persona 3',
 	'persona 4',
-	'persona 5'
+	'persona 5',
+	'kono subarashii '
 ]
 licensed_sites = [
 	'hentai.cafe',
@@ -275,7 +276,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					return
 
-				if data[6] != "english":
+				if not "english" in data[6]:
 					print("The language of this doujin does not seem to be English.")
 					remove_post(reddit, comment,
 					    'The provided source does not seem to be in English.\n\n'
@@ -299,7 +300,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					remove_post(reddit, comment,
 						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
-						'These tags are banned because they are either almost never wholesome or almost always licensed.'
+						'These tags are banned because they are either almost never wholesome or almost always licensed. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
 						'a mistagged doujin or a wholesome/unlicensed exception. '
 						'Otherwise, make sure you understand Rules 1, 4, and 5.',
@@ -431,7 +432,7 @@ def update_wiki(reddit: Reddit):
 	)
 	id_extractor = re.compile(r'/comments/([^/]*)/')
 	for post in all_posts:
-		wiki_text += f'| {post[1]} | {datetime.datetime.utcfromtimestamp(post[2]).strftime("%b %d, %Y %I:%M %p")} | https://redd.it/{id_extractor.search(post[0]).group(1)} |\n'
+		wiki_text += f'| {post[1] if len(post[1]) < 30 else ("[" + post[1][:30] + "...](" + post[1] + ")")} | {datetime.datetime.utcfromtimestamp(post[2]).strftime("%b %d, %Y %I:%M %p")} | https://redd.it/{id_extractor.search(post[0]).group(1)} |\n'
 
 	repostspage = subreddit_wiki['posts']
 	repostspage.edit(content=wiki_text)

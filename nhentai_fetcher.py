@@ -106,6 +106,7 @@ async def process_site(link):
 		artists = list()
 		parodies = list()
 		characters = list()
+		language = list()
 
 		for taglink in link_pile:
 			tag_match = re.match(tag_extractor, taglink["href"])
@@ -128,9 +129,8 @@ async def process_site(link):
 
 		for langlink in language_pile:
 			lang_match = re.match(language_extractor, langlink["href"])
-			lang = lang_match.group(1)
-			if lang != "translated":
-				language = lang
+			lang = lang_match.group(1).lower()
+			language.append(lang)
 
 		print([title, tags, ', '.join(artists), parodies, characters, pages, language])
 		return title, tags, ', '.join(artists), parodies, characters, pages, language
