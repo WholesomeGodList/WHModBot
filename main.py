@@ -38,8 +38,6 @@ async def main():
 
 	print('User is a moderator. Scanning started...')
 
-	process_comment.update_wiki(reddit)
-
 	comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
 	submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
 	mod_log_stream = subreddit.mod.stream.log(action="removelink", pause_after=-1, skip_existing=True)

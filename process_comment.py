@@ -276,7 +276,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					return
 
-				if not "english" in data[6]:
+				if "english" not in data[6]:
 					print("The language of this doujin does not seem to be English.")
 					remove_post(reddit, comment,
 					    'The provided source does not seem to be in English.\n\n'

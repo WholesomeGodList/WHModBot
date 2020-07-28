@@ -5,7 +5,7 @@ from praw.models import Submission
 
 import sqlite3
 from sqlite3 import Error
-
+from praw import Reddit
 
 def create_connection(path):
 	connection = None
@@ -30,7 +30,7 @@ async def process_post(submission: Submission):
 	# Do not respond to memes!
 	# Or non-image posts.
 	# god I miss nullish coalescing
-	if (hasattr(submission, 'link_flair_text') and submission.link_flair_text and 'meme' in submission.link_flair_text.lower()) or submission.is_self:
+	if (hasattr(submission, 'link_flair_text') and submission.link_flair_text and ('meme' in submission.link_flair_text.lower() or 'news' in submission.link_flair_text.lower())) or submission.is_self:
 		print("Either this is flaired Meme or this is a self-post.")
 		return
 
