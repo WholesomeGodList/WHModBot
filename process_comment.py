@@ -253,7 +253,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					remove_post(reddit, comment,
 						f'The provided source is licensed! It appears in the licensed magazine issue `{magazine}`.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
-						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)',
+						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)',
 						f'Licensed, appears in magazine {magazine}',
 					    f'Rule 4 - Licensed (appears in {magazine})',
 						True
@@ -268,7 +268,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					remove_post(reddit, comment,
 						f'The provided source is licensed! It has `2d-market.com` in the title.\n\n'
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
-						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/comments/eq74k0/in_order_to_enforce_the_rules_a_bit_more_bans/fexum0v?utm_source=share&utm_medium=web2x)',
+						'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)',
 						f'Licensed, has 2d-market.com in title',
 					    f'Rule 4 - Licensed (2d-market.com in title)',
 						True
