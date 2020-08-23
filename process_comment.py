@@ -416,7 +416,7 @@ def approve_post(reddit: Reddit, comment: Comment, url: str):
 
 def update_wiki(reddit: Reddit):
 	print("Generating wiki page...")
-	c.execute('SELECT * FROM posts ORDER BY timeposted DESC')
+	c.execute('SELECT * FROM posts WHERE removed=0 ORDER BY timeposted DESC')
 	all_posts = c.fetchall()
 	subreddit_wiki = reddit.subreddit(config['subreddit']).wiki
 

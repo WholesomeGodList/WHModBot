@@ -35,7 +35,7 @@ for row in records:
 	submission = reddit.submission(url=f'https://reddit.com{row[0]}')
 	if submission.removed:
 		print("This submission was removed.")
-		c.execute('DELETE FROM posts WHERE source=?', (row[1],))
+		c.execute('UPDATE posts SET removed=1 WHERE source=?', (row[1],))
 c.execute('DELETE FROM posts WHERE timeposted<?', (int(time.time()) - (8 * 604800),))
 c.execute("DELETE FROM posts WHERE source LIKE '%hc.fyi%'")
 c.execute("DELETE FROM posts WHERE source LIKE '%hentainexus%'")

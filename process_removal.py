@@ -22,6 +22,6 @@ c = conn.cursor()
 
 def process_removal(removal_action, reddit: reddit):
 	print('Removal detected. Updating database...')
-	c.execute('DELETE FROM posts WHERE url=?', (removal_action.target_permalink,))
+	c.execute('UPDATE posts SET removed=1 WHERE url=?', (removal_action.target_permalink,))
 	conn.commit()
 	process_comment.update_wiki(reddit)
