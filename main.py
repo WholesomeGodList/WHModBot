@@ -38,8 +38,8 @@ async def main():
 
 	print('User is a moderator. Scanning started...')
 
-	comment_stream = subreddit.stream.comments(pause_after=4, skip_existing=True)
-	submission_stream = subreddit.stream.submissions(pause_after=4, skip_existing=True)
+	comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
+	submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
 	mod_log_stream = subreddit.mod.stream.log(action="removelink", pause_after=-1, skip_existing=True)
 
 	start_time = time.time()
@@ -54,12 +54,16 @@ async def main():
 					continue
 				await process_comment.process_comment(comment, reddit)
 
+			await asyncio.sleep(10)
+
 			for submission in submission_stream:
 				if submission is None:
 					break
 				if submission.created_utc < start_time:
 					continue
 				await process_post.process_post(submission)
+
+			await asyncio.sleep(10)
 
 			for link_removal in mod_log_stream:
 				if link_removal is None:
@@ -71,24 +75,24 @@ async def main():
 		except ResponseException:
 			traceback.print_exc()
 			await asyncio.sleep(10)
-			comment_stream = subreddit.stream.comments(pause_after=4, skip_existing=True)
-			submission_stream = subreddit.stream.submissions(pause_after=4, skip_existing=True)
+			comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
+			submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
 			mod_log_stream = subreddit.mod.stream.log(action="removelink", pause_after=-1, skip_existing=True)
 			continue
 
 		except HTTPException:
 			traceback.print_exc()
 			await asyncio.sleep(10)
-			comment_stream = subreddit.stream.comments(pause_after=4, skip_existing=True)
-			submission_stream = subreddit.stream.submissions(pause_after=4, skip_existing=True)
+			comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
+			submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
 			mod_log_stream = subreddit.mod.stream.log(action="removelink", pause_after=-1, skip_existing=True)
 			continue
 
 		except RequestException:
 			traceback.print_exc()
 			await asyncio.sleep(10)
-			comment_stream = subreddit.stream.comments(pause_after=4, skip_existing=True)
-			submission_stream = subreddit.stream.submissions(pause_after=4, skip_existing=True)
+			comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
+			submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
 			mod_log_stream = subreddit.mod.stream.log(action="removelink", pause_after=-1, skip_existing=True)
 			continue
 

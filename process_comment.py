@@ -402,8 +402,8 @@ def encode_blob(json_blob: dict):
 
 
 def approve_post(reddit: Reddit, comment: Comment, url: str):
-	c.execute('INSERT INTO posts VALUES (?, ?, ?)',
-	          (comment.submission.permalink, url, comment.submission.created_utc))
+	c.execute('INSERT INTO posts VALUES (?, ?, ?, ?)',
+	          (comment.submission.permalink, url, comment.submission.created_utc, 0))
 	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 
 	# Prune old posts
