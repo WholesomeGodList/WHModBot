@@ -216,16 +216,28 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						c.execute('DELETE FROM posts WHERE source=?', (url,))
 						conn.commit()
 					else:
-						# It's not been long enough since the last post. Link them to the last post and delete the entry.
-						print('It\'s a recent repost. Removing...')
+						if post[3] != 0:
+							print('It\'s a recently removed repost. Removing...')
 
-						remove_post(reddit, comment,
-							f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
-							'Please [check here](https://reddit.com/r/wholesomehentai/wiki/posts) before posting to avoid posting reposts in the future.',
-							'Repost.',
-						    'Rule 10 - Repost',
-							True
-						)
+							remove_post(
+								f'The link you provided has already been [posted and removed by the mods](https://reddit.com{post[0]}) recently.\n\n'
+								'Please check why the previous post was removed by the moderators to understand what rule you broke, and '
+								'make sure to [check the rules](https://reddit.com/r/wholesomehentai/wiki/rules) to avoid breaking the rules in the future.',
+								'Removed repost.',
+								'Reposting a removed post'
+							)
+
+						else:
+							# It's not been long enough since the last post. Link them to the last post and delete the entry.
+							print('It\'s a recent repost. Removing...')
+
+							remove_post(reddit, comment,
+								f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
+								'Please [check here](https://reddit.com/r/wholesomehentai/wiki/posts) before posting to avoid posting reposts in the future.',
+								'Repost.',
+						        'Rule 10 - Repost',
+								True
+							)
 
 						return
 
