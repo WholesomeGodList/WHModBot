@@ -224,7 +224,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 								'Please check why the previous post was removed by the moderators to understand what rule you broke, and '
 								'make sure to [check the rules](https://reddit.com/r/wholesomehentai/wiki/rules) to avoid breaking the rules in the future.',
 								'Removed repost.',
-								'Reposting a removed post'
+								'Reposting a removed post',
+								True
 							)
 
 						else:
