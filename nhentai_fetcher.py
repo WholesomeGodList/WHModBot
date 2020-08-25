@@ -140,7 +140,7 @@ async def check_link(link):
 	title, tags, artists, parodies, characters, pages, lang = await process_site(link)
 
 	pattern_extractor = re.compile(
-		r"^(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|\{.*?})\s*)*(?:[^[|\](){}<>]*\s*\|\s*)?([^\[|\](){}<>]*?)(\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|\{.*?})\s*)*$")
+		r"^(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|\{.*?})\s*)*(?:[^[|\](){}<>=]*\s*\|\s*)?([^\[|\](){}<>=]*?)(\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|\{.*?})\s*)*$")
 	match = pattern_extractor.match(title)
 	parsed_title = match.group(1)
 
