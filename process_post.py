@@ -67,3 +67,7 @@ async def ask_for_sauce(submission: Submission):
 	c.execute('INSERT INTO allposts VALUES (?)', (submission.id,))
 	c.execute('INSERT INTO pendingposts VALUES (?, ?, ?)', (submission.id, submission.author.name, comment.id))
 	conn.commit()
+
+	# Remove it until a source reply is found
+	submission.mod.remove()
+	return

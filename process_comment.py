@@ -219,7 +219,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						if post[3] != 0:
 							print('It\'s a recently removed repost. Removing...')
 
-							remove_post(
+							remove_post(reddit, comment,
 								f'The link you provided has already been [posted and removed by the mods](https://reddit.com{post[0]}) recently.\n\n'
 								'Please check why the previous post was removed by the moderators to understand what rule you broke, and '
 								'make sure to [check the rules](https://reddit.com/r/wholesomehentai/wiki/rules) to avoid breaking the rules in the future.',
@@ -415,6 +415,9 @@ def encode_blob(json_blob: dict):
 
 
 def approve_post(reddit: Reddit, comment: Comment, url: str):
+	# Approve the post
+	comment.submission.mod.approve()
+
 	c.execute('INSERT INTO posts VALUES (?, ?, ?, ?)',
 	          (comment.submission.permalink, url, comment.submission.created_utc, 0))
 	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
