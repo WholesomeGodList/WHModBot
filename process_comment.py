@@ -50,7 +50,8 @@ underage_parodies = [
 	'persona 3',
 	'persona 4',
 	'persona 5',
-	'kono subarashii '
+	'kono subarashii sekai ni syukufuku o',
+	'spice and wolf'
 ]
 licensed_sites = [
 	'hentai.cafe',
