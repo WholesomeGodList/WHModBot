@@ -199,4 +199,4 @@ async def check_link(link):
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
 
-print(asyncio.run(check_link('https://nhentai.net/g/107481')))
+# print(asyncio.run(check_link('https://nhentai.net/g/107481')))
