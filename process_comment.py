@@ -153,6 +153,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				)
 				c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 				conn.commit()
+
+				comment.submission.mod.approve()
 				return
 
 			url = extract_url(comment.body)

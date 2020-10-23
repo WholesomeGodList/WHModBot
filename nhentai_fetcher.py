@@ -9,7 +9,14 @@ def date_num_compare(magazine, issue):
 	global licensed_magazines
 
 	if " " in issue:
-		issue = issue.split(" ")[0]
+		issues = issue.split(" ")
+
+		try:
+			ans = date_num_compare(magazine, issues[0])
+			return ans
+		except Exception:
+			ans = date_num_compare(magazine, issues[1])
+			return ans
 
 	pattern = re.compile(r"(\d+)-(\d+)")
 	pattern2 = re.compile(r"\D*(\d+)\D*")
@@ -192,4 +199,4 @@ async def check_link(link):
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
 
-# print(asyncio.run(check_link('https://nhentai.net/g/316234')))
+print(asyncio.run(check_link('https://nhentai.net/g/107481')))
