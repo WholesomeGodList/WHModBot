@@ -38,6 +38,7 @@ async def process_post(submission: Submission):
 	c.execute('SELECT * FROM allposts WHERE id=?', (submission.id,))
 	if c.fetchone():
 		print("Duplicate post. Not sure how this happened, but it did.")
+		return
 
 	# Make sure they have an author in the post.
 	author_matcher = re.compile(r'.*\[.*\].*')
