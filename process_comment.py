@@ -13,57 +13,18 @@ from praw import Reddit
 
 import nhentai_fetcher
 
-unwholesome_tags = [
-	'shotacon',
-	'lolicon',
-	'cheating',
-	'netorare',
-	'rape',
-	'guro',
-	'scat',
-	'mind break',
-	'bestiality',
-	'snuff',
-	'abortion',
-	'brain fuck',
-	'eye penetration',
-	'necrophilia',
-	'vore',
-	'blackmail',
-	'torture',
-	'infantilism',
-	'corruption',
-	'moral degeneration',
-	'vomit',
-	'cannibalism',
-	'urethra insertion',
-	'webtoon',
-	'forbidden content'
-]
-underage_parodies = [
-	'my hero academia',
-	'love live',
-	'toradora',
-	'pokemon',
-	'persona',
-	'persona 2',
-	'persona 3',
-	'persona 4',
-	'persona 5',
-	'kono subarashii sekai ni syukufuku o',
-	'spice and wolf',
-	'princess connect'
-]
-licensed_sites = [
-	'hentai.cafe',
-	'hc.fyi',
-	'hentainexus'
-]
+removals = json.load(open('removals.json'))
+
+unwholesome_tags = removals['unwholesomeTags']
+licensed_sites = removals['licensedSites']
 warning_tags = {
 	'sleeping': [
 		''
 	]
 }
+
+print("Loading underage character database...")
+underage_characters = json.load(open('underage.json'))
 
 
 def create_connection(path):
@@ -328,22 +289,22 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					return
 
-				detected_parodies = []
-				for parody in data[3]:
-					if parody in underage_parodies:
-						detected_parodies.append(parody)
+				detected_characters = []
+				for character in data[4]:
+					if character in underage_characters:
+						detected_characters.append(character)
 
-				if len(detected_parodies) != 0:
-					# Oh no, there's an illegal parody!
-					print("Illegal tags detected: " + ', '.join(detected_parodies))
+				if len(detected_characters) != 0:
+					# Oh no, there's an illegal character!
+					print("Illegal characters detected: " + ', '.join(detected_characters))
 
 					remove_post(reddit, comment,
-						f'The provided source has the disallowed parodies:\n```\n{", ".join(detected_parodies)}\n```\n'
-						'These parodies are banned because they are almost always underage.'
-						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is an of-age exception. '
-						'Otherwise, make sure you understand Rule 1.',
-						f'Has the illegal tag(s): {", ".join(detected_parodies)}',
-					    f'Rule 1 - Has the parodies {", ".join(detected_parodies)}',
+						f'The provided source has the disallowed characters:\n```\n{generate_character_string(detected_characters)}```\n'
+						'These characters are banned because they are underage.\n\n'
+						f'If you believe this character is actually 18+ (because either the very rare Note exception applies, or the mods made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).'
+						'Otherwise, make sure you understand Rule 1, and have checked our spreadsheet of underage characters.',
+						f'Has the underage char(s): {", ".join(detected_characters)}',
+					    f'Rule 1 - Has the chars {", ".join(detected_characters)}',
 						True
 					)
 
@@ -358,6 +319,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					f'**{data[0]}**  \nby {data[1]}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}'
 					f'{config["suffix"]}'
 				)
+
 			else:
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>\n\n"
@@ -367,6 +329,22 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			# If we made it here, the post is good. Clean up any trackers and add a post entry to the database.
 			print('Updating database and cleaning up...')
 			approve_post(reddit, comment, url)
+
+
+def generate_character_string(characters):
+	final_str = ''
+
+	for character in characters:
+		final_str += character
+		final_str += f'(age: {underage_characters[character]["age"]})'
+		final_str += f'\nSeries: {underage_characters[character]["series"]}'
+
+		if underage_characters[character]["note"]:
+			final_str += f'\nNote: {underage_characters[character]["note"]}'
+
+		final_str += '\n'
+
+	return final_str
 
 
 def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, note_message: str, strike: bool):
