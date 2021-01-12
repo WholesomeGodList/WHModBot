@@ -185,9 +185,10 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print('It\'s a recently removed repost. Removing...')
 
 							remove_post(reddit, comment,
-								f'The link you provided has already been [posted and removed by the mods](https://reddit.com{post[0]}) recently.\n\n'
-								'Please check why the previous post was removed by the moderators to understand what rule you broke, and '
-								'make sure to [check the rules](https://reddit.com/r/wholesomehentai/wiki/rules) to avoid breaking the rules in the future.',
+								f'The link you provided has already been [posted and removed](https://reddit.com{post[0]}) recently.\n\n'
+								'Please check the previous post to see why it was removed. If you believe that the previous post was wrongly removed '
+								f'or some other exception has occurred, please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).\n\n'
+								'Otherwise, please make sure to [read the rules](https://reddit.com/r/wholesomehentai/wiki/rules) in the future.',
 								'Removed repost.',
 								'Reposting a removed post',
 								True
@@ -301,7 +302,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					remove_post(reddit, comment,
 						f'The provided source has the disallowed characters:\n```\n{generate_character_string(detected_characters)}```\n'
 						'These characters are banned because they are underage.\n\n'
-						f'If you believe this character is actually 18+ (because either the very rare Note exception applies, or the mods made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).'
+						f'If you believe this character is actually 18+ (because either the Note exception applies, or the mods made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).'
 						'Otherwise, make sure you understand Rule 1, and have checked our spreadsheet of underage characters.',
 						f'Has the underage char(s): {", ".join(detected_characters)}',
 					    f'Rule 1 - Has the chars {", ".join(detected_characters)}',
