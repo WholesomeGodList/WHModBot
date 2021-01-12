@@ -51,7 +51,8 @@ underage_parodies = [
 	'persona 4',
 	'persona 5',
 	'kono subarashii sekai ni syukufuku o',
-	'spice and wolf'
+	'spice and wolf',
+	'princess connect'
 ]
 licensed_sites = [
 	'hentai.cafe',
