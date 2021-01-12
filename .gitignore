@@ -2,5 +2,4 @@ config.json
 posts.db
 .idea/
 __pycache__/
-start.sh
 nohup.out
