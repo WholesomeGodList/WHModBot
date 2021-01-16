@@ -313,7 +313,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 				parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{', '.join(data[3])}\n\n"
 				characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(data[4])}\n\n"
-				tags = '**Tags:**  \nNone' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
+				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>\n\n"
