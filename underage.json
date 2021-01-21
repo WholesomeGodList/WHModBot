@@ -1696,7 +1696,7 @@
     },
     "gabriel tenma white": {
         "series": "Gabriel Dropout",
-        "age": "16 (probably)",
+        "age": "16",
         "note": ""
     },
     "satanichia kurumizawa mcdowell": {
@@ -2984,6 +2984,16 @@
         "age": "16",
         "note": ""
     },
+    "mitsuha miyamizu": {
+        "series": "Kimi no Na wa. / Your name",
+        "age": "17",
+        "note": "Before the time skip. If they are in high school, underage"
+    },
+    "taki tachibana": {
+        "series": "Kimi no Na wa. / Your name",
+        "age": "17",
+        "note": "Before the time skip. If they are in high school, underage"
+    },
     "alice cartelet": {
         "series": "Kiniro Mosaic",
         "age": "16",
@@ -3012,12 +3022,12 @@
     "hasuki komai": {
         "series": "Kishuku Gakkou no Juliet",
         "age": "16 / 17",
-        "note": "There's a 10 years time skip, so check \nif there's any indication they are adults"
+        "note": "There's a 10 years time skip, so check if there's any indication they are adults"
     },
     "juliet persia": {
         "series": "Kishuku Gakkou no Juliet",
         "age": "16 / 17",
-        "note": "There's a 10 years time skip, so check \nif there's any indication they are adults"
+        "note": "There's a 10 years time skip, so check if there's any indication they are adults"
     },
     "ako suminoe": {
         "series": "Kiss x sis",
@@ -3191,7 +3201,7 @@
     },
     "zoe": {
         "series": "League of Legends",
-        "age": "?",
+        "age": "12",
         "note": "Physically underage"
     },
     "amanda o'neill": {
@@ -3747,12 +3757,12 @@
     "fuuka yamagishi": {
         "series": "Persona 3",
         "age": "16 / 17",
-        "note": "Only in Persona 3"
+        "note": "Only underage in Persona 3"
     },
     "junpei iori": {
         "series": "Persona 3",
         "age": "16 / 17",
-        "note": "Only in Persona 3"
+        "note": "Only underage in Persona 3"
     },
     "ken amada": {
         "series": "Persona 3",
@@ -3766,8 +3776,8 @@
     },
     "yukari takeba": {
         "series": "Persona 3",
-        "age": "16 / 17 \n(Only in Persona 3)",
-        "note": "Adult in the other games"
+        "age": "16 / 17 ",
+        "note": "Only underage in Persona 3, adult in the other games"
     },
     "kanji tatsumi": {
         "series": "Persona 4",
@@ -3782,7 +3792,7 @@
     "rise kujikawa": {
         "series": "Persona 4",
         "age": "15-17",
-        "note": "Only in Persona 4"
+        "note": "Only underage in Persona 4"
     },
     "yu narukami": {
         "series": "Persona 4",
@@ -4347,7 +4357,7 @@
     "emilia": {
         "series": "Re Zero Kara Hajimeru Isekai Seikatsu",
         "age": "15",
-        "note": "Only mentally underage"
+        "note": "Mentally underage"
     },
     "felt": {
         "series": "Re Zero Kara Hajimeru Isekai Seikatsu",
@@ -4719,29 +4729,9 @@
         "age": "14",
         "note": ""
     },
-    "annie leonhart": {
-        "series": "Shingeki no Kyojin",
-        "age": "16",
-        "note": ""
-    },
-    "armin arlelt": {
-        "series": "Shingeki no Kyojin",
-        "age": "15",
-        "note": ""
-    },
     "bertholdt hoover": {
         "series": "Shingeki no Kyojin",
         "age": "16",
-        "note": ""
-    },
-    "conny springer": {
-        "series": "Shingeki no Kyojin",
-        "age": "15",
-        "note": ""
-    },
-    "eren jaeger": {
-        "series": "Shingeki no Kyojin",
-        "age": "15",
         "note": ""
     },
     "fay jaeger": {
@@ -4749,32 +4739,7 @@
         "age": "7",
         "note": ""
     },
-    "historia reiss": {
-        "series": "Shingeki no Kyojin",
-        "age": "15",
-        "note": ""
-    },
-    "jean kirschtein": {
-        "series": "Shingeki no Kyojin",
-        "age": "15",
-        "note": ""
-    },
     "marco bodt": {
-        "series": "Shingeki no Kyojin",
-        "age": "16",
-        "note": ""
-    },
-    "mikasa ackermann": {
-        "series": "Shingeki no Kyojin",
-        "age": "15",
-        "note": ""
-    },
-    "reiner braun": {
-        "series": "Shingeki no Kyojin",
-        "age": "17",
-        "note": ""
-    },
-    "sasha braus": {
         "series": "Shingeki no Kyojin",
         "age": "16",
         "note": ""
@@ -4809,8 +4774,78 @@
         "age": "16",
         "note": ""
     },
+    "akira hayama": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "alice nakiri": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "erina nakiri": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "etsuya eizan": {
+        "series": "Shokugeki no Soma",
+        "age": "16 / 17",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "hisako arato": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "ikumi mito": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "isami aldini": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "megumi tadokoro": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "ryou kurokiba": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "satoshi isshiki": {
+        "series": "Shokugeki no Soma",
+        "age": "17",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "shun ibusaki": {
+        "series": "Shokugeki no Soma",
+        "age": "15",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "souma yukihira": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "takumi aldini": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
+    "yuuki yoshino": {
+        "series": "Shokugeki no Soma",
+        "age": "15 / 16",
+        "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+    },
     "claudine saijo": {
-        "series": "shoujo kageki revue starlight",
+        "series": "Shoujo Kageki Revue Starlight",
         "age": "16 / 17",
         "note": ""
     },
@@ -4825,7 +4860,7 @@
         "note": ""
     },
     "maya tendo": {
-        "series": "shoujo kageki revue starlight",
+        "series": "Shoujo Kageki Revue Starlight",
         "age": "16 / 17",
         "note": ""
     },
@@ -4932,7 +4967,7 @@
     "holo": {
         "series": "Spice and Wolf",
         "age": "15",
-        "note": "Only physically underage"
+        "note": "Physically underage"
     },
     "mayuri shiina": {
         "series": "SteinsGate",
@@ -5362,7 +5397,7 @@
     "luke fon fabre": {
         "series": "Tales of the Abyss",
         "age": "7",
-        "note": "Only mentally underage"
+        "note": "Mentally underage"
     },
     "sync": {
         "series": "Tales of the Abyss",
@@ -5467,7 +5502,7 @@
     "raphtalia": {
         "series": "Tate no Yuusha no Nariagari",
         "age": "10",
-        "note": "Only mentally underage"
+        "note": "Mentally underage"
     },
     "assistant": {
         "series": "Tejina Senpai",
@@ -6546,7 +6581,7 @@
     },
     "taiga aisaka": {
         "series": "Toradora",
-        "age": "17-19",
+        "age": "17",
         "note": ""
     },
     "yusaku kitamura": {
@@ -6591,8 +6626,8 @@
     },
     "violet evergarden": {
         "series": "Violet Evergarden",
-        "age": "14",
-        "note": ""
+        "age": "?",
+        "note": "According to some sites she's 14, but there's no concrete evidence. Nonetheless, Fled said she was underage"
     },
     "miku hatsune": {
         "series": "Vocaloid",
@@ -6987,6 +7022,16 @@
     "tsukino mito": {
         "series": "",
         "age": "16",
+        "note": ""
+    },
+    "shino inuzuka": {
+        "series": "Hakkenden",
+        "age": "13",
+        "note": "Houshou Marine"
+    },
+    "leonardo b. harwey": {
+        "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
+        "age": "17",
         "note": ""
     }
 }

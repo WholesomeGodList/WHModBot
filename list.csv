@@ -332,7 +332,7 @@ Naota Nandaba,FLCL,12,
 Rei Ryugazaki,Free,15-17,
 Makio Fujiyama,Fujiyama-san wa shishunki,14-15~,
 Yuuichi Kanba,Fujiyama-san wa shishunki,14-15~,
-Gabriel Tenma White,Gabriel Dropout,16 (probably),
+Gabriel Tenma White,Gabriel Dropout,16,
 Satanichia Kurumizawa Mcdowell,Gabriel Dropout,15 / 16,
 Tapris Sugarbell Chisaki,Gabriel Dropout,14 / 15,
 Vignette April Tsukinose,Gabriel Dropout,16~,
@@ -590,15 +590,15 @@ Muichiro Tokito,Kimetsu no Yaiba,14,
 Nezuko Kamado,Kimetsu no Yaiba,12,
 Tanjiro Kamado,Kimetsu no Yaiba,13-15,
 Zenitsu Agatsuma,Kimetsu no Yaiba,16,
+Mitsuha Miyamizu,Kimi no Na wa. / Your name,17,"Before the time skip. If they are in high school, underage"
+Taki Tachibana,Kimi no Na wa. / Your name,17,"Before the time skip. If they are in high school, underage"
 Alice Cartelet,Kiniro Mosaic,16,
 Aya Komichi,Kiniro Mosaic,16,
 Karen Kujo,Kiniro Mosaic,16,
 Shinobu Omiya,Kiniro Mosaic,15 / 16,
 Youko Inokuma,Kiniro Mosaic,16,
-Hasuki Komai,Kishuku Gakkou no Juliet,16 / 17,"There's a 10 years time skip, so check 
-if there's any indication they are adults"
-Juliet Persia,Kishuku Gakkou no Juliet,16 / 17,"There's a 10 years time skip, so check 
-if there's any indication they are adults"
+Hasuki Komai,Kishuku Gakkou no Juliet,16 / 17,"There's a 10 years time skip, so check if there's any indication they are adults"
+Juliet Persia,Kishuku Gakkou no Juliet,16 / 17,"There's a 10 years time skip, so check if there's any indication they are adults"
 Ako Suminoe,Kiss x sis,16 / 17,
 Riko Suminoe,Kiss x sis,16 / 17,
 Hitohito Tadano,Komi-san Wa Komyushou Desu.,15,
@@ -633,7 +633,7 @@ Tori Aoi,Kyoukai Senjou no Horizon,17,
 Annie,League of Legends,8,
 Ekko,League of Legends,17,
 Nunu,League of Legends,8,
-Zoe,League of Legends,?,Physically underage
+Zoe,League of Legends,12,Physically underage
 Amanda O'Neill,Little Witch Academia,16,
 Atsuko Kagari / Akko,Little Witch Academia,16,
 Diana Cavendish,Little Witch Academia,16,
@@ -666,8 +666,7 @@ Yoshiko Tsushima,Love Live / Love Live Sunshine,15 / 16,
 You Watanabe,Love Live / Love Live Sunshine,16,
 Kobayakawa Rinko,Love Plus,15 / 16,
 Manaka Takane,Love Plus,16 / 17,
-Protagonist ,Love Plus,16 / 17,"No entry on nhentai. The character doesn't have a name per se, but you can 
-assume most, if not all, doujins have him as the MC"
+Protagonist ,Love Plus,16 / 17,
 Rinko Kobayakawa,Love Plus,15 / 16,
 Takane Manaka,Love Plus,16 / 17,
 Ayano Minegishi,Lucky Star,17,
@@ -742,16 +741,15 @@ Katarina Claes,otome game no hametsu flag shika nai akuyaku reijou ni tensei shi
 Keith Claes,otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta...,15 / 16,
 Aigis,Persona 3,11,
 Female Protagonist,Persona 3,17,
-Fuuka Yamagishi,Persona 3,16 / 17,Only in Persona 3
-Junpei Iori,Persona 3,16 / 17,Only in Persona 3
+Fuuka Yamagishi,Persona 3,16 / 17,Only underage in Persona 3
+Junpei Iori,Persona 3,16 / 17,Only underage in Persona 3
 Ken Amada,Persona 3,13,
 Protagonist,Persona 3,17,
 Rio Iwasaki,Persona 3,17,
-Yukari Takeba,Persona 3,"16 / 17 
-(Only in Persona 3)",Adult in the other games
+Yukari Takeba,Persona 3,16 / 17 ,"Only underage in Persona 3, adult in the other games"
 Kanji Tatsumi,Persona 4,16 / 17,
 Naoto Shirogane,Persona 4,15-17,
-Rise Kujikawa,Persona 4,15-17,Only in Persona 4
+Rise Kujikawa,Persona 4,15-17,Only underage in Persona 4
 Yu Narukami,Persona 4,16 / 17,
 Yukiko Amagi,Persona 4,17,
 Ann Takamaki,Persona 5,16 / 17,
@@ -860,7 +858,7 @@ Shizuku Kurogane,Rakudai Kishi no Cavalry,15,
 Stella Vermillion,Rakudai Kishi no Cavalry,15,
 Touka Toudou,Rakudai Kishi no Cavalry,17,
 Yuudai Moroboshi,Rakudai Kishi no Cavalry,17,
-Emilia,Re Zero Kara Hajimeru Isekai Seikatsu,15,Only mentally underage
+Emilia,Re Zero Kara Hajimeru Isekai Seikatsu,15,Mentally underage
 Felt,Re Zero Kara Hajimeru Isekai Seikatsu,14 / 15,
 Garfiel Tinsel,Re Zero Kara Hajimeru Isekai Seikatsu,14 / 15,
 Ryuzu Meyer,Re Zero Kara Hajimeru Isekai Seikatsu,11 / 12,
@@ -923,28 +921,33 @@ Kaori Miyazono,Shigatsu wa Kimi no Uso,14,
 Kousei Arima,Shigatsu wa Kimi no Uso,14-16,
 Ryota Watari,Shigatsu wa Kimi no Uso,14,
 Tsubaki Sawabe,Shigatsu wa Kimi no Uso,14,
-Annie Leonhart,Shingeki no Kyojin,16,
-Armin Arlelt,Shingeki no Kyojin,15,
 Bertholdt Hoover,Shingeki no Kyojin,16,
-Conny Springer,Shingeki no Kyojin,15,
-Eren Jaeger,Shingeki no Kyojin,15,
 Fay Jaeger,Shingeki no Kyojin,7,
-Historia Reiss,Shingeki no Kyojin,15,
-Jean Kirschtein,Shingeki no Kyojin,15,
 Marco Bodt,Shingeki no Kyojin,16,
-Mikasa Ackermann,Shingeki no Kyojin,15,
-Reiner Braun,Shingeki no Kyojin,17,
-Sasha Braus,Shingeki no Kyojin,16,
 Basara Toujou,Shinmai Maou no Testament,15-17,
 Celis Reinhartd,Shinmai Maou no Testament,16,
 Kurumi Nonaka,Shinmai Maou no Testament,15,
 Maria Naruse,Shinmai Maou no Testament,15,
 Mio Naruse,Shinmai Maou no Testament,16,
 Yuki Nonaka,Shinmai Maou no Testament,16,
-Claudine Saijo,shoujo kageki revue starlight,16 / 17,
+Akira Hayama,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Alice Nakiri,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Erina Nakiri,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Etsuya Eizan,Shokugeki no Soma,16 / 17,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Hisako Arato,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Ikumi Mito,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Isami Aldini,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Megumi Tadokoro,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Ryou Kurokiba,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Satoshi Isshiki,Shokugeki no Soma,17,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Shun Ibusaki,Shokugeki no Soma,15,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Souma Yukihira,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Takumi Aldini,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Yuuki Yoshino,Shokugeki no Soma,15 / 16,"Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
+Claudine Saijo,Shoujo Kageki Revue Starlight,16 / 17,
 Futaba Isurugi,Shoujo Kageki Revue Starlight,16 / 17,
 Kaoruko Hanayagi,Shoujo Kageki Revue Starlight,16 / 17,
-maya tendo,shoujo kageki revue starlight,16 / 17,
+maya tendo,Shoujo Kageki Revue Starlight,16 / 17,
 Chuchu,Show by Rock,14 / 15,
 Cyan Hijirikawa,Show by Rock,16 / 17,
 Moa,Show by Rock,14 / 15,
@@ -966,7 +969,7 @@ Yuuna Matsubara,Sono hanabira ni kuchizuke o,16~,
 Alpha Omega Nova,Space Patrol Luluco,13~,
 Luluco,Space Patrol Luluco,13,
 Midori,Space Patrol Luluco,13~,
-Holo,Spice and Wolf,15,Only physically underage
+Holo,Spice and Wolf,15,Physically underage
 Mayuri Shiina,SteinsGate,16 / 17,
 Asagi Aiba,Strike the Blood,15,
 Astarte,Strike the Blood,12,
@@ -1050,7 +1053,7 @@ Anise Tatlin,Tales of the Abyss,13,
 Arietta,Tales of the Abyss,16,
 Asch,Tales of the Abyss,17,
 Ion,Tales of the Abyss,14,
-Luke fon Fabre,Tales of the Abyss,7,Only mentally underage
+Luke fon Fabre,Tales of the Abyss,7,Mentally underage
 Sync,Tales of the Abyss,14,
 Tear Grants,Tales of the Abyss,16,
 Jude Mathis,Tales of Xillia,14-16,
@@ -1071,7 +1074,7 @@ Momoe Okonogi,Tasogare Otome x Amnesia,14,
 Teiichi Niiya,Tasogare Otome x Amnesia,14,
 Yuuko Kanoe,Tasogare Otome x Amnesia,17,
 Yuuko Kirishima,Tasogare Otome x Amnesia,14,
-Raphtalia,Tate no Yuusha no Nariagari,10,Only mentally underage
+Raphtalia,Tate no Yuusha no Nariagari,10,Mentally underage
 Assistant,Tejina Senpai,15 / 16,
 Ai Hidaka,The Idolmaster,13,
 Aiko Takamori,The Idolmaster,16,
@@ -1287,7 +1290,7 @@ Kota Tomiie,Toradora,15,
 Maya Kihara,Toradora,17,
 Minori Kushieda,Toradora,16,
 Sumire Kano,Toradora,17,
-Taiga Aisaka,Toradora,17-19,
+Taiga Aisaka,Toradora,17,
 Yusaku Kitamura,Toradora,16,
 Chiyuri Kitashirakawa,Touhou Project,15,
 Marisa Kirisame,Touhou Project,14~,
@@ -1296,7 +1299,7 @@ Sanae Kochiya,Touhou Project,14~,
 Sumireko Usami,Touhou Project,15 / 16,
 Charlotte Abelfreyja Drossel,Violet Evergarden,14,
 Leon Stephanotis,Violet Evergarden,16,
-Violet Evergarden,Violet Evergarden,14,
+Violet Evergarden,Violet Evergarden,?,"According to some sites she's 14, but there's no concrete evidence. Nonetheless, Fled said she was underage"
 miku hatsune,Vocaloid,16,
 Seiji Amasawa,Whisper of the Heart,14 / 15,
 Shizuku Tsukishima,Whisper of the Heart,14 / 15,
@@ -1376,3 +1379,5 @@ Sakura Minamoto,Zombie Land Saga,17,
 Higuchi Kaede,,17,
 Kizuna AI,,16,
 Tsukino Mito,,16,
+Shino Inuzuka,Hakkenden,13,Houshou Marine,Hololive,17,
+Leonardo B. Harwey,Fate Grand Order / Fate Stay Night / Fate Apocrypha,17,

@@ -17,6 +17,7 @@ removals = json.load(open('removals.json'))
 
 unwholesome_tags = removals['unwholesomeTags']
 licensed_sites = removals['licensedSites']
+licensed_artists = removals['licensedArtists']
 warning_tags = {
 	'sleeping': [
 		''
@@ -268,6 +269,28 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					return
 
+				detected_artists = []
+				for artist in data[1]:
+					if artist in licensed_artists:
+						detected_artists.append(artist)
+
+				if len(detected_artists) != 0:
+					# Oh no, there's an illegal artist!
+					print("Illegal artists detected: " + ', '.join(detected_artists))
+
+					remove_post(reddit, comment,
+						f'The provided source has the disallowed artists:\n```\n{", ".join(detected_artists)}\n```\n'
+						'These artists are banned because their works are always or almost always licensed. '
+						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is '
+						'an unlicensed exception. '
+						'Otherwise, make sure you understand Rule 4.',
+						f'Has the licensed artist(s): {", ".join(detected_artists)}',
+					    f'Rule 4 - Has the artists {", ".join(detected_artists)}',
+						True
+					)
+
+					return
+
 				detected_tags = []
 				for tag in data[2]:
 					if tag in unwholesome_tags:
@@ -300,9 +323,9 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal characters detected: " + ', '.join(detected_characters))
 
 					remove_post(reddit, comment,
-						f'The provided source has the disallowed characters:\n```\n{generate_character_string(detected_characters)}```\n'
+						f'The provided source has the disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
 						'These characters are banned because they are underage.\n\n'
-						f'If you believe this character is actually 18+ (because either the Note exception applies, or the mods made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).'
+						f'If you believe this character is actually 18+ (because either the Note exception applies, or the mods made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
 						'Otherwise, make sure you understand Rule 1, and have checked our spreadsheet of underage characters.',
 						f'Has the underage char(s): {", ".join(detected_characters)}',
 					    f'Rule 1 - Has the chars {", ".join(detected_characters)}',
@@ -336,12 +359,12 @@ def generate_character_string(characters):
 	final_str = ''
 
 	for character in characters:
-		final_str += character
-		final_str += f'(age: {underage_characters[character]["age"]})'
-		final_str += f'\nSeries: {underage_characters[character]["series"]}'
+		final_str += '- ' + character
+		final_str += f', aged {underage_characters[character]["age"]}'
+		final_str += f', from {underage_characters[character]["series"]}'
 
 		if underage_characters[character]["note"]:
-			final_str += f'\nNote: {underage_characters[character]["note"]}'
+			final_str += f' (Note: {underage_characters[character]["note"]})'
 
 		final_str += '\n'
 
