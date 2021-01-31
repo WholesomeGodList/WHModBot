@@ -909,7 +909,7 @@
         "age": "15",
         "note": ""
     },
-    "c.c.": {
+    "c c": {
         "series": "Code Geass",
         "age": "16",
         "note": ""
@@ -2494,11 +2494,6 @@
         "age": "15 / 16",
         "note": ""
     },
-    "akeno himejima": {
-        "series": "Highschool DxD",
-        "age": "15 / 16",
-        "note": ""
-    },
     "koneko toujou": {
         "series": "Highschool DxD",
         "age": "16 / 17",
@@ -3482,6 +3477,11 @@
     "shiba miyuki": {
         "series": "Mahouka Koukou no Rettousei",
         "age": "17",
+        "note": ""
+    },
+    "chise hatori": {
+        "series": "Mahoutsukai no Yome",
+        "age": "16",
         "note": ""
     },
     "akane soir": {
