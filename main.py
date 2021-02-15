@@ -23,7 +23,8 @@ async def main():
 	                     client_secret=config['secret'],
 	                     user_agent=config['agent'],
 	                     username=config['username'],
-	                     password=config['password'])
+	                     password=config['password'],
+	                     check_for_async=False)
 	print('Logged in as u/' + str(reddit.user.me()))
 
 	subreddit = reddit.subreddit(config['subreddit'])
