@@ -2,10 +2,8 @@ import json
 import time
 import asyncio
 import traceback
-import pprint
 
 import praw
-from termcolor import cprint
 from prawcore import ResponseException
 from http.client import HTTPException
 from prawcore import RequestException
@@ -16,7 +14,7 @@ import process_removal
 
 
 async def main():
-	cprint('Wholesome Hentai Mod Bot v1.0', 'yellow', attrs=['reverse'])
+	print('Wholesome Hentai Mod Bot v1.1')
 	print('Loading config file...')
 	config = json.load(open('config.json'))
 
@@ -25,7 +23,8 @@ async def main():
 	                     client_secret=config['secret'],
 	                     user_agent=config['agent'],
 	                     username=config['username'],
-	                     password=config['password'])
+	                     password=config['password'],
+	                     check_for_async=False)
 	print('Logged in as u/' + str(reddit.user.me()))
 
 	subreddit = reddit.subreddit(config['subreddit'])
@@ -72,23 +71,7 @@ async def main():
 					continue
 				process_removal.process_removal(link_removal, reddit)
 
-		except ResponseException:
-			traceback.print_exc()
-			await asyncio.sleep(10)
-			comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
-			submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
-			mod_log_stream = subreddit.mod.stream.log(action="removelink", pause_after=-1, skip_existing=True)
-			continue
-
-		except HTTPException:
-			traceback.print_exc()
-			await asyncio.sleep(10)
-			comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)
-			submission_stream = subreddit.stream.submissions(pause_after=-1, skip_existing=True)
-			mod_log_stream = subreddit.mod.stream.log(action="removelink", pause_after=-1, skip_existing=True)
-			continue
-
-		except RequestException:
+		except (ResponseException, HTTPException, RequestException):
 			traceback.print_exc()
 			await asyncio.sleep(10)
 			comment_stream = subreddit.stream.comments(pause_after=-1, skip_existing=True)

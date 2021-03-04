@@ -399,7 +399,7 @@
         "age": "14",
         "note": ""
     },
-    "aika s. granzchesta": {
+    "aika s granzchesta": {
         "series": "Aria",
         "age": "16",
         "note": ""
@@ -779,7 +779,7 @@
         "age": "15 / 16",
         "note": ""
     },
-    "ochaco uraraka": {
+    "ochako uraraka": {
         "series": "Boku No Hero Academia / My Hero Academia | Boku No Hero Academia",
         "age": "15 / 16",
         "note": ""
@@ -939,7 +939,7 @@
         "age": "15",
         "note": ""
     },
-    "miya i. hillmick": {
+    "miya i hillmick": {
         "series": "Code Geass",
         "age": "16",
         "note": ""
@@ -2980,12 +2980,12 @@
         "note": ""
     },
     "mitsuha miyamizu": {
-        "series": "Kimi no Na wa. / Your name",
+        "series": "Kimi no Na wa / Your name",
         "age": "17",
         "note": "Before the time skip. If they are in high school, underage"
     },
     "taki tachibana": {
-        "series": "Kimi no Na wa. / Your name",
+        "series": "Kimi no Na wa / Your name",
         "age": "17",
         "note": "Before the time skip. If they are in high school, underage"
     },
@@ -3035,12 +3035,12 @@
         "note": ""
     },
     "hitohito tadano": {
-        "series": "Komi-san Wa Komyushou Desu.",
+        "series": "Komi-san Wa Komyushou Desu",
         "age": "15",
         "note": ""
     },
     "komi shouko": {
-        "series": "Komi-san Wa Komyushou Desu.",
+        "series": "Komi-san Wa Komyushou Desu",
         "age": "16",
         "note": ""
     },
@@ -3735,12 +3735,12 @@
         "note": ""
     },
     "katarina claes": {
-        "series": "otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta...",
+        "series": "otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta",
         "age": "15 / 16",
         "note": ""
     },
     "keith claes": {
-        "series": "otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta...",
+        "series": "otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta",
         "age": "15 / 16",
         "note": ""
     },
@@ -5034,7 +5034,7 @@
         "age": "16",
         "note": ""
     },
-    "aleksandra i. pokryshkin": {
+    "aleksandra i pokryshkin": {
         "series": "Strike Witches",
         "age": "16",
         "note": ""
@@ -5054,7 +5054,7 @@
         "age": "16",
         "note": ""
     },
-    "charlotte e. yeager": {
+    "charlotte e yeager": {
         "series": "Strike Witches",
         "age": "15-17",
         "note": ""
@@ -5134,7 +5134,7 @@
         "age": "14",
         "note": ""
     },
-    "heidemarie w. schnaufer": {
+    "heidemarie w schnaufer": {
         "series": "Strike Witches",
         "age": "15 / 16",
         "note": ""
@@ -5159,7 +5159,7 @@
         "age": "16",
         "note": ""
     },
-    "jane t. godfrey": {
+    "jane t godfrey": {
         "series": "Strike Witches",
         "age": "17",
         "note": ""
@@ -5264,7 +5264,7 @@
         "age": "17",
         "note": ""
     },
-    "perrine h. clostermann": {
+    "perrine h clostermann": {
         "series": "Strike Witches",
         "age": "15 / 16",
         "note": ""
@@ -5274,7 +5274,7 @@
         "age": "14-16",
         "note": ""
     },
-    "sanya v. litvyak": {
+    "sanya v litvyak": {
         "series": "Strike Witches",
         "age": "13-15",
         "note": ""
@@ -7027,11 +7027,26 @@
     "shino inuzuka": {
         "series": "Hakkenden",
         "age": "13",
-        "note": "Houshou Marine"
+        "note": ""
     },
-    "leonardo b. harwey": {
+	"houshou marine": {
+        "series": "Hololive",
+        "age": "17",
+        "note": ""
+    },
+	"leonardo b harwey": {
         "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
         "age": "17",
+        "note": ""
+    },
+	"elizabeth bathory": {
+        "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
+        "age": "17",
+        "note": ""
+    },
+	"kiyohime": {
+        "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
+        "age": "13",
         "note": ""
     }
 }

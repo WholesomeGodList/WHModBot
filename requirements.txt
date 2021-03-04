@@ -1,4 +1,4 @@
-praw>=7.0.0
-aiohttp>=3.6.2
-beautifulsoup4>=4.9.1
-termcolor>=1.1.0
+praw>=7.1.4
+aiohttp>=3.7.3
+beautifulsoup4>=4.9.3
+prawcore>=1.5.0
