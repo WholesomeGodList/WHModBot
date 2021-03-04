@@ -279,7 +279,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal artists detected: " + ', '.join(detected_artists))
 
 					remove_post(reddit, comment,
-						f'The provided source has the disallowed artists:\n```\n{", ".join(detected_artists)}\n```\n'
+						f'The provided source has the following disallowed artists:\n```\n{", ".join(detected_artists)}\n```\n'
 						'These artists are banned because their works are always or almost always licensed. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is '
 						'an unlicensed exception. '
@@ -301,7 +301,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal tags detected: " + ', '.join(detected_tags))
 
 					remove_post(reddit, comment,
-						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
+						f'The provided source has the following disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
 						'These tags are banned because they are either almost never wholesome or almost always licensed. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
 						'a mistagged doujin or a wholesome/unlicensed exception. '
@@ -323,10 +323,10 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal characters detected: " + ', '.join(detected_characters))
 
 					remove_post(reddit, comment,
-						f'The provided source has the disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
+						f'The provided source has the following disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
 						'These characters are banned because they are underage.\n\n'
-						f'If you believe this character is actually 18+ (because either the Note exception applies, or the mods made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
-						'Otherwise, make sure you understand Rule 1, and have checked our spreadsheet of underage characters.',
+						f'If you believe one of these characters is actually 18+ (because either the Note exception applies, or the mod team made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
+						'Otherwise, make sure you understand Rule 1, and have checked our [spreadsheet of underage characters.](https://docs.google.com/spreadsheets/d/1rnTIzml80kQJPlNCQzluuKHK8Dzejk2Xg7J4YYN4FaM/)',
 						f'Has the underage char(s): {", ".join(detected_characters)}',
 					    f'Rule 1 - Has the chars {", ".join(detected_characters)}',
 						True
