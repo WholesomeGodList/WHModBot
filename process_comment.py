@@ -316,7 +316,15 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				detected_characters = []
 				for character in data[4]:
 					if character in underage_characters:
-						detected_characters.append(character)
+						cur_list = underage_characters[character]
+						parodies = data[3]
+
+						for parody in parodies:
+							for item in cur_list:
+								series_list = item['series']
+								for series in series_list:
+									if series.lower().strip() == parody:
+										detected_characters.append(item)
 
 				if len(detected_characters) != 0:
 					# Oh no, there's an illegal character!
@@ -361,7 +369,7 @@ def generate_character_string(characters):
 	for character in characters:
 		final_str += '- ' + character
 		final_str += f', aged {underage_characters[character]["age"]}'
-		final_str += f', from {underage_characters[character]["series"]}'
+		final_str += f', from {underage_characters[character]["series"][0]}'
 
 		if underage_characters[character]["note"]:
 			final_str += f' (Note: {underage_characters[character]["note"]})'
