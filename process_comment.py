@@ -270,8 +270,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					return
 
 				detected_artists = []
-				for artist in data[1]:
-					if artist.lower() in licensed_artists:
+				for artist in licensed_artists:
+					if artist in data[1].lower():
 						detected_artists.append(artist)
 
 				if len(detected_artists) != 0:
