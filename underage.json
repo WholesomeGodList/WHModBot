@@ -7029,24 +7029,174 @@
         "age": "13",
         "note": ""
     },
-	"houshou marine": {
+    "houshou marine": {
         "series": "Hololive",
         "age": "17",
         "note": ""
     },
-	"leonardo b harwey": {
+    "leonardo b harwey": {
         "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
         "age": "17",
         "note": ""
     },
-	"elizabeth bathory": {
+    "elizabeth bathory": {
         "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
-        "age": "17",
+        "age": "14",
         "note": ""
     },
-	"kiyohime": {
+    "kiyohime": {
         "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
         "age": "13",
+        "note": ""
+    },
+    "inori yuzuriha": {
+        "series": "Guilty Crown",
+        "age": "16",
+        "note": ""
+    },
+    "hare menjou": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "shu ouma": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "tsugumi": {
+        "series": "Guilty Crown",
+        "age": "14",
+        "note": ""
+    },
+    "gai tsutsugami": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "souta tamadate": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "argo tsukishima": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "ayase shinomiya": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "kyo": {
+        "series": "Guilty Crown",
+        "age": "15",
+        "note": ""
+    },
+    "arisa kuhouin": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "yahiro samukawa": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "kanon kusama": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "daryl yan": {
+        "series": "Guilty Crown",
+        "age": "17",
+        "note": ""
+    },
+    "jun samukawa": {
+        "series": "Guilty Crown",
+        "age": "16",
+        "note": ""
+    },
+    "wakana gojou": {
+        "series": "my dress-up darling | sono bisque doll wa koi o suru",
+        "age": "15",
+        "note": ""
+    },
+    "marin kitagawa": {
+        "series": "my dress-up darling | sono bisque doll wa koi o suru",
+        "age": "15",
+        "note": ""
+    },
+    "sajuna inui": {
+        "series": "my dress-up darling | sono bisque doll wa koi o suru",
+        "age": "16 / 17",
+        "note": ""
+    },
+    "takahiro mizuno": {
+        "series": "Walkure Romanze",
+        "age": "16 / 17",
+        "note": ""
+    },
+    "akane ryuuzouji": {
+        "series": "Walkure Romanze",
+        "age": "16 / 17",
+        "note": ""
+    },
+    "bertille althusser": {
+        "series": "Walkure Romanze",
+        "age": "16 / 17",
+        "note": ""
+    },
+    "mio kisaki": {
+        "series": "Walkure Romanze",
+        "age": "16 / 17",
+        "note": ""
+    },
+    "noel marres ascot": {
+        "series": "Walkure Romanze",
+        "age": "16 / 17",
+        "note": ""
+    },
+    "lisa eostre": {
+        "series": "Walkure Romanze",
+        "age": "15 / 16",
+        "note": ""
+    },
+    "erika itsumi": {
+        "series": "Girls und Panzer",
+        "age": "16 / 17",
+        "note": ""
+    },
+    "caster": {
+        "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
+        "age": "14",
+        "note": ""
+    },
+    "medea lily": {
+        "series": "Fate Grand Order / Fate Stay Night / Fate Apocrypha",
+        "age": "14",
+        "note": ""
+    },
+    "jiro yamada": {
+        "series": "Hypnosis Mic",
+        "age": "17",
+        "note": ""
+    },
+    "ayaka tachikawa": {
+        "series": "22 slash 7",
+        "age": "17",
+        "note": ""
+    },
+    "mirei shikishima": {
+        "series": "Valkyrie Drive",
+        "age": "15",
+        "note": ""
+    },
+    "mamori tokonome": {
+        "series": "Valkyrie Drive",
+        "age": "16",
         "note": ""
     }
 }
