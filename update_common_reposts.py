@@ -6,6 +6,8 @@ import re
 import sqlite3
 from sqlite3 import Error
 
+from process_comment import decode_blob, encode_blob
+
 config = json.load(open('config.json'))
 
 print(datetime.datetime.utcfromtimestamp(int(time.time())).strftime("%b %d, %Y %I:%M %p"))
@@ -43,8 +45,6 @@ content = subreddit_wiki['commonreposts'].content_md
 matcher = re.compile(r'https?://nhentai\.net/g/\d{1,6}/')
 
 items = matcher.findall(content)
-
-print(items)
 
 for item in items:
 	c.execute('SELECT * FROM commonreposts WHERE source=?', (item,))

@@ -385,10 +385,12 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 		usernotes = decode_blob(usernotescontent['blob'])
 		username = comment.submission.author.name
 
+		mod_number = usernotescontent['constants']['users'].index('Enslaved_Horny_AI')
+
 		if username in usernotes:
 			usernotes[username]['ns'].append({
 				'l': f'l,{comment.submission.id}',
-				'm': 2,
+				'm': mod_number,
 				'n': note_message,
 				't': int(time.time()),
 				'w': 0
@@ -397,7 +399,7 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 			usernotes[username] = {
 				'ns': [{
 					'l': f'l,{comment.submission.id}',
-					'm': 2,
+					'm': mod_number,
 					'n': note_message,
 					't': int(time.time()),
 					'w': 0
