@@ -116,29 +116,28 @@ async def process_site(link):
 		characters = list()
 		language = list()
 
-		for taglink in link_pile:
-			tag_match = re.match(tag_extractor, taglink["href"])
-			tags.append(tag_match.group(1).replace("-", " "))
+		for cur_link in link_pile:
+			link_text = cur_link.find('span', class_='name')
+			tags.append(link_text.text)
 
-		for artistlink in artist_pile:
-			artist_match = re.match(artist_extractor, artistlink["href"])
-			temp = artist_match.group(1).replace("-", " ").split(' ')
+		for cur_link in artist_pile:
+			link_text = cur_link.find('span', class_='name')
+			temp = link_text.text.split(' ')
 			for i in range(len(temp)):
 				temp[i] = temp[i].capitalize()
 			artists.append(' '.join(temp))
 		
-		for parodylink in parody_pile:
-			parody_match = re.match(parody_extractor, parodylink["href"])
-			parodies.append(parody_match.group(1).replace("-", " "))
+		for cur_link in parody_pile:
+			link_text = cur_link.find('span', class_='name')
+			parodies.append(link_text.text)
 			
-		for characterlink in character_pile:
-			character_match = re.match(character_extractor, characterlink["href"])
-			characters.append(character_match.group(1).replace("-", " "))
+		for cur_link in character_pile:
+			link_text = cur_link.find('span', class_='name')
+			characters.append(link_text.text)
 
-		for langlink in language_pile:
-			lang_match = re.match(language_extractor, langlink["href"])
-			lang = lang_match.group(1).lower()
-			language.append(lang)
+		for cur_link in language_pile:
+			link_text = cur_link.find('span', class_='name')
+			language.append(link_text.text)
 
 		print([title, tags, ', '.join(artists), parodies, characters, pages, language])
 		return title, tags, ', '.join(artists), parodies, characters, pages, language
@@ -150,7 +149,10 @@ async def check_link(link):
 	pattern_extractor = re.compile(
 		r"^(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|{.*?})\s*)*(?:[^[|\](){}<>=]*\s*\|\s*)?([^\[|\](){}<>=]*?)(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|{.*?})\s*)*$")
 	match = pattern_extractor.match(title)
-	parsed_title = match.group(1)
+
+	parsed_title = title
+	if match:
+		parsed_title = match.group(1)
 
 	# Make the title lowercase
 	title = title.lower()
@@ -194,10 +196,11 @@ async def check_link(link):
 
 	market = "2d-market.com" in title
 
+	print([parsed_title, artists, tags, parodies, characters, pages, lang])
+
 	if licensed:
 		return magazine_name.upper() + " " + magazine_issue, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 	else:
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
-
-# a, b, data = asyncio.run(check_link('something idk'))
+a, b, data = asyncio.run(check_link('https://nhentai.net/g/346918/'))
