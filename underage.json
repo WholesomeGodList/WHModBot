@@ -719,7 +719,7 @@
             "note": ""
         }
     ],
-    "aika s granzchesta": [
+    "aika s. granzchesta": [
         {
             "series": [
                 "Aria"
@@ -975,6 +975,13 @@
                 "Show by Rock"
             ],
             "age": "14 / 15",
+            "note": ""
+        },
+        {
+            "series": [
+                "Show by Rock"
+            ],
+            "age": "15",
             "note": ""
         }
     ],
@@ -1654,7 +1661,7 @@
             "note": ""
         }
     ],
-    "c c": [
+    "c.c.": [
         {
             "series": [
                 "Code Geass"
@@ -1708,7 +1715,7 @@
             "note": ""
         }
     ],
-    "miya i hillmick": [
+    "miya i. hillmick": [
         {
             "series": [
                 "Code Geass"
@@ -5081,6 +5088,13 @@
             ],
             "age": "8-11",
             "note": ""
+        },
+        {
+            "series": [
+                "Yu-Gi-Oh ARC-V"
+            ],
+            "age": "14",
+            "note": ""
         }
     ],
     "setsuna": [
@@ -5439,7 +5453,7 @@
     "mitsuha miyamizu": [
         {
             "series": [
-                "Kimi no Na wa",
+                "Kimi no Na wa.",
                 "Your name"
             ],
             "age": "17",
@@ -5449,7 +5463,7 @@
     "taki tachibana": [
         {
             "series": [
-                "Kimi no Na wa",
+                "Kimi no Na wa.",
                 "Your name"
             ],
             "age": "17",
@@ -5540,7 +5554,7 @@
     "hitohito tadano": [
         {
             "series": [
-                "Komi-san Wa Komyushou Desu"
+                "Komi-san Wa Komyushou Desu."
             ],
             "age": "15",
             "note": ""
@@ -5549,7 +5563,7 @@
     "komi shouko": [
         {
             "series": [
-                "Komi-san Wa Komyushou Desu"
+                "Komi-san Wa Komyushou Desu."
             ],
             "age": "16",
             "note": ""
@@ -6839,7 +6853,7 @@
     "katarina claes": [
         {
             "series": [
-                "otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta"
+                "otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta..."
             ],
             "age": "15 / 16",
             "note": ""
@@ -6848,7 +6862,7 @@
     "keith claes": [
         {
             "series": [
-                "otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta"
+                "otome game no hametsu flag shika nai akuyaku reijou ni tensei shiteshimatta..."
             ],
             "age": "15 / 16",
             "note": ""
@@ -8890,6 +8904,13 @@
             ],
             "age": "16 / 17",
             "note": ""
+        },
+        {
+            "series": [
+                "Show by Rock"
+            ],
+            "age": "17",
+            "note": ""
         }
     ],
     "moa": [
@@ -8899,6 +8920,13 @@
             ],
             "age": "14 / 15",
             "note": ""
+        },
+        {
+            "series": [
+                "Show by Rock"
+            ],
+            "age": "15",
+            "note": ""
         }
     ],
     "retoree": [
@@ -8907,6 +8935,13 @@
                 "Show by Rock"
             ],
             "age": "15 / 16",
+            "note": ""
+        },
+        {
+            "series": [
+                "Show by Rock"
+            ],
+            "age": "16",
             "note": ""
         }
     ],
@@ -9196,7 +9231,7 @@
             "note": ""
         }
     ],
-    "aleksandra i pokryshkin": [
+    "aleksandra i. pokryshkin": [
         {
             "series": [
                 "Strike Witches"
@@ -9232,7 +9267,7 @@
             "note": ""
         }
     ],
-    "charlotte e yeager": [
+    "charlotte e. yeager": [
         {
             "series": [
                 "Strike Witches"
@@ -9376,7 +9411,7 @@
             "note": ""
         }
     ],
-    "heidemarie w schnaufer": [
+    "heidemarie w. schnaufer": [
         {
             "series": [
                 "Strike Witches"
@@ -9421,7 +9456,7 @@
             "note": ""
         }
     ],
-    "jane t godfrey": [
+    "jane t. godfrey": [
         {
             "series": [
                 "Strike Witches"
@@ -9610,7 +9645,7 @@
             "note": ""
         }
     ],
-    "perrine h clostermann": [
+    "perrine h. clostermann": [
         {
             "series": [
                 "Strike Witches"
@@ -9628,7 +9663,7 @@
             "note": ""
         }
     ],
-    "sanya v litvyak": [
+    "sanya v. litvyak": [
         {
             "series": [
                 "Strike Witches"
