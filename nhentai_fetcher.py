@@ -1,3 +1,4 @@
+import json
 import re
 
 import aiohttp
@@ -199,4 +200,4 @@ async def check_link(link):
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
 
-# print(asyncio.run(check_link('https://nhentai.net/g/107481')))
+# a, b, data = asyncio.run(check_link('something idk'))

@@ -270,8 +270,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					return
 
 				detected_artists = []
-				for artist in data[1]:
-					if artist.lower() in licensed_artists:
+				for artist in licensed_artists:
+					if artist in data[1].lower():
 						detected_artists.append(artist)
 
 				if len(detected_artists) != 0:
@@ -279,7 +279,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal artists detected: " + ', '.join(detected_artists))
 
 					remove_post(reddit, comment,
-						f'The provided source has the disallowed artists:\n```\n{", ".join(detected_artists)}\n```\n'
+						f'The provided source has the following disallowed artists:\n```\n{", ".join(detected_artists)}\n```\n'
 						'These artists are banned because their works are always or almost always licensed. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is '
 						'an unlicensed exception. '
@@ -301,7 +301,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal tags detected: " + ', '.join(detected_tags))
 
 					remove_post(reddit, comment,
-						f'The provided source has the disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
+						f'The provided source has the following disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
 						'These tags are banned because they are either almost never wholesome or almost always licensed. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
 						'a mistagged doujin or a wholesome/unlicensed exception. '
@@ -316,17 +316,25 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				detected_characters = []
 				for character in data[4]:
 					if character in underage_characters:
-						detected_characters.append(character)
+						cur_list = underage_characters[character]
+						parodies = data[3]
+
+						for parody in parodies:
+							for item in cur_list:
+								series_list = item['series']
+								for series in series_list:
+									if series.lower().strip() == parody:
+										detected_characters.append(item)
 
 				if len(detected_characters) != 0:
 					# Oh no, there's an illegal character!
 					print("Illegal characters detected: " + ', '.join(detected_characters))
 
 					remove_post(reddit, comment,
-						f'The provided source has the disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
+						f'The provided source has the following disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
 						'These characters are banned because they are underage.\n\n'
-						f'If you believe this character is actually 18+ (because either the Note exception applies, or the mods made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
-						'Otherwise, make sure you understand Rule 1, and have checked our spreadsheet of underage characters.',
+						f'If you believe one of these characters is actually 18+ (because either the Note exception applies, or the mod team made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
+						'Otherwise, make sure you understand Rule 1, and have checked our [spreadsheet of underage characters.](https://docs.google.com/spreadsheets/d/1rnTIzml80kQJPlNCQzluuKHK8Dzejk2Xg7J4YYN4FaM/)',
 						f'Has the underage char(s): {", ".join(detected_characters)}',
 					    f'Rule 1 - Has the chars {", ".join(detected_characters)}',
 						True
@@ -361,7 +369,7 @@ def generate_character_string(characters):
 	for character in characters:
 		final_str += '- ' + character
 		final_str += f', aged {underage_characters[character]["age"]}'
-		final_str += f', from {underage_characters[character]["series"]}'
+		final_str += f', from {underage_characters[character]["series"][0]}'
 
 		if underage_characters[character]["note"]:
 			final_str += f' (Note: {underage_characters[character]["note"]})'
@@ -385,10 +393,12 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 		usernotes = decode_blob(usernotescontent['blob'])
 		username = comment.submission.author.name
 
+		mod_number = usernotescontent['constants']['users'].index('Enslaved_Horny_AI')
+
 		if username in usernotes:
 			usernotes[username]['ns'].append({
 				'l': f'l,{comment.submission.id}',
-				'm': 2,
+				'm': mod_number,
 				'n': note_message,
 				't': int(time.time()),
 				'w': 0
@@ -397,7 +407,7 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 			usernotes[username] = {
 				'ns': [{
 					'l': f'l,{comment.submission.id}',
-					'm': 2,
+					'm': mod_number,
 					'n': note_message,
 					't': int(time.time()),
 					'w': 0
