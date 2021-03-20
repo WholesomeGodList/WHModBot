@@ -324,19 +324,24 @@ async def process_comment(comment: Comment, reddit: Reddit):
 								series_list = item['series']
 								for series in series_list:
 									if series.lower().strip() == parody:
-										detected_characters.append(item)
+										detected_characters.append([character, series, item['age'], item['note']])
 
 				if len(detected_characters) != 0:
 					# Oh no, there's an illegal character!
-					print("Illegal characters detected: " + ', '.join(detected_characters))
+					chars_list = []
+					for character in detected_characters:
+						chars_list.append(character[0])
+
+					chars_str = ', '.join(chars_list)
+					print("Illegal characters detected: " + chars_str)
 
 					remove_post(reddit, comment,
 						f'The provided source has the following disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
 						'These characters are banned because they are underage.\n\n'
 						f'If you believe one of these characters is actually 18+ (because either the Note exception applies, or the mod team made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
 						'Otherwise, make sure you understand Rule 1, and have checked our [spreadsheet of underage characters.](https://docs.google.com/spreadsheets/d/1rnTIzml80kQJPlNCQzluuKHK8Dzejk2Xg7J4YYN4FaM/)',
-						f'Has the underage char(s): {", ".join(detected_characters)}',
-					    f'Rule 1 - Has the chars {", ".join(detected_characters)}',
+						f'Has the underage char(s): {chars_str}',
+					    f'Rule 1 - Has the chars {chars_str}',
 						True
 					)
 
@@ -367,12 +372,12 @@ def generate_character_string(characters):
 	final_str = ''
 
 	for character in characters:
-		final_str += '- ' + character
-		final_str += f', aged {underage_characters[character]["age"]}'
-		final_str += f', from {underage_characters[character]["series"][0]}'
+		final_str += '- ' + character[0]
+		final_str += f', aged {character[2]}'
+		final_str += f', from {character[1]}'
 
-		if underage_characters[character]["note"]:
-			final_str += f' (Note: {underage_characters[character]["note"]})'
+		if character[3]:
+			final_str += f' (Note: {character[3]})'
 
 		final_str += '\n'
 
