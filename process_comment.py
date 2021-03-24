@@ -12,6 +12,7 @@ from praw.models import Comment
 from praw import Reddit
 
 import nhentai_fetcher
+import wholesomelist_fetcher
 
 removals = json.load(open('removals.json'))
 
@@ -61,6 +62,11 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			return
 
 		if 'nhentai.net' in url:
+
+			nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
+			nums_match = nums_regex.match(url)
+			nums = nums_match.group(1)
+
 			try:
 				magazine, market, data = await nhentai_fetcher.check_link(url)
 			except Exception:
@@ -71,19 +77,39 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{', '.join(data[3])}\n\n"
 			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(data[4])}\n\n"
-			tags = 'Tags:  \nNone' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
+			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
+
+			has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+
+			god_list = ""
+
+			if has_entry:
+				print(entry)
+				god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
+				           f'**Tier: {entry["tier"]}**\n\n' + (
+					           '' if (entry['warning'] == 'None') else f'**Warning:** {entry["warning"]}  \n') + \
+				           f'**Tags:** ' + ('None' if len(entry["tags"]) == 0 else entry['tags']) + "\n\n"
 
 			comment.parent().edit(
 				f"The source OP provided:  \n> <{url}>\n\n"
-				f'**{data[0]}**  \nby {data[1]}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}'
+				f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
 				f'{config["suffix"]}'
 			)
 
 		else:
-			comment.parent().edit(
-				f"The source OP provided:  \n> <{url}>\n\n"
-				f'{config["suffix"]}'
-			)
+			imgur = re.compile(r"https://imgur\.com/a/(.{5,7})/")
+			imgur_match = imgur.match(url)
+
+			if imgur_match:
+				comment.parent().edit(
+					f"The source OP provided:  \n> <{url}>\n\nAlt link: [guya.moe](https://guya.moe/proxy/imgur/{imgur_match.group(1)})\n\n"
+					f'{config["suffix"]}'
+				)
+			else:
+				comment.parent().edit(
+					f"The source OP provided:  \n> <{url}>\n\n"
+					f'{config["suffix"]}'
+				)
 
 		# The post is good.
 		print('Updating database and cleaning up...')
@@ -212,6 +238,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			if 'nhentai.net' in url:
 				# hoo boy
 				print('nhentai URL detected, parsing info / magazines')
+
+				if "nhentai.net/g/" not in url:
+					comment.reply(f'That\'s not a valid nhentai page!\n\n{config["suffix"]}')
+					return
+
+				nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
+				nums_match = nums_regex.match(url)
+				nums = nums_match.group(1)
 
 				for attempt in range(3):
 					try:
@@ -351,21 +385,44 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(data[4])}\n\n"
 				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
+				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+
+				god_list = ""
+
+				if has_entry:
+					print(entry)
+					god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n"\
+					           f'**Tier: {entry["tier"]}**\n\n' + ('' if (entry['warning'] == 'None') else f'**Warning:** {entry["warning"]}  \n') + \
+					           f'**Tags:** ' + ('None' if len(entry["tags"]) == 0 else entry['tags']) + "\n\n"
+
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>\n\n"
-					f'**{data[0]}**  \nby {data[1]}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}'
+					f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
 					f'{config["suffix"]}'
 				)
 
 			else:
-				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\n"
-					f'{config["suffix"]}'
-				)
+				imgur = re.compile(r"https://imgur\.com/a/(.{5,7})/")
+				imgur_match = imgur.match(url)
+
+				if imgur_match:
+					comment.parent().edit(
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [guya.moe](https://guya.moe/proxy/imgur/{imgur_match.group(1)})\n\n"
+						f'{config["suffix"]}'
+					)
+				else:
+					comment.parent().edit(
+						f"The source OP provided:  \n> <{url}>\n\n"
+						f'{config["suffix"]}'
+					)
 
 			# If we made it here, the post is good. Clean up any trackers and add a post entry to the database.
 			print('Updating database and cleaning up...')
 			approve_post(reddit, comment, url)
+
+
+def markdown_escape(string: str):
+	return string.replace("~", "\\~").replace("*", "\\*").replace("_", "\\_")
 
 
 def generate_character_string(characters):

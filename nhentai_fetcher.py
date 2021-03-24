@@ -82,15 +82,6 @@ licensed_magazines = {
 
 # merge fetching everything lol
 async def process_site(link):
-	# Input validation / pre-processing
-	link = link.lower()
-	if link[:7] == "http://":
-		link = "https://" + link[7:]
-	if "nhentai.net/g/" not in link:
-		raise Exception("Invalid link")
-	if not link[-1] == "/":
-		link = link + "/"
-
 	async with aiohttp.ClientSession() as session:
 		resp = await session.get(link)
 		page = await resp.text()
@@ -203,4 +194,4 @@ async def check_link(link):
 	else:
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
-a, b, data = asyncio.run(check_link('https://nhentai.net/g/346918/'))
+# a, b, data = asyncio.run(check_link('https://nhentai.net/g/346918/'))
