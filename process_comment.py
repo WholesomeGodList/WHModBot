@@ -102,7 +102,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			if imgur_match:
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\nAlt link: [guya.moe](https://guya.moe/proxy/imgur/{imgur_match.group(1)})\n\n"
+					f"The source OP provided:  \n> <{url}>\n\nAlt link: [guya.moe](https://guya.moe/proxy/imgur/{imgur_match.group(1)}/1/1/)\n\n"
 					f'{config["suffix"]}'
 				)
 			else:
@@ -407,7 +407,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 				if imgur_match:
 					comment.parent().edit(
-						f"The source OP provided:  \n> <{url}>\n\nAlt link: [guya.moe](https://guya.moe/proxy/imgur/{imgur_match.group(1)})\n\n"
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [guya.moe](https://guya.moe/proxy/imgur/{imgur_match.group(1)}/1/1/)\n\n"
 						f'{config["suffix"]}'
 					)
 				else:
