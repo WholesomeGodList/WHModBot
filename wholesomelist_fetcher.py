@@ -7,7 +7,12 @@ async def process_nums(nums):
 	link = "https://wholesomelist.com/api/check?code=" + str(nums)
 	async with aiohttp.ClientSession() as session:
 		resp = await session.get(link)
-		payload = json.loads(await resp.text())
+		data = await resp.text()
+
+		if not data:
+			return False, {}
+
+		payload = json.loads()
 
 		print(payload)
 
@@ -16,4 +21,4 @@ async def process_nums(nums):
 		else:
 			return False, {}
 
-# asyncio.run(process_nums(258133))
+print(asyncio.run(process_nums(287294)))

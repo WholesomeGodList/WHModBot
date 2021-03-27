@@ -79,16 +79,18 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(data[4])}\n\n"
 			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
-			has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
-
 			god_list = ""
 
-			if has_entry:
-				print(entry)
-				god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
-				           f'**Tier: {entry["tier"]}**\n\n' + (
-					           '' if (entry['warning'] == 'None') else f'**Warning:** {entry["warning"]}  \n') + \
-				           f'**Tags:** ' + ('None' if len(entry["tags"]) == 0 else entry['tags']) + "\n\n"
+			try:
+				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+				if has_entry:
+					print(entry)
+					god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
+					           f'**Tier: {entry["tier"]}**\n\n' + (
+						           '' if (entry['warning'] == 'None') else f'**Warning:** {entry["warning"]}  \n') + \
+					           f'**Tags:** ' + ('None' if len(entry["tags"]) == 0 else entry['tags']) + "\n\n"
+			except Exception:
+				god_list = ""
 
 			comment.parent().edit(
 				f"The source OP provided:  \n> <{url}>\n\n"
@@ -385,15 +387,18 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(data[4])}\n\n"
 				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
-				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
-
 				god_list = ""
 
-				if has_entry:
-					print(entry)
-					god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n"\
-					           f'**Tier: {entry["tier"]}**\n\n' + ('' if (entry['warning'] == 'None') else f'**Warning:** {entry["warning"]}  \n') + \
-					           f'**Tags:** ' + ('None' if len(entry["tags"]) == 0 else entry['tags']) + "\n\n"
+				try:
+					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+					if has_entry:
+						print(entry)
+						god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
+						           f'**Tier: {entry["tier"]}**\n\n' + (
+							           '' if (entry['warning'] == 'None') else f'**Warning:** {entry["warning"]}  \n') + \
+						           f'**Tags:** ' + ('None' if len(entry["tags"]) == 0 else entry['tags']) + "\n\n"
+				except Exception:
+					god_list = ""
 
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>\n\n"
