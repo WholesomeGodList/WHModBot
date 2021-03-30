@@ -93,7 +93,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				god_list = ""
 
 			comment.parent().edit(
-				f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/proxy/nhentai/{nums}/1/1/)\n\n"
+				f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)\n\n"
 				f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
 				f'{config["suffix"]}'
 			)
@@ -104,7 +104,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			if imgur_match:
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/proxy/imgur/{imgur_match.group(1)}/1/1/)\n\n"
+					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n"
 					f'{config["suffix"]}'
 				)
 			else:
@@ -401,7 +401,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					god_list = ""
 
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/proxy/nhentai/{nums}/1/1/)\n\n"
+					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)\n\n"
 					f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
 					f'{config["suffix"]}'
 				)
@@ -412,7 +412,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 				if imgur_match:
 					comment.parent().edit(
-						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/proxy/imgur/{imgur_match.group(1)}/1/1/)\n\n"
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n"
 						f'{config["suffix"]}'
 					)
 				else:
