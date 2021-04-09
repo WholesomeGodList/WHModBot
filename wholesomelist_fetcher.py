@@ -12,7 +12,7 @@ async def process_nums(nums):
 		if not data:
 			return False, {}
 
-		payload = json.loads()
+		payload = json.loads(data)
 
 		print(payload)
 
