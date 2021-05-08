@@ -165,7 +165,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					    'Please read our [guide on how to spot licensed doujins](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)'
 					    ' to avoid making this mistake in the future.',
 					    'Licensed link',
-					    'Rule 4 - Linked to hentai.cafe/hentainexus',
+					    'Rule 4 - Linked to hentai.cafe/hentainexus/hentaimimi',
 					    True
 					)
 
