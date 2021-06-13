@@ -196,7 +196,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				print('Post found in repost database.')
 				# It's a repost.
 				# Check how recently it was reposted (604800 seconds/week)
-				if comment.submission.created_utc - post[2] > (8 * 604800):
+				if comment.submission.created_utc - post[2] > (12 * 604800):
 					# It's already been enough since this was last posted.
 					# Delete the entry, and we'll add it back later. (With the current timestamp)
 					c.execute('DELETE FROM posts WHERE source=?', (url,))
@@ -506,7 +506,7 @@ def approve_post(reddit: Reddit, comment: Comment, url: str):
 	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 
 	# Prune old posts
-	c.execute('DELETE FROM posts WHERE timeposted<?', (int(time.time()) - (8 * 604800),))
+	c.execute('DELETE FROM posts WHERE timeposted<?', (int(time.time()) - (12 * 604800),))
 	conn.commit()
 
 	# Now to rebuild the wiki page...
