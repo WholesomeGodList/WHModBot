@@ -501,8 +501,8 @@ def approve_post(reddit: Reddit, comment: Comment, url: str):
 	# Approve the post
 	comment.submission.mod.approve()
 
-	c.execute('INSERT INTO posts VALUES (?, ?, ?, ?)',
-	          (comment.submission.permalink, url, comment.submission.created_utc, 0))
+	c.execute('INSERT INTO posts VALUES (?, ?, ?, ?, ?)',
+	          (comment.submission.permalink, url, comment.submission.created_utc, 0, str(comment.submission.author)))
 	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 
 	# Prune old posts

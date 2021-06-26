@@ -52,6 +52,17 @@ async def process_post(submission: Submission):
 		submission.mod.remove(mod_note="No author provided")
 		return
 
+	# See if they have made 4 posts within the last day
+	c.execute('SELECT * FROM posts WHERE author=? AND timeposted>? AND removed=0', (str(submission.author), submission.created_utc - 86400))
+	if len(c.fetchall()) >= 4:
+		comment = submission.reply("**You have already posted 4 times within the last 24 hours.**\n\nPlease wait a bit before you post again.\n\n" + config['suffix'])
+
+		if comment is not None:
+			comment.mod.distinguish(how='yes', sticky=True)
+
+		submission.mod.remove(mod_note="Too many posts within the last day")
+		return
+
 	print("This is an actual post, asking for sauce...")
 	await ask_for_sauce(submission)
 
