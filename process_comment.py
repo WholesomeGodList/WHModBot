@@ -88,7 +88,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
 					           '\n' + (# f'**Tier: {entry["tier"]}**\n\n' + (
 						           '' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
-					           f'**Tags:** ' + ('None' if len(entry["tags"]) == 0 else entry['tags']) + "\n\n"
+					           f'**Tags:** ' + ('None' if not 'tags' in entry else entry['tags']) + "\n\n"
 			except Exception:
 				god_list = ""
 
@@ -396,7 +396,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
 						           '\n' + ( # f'**Tier: {entry["tier"]}**\n\n' + (
 							           '' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
-						           f'**Tags:** ' + ('None' if len(entry["tags"]) == 0 else entry['tags']) + "\n\n"
+						           f'**Tags:** ' + ('None' if not 'tags' in entry else entry['tags']) + "\n\n"
 				except Exception:
 					god_list = ""
 
