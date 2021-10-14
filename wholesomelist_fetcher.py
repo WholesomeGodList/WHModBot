@@ -23,3 +23,4 @@ async def process_nums(nums):
 
 # result, test = asyncio.run(process_nums(258133))
 # print("tags" in test)
+# print(get_god_list_str(test))

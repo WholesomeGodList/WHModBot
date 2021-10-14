@@ -1,5 +1,6 @@
 import json
 import re
+import traceback
 
 import aiohttp
 from bs4 import BeautifulSoup
@@ -183,7 +184,14 @@ async def check_link(link):
 
 	# If this is in a licensed magazine, check if it's in a licensed issue
 	if magazine_name in licensed_magazines:
-		licensed = licensed_magazines[magazine_name][0](magazine_name, magazine_issue)
+		try:
+			licensed = licensed_magazines[magazine_name][0](magazine_name, magazine_issue)
+		except Exception:
+			# Something has gone very wrong with a regular expression while trying to fetch the issue.
+			# In other words, the regular expression has failed. Ignore the post - the mods will remove it if it's
+			# actually licensed.
+			traceback.print_exc()
+			print("Error while detecting magazine. Setting licensed to false and continuing.")
 
 	market = "2d-market.com" in title
 
@@ -194,4 +202,4 @@ async def check_link(link):
 	else:
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
-# a, b, data = asyncio.run(check_link('https://nhentai.net/g/346918/'))
+# a, b, data = asyncio.run(check_link('https://nhentai.net/g/374491/'))

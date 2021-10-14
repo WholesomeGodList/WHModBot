@@ -85,10 +85,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
 				if has_entry:
 					print(entry)
-					god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
-					           '\n' + (# f'**Tier: {entry["tier"]}**\n\n' + (
-						           '' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
-					           f'**Tags:** ' + ('None' if not 'tags' in entry else entry['tags']) + "\n\n"
+					god_list = get_god_list_str(entry)
 			except Exception:
 				god_list = ""
 
@@ -103,9 +100,30 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			imgur_match = imgur.match(url)
 
 			if imgur_match:
+				god_list = ""
+				imgur_body = ""
+				try:
+					has_entry, entry = await wholesomelist_fetcher.process_nums(imgur_match.group(1))
+					if has_entry:
+						print(entry)
+						tags = ('None' if not 'tags' in entry else entry['tags'])
+
+						god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + \
+						           '' if (entry['note'] == 'None') else f'  \n**Note:** {entry["note"]}'
+						god_list = god_list + "\n\n"
+
+						parody_str = "" if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
+
+						imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n" + \
+						             f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}\n\n{entry['pages']} pages\n\n{parody_str}**Tags:**  \n{tags}\n\n{god_list}"f'{config["suffix"]}'
+					else:
+						imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n{config['suffix']}"
+				except Exception:
+					god_list = ""
+					imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n"f'{config["suffix"]}'
+
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n"
-					f'{config["suffix"]}'
+					imgur_body
 				)
 			else:
 				comment.parent().edit(
@@ -393,10 +411,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
 					if has_entry:
 						print(entry)
-						god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
-						           '\n' + ( # f'**Tier: {entry["tier"]}**\n\n' + (
-							           '' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
-						           f'**Tags:** ' + ('None' if not 'tags' in entry else entry['tags']) + "\n\n"
+						god_list = get_god_list_str(entry)
 				except Exception:
 					god_list = ""
 
@@ -411,9 +426,30 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				imgur_match = imgur.match(url)
 
 				if imgur_match:
+					god_list = ""
+					imgur_body = ""
+					try:
+						has_entry, entry = await wholesomelist_fetcher.process_nums(imgur_match.group(1))
+						if has_entry:
+							print(entry)
+							tags = ('None' if not 'tags' in entry else entry['tags'])
+
+							god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + \
+							           '' if (entry['note'] == 'None') else f'  \n**Note:** {entry["note"]}'
+							god_list = god_list + "\n\n"
+
+							parody_str = "" if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
+
+							imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n" + \
+										f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}\n\n{entry['pages']} pages\n\n{parody_str}**Tags:**  \n{tags}\n\n{god_list}"f'{config["suffix"]}'
+						else:
+							imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n{config['suffix']}"
+					except Exception:
+						god_list = ""
+						imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n"f'{config["suffix"]}'
+
 					comment.parent().edit(
-						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n"
-						f'{config["suffix"]}'
+						imgur_body
 					)
 				else:
 					comment.parent().edit(
@@ -449,6 +485,7 @@ def generate_character_string(characters):
 def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, note_message: str, strike: bool):
 	comment.parent().edit(message + f'\n\n{config["suffix"]}')
 	comment.submission.mod.remove(spam=False, mod_note=mod_note)
+	comment.mod.remove(spam=False, mod_note=mod_note)
 	c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 	conn.commit()
 
@@ -569,3 +606,21 @@ def extract_url(body: str):
 		url = url + "/"
 
 	return url
+
+def get_god_list_str(entry):
+	god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
+	'\n' + (  # f'**Tier: {entry["tier"]}**\n\n' + (
+		'' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
+	f'**Tags:** ' + ('None' if not 'tags' in entry else entry['tags']) + "\n\n"
+
+	if 'misc' in entry and 'altLinks' in entry['misc']:
+		god_list_str += 'Alternate links:\n'
+		alt_links_md = []
+
+		for link in entry['misc']['altLinks']:
+			alt_links_md.append(f"[{link['name']}]({link['link']})")
+
+		god_list_str += " | ".join(alt_links_md) + "\n\n"
+
+	return god_list_str
+
