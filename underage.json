@@ -1347,6 +1347,150 @@
             "note": ""
         }
     ],
+    "arisu": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "aru": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "asuna": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "hasumi": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "hifumi": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "hina": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "hoshino": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "iori": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "karin": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "koharu": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "momoi": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "shiroko": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "sumire": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "tsubaki": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "tsurugi": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "yuuka": [
+        {
+            "series": [
+                "Blue Archive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
     "eijiro kirishima": [
         {
             "series": [
@@ -4819,7 +4963,7 @@
             "note": ""
         }
     ],
-    "t\u00e5\u008dma kazamatsuri": [
+    "touma kazamatsuri": [
         {
             "series": [
                 "Hyakko"
@@ -6014,7 +6158,7 @@
             "note": ""
         }
     ],
-    "honoka kosaka": [
+    "honoka kousaka": [
         {
             "series": [
                 "Love Live",
@@ -8488,15 +8632,6 @@
                 "Seishun Buta Yarou Wa Bunny Girl Senpai No Yume o Minai"
             ],
             "age": "14 / 15",
-            "note": ""
-        }
-    ],
-    "mai sakurajima": [
-        {
-            "series": [
-                "Seishun Buta Yarou Wa Bunny Girl Senpai No Yume o Minai"
-            ],
-            "age": "17",
             "note": ""
         }
     ],
@@ -15214,6 +15349,447 @@
                 "Sakurasou no Pet na Kanojo"
             ],
             "age": "13-14",
+            "note": ""
+        }
+    ],
+    "ichigo hoshimiya": [
+        {
+            "series": [
+                "Aikatsu"
+            ],
+            "age": "12-17",
+            "note": ""
+        }
+    ],
+    "pit": [
+        {
+            "series": [
+                "Kid Icarus"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "dark pit": [
+        {
+            "series": [
+                "Kid Icarus"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "viridi": [
+        {
+            "series": [
+                "Kid Icarus"
+            ],
+            "age": "8",
+            "note": ""
+        }
+    ],
+    "phosphora": [
+        {
+            "series": [
+                "Kid Icarus"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "inklings": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "14-17",
+            "note": ""
+        }
+    ],
+    "agent 3": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "14-17",
+            "note": ""
+        }
+    ],
+    "callie": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "17",
+            "note": "Only underage in Splatoon 1"
+        }
+    ],
+    "marie": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "17",
+            "note": "Only underage in Splatoon 1"
+        }
+    ],
+    "agent 8": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "14 - 16",
+            "note": ""
+        }
+    ],
+    "peashy": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "11",
+            "note": ""
+        }
+    ],
+    "nepgear": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "<14",
+            "note": ""
+        }
+    ],
+    "uni": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "<14",
+            "note": ""
+        }
+    ],
+    "rom": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "<14",
+            "note": ""
+        }
+    ],
+    "ram": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "<14",
+            "note": ""
+        }
+    ],
+    "plutia": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "blanc": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "noire": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "neptune": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "aiichiro nitori": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "aoba usami": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "ayumu kunikida": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "chigusa hanamura": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 - 16",
+            "note": ""
+        }
+    ],
+    "gou matsuoka": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "kazuki minami": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16 - 17",
+            "note": ""
+        }
+    ],
+    "momotaro mikoshiba": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "romio hayahune": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "shizuru isurugi": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "shota nakagawa": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16 - 17",
+            "note": ""
+        }
+    ],
+    "takuya uozumi": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16 - 17",
+            "note": ""
+        }
+    ],
+    "toru iwashimizu": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16 - 17",
+            "note": ""
+        }
+    ],
+    "haru onodera": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "kosaki onodera": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "marika tachibana": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "maruusha lu vieh nonbeeri": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "mikage shinohara": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "mimiko kiki": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "paula mccoy": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "raku ichijo": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "seishiro tsugumi": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "suzu ayakaji": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "anzu yokoyama": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "chiyo kurihara": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "jouji nezu": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "mayumi tanaka": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "reiji andou": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "satou": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "shingo wakamoto": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "takehito morokuzu": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
             "note": ""
         }
     ]
