@@ -68,9 +68,11 @@ async def process_post(submission: Submission):
 
 
 async def ask_for_sauce(submission: Submission):
-	comment = submission.reply('**Reply to this comment** with the source, in regular link format, '
-	                           'such as  \n```\nhttps://nhentai.net/g/(numbers).\n```\nIf you feel like your post '
-	                           'has no applicable source, reply with "None".\n\n' + config['suffix'])
+	comment = submission.reply('**Reply to this comment** with the source. This can be either just the digits,'
+	                           'like 258133, or a URL, such as  \n```\nhttps://nhentai.net/g/(numbers).\n```\n'
+	                           'You may also reply with a link to most non-nhentai URLs. We prefer you use nhentai in'
+	                           ' most cases, but in certain cases, imgur is acceptable.'
+	                           '\n\n' + config['suffix'])
 	if comment is None:
 		print('Something wacky happened')
 		return

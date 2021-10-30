@@ -148,6 +148,17 @@ async def process_comment(comment: Comment, reddit: Reddit):
 		c.execute('SELECT * FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 		submission_id, author, comment_id = c.fetchone()
 
+		if comment.subreddit.moderator() and comment.body.lower() == 'none':
+			c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
+			conn.commit()
+
+			comment.parent().edit(
+				'A moderator has indicated that there is no applicable source.'
+				f'\n\n{config["suffix"]}'
+			)
+			comment.submission.mod.approve()
+			return
+
 		# Normal handling
 		if comment_id == comment.parent_id[3:] and author == comment.author.name:
 			# It's a reply to a sauce request.
@@ -156,14 +167,16 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			# If there is no applicable source...
 			if comment.body.lower() == 'none':
-				comment.parent().edit(
-					'OP has indicated that there is no applicable source.'
-					f'\n\n{config["suffix"]}'
-				)
+				# It has been stated to disallow no source
 				c.execute('DELETE FROM pendingposts WHERE submission_id=?', (comment.submission.id,))
 				conn.commit()
 
-				comment.submission.mod.approve()
+				comment.parent().edit(
+					'Saying there is no source has been disabled for non-moderators. If this is something without a'
+					' genuine source (like a meme), please post this again with the Meme flair. Otherwise, make sure'
+					' your post follows the subreddit rules.'
+					f'\n\n{config["suffix"]}'
+				)
 				return
 
 			url = extract_url(comment.body)
@@ -577,6 +590,13 @@ def update_wiki(reddit: Reddit):
 
 
 def extract_url(body: str):
+	# Check if there exists an unbroken string of 2-6 digits.
+	code_regex = re.compile(r"(?:\s+|^)(^\d{2,6}$)(?:\s+|$)")
+	code_search = code_regex.search(body)
+
+	if code_search:
+		body = f"https://nhentai.net/g/{code_search.group(1)}/"
+
 	# Validate the URL
 	url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
 	url_verify = url_extractor.search(body)
@@ -606,6 +626,7 @@ def extract_url(body: str):
 		url = url + "/"
 
 	return url
+
 
 def get_god_list_str(entry):
 	god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
