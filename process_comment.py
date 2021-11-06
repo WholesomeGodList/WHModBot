@@ -346,7 +346,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal artists detected: " + ', '.join(detected_artists))
 
 					remove_post(reddit, comment,
-						f'The provided source has the following disallowed artists:\n```\n{", ".join(detected_artists)}\n```\n'
+						f'The provided source has the following disallowed artists:\n\n```\n{", ".join(detected_artists)}\n```\n\n'
 						'These artists are banned because their works are always or almost always licensed. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is '
 						'an unlicensed exception. '
@@ -368,7 +368,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal tags detected: " + ', '.join(detected_tags))
 
 					remove_post(reddit, comment,
-						f'The provided source has the following disallowed tags:\n```\n{", ".join(detected_tags)}\n```\n'
+						f'The provided source has the following disallowed tags:\n\n```\n{", ".join(detected_tags)}\n```\n\n'
 						'These tags are banned because they are either almost never wholesome or almost always licensed. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
 						'a mistagged doujin or a wholesome/unlicensed exception. '
