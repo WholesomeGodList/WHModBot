@@ -108,8 +108,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						print(entry)
 						tags = ('None' if not 'tags' in entry else entry['tags'])
 
-						god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + \
-						           '' if (entry['note'] == 'None') else f'  \n**Note:** {entry["note"]}'
+						god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + (
+							'' if (entry['note'] == 'None') else f'  \n**Note:** {entry["note"]}')
 						god_list = god_list + "\n\n"
 
 						parody_str = "" if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
@@ -447,8 +447,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print(entry)
 							tags = ('None' if not 'tags' in entry else entry['tags'])
 
-							god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + \
-							           '' if (entry['note'] == 'None') else f'  \n**Note:** {entry["note"]}'
+							god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + ('' if (entry['note'] == 'None') else f'  \n**Note:** {entry["note"]}')
 							god_list = god_list + "\n\n"
 
 							parody_str = "" if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
