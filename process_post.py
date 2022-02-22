@@ -52,14 +52,27 @@ async def process_post(submission: Submission):
 		submission.mod.remove(mod_note="No author provided")
 		return
 
+	# See if they have made 4 posts within the last day
+	c.execute('SELECT * FROM posts WHERE author=? AND timeposted>? AND removed=0', (str(submission.author), submission.created_utc - 86400))
+	if len(c.fetchall()) >= 4:
+		comment = submission.reply("**You have already posted 4 times within the last 24 hours.**\n\nPlease wait a bit before you post again.\n\n" + config['suffix'])
+
+		if comment is not None:
+			comment.mod.distinguish(how='yes', sticky=True)
+
+		submission.mod.remove(mod_note="Too many posts within the last day")
+		return
+
 	print("This is an actual post, asking for sauce...")
 	await ask_for_sauce(submission)
 
 
 async def ask_for_sauce(submission: Submission):
-	comment = submission.reply('**Reply to this comment** with the source, in regular link format, '
-	                           'such as  \n```\nhttps://nhentai.net/g/(numbers).\n```\nIf you feel like your post '
-	                           'has no applicable source, reply with "None".\n\n' + config['suffix'])
+	comment = submission.reply('**Reply to this comment** with the source. This can be either just the digits,'
+	                           ' like 258133, or a URL, such as  \n\n```\nhttps://nhentai.net/g/(numbers).\n```\n\n'
+	                           'You may also reply with a link to most non-nhentai URLs. We prefer you use nhentai in'
+	                           ' most cases, but in certain cases, imgur is acceptable.'
+	                           '\n\n' + config['suffix'])
 	if comment is None:
 		print('Something wacky happened')
 		return

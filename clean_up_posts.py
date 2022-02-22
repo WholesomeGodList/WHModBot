@@ -33,6 +33,9 @@ records = c.fetchall()
 for row in records:
 	print(f"Checking post: {row[0]}")
 	submission = reddit.submission(url=f'https://reddit.com{row[0]}')
+
+	c.execute('UPDATE posts SET author=? WHERE source=?', (str(submission.author), row[1]))
+
 	if submission.removed:
 		print("This submission was removed.")
 		c.execute('UPDATE posts SET removed=1 WHERE source=?', (row[1],))
