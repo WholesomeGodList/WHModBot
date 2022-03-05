@@ -62,8 +62,17 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			return
 
 		if 'nhentai.net' in url:
+			god_list = ""
+			try:
+				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+				if has_entry:
+					print(entry)
+					god_list = get_god_list_str(entry)
+			except Exception:
+				god_list = ""
+
 			comment.parent().edit(
-				f"The source OP provided:  \n> <{url}>\n\n"
+				f"The source OP provided:  \n> <{url}>\n\n" + god_list +
 				"Note: nhentai information fetching is broken, due to them enabling Cloudflare protections. For more"
 				" details, see [this post.]"
 				"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
@@ -275,8 +284,18 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						return
 
 			if 'nhentai.net' in url:
+				god_list = ""
+
+				try:
+					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+					if has_entry:
+						print(entry)
+						god_list = get_god_list_str(entry)
+				except Exception:
+					god_list = ""
+
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\n"
+					f"The source OP provided:  \n> <{url}>\n\n" + god_list +
 					"Note: nhentai information fetching is broken, due to them enabling Cloudflare protections. For more"
 					" details, see [this post.]"
 					"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
