@@ -62,6 +62,10 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			return
 
 		if 'nhentai.net' in url:
+			nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
+			nums_match = nums_regex.match(url)
+			nums = nums_match.group(1)
+
 			god_list = ""
 			try:
 				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
@@ -78,9 +82,6 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
 				f'{config["suffix"]}'
 			)
-			# nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
-			# nums_match = nums_regex.match(url)
-			# nums = nums_match.group(1)
 			#
 			# try:
 			# 	magazine, market, data = await nhentai_fetcher.check_link(url)
@@ -284,6 +285,10 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						return
 
 			if 'nhentai.net' in url:
+				nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
+				nums_match = nums_regex.match(url)
+				nums = nums_match.group(1)
+
 				god_list = ""
 
 				try:
