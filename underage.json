@@ -1681,15 +1681,6 @@
             "note": ""
         }
     ],
-    "nariyuki yuiga": [
-        {
-            "series": [
-                "Bokutachi wa Benkyou ga Dekinai"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
     "rizu ogata": [
         {
             "series": [
@@ -12506,7 +12497,7 @@
             "note": ""
         }
     ],
-    "yuya sakaki": [
+    "yuuya sakaki": [
         {
             "series": [
                 "Yu-Gi-Oh ARC-V"
@@ -12516,6 +12507,15 @@
         }
     ],
     "zuzu boyle": [
+        {
+            "series": [
+                "Yu-Gi-Oh ARC-V"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "yuzu hiiragi": [
         {
             "series": [
                 "Yu-Gi-Oh ARC-V"
@@ -15694,7 +15694,7 @@
             "note": ""
         }
     ],
-    "raku ichijo": [
+    "raku ichijou": [
         {
             "series": [
                 "Nisekoi"
@@ -15791,6 +15791,60 @@
             ],
             "age": "15 / 16",
             "note": ""
+        }
+    ],
+    "andy w. hole": [
+        {
+            "series": [
+                "Aquarion Evol"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "ahsoka tano": [
+        {
+            "series": [
+                "Star Wars"
+            ],
+            "age": "14-17",
+            "note": "Adult in Rebels"
+        }
+    ],
+    "sempai": [
+        {
+            "series": [
+                "Tejina Senpai"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "shamare": [
+        {
+            "series": [
+                "Arknights"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "suzuran": [
+        {
+            "series": [
+                "Arknights"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "yuffie kisaragi": [
+        {
+            "series": [
+                "Final Fantasy VII"
+            ],
+            "age": "16",
+            "note": "Underage in Final Fantasy 7, Adult in the later games"
         }
     ]
 }
