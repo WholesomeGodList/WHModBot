@@ -105,6 +105,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
 					f'{config["suffix"]}'
 				)
+				return
 
 			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{', '.join(data[3])}\n\n"
 			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(data[4])}\n\n"
@@ -347,8 +348,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
 						f'{config["suffix"]}'
 					)
-					# hoo boy
-					print('nhentai URL detected, parsing info / magazines')
+					return
 
 				if magazine:
 					# It's licensed!
