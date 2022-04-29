@@ -85,6 +85,9 @@ licensed_magazines = {
 async def process_site(link):
 	async with aiohttp.ClientSession() as session:
 		resp = await session.get(link)
+		code = resp.status
+		if code == 503: # cloudflare IUAM
+			return "Cloudflare IUAM", None, None, None, None, None, None
 		page = await resp.text()
 		soup = BeautifulSoup(page, 'html.parser')
 		title = soup.find_all('h1', class_="title")[0].get_text()
@@ -137,6 +140,9 @@ async def process_site(link):
 
 async def check_link(link):
 	title, tags, artists, parodies, characters, pages, lang = await process_site(link)
+
+	if title == "Cloudflare IUAM":
+		return None, None, "Cloudflare IUAM"
 
 	pattern_extractor = re.compile(
 		r"^(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|{.*?})\s*)*(?:[^[|\](){}<>=]*\s*\|\s*)?([^\[|\](){}<>=]*?)(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|{.*?})\s*)*$")
@@ -202,4 +208,5 @@ async def check_link(link):
 	else:
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
-# a, b, data = asyncio.run(check_link('https://nhentai.net/g/374491/'))
+a, b, data = asyncio.run(check_link('https://nhentai.net/g/374491/'))
+print(a, b, data)

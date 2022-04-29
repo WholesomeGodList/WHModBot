@@ -66,34 +66,45 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			nums_match = nums_regex.match(url)
 			nums = nums_match.group(1)
 
-			# If nhentai goes down, this is the code we will use
+			iuam = False
 
-			# god_list = ""
-			# entry = {}
-			# has_entry = False
-			# try:
-			# 	has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
-			# 	if has_entry:
-			# 		print(entry)
-			# 		god_list = get_god_list_str(entry)
-			# except Exception:
-			# 	god_list = ""
-			#
-			# comment.parent().edit(
-			# 	f"The source OP provided:  \n> <{url}>\n\n" + (f"\n\n**{entry['title']}**  \nby **{entry['author']}" if has_entry else "") + "\n\n" + god_list +
-			# 	"Note: nhentai information fetching is broken, due to them enabling Cloudflare protections. For more"
-			# 	" details, see [this post.]"
-			# 	"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
-			# 	f'{config["suffix"]}'
-			# )
+			for attempt in range(3):
+				try:
+					magazine, market, data = await nhentai_fetcher.check_link(url)
+					if data == "Cloudflare IUAM":
+						iuam = True
+					break
+				except Exception:
+					if attempt == 2:
+						print("Invalid page.")
+						print(url)
+						comment.reply(
+							"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. Try again?" f'\n\n{config["suffix"]}')
+						return
+					else:
+						await asyncio.sleep(1)
 
-			try:
-				magazine, market, data = await nhentai_fetcher.check_link(url)
-			except Exception:
-				print("Invalid page.")
-				comment.reply("That doesn't seem to be a valid nhentai page. Try again?"
-				              f'\n\n{config["suffix"]}')
-				return
+			if iuam:
+				god_list = ""
+				entry = {}
+				has_entry = False
+
+				try:
+					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+					if has_entry:
+						print(entry)
+						god_list = get_god_list_str(entry)
+				except Exception:
+					god_list = ""
+
+				comment.parent().edit(
+					f"The source OP provided:  \n> <{url}>" + (
+						f"\n\n**{entry['title']}**  \nby **{entry['author']}" if has_entry else "") + "\n\n" + god_list +
+					"Note: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
+					" details, see [this post.]"
+					"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
+					f'{config["suffix"]}'
+				)
 
 			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{', '.join(data[3])}\n\n"
 			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(data[4])}\n\n"
@@ -289,45 +300,22 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						return
 
 			if 'nhentai.net' in url:
-				# Uncomment if nhentai goes down
 
-				# nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
-				# nums_match = nums_regex.match(url)
-				# nums = nums_match.group(1)
-				#
-				# god_list = ""
-				# entry = {}
-				# has_entry = False
-				#
-				# try:
-				# 	has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
-				# 	if has_entry:
-				# 		print(entry)
-				# 		god_list = get_god_list_str(entry)
-				# except Exception:
-				# 	god_list = ""
-				#
-				# comment.parent().edit(
-				# 	f"The source OP provided:  \n> <{url}>" + (f"\n\n**{entry['title']}**  \nby **{entry['author']}" if has_entry else "") + "\n\n" + god_list +
-				# 	"Note: nhentai information fetching is broken, due to them enabling Cloudflare protections. For more"
-				# 	" details, see [this post.]"
-				# 	"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
-				# 	f'{config["suffix"]}'
-				# )
-				# # hoo boy
-				# print('nhentai URL detected, parsing info / magazines')
-				#
-				# if "nhentai.net/g/" not in url:
-				# 	comment.reply(f'That\'s not a valid nhentai page!\n\n{config["suffix"]}')
-				# 	return
+				if "nhentai.net/g/" not in url:
+					comment.reply(f'That\'s not a valid nhentai page!\n\n{config["suffix"]}')
+					return
 
 				nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
 				nums_match = nums_regex.match(url)
 				nums = nums_match.group(1)
 
+				iuam = False
+
 				for attempt in range(3):
 					try:
 						magazine, market, data = await nhentai_fetcher.check_link(url)
+						if data == "Cloudflare IUAM":
+							iuam = True
 						break
 					except Exception:
 						if attempt == 2:
@@ -337,6 +325,30 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							return
 						else:
 							await asyncio.sleep(1)
+
+				if iuam:
+					god_list = ""
+					entry = {}
+					has_entry = False
+
+					try:
+						has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+						if has_entry:
+							print(entry)
+							god_list = get_god_list_str(entry)
+					except Exception:
+						god_list = ""
+
+					comment.parent().edit(
+						f"The source OP provided:  \n> <{url}>" + (
+							f"\n\n**{entry['title']}**  \nby **{entry['author']}" if has_entry else "") + "\n\n" + god_list +
+						"Note: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
+						" details, see [this post.]"
+						"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
+						f'{config["suffix"]}'
+					)
+					# hoo boy
+					print('nhentai URL detected, parsing info / magazines')
 
 				if magazine:
 					# It's licensed!
