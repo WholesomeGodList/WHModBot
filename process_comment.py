@@ -105,6 +105,17 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
 					f'{config["suffix"]}'
 				)
+				# The post is good.
+				print('Updating database and cleaning up...')
+				c.execute('DELETE FROM posts WHERE source=?', (url,))
+				approve_post(reddit, comment, url)
+
+				# Reapprove the post if it was removed
+				if comment.submission.removed:
+					print("This post was removed. Reapproving...")
+					comment.submission.mod.approve()
+				else:
+					print("This post was not removed. Ignoring...")
 				return
 
 			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{', '.join(data[3])}\n\n"
@@ -348,6 +359,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
 						f'{config["suffix"]}'
 					)
+					approve_post(reddit, comment, url)
 					return
 
 				if magazine:
