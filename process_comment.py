@@ -98,7 +98,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					god_list = ""
 
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>" + (
+					f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
 						f"\n\n**{entry['title']}**  \nby {entry['author']}" if has_entry else "") + "\n\n" + god_list +
 					"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 					" details, see [this post.]"
