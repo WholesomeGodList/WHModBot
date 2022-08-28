@@ -98,9 +98,9 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					god_list = ""
 
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>" + (
-						f"\n\n**{entry['title']}**  \nby **{entry['author']}" if has_entry else "") + "\n\n" + god_list +
-					"Note: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
+					f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
+						f"\n\n**{entry['title']}**  \nby {entry['author']}" if has_entry else "") + "\n\n" + god_list +
+					"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 					" details, see [this post.]"
 					"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
 					f'{config["suffix"]}'
@@ -352,9 +352,9 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						god_list = ""
 
 					comment.parent().edit(
-						f"The source OP provided:  \n> <{url}>" + (
-							f"\n\n**{entry['title']}**  \nby **{entry['author']}" if has_entry else "") + "\n\n" + god_list +
-						"Note: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
+						f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
+							f"\n\n**{entry['title']}**  \nby {entry['author']}" if has_entry else "") + "\n\n" + god_list +
+						"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 						" details, see [this post.]"
 						"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
 						f'{config["suffix"]}'
