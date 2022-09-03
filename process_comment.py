@@ -691,7 +691,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					print("Illegal artists detected: " + ', '.join(detected_artists))
 
 					remove_post(reddit, comment,
-							f'The provided source has the following disallowed artists:\n\n```\n{", ".join(detected_artists)}\n```\n\n'
+						f'The provided source has the following disallowed artists:\n\n```\n{", ".join(detected_artists)}\n```\n\n'
 						'These artists are banned because their works are always or almost always licensed. '
 						f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is '
 						'an unlicensed exception. '
