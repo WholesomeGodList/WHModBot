@@ -700,7 +700,7 @@ def get_god_list_str(entry):
 	god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
 	'\n' + (  # f'**Tier: {entry["tier"]}**\n\n' + (
 		'' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
-	f'**Tags:** ' + ('None' if not 'tags' in entry else entry['tags']) + "\n\n"
+	f'**Tags:** ' + ('None' if not 'tags' in entry else " ,".join(entry['tags'])) + "\n\n"
 
 	if 'misc' in entry and 'altLinks' in entry['misc']:
 		god_list_str += 'Alternate links:\n'
