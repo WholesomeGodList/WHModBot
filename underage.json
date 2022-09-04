@@ -4658,6 +4658,13 @@
             ],
             "age": "16 / 17",
             "note": ""
+        },
+        {
+            "series": [
+                "Konohana Kitan"
+            ],
+            "age": "~16",
+            "note": ""
         }
     ],
     "nazuna": [
@@ -5524,7 +5531,8 @@
     "genya shinazugawa": [
         {
             "series": [
-                "Kimetsu no Yaiba"
+                "Kimetsu no Yaiba",
+                "kimetsu no yaiba | demon slayer"
             ],
             "age": "16",
             "note": ""
@@ -5533,7 +5541,8 @@
     "kanae kocho": [
         {
             "series": [
-                "Kimetsu no Yaiba"
+                "Kimetsu no Yaiba",
+                "kimetsu no yaiba | demon slayer"
             ],
             "age": "17",
             "note": ""
@@ -5542,7 +5551,8 @@
     "kanao tsuyuri": [
         {
             "series": [
-                "Kimetsu no Yaiba"
+                "Kimetsu no Yaiba",
+                "kimetsu no yaiba | demon slayer"
             ],
             "age": "16",
             "note": ""
@@ -5551,7 +5561,8 @@
     "muichiro tokito": [
         {
             "series": [
-                "Kimetsu no Yaiba"
+                "Kimetsu no Yaiba",
+                "kimetsu no yaiba | demon slayer"
             ],
             "age": "14",
             "note": ""
@@ -5560,16 +5571,18 @@
     "nezuko kamado": [
         {
             "series": [
-                "Kimetsu no Yaiba"
+                "Kimetsu no Yaiba",
+                "kimetsu no yaiba | demon slayer"
             ],
             "age": "12",
             "note": ""
         }
     ],
-    "tanjiro kamado": [
+    "tanjirou kamado": [
         {
             "series": [
-                "Kimetsu no Yaiba"
+                "Kimetsu no Yaiba",
+                "kimetsu no yaiba | demon slayer"
             ],
             "age": "13-15",
             "note": ""
@@ -5578,7 +5591,8 @@
     "zenitsu agatsuma": [
         {
             "series": [
-                "Kimetsu no Yaiba"
+                "Kimetsu no Yaiba",
+                "kimetsu no yaiba | demon slayer"
             ],
             "age": "16",
             "note": ""
@@ -5784,7 +5798,7 @@
             "note": ""
         }
     ],
-    "satou kazuma": [
+    "kazuma satou": [
         {
             "series": [
                 "Kono Subarashii Sekai ni Syukufuku o"
@@ -5917,6 +5931,13 @@
             ],
             "age": "16 / 17",
             "note": ""
+        },
+        {
+            "series": [
+                "Beyond the Boundary"
+            ],
+            "age": "16",
+            "note": ""
         }
     ],
     "mirai kuriyama": [
@@ -5925,6 +5946,13 @@
                 "Kyoukai no Kanata"
             ],
             "age": "14 / 15",
+            "note": ""
+        },
+        {
+            "series": [
+                "Beyond the Boundary"
+            ],
+            "age": "14-15",
             "note": ""
         }
     ],
@@ -6119,16 +6147,6 @@
             "note": ""
         }
     ],
-    "chika takami": [
-        {
-            "series": [
-                "Love Live",
-                "Love Live Sunshine"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
     "hanamaru kunikida": [
         {
             "series": [
@@ -6146,7 +6164,7 @@
                 "Love Live Sunshine"
             ],
             "age": "15 / 16",
-            "note": ""
+            "note": "If it takes place in HS"
         }
     ],
     "honoka kousaka": [
@@ -6156,7 +6174,7 @@
                 "Love Live Sunshine"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "If it takes place in HS"
         }
     ],
     "kasumi nakasu": [
@@ -6176,7 +6194,7 @@
                 "Love Live Sunshine"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "If it takes place in HS"
         }
     ],
     "leah kazuno": [
@@ -6196,17 +6214,7 @@
                 "Love Live Sunshine"
             ],
             "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "riko sakurauchi": [
-        {
-            "series": [
-                "Love Live",
-                "Love Live Sunshine"
-            ],
-            "age": "16 / 17",
-            "note": ""
+            "note": "If it takes place in HS"
         }
     ],
     "rin hoshizora": [
@@ -6216,7 +6224,7 @@
                 "Love Live Sunshine"
             ],
             "age": "15 / 16",
-            "note": ""
+            "note": "If it takes place in HS"
         }
     ],
     "rina tennoji": [
@@ -6266,7 +6274,7 @@
                 "Love Live Sunshine"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "If it takes place in HS"
         }
     ],
     "yoshiko tsushima": [
@@ -6276,16 +6284,6 @@
                 "Love Live Sunshine"
             ],
             "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "you watanabe": [
-        {
-            "series": [
-                "Love Live",
-                "Love Live Sunshine"
-            ],
-            "age": "16",
             "note": ""
         }
     ],
@@ -12196,8 +12194,8 @@
             "series": [
                 "Violet Evergarden"
             ],
-            "age": "?",
-            "note": "According to some sites she's 14, but there's no concrete evidence. Nonetheless, Fled said she was underage"
+            "age": "14",
+            "note": ""
         }
     ],
     "miku hatsune": [
@@ -12311,28 +12309,31 @@
     "sayaka saeki": [
         {
             "series": [
-                "Yagate Kimi ni Naru"
+                "Yagate Kimi ni Naru",
+                "yagate kimi ni naru | bloom into you"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
         }
     ],
     "touko nanami": [
         {
             "series": [
-                "Yagate Kimi ni Naru"
+                "Yagate Kimi ni Naru",
+                "yagate kimi ni naru | bloom into you"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
         }
     ],
     "yuu koito": [
         {
             "series": [
-                "Yagate Kimi ni Naru"
+                "Yagate Kimi ni Naru",
+                "yagate kimi ni naru | bloom into you"
             ],
             "age": "15 / 16",
-            "note": ""
+            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
         }
     ],
     "hachiman hikigaya": [
@@ -15845,6 +15846,555 @@
             ],
             "age": "16",
             "note": "Underage in Final Fantasy 7, Adult in the later games"
+        }
+    ],
+    "adachi sakura": [
+        {
+            "series": [
+                "Adachi and Shimamura"
+            ],
+            "age": "15-17",
+            "note": "Unless it takes place after timeskip"
+        }
+    ],
+    "shimamura hougetsu": [
+        {
+            "series": [
+                "Adachi and Shimamura"
+            ],
+            "age": "15-17",
+            "note": "Unless it takes place after timeskip"
+        }
+    ],
+    "hime arikawa": [
+        {
+            "series": [
+                "Himegoto"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kaguya arikawa": [
+        {
+            "series": [
+                "Himegoto"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "akira": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "kon": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "kabane kusaka": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "aya tademaru": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "8",
+            "note": ""
+        }
+    ],
+    "homuramaru nowaki": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "reina aharen": [
+        {
+            "series": [
+                "Aharen-san wa Hakarenai"
+            ],
+            "age": "15-16",
+            "note": ""
+        }
+    ],
+    "raidou matsuboshi": [
+        {
+            "series": [
+                "Aharen-san wa Hakarenai"
+            ],
+            "age": "15-17",
+            "note": ""
+        }
+    ],
+    "kuroha shida": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "shirokusa kachi": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "maria momosaka": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "tetsuhiko kai": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "sueharu maru": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "ai ooto": [
+        {
+            "series": [
+                "Wonder Egg Priority"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "rika kawai": [
+        {
+            "series": [
+                "Wonder Egg Priority"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "neiru aonuma": [
+        {
+            "series": [
+                "Wonder Egg Priority"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "momoe sawaki": [
+        {
+            "series": [
+                "Wonder Egg Priority"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "ino sakura": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "roko sekino": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "hayu nukui": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "nina maehara": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "hemo midori": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "mahiro oyama": [
+        {
+            "series": [
+                "Onichan wa Oshimai"
+            ],
+            "age": "13-16",
+            "note": ""
+        }
+    ],
+    "sakura": [
+        {
+            "series": [
+                "Konohana Kitan"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "ren": [
+        {
+            "series": [
+                "Konohana Kitan"
+            ],
+            "age": "~14",
+            "note": ""
+        }
+    ],
+    "satsuki": [
+        {
+            "series": [
+                "Konohana Kitan"
+            ],
+            "age": "~16",
+            "note": ""
+        }
+    ],
+    "yuzu": [
+        {
+            "series": [
+                "Konohana Kitan"
+            ],
+            "age": "~14",
+            "note": ""
+        }
+    ],
+    "tensai ikkyuu": [
+        {
+            "series": [
+                "Ryuugajou Nanana no Maizoukin"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "juugo yama": [
+        {
+            "series": [
+                "Ryuugajou Nanana no Maizoukin"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "yume hasegawa": [
+        {
+            "series": [
+                "Pupa"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "ranka ookami": [
+        {
+            "series": [
+                "Murenase Seton Gakuen"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "jin mazama": [
+        {
+            "series": [
+                "Murenase Seton Gakuen"
+            ],
+            "age": "15-16",
+            "note": ""
+        }
+    ],
+    "hitomi hino": [
+        {
+            "series": [
+                "Murenase Seton Gakuen"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "yukari komori": [
+        {
+            "series": [
+                "Murenase Seton Gakuen"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "yuna": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "fina": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
+    "noire foschurose": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
+    "shuri": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "7",
+            "note": ""
+        }
+    ],
+    "misana farrengram": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "9",
+            "note": ""
+        }
+    ],
+    "shia foschurose": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "lulu yurigasaki": [
+        {
+            "series": [
+                "Yuri Kuma Arashi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "ginko yurishiro": [
+        {
+            "series": [
+                "Yuri Kuma Arashi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kureha tsubaki": [
+        {
+            "series": [
+                "Yuri Kuma Arashi"
+            ],
+            "age": "16-17",
+            "note": ""
+        }
+    ],
+    "sumika izumino": [
+        {
+            "series": [
+                "Yuri Kuma Arashi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "miya chinen": [
+        {
+            "series": [
+                "SK8 The Infinity"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "langa hasegawa": [
+        {
+            "series": [
+                "SK8 The Infinity"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "reki kyan": [
+        {
+            "series": [
+                "SK8 The Infinity"
+            ],
+            "age": "16-17",
+            "note": ""
+        }
+    ],
+    "ange le carre": [
+        {
+            "series": [
+                "Princess Principle"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "princess charlotte": [
+        {
+            "series": [
+                "Princess Principle"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "beatrice": [
+        {
+            "series": [
+                "Princess Principle"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "chise todo": [
+        {
+            "series": [
+                "Princess Principle"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "hanabi natsuno": [
+        {
+            "series": [
+                "Tachibanakan Triangle"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "iori takamura": [
+        {
+            "series": [
+                "Tachibanakan Triangle"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "konomi fujiwara": [
+        {
+            "series": [
+                "Tachibanakan Triangle"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "chiya": [
+        {
+            "series": [
+                "Urara Meirochou"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "kon tatsumi": [
+        {
+            "series": [
+                "Urara Meirochou"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "koume yukimi": [
+        {
+            "series": [
+                "Urara Meirochou"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "nono natsume": [
+        {
+            "series": [
+                "Urara Meirochou"
+            ],
+            "age": "15",
+            "note": ""
         }
     ]
 }
