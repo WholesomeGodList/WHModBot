@@ -85,6 +85,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				god_list = ""
 				parody = ""
 				pages = ""
+				characters = ""
+				tags = ""
 				entry = {}
 				has_entry = False
 
@@ -92,16 +94,17 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					has_entry, entry = await wholesomelist_fetcher.process_nums(token)
 					if has_entry:
 						print(entry)
-						pages = "\n\n" + entry['pages'] + " pages\n\n"
-						if entry['parody'] != 'None':
-							parody = "**Parodies:**\n" + entry['parody']
-						god_list = get_god_list_str(entry)
+						pages = f"\n\n {entry['pages']} pages\n\n"
+						parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
+						characters = '' if not entry['siteTags']['characters'] else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+						tags = '**Tags:**  \nNone\n\n' if not entry['siteTags']['tags'] else f"**Tags:**  \n{', '.join(entry['siteTags']['tags'])}"
+						god_list = get_god_list_str(entry, 'eh')
 				except Exception:
 					god_list = ""
 
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>"+ (
-					f"\n\n**{entry['title']}**  \nby {entry['author']} {pages} {parody}" if has_entry else "") + "\n\n" + god_list +
+					f"\n\n**{entry['title']}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 					f'{config["suffix"]}'
 				)
 				# The post is good.
@@ -118,7 +121,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				return
 
 			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
-			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{(', '.join(data[4])).title()}\n\n"
+			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
 			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 			
 			god_list = ""
@@ -127,7 +130,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				has_entry, entry = await wholesomelist_fetcher.process_nums(token)
 				if has_entry:
 					print(entry)
-					god_list = get_god_list_str(entry)
+					god_list = get_god_list_str(entry, 'eh')
 			except Exception:
 				god_list = ""
 			
@@ -164,6 +167,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				god_list = ""
 				parody = ""
 				pages = ""
+				characters = ""
+				tags = ""
 				entry = {}
 				has_entry = False
 
@@ -171,16 +176,17 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
 					if has_entry:
 						print(entry)
-						pages = "\n\n" + entry['pages'] + " pages\n\n"
-						if entry['parody'] != 'None':
-							parody = "**Parodies:**\n" + entry['parody']
-						god_list = get_god_list_str(entry)
+						pages = f"\n\n {entry['pages']} pages\n\n"
+						parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
+						characters = '' if not entry['siteTags']['characters'] else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+						tags = '**Tags:**  \nNone\n\n' if not entry['siteTags']['tags'] else f"**Tags:**  \n{', '.join(entry['siteTags']['tags'])}"
+						god_list = get_god_list_str(entry, 'nh')
 				except Exception:
 					god_list = ""
 
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
-						f"\n\n**{entry['title']}**  \nby {entry['author']} {pages} {parody}" if has_entry else "") + "\n\n" + god_list +
+						f"\n\n**{entry['title']}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 					"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 					" details, see [this post.]"
 					"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
@@ -200,7 +206,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				return
 
 			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
-			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{(', '.join(data[4])).title()}\n\n"
+			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
 			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
 			god_list = ""
@@ -209,7 +215,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
 				if has_entry:
 					print(entry)
-					god_list = get_god_list_str(entry)
+					god_list = get_god_list_str(entry, 'nh')
 			except Exception:
 				god_list = ""
 
@@ -416,6 +422,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					god_list = ""
 					parody = ""
 					pages = ""
+					characters = ""
+					tags = ""
 					entry = {}
 					has_entry = False
 
@@ -423,16 +431,17 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						has_entry, entry = await wholesomelist_fetcher.process_nums(token)
 						if has_entry:
 							print(entry)
-							pages = "\n\n" + entry['pages'] + " pages\n\n"
-							if entry['parody'] != 'None':
-								parody = "**Parodies:**\n" + entry['parody']
-							god_list = get_god_list_str(entry)
+							pages = f"\n\n {entry['pages']} pages\n\n"
+							parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
+							characters = '' if not entry['siteTags']['characters'] else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+							tags = '**Tags:**  \nNone\n\n' if not entry['siteTags']['tags'] else f"**Tags:**  \n{', '.join(entry['siteTags']['tags'])}"
+							god_list = get_god_list_str(entry, 'eh')
 					except Exception:
 						god_list = ""
 
 					comment.parent().edit(
 						f"The source OP provided:  \n> <{url}>"+ (
-						f"\n\n**{entry['title']}**  \nby {entry['author']} {pages} {parody}" if has_entry else "") + "\n\n" + god_list +
+						f"\n\n**{entry['title']}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 						f'{config["suffix"]}'
 					)
 					approve_post(reddit, comment, url)
@@ -560,7 +569,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					return
 							
 				parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
-				characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{(', '.join(data[4])).title()}\n\n"
+				characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
 				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
 				god_list = ""
@@ -569,7 +578,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					has_entry, entry = await wholesomelist_fetcher.process_nums(token)
 					if has_entry:
 						print(entry)
-						god_list = get_god_list_str(entry)
+						god_list = get_god_list_str(entry, 'eh')
 				except Exception:
 					god_list = ""
 				
@@ -610,6 +619,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					god_list = ""
 					parody = ""
 					pages = ""
+					characters = ""
+					tags = ""
 					entry = {}
 					has_entry = False
 
@@ -617,16 +628,17 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
 						if has_entry:
 							print(entry)
-							pages = "\n\n" + entry['pages'] + " pages\n\n"
-							if entry['parody'] != 'None':
-								parody = "**Parodies:**\n" + entry['parody']
-							god_list = get_god_list_str(entry)
+							pages = f"\n\n {entry['pages']} pages\n\n"
+							parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
+							characters = '' if not entry['siteTags']['characters'] else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+							tags = '**Tags:**  \nNone\n\n' if not entry['siteTags']['tags'] else f"**Tags:**  \n{', '.join(entry['siteTags']['tags'])}"
+							god_list = get_god_list_str(entry, 'nh')
 					except Exception:
 						god_list = ""
 
 					comment.parent().edit(
 						f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
-							f"\n\n**{entry['title']}**  \nby {entry['author']} {pages} {parody}" if has_entry else "") + "\n\n" + god_list +
+							f"\n\n**{entry['title']}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 						"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 						" details, see [this post.]"
 						"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
@@ -757,7 +769,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					return
 
 				parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
-				characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{(', '.join(data[4])).title()}\n\n"
+				characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
 				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
 				god_list = ""
@@ -766,7 +778,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
 					if has_entry:
 						print(entry)
-						god_list = get_god_list_str(entry)
+						god_list = get_god_list_str(entry, 'nh')
 				except Exception:
 					god_list = ""
 
@@ -969,19 +981,32 @@ def extract_url(body: str):
 	return url
 
 
-def get_god_list_str(entry):
+def get_god_list_str(entry, site):
 	god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
 	'\n' + (  # f'**Tier: {entry["tier"]}**\n\n' + (
 		'' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
 	f'**Tags:** ' + ('None' if not 'tags' in entry else ", ".join(entry['tags'])) + "\n\n"
-
-	if 'misc' in entry and 'altLinks' in entry['misc']:
+	
+	alt_links_md = []
+	
+	if site == 'nh' and (entry['im'] != 'None' or entry['eh'] != 'None'):
 		god_list_str += 'Alternate links:\n'
-		alt_links_md = []
+		if entry['eh'] != 'None': alt_links_md.append(f"[E-Hentai]({entry['eh']})")
+		if entry['im'] != 'None': alt_links_md.append(f"[Imgur]({entry['im']})")
+		
+	elif site == 'eh' and (entry['im'] != 'None' or entry['nh'] != 'None'):
+		god_list_str += 'Alternate links:\n'
+		if entry['nh'] != 'None': alt_links_md.append(f"[nhentai]({entry['nh']})")
+		if entry['im'] != 'None': alt_links_md.append(f"[Imgur]({entry['im']})")
+	
+	if 'misc' in entry and 'altLinks' in entry['misc']:
+		if not alt_links_md:
+			god_list_str += 'Alternate links:\n'
 
 		for link in entry['misc']['altLinks']:
 			alt_links_md.append(f"[{link['name']}]({link['link']})")
 
+	if alt_links_md:
 		god_list_str += " | ".join(alt_links_md) + "\n\n"
 
 	return god_list_str
