@@ -5,6 +5,7 @@ import traceback
 import aiohttp
 from bs4 import BeautifulSoup
 import asyncio
+from functional import seq
 
 
 def date_num_compare(magazine, issue):
@@ -82,57 +83,99 @@ licensed_magazines = {
 
 
 # merge fetching everything lol
-async def process_site(link):
+async def process_site(link: str) -> (str, list[str], str, list[str], list[str], int, list[str]):
 	async with aiohttp.ClientSession() as session:
-		resp = await session.get(link)
-		code = resp.status
-		if code == 503: # cloudflare IUAM
-			return "Cloudflare IUAM", None, None, None, None, None, None
-		page = await resp.text()
-		soup = BeautifulSoup(page, 'html.parser')
-		title = soup.find_all('h1', class_="title")[0].get_text()
-
-		tag_extractor = re.compile(r"/tag/(.*)/")
-		artist_extractor = re.compile(r"/artist/(.*)/")
-		parody_extractor = re.compile(r"/parody/(.*)/")
-		character_extractor = re.compile(r"/character/(.*)/")
-		page_extractor = re.compile(r"/search/\?q=pages.*")
-		language_extractor = re.compile(r"/language/(.*)/")
-		link_pile = soup.find_all('a', href=tag_extractor)
-		artist_pile = soup.find_all('a', href=artist_extractor)
-		parody_pile = soup.find_all('a', href=parody_extractor)
-		character_pile = soup.find_all('a', href=character_extractor)
-		language_pile = soup.find_all('a', href=language_extractor)
-		pages = int(soup.find('a', class_='tag', href=page_extractor).find('span', class_='name').string.strip())
-
+		title = ""
 		tags = list()
 		artists = list()
 		parodies = list()
 		characters = list()
+		pages: int
 		language = list()
 
-		for cur_link in link_pile:
-			link_text = cur_link.find('span', class_='name')
-			tags.append(link_text.text)
+		if 'nhentai' in link:
+			response = await session.get(link)
+			code = response.status
+			if code == 503:  # cloudflare IUAM
+				return "Cloudflare IUAM", None, None, None, None, None, None
 
-		for cur_link in artist_pile:
-			link_text = cur_link.find('span', class_='name')
-			temp = link_text.text.split(' ')
-			for i in range(len(temp)):
-				temp[i] = temp[i].capitalize()
-			artists.append(' '.join(temp))
-		
-		for cur_link in parody_pile:
-			link_text = cur_link.find('span', class_='name')
-			parodies.append(link_text.text)
-			
-		for cur_link in character_pile:
-			link_text = cur_link.find('span', class_='name')
-			characters.append(link_text.text)
+			page = await response.text()
+			soup = BeautifulSoup(page, 'html.parser')
+			title = soup.find_all('h1', class_="title")[0].get_text()
 
-		for cur_link in language_pile:
-			link_text = cur_link.find('span', class_='name')
-			language.append(link_text.text)
+			tag_extractor = re.compile(r"/tag/(.*)/")
+			artist_extractor = re.compile(r"/artist/(.*)/")
+			parody_extractor = re.compile(r"/parody/(.*)/")
+			character_extractor = re.compile(r"/character/(.*)/")
+			page_extractor = re.compile(r"/search/\?q=pages.*")
+			language_extractor = re.compile(r"/language/(.*)/")
+			link_pile = soup.find_all('a', href=tag_extractor)
+			artist_pile = soup.find_all('a', href=artist_extractor)
+			parody_pile = soup.find_all('a', href=parody_extractor)
+			character_pile = soup.find_all('a', href=character_extractor)
+			language_pile = soup.find_all('a', href=language_extractor)
+			pages = int(soup.find('a', class_='tag', href=page_extractor).find('span', class_='name').string.strip())
+
+			for cur_link in link_pile:
+				link_text = cur_link.find('span', class_='name')
+				tags.append(link_text.text)
+
+			for cur_link in artist_pile:
+				link_text = cur_link.find('span', class_='name')
+				temp = link_text.text.split(' ')
+				for i in range(len(temp)):
+					temp[i] = temp[i].capitalize()
+				artists.append(' '.join(temp))
+
+			for cur_link in parody_pile:
+				link_text = cur_link.find('span', class_='name')
+				parodies.append(link_text.text)
+
+			for cur_link in character_pile:
+				link_text = cur_link.find('span', class_='name')
+				characters.append(link_text.text)
+
+			for cur_link in language_pile:
+				link_text = cur_link.find('span', class_='name')
+				language.append(link_text.text)
+
+		elif 'e-hentai' in link:
+			try:
+				galleryID, galleryToken = re.search(r'/g/(\d+?)/(.+?)/', link).group(1, 2)
+				response = await session.post('https://api.e-hentai.org/api.php',
+				     json={
+						"method": "gdata",
+						"gidlist": [
+						[int(galleryID), galleryToken]
+						],
+						"namespace": 1
+						})
+				resp = await response.json(content_type='text/html')
+				if 'error' in resp['gmetadata'][0]:
+					raise RuntimeError(resp['error'])
+				data = resp['gmetadata'][0]
+
+				title = data['title'].strip()
+				tags = list((seq(data['tags'])
+				        .filter(lambda s: re.match(r'(?:female|male|mixed|other):', s))
+				        .map(lambda s: re.match(r'(?:female|male|mixed|other):(.+)', s)[1])))
+				artists = list((seq(data['tags'])
+				           .filter(lambda s: re.match(r'artist', s))
+				           .map(lambda s: re.match(r'artist:(.+)', s)[1])
+				           .map(lambda s: ' '.join((w.capitalize() for w in s.split())))))
+				parodies = list((seq(data['tags'])
+				            .filter(lambda s: re.match(r'parody', s))
+				            .map(lambda s: re.match(r'parody:(.+)', s)[1])))
+				characters = list((seq(data['tags'])
+				              .filter(lambda s: re.match(r'character', s))
+				              .map(lambda s: re.match(r'character:(.+)', s)[1])))
+				pages = int(data['filecount'])
+				language = list((seq(data['tags'])
+				            .filter(lambda s: re.match(r'language', s))
+				            .map(lambda s: re.match(r'language:(.+)', s)[1])))
+			except RuntimeError as e:
+				print('E-hentai error: ' + str(e))
+				return 'E-Hentai error', None, None, None, None, None, None
 
 		print([title, tags, ', '.join(artists), parodies, characters, pages, language])
 		return title, tags, ', '.join(artists), parodies, characters, pages, language
@@ -143,6 +186,8 @@ async def check_link(link):
 
 	if title == "Cloudflare IUAM":
 		return None, None, "Cloudflare IUAM"
+	elif title == 'E-hentai error':
+		return None, None, "E-hentai error"
 
 	pattern_extractor = re.compile(
 		r"^(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|{.*?})\s*)*(?:[^[|\](){}<>=]*\s*\|\s*)?([^\[|\](){}<>=]*?)(?:\s*(?:=.*?=|<.*?>|\[.*?]|\(.*?\)|{.*?})\s*)*$")
@@ -204,7 +249,8 @@ async def check_link(link):
 	print([parsed_title, artists, tags, parodies, characters, pages, lang])
 
 	if licensed:
-		return magazine_name.upper() + " " + magazine_issue, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
+		return magazine_name.upper() + " " + magazine_issue, market, [parsed_title, artists, tags, parodies, characters,
+		                                                              pages, lang]
 	else:
 		return None, market, [parsed_title, artists, tags, parodies, characters, pages, lang]
 
