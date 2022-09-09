@@ -239,7 +239,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						tags = ('None' if not 'tags' in entry else ", ".join(entry['tags']))
 
 						god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + (
-							'' if (entry['note'] == 'None') else f'  \n**Note:** {entry["note"]}')
+							'' if (entry['note'] == 'None') else f'  \n\n**Note:** {entry["note"]}')
 						god_list = god_list + "\n\n"
 
 						parody_str = "" if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
@@ -602,7 +602,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 				for attempt in range(3):
 					try:
-						magazine, market, data = await nhentai_fetcher.check_link(url)
+						magazine, market, data = await hentai_fetcher.check_link(url)
 						if data == "Cloudflare IUAM":
 							iuam = True
 						break
@@ -801,7 +801,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print(entry)
 							tags = ('None' if not 'tags' in entry else ", ".join(entry['tags']))
 
-							god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + ('' if (entry['note'] == 'None') else f'  \n**Note:** {entry["note"]}')
+							god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + ('' if (entry['note'] == 'None') else f'  \n\n**Note:** {entry["note"]}')
 							god_list = god_list + "\n\n"
 
 							parody_str = "" if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"

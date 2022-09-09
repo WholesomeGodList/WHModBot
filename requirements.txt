@@ -2,3 +2,4 @@ praw>=7.2.0
 aiohttp>=3.7.4
 beautifulsoup4>=4.9.3
 prawcore>=2.0.0
+pyfunctional>=1.4.3
