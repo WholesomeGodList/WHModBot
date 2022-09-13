@@ -1049,8 +1049,6 @@ def format_site_tags(tagsArray):
 			t = t[:3].upper() + t[3:]
 		elif re.match(r'bbw|bbm|milf', t):
 			t = t.upper()
-		else:
-			t = t.capitalize()
 		match x:
 			case 'female':
 				female_tags.append(t)
