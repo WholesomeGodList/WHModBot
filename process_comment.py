@@ -19,11 +19,6 @@ removals = json.load(open('removals.json'))
 unwholesome_tags = removals['unwholesomeTags']
 licensed_sites = removals['licensedSites']
 licensed_artists = removals['licensedArtists']
-warning_tags = {
-	'sleeping': [
-		''
-	]
-}
 
 print("Loading underage character database...")
 underage_characters = json.load(open('underage.json'))
@@ -96,8 +91,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						print(entry)
 						pages = f"\n\n {entry['pages']} pages\n\n"
 						parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
-						characters = '' if not entry['siteTags']['characters'] else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-						tags = '**Tags:**  \nNone\n\n' if not entry['siteTags']['tags'] else f"**Tags:**  \n{', '.join(entry['siteTags']['tags'])}"
+						characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+						tags = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['tags']) else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}"
 						god_list = get_god_list_str(entry, 'eh')
 				except Exception:
 					god_list = ""
@@ -122,7 +117,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
 			characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
-			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
+			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{format_site_tags(data[2])}\n\n"
 			
 			god_list = ""
 
@@ -178,8 +173,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						print(entry)
 						pages = f"\n\n {entry['pages']} pages\n\n"
 						parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
-						characters = '' if not entry['siteTags']['characters'] else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-						tags = '**Tags:**  \nNone\n\n' if not entry['siteTags']['tags'] else f"**Tags:**  \n{', '.join(entry['siteTags']['tags'])}"
+						characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+						tags = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['tags']) else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}"
 						god_list = get_god_list_str(entry, 'nh')
 				except Exception:
 					god_list = ""
@@ -232,20 +227,26 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			if imgur_match:
 				god_list = ""
 				imgur_body = ""
+				parody = ""
+				pages = ""
+				characters = ""
+				tags = ""
+				entry = {}
+				has_entry = False
+				
 				try:
 					has_entry, entry = await wholesomelist_fetcher.process_nums(imgur_match.group(1))
 					if has_entry:
 						print(entry)
-						tags = ('None' if not 'tags' in entry else ", ".join(entry['tags']))
-
-						god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + (
-							'' if (entry['note'] == 'None') else f'  \n\n**Note:** {entry["note"]}')
-						god_list = god_list + "\n\n"
-
-						parody_str = "" if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
+						parody = '' if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
+						pages = f"\n\n {entry['pages']} pages\n\n"
+						characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+						tags = f"**Tags:**  \n" + (
+							format_site_tags(entry['siteTags']['tags']) if (entry['siteTags'] != 'None' and entry['siteTags']['tags']) else 'None' if not entry['tags'] else ", ".join(entry['tags'])) + "\n\n"
+						god_list = get_god_list_str(entry, 'im')
 
 						imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n" + \
-						             f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}\n\n{entry['pages']} pages\n\n{parody_str}**Tags:**  \n{tags}\n\n{god_list}"f'{config["suffix"]}'
+									f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}{pages}{parody}{characters}{tags}{god_list}"f'{config["suffix"]}'
 					else:
 						imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n{config['suffix']}"
 				except Exception:
@@ -433,8 +434,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print(entry)
 							pages = f"\n\n {entry['pages']} pages\n\n"
 							parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
-							characters = '' if not entry['siteTags']['characters'] else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-							tags = '**Tags:**  \nNone\n\n' if not entry['siteTags']['tags'] else f"**Tags:**  \n{', '.join(entry['siteTags']['tags'])}"
+							characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+							tags = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['tags']) else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}"
 							god_list = get_god_list_str(entry, 'eh')
 					except Exception:
 						god_list = ""
@@ -570,7 +571,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							
 				parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
 				characters = '' if len(data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
-				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
+				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{format_site_tags(data[2])}\n\n"
 
 				god_list = ""
 
@@ -630,8 +631,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print(entry)
 							pages = f"\n\n {entry['pages']} pages\n\n"
 							parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
-							characters = '' if not entry['siteTags']['characters'] else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-							tags = '**Tags:**  \nNone\n\n' if not entry['siteTags']['tags'] else f"**Tags:**  \n{', '.join(entry['siteTags']['tags'])}"
+							characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+							tags = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['tags']) else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}"
 							god_list = get_god_list_str(entry, 'nh')
 					except Exception:
 						god_list = ""
@@ -795,19 +796,26 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				if imgur_match:
 					god_list = ""
 					imgur_body = ""
+					parody = ""
+					pages = ""
+					characters = ""
+					tags = ""
+					entry = {}
+					has_entry = False
+					
 					try:
 						has_entry, entry = await wholesomelist_fetcher.process_nums(imgur_match.group(1))
 						if has_entry:
 							print(entry)
-							tags = ('None' if not 'tags' in entry else ", ".join(entry['tags']))
-
-							god_list = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + ('' if (entry['note'] == 'None') else f'  \n\n**Note:** {entry["note"]}')
-							god_list = god_list + "\n\n"
-
-							parody_str = "" if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
+							parody = '' if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
+							pages = f"\n\n {entry['pages']} pages\n\n"
+							characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags']['characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
+							tags = f"**Tags:**  \n" + (
+								format_site_tags(entry['siteTags']['tags']) if (entry['siteTags'] != 'None' and entry['siteTags']['tags']) else 'None' if not entry['tags'] else ", ".join(entry['tags'])) + "\n\n"
+							god_list = get_god_list_str(entry, 'im')
 
 							imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n" + \
-										f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}\n\n{entry['pages']} pages\n\n{parody_str}**Tags:**  \n{tags}\n\n{god_list}"f'{config["suffix"]}'
+										f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}{pages}{parody}{characters}{tags}{god_list}"f'{config["suffix"]}'
 						else:
 							imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n{config['suffix']}"
 					except Exception:
@@ -982,26 +990,39 @@ def extract_url(body: str):
 
 
 def get_god_list_str(entry, site):
-	god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
-	'\n' + (  # f'**Tier: {entry["tier"]}**\n\n' + (
-		'' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
-	f'**Tags:** ' + ('None' if not 'tags' in entry else ", ".join(entry['tags'])) + "\n\n"
+
+	god_list_str = ""
+
+	if site != 'im':
+		god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
+		'\n' + (  # f'**Tier: {entry["tier"]}**\n\n' + (
+			'' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
+		f'**Tags:** ' + ('None' if not entry['tags'] else ", ".join(entry['tags'])) + "\n\n"
+	else:
+		god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + (
+		'' if (entry['note'] == 'None') else f'  \n\n**Note:** {entry["note"]}') + (
+		'' if (entry['siteTags'] == 'None' or not entry['siteTags']['tags']) else f" \n\n**Tags:** {'None' if not entry['tags'] else ', '.join(entry['tags'])}") + "\n\n"
 	
 	alt_links_md = []
 	
 	if site == 'nh' and (entry['im'] != 'None' or entry['eh'] != 'None'):
-		god_list_str += 'Alternate links:\n'
+		god_list_str += '**Alternate links:**\n'
 		if entry['eh'] != 'None': alt_links_md.append(f"[E-Hentai]({entry['eh']})")
 		if entry['im'] != 'None': alt_links_md.append(f"[Imgur]({entry['im']})")
 		
 	elif site == 'eh' and (entry['im'] != 'None' or entry['nh'] != 'None'):
-		god_list_str += 'Alternate links:\n'
+		god_list_str += '**Alternate links:**\n'
 		if entry['nh'] != 'None': alt_links_md.append(f"[nhentai]({entry['nh']})")
 		if entry['im'] != 'None': alt_links_md.append(f"[Imgur]({entry['im']})")
+		
+	elif site == 'im' and (entry['eh'] != 'None' or entry['nh'] != 'None'):
+		god_list_str += '**Alternate links:**\n'
+		if entry['nh'] != 'None': alt_links_md.append(f"[nhentai]({entry['nh']})")
+		if entry['eh'] != 'None': alt_links_md.append(f"[E-Hentai]({entry['eh']})")
 	
 	if 'misc' in entry and 'altLinks' in entry['misc']:
 		if not alt_links_md:
-			god_list_str += 'Alternate links:\n'
+			god_list_str += '**Alternate links:**\n'
 
 		for link in entry['misc']['altLinks']:
 			alt_links_md.append(f"[{link['name']}]({link['link']})")
@@ -1011,3 +1032,45 @@ def get_god_list_str(entry, site):
 
 	return god_list_str
 
+def format_site_tags(tagsArray):
+
+	male_tags = []
+	female_tags = []
+	mixed_tags = []
+	other_tags = []
+	
+	for t in tagsArray:
+		x = re.match("^(female|male|mixed|other):.*$", t)
+		if x is None:
+			continue
+		x = x.group(1)
+		t = re.sub(r'^.*:', '', t)
+		if 'threesome' in t:
+			t = t[:3].upper() + t[3:]
+		elif re.match(r'bbw|bbm|milf', t):
+			t = t.upper()
+		match x:
+			case 'female':
+				female_tags.append(t)
+			case 'male':
+				male_tags.append(t)
+			case 'mixed':
+				mixed_tags.append(t)
+			case 'other':
+				other_tags.append(t)
+			case _:
+				continue
+				
+	male_tags = '' if not male_tags else '* Male: ' + ', '.join(male_tags) + "\n\n"
+	female_tags = '' if not female_tags else '* Female: ' + ', '.join(female_tags) + "\n\n"
+	mixed_tags = '' if not mixed_tags else '* Mixed: ' + ', '.join(mixed_tags) + "\n\n"
+	other_tags = '' if not other_tags else '* Other: ' + ', '.join(other_tags)
+
+	str_tags = "\n" + male_tags + female_tags + mixed_tags + other_tags
+
+
+	if len(str_tags) <= 2:
+		tagsArray = ', '.join(tagsArray)
+		return tagsArray
+		
+	return str_tags

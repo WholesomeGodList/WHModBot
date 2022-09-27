@@ -157,8 +157,7 @@ async def process_site(link: str) -> (str, list[str], str, list[str], list[str],
 
 				title = data['title'].strip()
 				tags = list((seq(data['tags'])
-				        .filter(lambda s: re.match(r'(?:female|male|mixed|other):', s))
-				        .map(lambda s: re.match(r'(?:female|male|mixed|other):(.+)', s)[1])))
+				        .filter(lambda s: re.match(r'(?:female|male|mixed|other):', s))))
 				artists = list((seq(data['tags'])
 				           .filter(lambda s: re.match(r'artist', s))
 				           .map(lambda s: re.match(r'artist:(.+)', s)[1])
