@@ -103,7 +103,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>" + (
-						f"\n\n**{entry['title']}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
+						f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 					f'{config["suffix"]}'
 				)
 				# The post is good.
@@ -189,7 +189,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 				comment.parent().edit(
 					f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
-						f"\n\n**{entry['title']}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
+						f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 					"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 					" details, see [this post.]"
 					"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
@@ -475,7 +475,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					comment.parent().edit(
 						f"The source OP provided:  \n> <{url}>" + (
-							f"\n\n**{entry['title']}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
+							f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 						f'{config["suffix"]}'
 					)
 					approve_post(reddit, comment, url)
@@ -678,7 +678,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 					comment.parent().edit(
 						f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
-							f"\n\n**{entry['title']}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
+							f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 						"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 						" details, see [this post.]"
 						"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
