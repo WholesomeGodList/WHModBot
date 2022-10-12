@@ -19,6 +19,7 @@ removals = json.load(open('removals.json'))
 unwholesome_tags = removals['unwholesomeTags']
 licensed_sites = removals['licensedSites']
 licensed_artists = removals['licensedArtists']
+official_licensors = removals['officialLicensors']
 
 print("Loading underage character database...")
 underage_characters = json.load(open('underage.json'))
@@ -340,6 +341,21 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					            ' to avoid making this mistake in the future.',
 					            'Licensed link',
 					            'Rule 4 - Linked to hentai.cafe/hentainexus/hentaimimi',
+					            True
+					            )
+
+					return
+					
+			# Handle licensors
+			for site in official_licensors:
+				if site in url:
+					print("It's an official licensor site.")
+					remove_post(reddit, comment,
+					            'The link you provided links to an official release. As such, it breaks rule 4.\n\n'
+					            'Please read our [guide on how to spot licensed doujins](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)'
+					            ' to avoid making this mistake in the future.',
+					            'Official release',
+					            'Rule 4 - Linked to official release',
 					            True
 					            )
 
@@ -859,6 +875,9 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						f"The source OP provided:  \n> <{url}>\n\n"
 						f'{config["suffix"]}'
 					)
+					valid_sites = ["cubari.moe", "e-hentai.org", "hentai2read.com", "imgur.com", "nhentai.net", "tsumino.com"]
+					if not any(valid_site in url for valid_site in valid_sites):
+						comment.report("Unknown site. Potential spam post")
 
 			# If we made it here, the post is good. Clean up any trackers and add a post entry to the database.
 			print('Updating database and cleaning up...')
@@ -900,7 +919,7 @@ def remove_post(reddit: Reddit, comment: Comment, message: str, mod_note: str, n
 		usernotes = decode_blob(usernotescontent['blob'])
 		username = comment.submission.author.name
 
-		mod_number = usernotescontent['constants']['users'].index('Enslaved_Horny_AI')
+		mod_number = usernotescontent['constants']['users'].index(config["username"])
 
 		if username in usernotes:
 			usernotes[username]['ns'].append({
