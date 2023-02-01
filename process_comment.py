@@ -1042,12 +1042,12 @@ def get_god_list_str(entry, site):
 	god_list_str = ""
 
 	if site != 'im':
-		god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
+		god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List - Entry #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
 		               '\n' + (  # f'**Tier: {entry["tier"]}**\n\n' + (
 			               '' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
 		               f'**Tags:** ' + ('None' if not entry['tags'] else ", ".join(entry['tags'])) + "\n\n"
 	else:
-		god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + (
+		god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List - Entry #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + (
 			'' if (entry['note'] == 'None') else f'  \n\n**Note:** {entry["note"]}') + (
 			               '' if (entry['siteTags'] == 'None' or not entry['siteTags'][
 				               'tags']) else f" \n\n**Tags:** {'None' if not entry['tags'] else ', '.join(entry['tags'])}") + "\n\n"
