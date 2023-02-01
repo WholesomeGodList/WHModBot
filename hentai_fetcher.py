@@ -96,7 +96,7 @@ async def process_site(link: str) -> (str, list[str], str, list[str], list[str],
 		if 'nhentai' in link:
 			response = await session.get(link)
 			code = response.status
-			if code == 503:  # cloudflare IUAM
+			if code == 503 or code == 403:  # cloudflare IUAM
 				return "Cloudflare IUAM", None, None, None, None, None, None
 
 			page = await response.text()
