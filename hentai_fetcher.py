@@ -83,7 +83,7 @@ licensed_magazines = {
 
 
 # merge fetching everything lol
-async def process_site(link: str) -> (str, list[str], str, list[str], list[str], int, list[str]):
+async def process_site(link: str) -> tuple[str, list[str], str, list[str], list[str], int, list[str]]:
 	async with aiohttp.ClientSession() as session:
 		title = ""
 		tags = list()

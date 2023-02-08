@@ -141,7 +141,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			)
 
 		elif 'nhentai.net' in url:
-			nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
+			nums_regex = re.compile(r"https://nhentai\.net/g/([0-9/]+)/")
 			nums_match = nums_regex.match(url)
 			nums = nums_match.group(1)
 
@@ -165,6 +165,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			if iuam:
 				god_list = ""
+				cubari_link = ""
 				parody = ""
 				pages = ""
 				characters = ""
@@ -187,8 +188,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				except Exception:
 					god_list = ""
 
+				if '/' in nums:
+					nums_pages = nums.split('/')
+					cubari_link = f"https://cubari.moe/read/nhentai/{nums_pages[0]}/1/{nums_pages[1]}/"
+				else:
+					cubari_link = f"https://cubari.moe/read/nhentai/{nums}/1/1/"
+
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
+					f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe]({cubari_link})" + (
 						f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 					"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 					" details, see [this post.]"
@@ -214,6 +221,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
 			god_list = ""
+			cubari_link = ""
 
 			try:
 				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
@@ -223,8 +231,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			except Exception:
 				god_list = ""
 
+			if '/' in nums:
+				nums_pages = nums.split('/')
+				cubari_link = f"https://cubari.moe/read/nhentai/{nums_pages[0]}/1/{nums_pages[1]}/"
+			else:
+				cubari_link = f"https://cubari.moe/read/nhentai/{nums}/1/1/"
+
 			comment.parent().edit(
-				f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)\n\n"
+				f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 				f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
 				f'{config["suffix"]}'
 			)
@@ -630,7 +644,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					comment.reply(f'That\'s not a valid nhentai page!\n\n{config["suffix"]}')
 					return
 
-				nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
+				nums_regex = re.compile(r"https://nhentai\.net/g/([0-9/]+)/")
 				nums_match = nums_regex.match(url)
 				nums = nums_match.group(1)
 
@@ -654,6 +668,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 				if iuam:
 					god_list = ""
+					cubari_link = ""
 					parody = ""
 					pages = ""
 					characters = ""
@@ -676,8 +691,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					except Exception:
 						god_list = ""
 
+					if '/' in nums:
+						nums_pages = nums.split('/')
+						cubari_link = f"https://cubari.moe/read/nhentai/{nums_pages[0]}/1/{nums_pages[1]}/"
+					else:
+						cubari_link = f"https://cubari.moe/read/nhentai/{nums}/1/1/"
+
 					comment.parent().edit(
-						f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
+						f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe]({cubari_link})" + (
 							f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 						"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
 						" details, see [this post.]"
@@ -815,6 +836,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
 
 				god_list = ""
+				cubari_link = ""
 
 				try:
 					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
@@ -824,8 +846,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				except Exception:
 					god_list = ""
 
+				if '/' in nums:
+					nums_pages = nums.split('/')
+					cubari_link = f"https://cubari.moe/read/nhentai/{nums_pages[0]}/1/{nums_pages[1]}/"
+				else:
+					cubari_link = f"https://cubari.moe/read/nhentai/{nums}/1/1/"
+
 				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)\n\n"
+					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 					f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
 					f'{config["suffix"]}'
 				)
@@ -1000,12 +1028,12 @@ def update_wiki(reddit: Reddit):
 
 
 def extract_url(body: str):
-	# Check if there exists an unbroken string of 2-6 digits.
-	code_regex = re.compile(r"(?:\s+|^)(^\d{2,6}$)(?:\s+|$)")
+	# Check if there exists an unbroken string of 3-12 digits and slashes (the latter if they link to a specific page)
+	code_regex = re.compile(r"(?:\s+|^)(^[0-9/]{3,12}$)(?:\s+|$)")
 	code_search = code_regex.search(body)
 
 	if code_search:
-		body = f"https://nhentai.net/g/{code_search.group(1)}/"
+		body = f"https://nhentai.net/g/{code_search.group(1)}"
 
 	# Validate the URL
 	url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
@@ -1014,7 +1042,7 @@ def extract_url(body: str):
 	if not url_verify:
 		return None
 
-	nhentai_url_extractor = re.compile(r'(https?://nhentai\.net/g/\d{1,6}/?)')
+	nhentai_url_extractor = re.compile(r'(https?://nhentai\.net/g/[0-9/]{3,12}/?)')
 	nhentai_url = nhentai_url_extractor.search(body)
 
 	markdown_extractor = re.compile(r'\[.*\]\((.*)\)')
