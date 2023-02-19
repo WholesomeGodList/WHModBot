@@ -129,7 +129,8 @@ async def process_site(link: str) -> tuple[str, list[str], str, list[str], list[
 
 			for cur_link in parody_pile:
 				link_text = cur_link.find('span', class_='name')
-				parodies.append(link_text.text)
+				if link_text.text != 'original':
+					parodies.append(link_text.text)
 
 			for cur_link in character_pile:
 				link_text = cur_link.find('span', class_='name')
@@ -141,15 +142,15 @@ async def process_site(link: str) -> tuple[str, list[str], str, list[str], list[
 
 		elif 'e-hentai' in link:
 			try:
-				galleryID, galleryToken = re.search(r'/g/(\d+?)/(.+?)/', link).group(1, 2)
+				gallery_id, gallery_token = re.search(r'/g/(\d+?)/(.+?)/', link).group(1, 2)
 				response = await session.post('https://api.e-hentai.org/api.php',
-				     json={
+					json={
 						"method": "gdata",
 						"gidlist": [
-						[int(galleryID), galleryToken]
+							[int(gallery_id), gallery_token]
 						],
 						"namespace": 1
-						})
+					})
 				resp = await response.json(content_type='text/html')
 				if 'error' in resp['gmetadata'][0]:
 					raise RuntimeError(resp['error'])
@@ -157,21 +158,22 @@ async def process_site(link: str) -> tuple[str, list[str], str, list[str], list[
 
 				title = data['title'].strip()
 				tags = list((seq(data['tags'])
-				        .filter(lambda s: re.match(r'(?:female|male|mixed|other):', s))))
+						.filter(lambda s: re.match(r'(?:female|male|mixed|other):', s))))
 				artists = list((seq(data['tags'])
-				           .filter(lambda s: re.match(r'artist', s))
-				           .map(lambda s: re.match(r'artist:(.+)', s)[1])
-				           .map(lambda s: ' '.join((w.capitalize() for w in s.split())))))
+							.filter(lambda s: re.match(r'artist', s))
+							.map(lambda s: re.match(r'artist:(.+)', s)[1])
+							.map(lambda s: ' '.join((w.capitalize() for w in s.split())))))
 				parodies = list((seq(data['tags'])
-				            .filter(lambda s: re.match(r'parody', s))
-				            .map(lambda s: re.match(r'parody:(.+)', s)[1])))
+							.filter(lambda s: re.match(r'parody', s))
+							.map(lambda s: re.match(r'parody:(.+)', s)[1])
+							.filter(lambda s: s != 'original')))
 				characters = list((seq(data['tags'])
-				              .filter(lambda s: re.match(r'character', s))
-				              .map(lambda s: re.match(r'character:(.+)', s)[1])))
+							.filter(lambda s: re.match(r'character', s))
+							.map(lambda s: re.match(r'character:(.+)', s)[1])))
 				pages = int(data['filecount'])
 				language = list((seq(data['tags'])
-				            .filter(lambda s: re.match(r'language', s))
-				            .map(lambda s: re.match(r'language:(.+)', s)[1])))
+							.filter(lambda s: re.match(r'language', s))
+							.map(lambda s: re.match(r'language:(.+)', s)[1])))
 			except RuntimeError as e:
 				print('E-hentai error: ' + str(e))
 				return 'E-Hentai error', None, None, None, None, None, None

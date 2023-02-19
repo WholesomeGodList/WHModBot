@@ -17,7 +17,13 @@ async def process_nums(nums):
 		print(payload)
 
 		if payload['result']:
-			return True, payload['entry']
+			entry = payload['entry']
+
+			for key, value in entry.items():
+				if value == "None":
+					entry[key] = None
+
+			return True, entry
 		else:
 			return False, {}
 
