@@ -580,7 +580,7 @@ def format_site_tags(tags_list: list) -> str:
 		return str_tags
 
 
-async def format_body(url: str, data: tuple = ()) -> str:
+async def format_body(url: str, data: tuple | None = None) -> str:
 	god_list = ""
 	parody = ""
 	pages = ""
