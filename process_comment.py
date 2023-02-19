@@ -738,8 +738,8 @@ async def format_body(url: str, data: tuple = None) -> str:
 
 
 # Checks the nhentai/E-Hentai data to see if it breaks rule 1/4/5
-def check_data(magazine: str | None, market: bool, data: list) -> tuple[str, str, str, bool] | None:
-	removal = None
+def check_data(magazine: str | None, market: bool, data: list) -> tuple:
+	removal = (None, None, None, None)
 
 	if magazine:
 		# It's licensed!
