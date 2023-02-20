@@ -53,14 +53,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 		if not url:
 			# no URL present, so we execute the british
-			comment.reply("That doesn't seem to be a valid URL. Try again?"
-			              f'\n\n{config["suffix"]}')
+			comment.reply(
+				"That doesn't seem to be a valid URL. Try again?"
+				f'\n\n{config["suffix"]}')
 			return
 
 		if 'e-hentai' in url:
-			token = re.search(r'([a-f0-9]{10})', url).group(1)
-
 			fetch_error = False
+
 			for attempt in range(3):
 				try:
 					magazine, market, data = await hentai_fetcher.check_link(url)
@@ -72,79 +72,16 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						print("Failed to connect")
 						print(url)
 						comment.reply(
-							"Either that isn't a valid E-hentai page, or my connection to E-hentai has a problem currently. Try again?" f'\n\n{config["suffix"]}')
+							"Either that isn't a valid E-hentai page, or my connection to E-hentai has a problem currently. "
+							f'Try again? \n\n{config["suffix"]}')
 						return
 					else:
 						await asyncio.sleep(1)
 
-			if fetch_error:
-				god_list = ""
-				parody = ""
-				pages = ""
-				characters = ""
-				tags = ""
-				entry = {}
-				has_entry = False
-
-				try:
-					has_entry, entry = await wholesomelist_fetcher.process_nums(token)
-					if has_entry:
-						print(entry)
-						pages = f"\n\n {entry['pages']} pages\n\n"
-						parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
-						characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags'][
-							'characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-						tags = '' if (entry['siteTags'] == 'None' or 'tags' not in entry['siteTags']
-						              or not entry['siteTags'][
-									'tags']) else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}"
-						god_list = get_god_list_str(entry, 'eh')
-				except Exception:
-					god_list = ""
-
-				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>" + (
-						f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
-					f'{config["suffix"]}'
-				)
-				# The post is good.
-				print('Updating database and cleaning up...')
-				c.execute('DELETE FROM posts WHERE source=?', (url,))
-				approve_post(reddit, comment, url)
-
-				# Reapprove the post if it was removed
-				if comment.submission.removed:
-					print("This post was removed. Reapproving...")
-					comment.submission.mod.approve()
-				else:
-					print("This post was not removed. Ignoring...")
-				return
-
-			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
-			characters = '' if len(
-				data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
-			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{format_site_tags(data[2])}\n\n"
-
-			god_list = ""
-
-			try:
-				has_entry, entry = await wholesomelist_fetcher.process_nums(token)
-				if has_entry:
-					print(entry)
-					god_list = get_god_list_str(entry, 'eh')
-			except Exception:
-				god_list = ""
-
-			comment.parent().edit(
-				f"The source OP provided:  \n> <{url}>\n\n"
-				f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
-				f'{config["suffix"]}'
-			)
+			body = await format_body(url, None if fetch_error else data)
+			comment.parent().edit(body)
 
 		elif 'nhentai.net' in url:
-			nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
-			nums_match = nums_regex.match(url)
-			nums = nums_match.group(1)
-
 			iuam = False
 
 			for attempt in range(3):
@@ -158,121 +95,18 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						print("Invalid page.")
 						print(url)
 						comment.reply(
-							"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. Try again?" f'\n\n{config["suffix"]}')
+							"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. "
+							f'Try again? \n\n{config["suffix"]}')
 						return
 					else:
 						await asyncio.sleep(1)
 
-			if iuam:
-				god_list = ""
-				parody = ""
-				pages = ""
-				characters = ""
-				tags = ""
-				entry = {}
-				has_entry = False
-
-				try:
-					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
-					if has_entry:
-						print(entry)
-						pages = f"\n\n {entry['pages']} pages\n\n"
-						parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
-						characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags'][
-							'characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-						tags = '' if (entry['siteTags'] == 'None' or 'tags' not in entry['siteTags']
-						              or not entry['siteTags'][
-									'tags']) else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}"
-						god_list = get_god_list_str(entry, 'nh')
-				except Exception:
-					god_list = ""
-
-				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
-						f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
-					"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
-					" details, see [this post.]"
-					"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
-					f'{config["suffix"]}'
-				)
-				# The post is good.
-				print('Updating database and cleaning up...')
-				c.execute('DELETE FROM posts WHERE source=?', (url,))
-				approve_post(reddit, comment, url)
-
-				# Reapprove the post if it was removed
-				if comment.submission.removed:
-					print("This post was removed. Reapproving...")
-					comment.submission.mod.approve()
-				else:
-					print("This post was not removed. Ignoring...")
-				return
-
-			parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
-			characters = '' if len(
-				data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
-			tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
-
-			god_list = ""
-
-			try:
-				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
-				if has_entry:
-					print(entry)
-					god_list = get_god_list_str(entry, 'nh')
-			except Exception:
-				god_list = ""
-
-			comment.parent().edit(
-				f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)\n\n"
-				f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
-				f'{config["suffix"]}'
-			)
+			body = await format_body(url, None if iuam else data)
+			comment.parent().edit(body)
 
 		else:
-			imgur = re.compile(r"https://imgur\.com/a/(.{5,7})/")
-			imgur_match = imgur.match(url)
-
-			if imgur_match:
-				god_list = ""
-				imgur_body = ""
-				parody = ""
-				pages = ""
-				characters = ""
-				tags = ""
-				entry = {}
-				has_entry = False
-
-				try:
-					has_entry, entry = await wholesomelist_fetcher.process_nums(imgur_match.group(1))
-					if has_entry:
-						print(entry)
-						parody = '' if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
-						pages = f"\n\n {entry['pages']} pages\n\n"
-						characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags'][
-							'characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-						tags = f"**Tags:**  \n" + (
-							format_site_tags(entry['siteTags']['tags']) if (
-									entry['siteTags'] != 'None' and entry['siteTags']['tags']) else 'None' if not
-							entry['tags'] else ", ".join(entry['tags'])) + "\n\n"
-						god_list = get_god_list_str(entry, 'im')
-
-						imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n" + \
-						             f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}{pages}{parody}{characters}{tags}{god_list}"f'{config["suffix"]}'
-					else:
-						imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n{config['suffix']}"
-				except Exception:
-					god_list = ""
-					imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n"f'{config["suffix"]}'
-
-				comment.parent().edit(
-					imgur_body
-				)
-			else:
-				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\n"
-					f'{config["suffix"]}'
-				)
+			body = await format_body(url)
+			comment.parent().edit(body)
 
 		# The post is good.
 		print('Updating database and cleaning up...')
@@ -285,6 +119,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			comment.submission.mod.approve()
 		else:
 			print("This post was not removed. Ignoring...")
+		return
 
 	# If this is the reply to a sauce request, handle it
 	elif not comment.is_root and c.execute('SELECT * FROM pendingposts WHERE submission_id=?',
@@ -298,8 +133,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 			comment.parent().edit(
 				'A moderator has indicated that there is no applicable source.'
-				f'\n\n{config["suffix"]}'
-			)
+				f'\n\n{config["suffix"]}')
 			comment.submission.mod.approve()
 			return
 
@@ -319,45 +153,45 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					'Saying there is no source has been disabled for non-moderators. If this is something without a'
 					' genuine source (like a meme), please post this again with the Meme flair. Otherwise, make sure'
 					' your post follows the subreddit rules.'
-					f'\n\n{config["suffix"]}'
-				)
+					f'\n\n{config["suffix"]}')
 				return
 
 			url = extract_url(comment.body)
 
 			if not url:
 				# no URL present, so we execute the british
-				comment.reply("That doesn't seem to be a valid URL. Try again?"
-				              f'\n\n{config["suffix"]}')
+				comment.reply(
+					"That doesn't seem to be a valid URL. Try again?"
+					f'\n\n{config["suffix"]}')
 				return
 
 			# Handle any licensed sites here
 			for site in licensed_sites:
 				if site in url:
 					print("It's a licensed site.")
-					remove_post(reddit, comment,
-					            'The link you provided links to a site that solely rips licensed content. As such, it breaks rule 4.\n\n'
-					            'Please read our [guide on how to spot licensed doujins](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)'
-					            ' to avoid making this mistake in the future.',
-					            'Licensed link',
-					            'Rule 4 - Linked to hentai.cafe/hentainexus/hentaimimi',
-					            True
-					            )
+					remove_post(
+						reddit, comment,
+						'The link you provided links to a site that solely rips licensed content. As such, it breaks rule 4.\n\n'
+						'Please read our [guide on how to spot licensed doujins](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)'
+						' to avoid making this mistake in the future.',
+						'Licensed link',
+						'Rule 4 - Linked to hentai.cafe/hentainexus/hentaimimi',
+						True)
 
 					return
-					
+
 			# Handle licensors
 			for site in official_licensors:
 				if site in url:
 					print("It's an official licensor site.")
-					remove_post(reddit, comment,
-					            'The link you provided links to an official release. As such, it breaks rule 4.\n\n'
-					            'Please read our [guide on how to spot licensed doujins](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)'
-					            ' to avoid making this mistake in the future.',
-					            'Official release',
-					            'Rule 4 - Linked to official release',
-					            True
-					            )
+					remove_post(
+						reddit, comment,
+						'The link you provided links to an official release. As such, it breaks rule 4.\n\n'
+						'Please read our [guide on how to spot licensed doujins](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)'
+						' to avoid making this mistake in the future.',
+						'Official release',
+						'Rule 4 - Linked to official release',
+						True)
 
 					return
 
@@ -368,14 +202,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				# It's a really common repost. Kill it.
 				print('Common repost detected!')
 
-				remove_post(reddit, comment,
-				            'The link you provided is a **very common repost** on this subreddit.\n\n'
-				            'Please read our [list of common reposts](https://www.reddit.com/r/wholesomehentai/wiki/posts), to avoid '
-				            'posting common reposts in the future.',
-				            'Really common repost.',
-				            'Rule 10 - Common Repost',
-				            True
-				            )
+				remove_post(
+					reddit, comment,
+					'The link you provided is a **very common repost** on this subreddit.\n\n'
+					'Please read our [list of common reposts](https://www.reddit.com/r/wholesomehentai/wiki/posts), to avoid '
+					'posting common reposts in the future.',
+					'Really common repost.',
+					'Rule 10 - Common Repost',
+					True)
 
 				return
 
@@ -404,34 +238,33 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						if post[3] != 0:
 							print('It\'s a recently removed repost. Removing...')
 
-							remove_post(reddit, comment,
-							            f'The link you provided has already been [posted and removed](https://reddit.com{post[0]}) recently.\n\n'
-							            'Please check the previous post to see why it was removed. If you believe that the previous post was wrongly removed '
-							            f'or some other exception has occurred, please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).\n\n'
-							            'Otherwise, please make sure to [read the rules](https://reddit.com/r/wholesomehentai/wiki/rules) in the future.',
-							            'Removed repost.',
-							            'Reposting a removed post',
-							            True
-							            )
+							remove_post(
+								reddit, comment,
+								f'The link you provided has already been [posted and removed](https://reddit.com{post[0]}) recently.\n\n'
+								'Please check the previous post to see why it was removed. If you believe that the previous post was wrongly removed '
+								f'or some other exception has occurred, please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).\n\n'
+								'Otherwise, please make sure to [read the rules](https://reddit.com/r/wholesomehentai/wiki/rules) in the future.',
+								'Removed repost.',
+								'Reposting a removed post',
+								True)
 
 						else:
 							# It's not been long enough since the last post. Link them to the last post and delete the entry.
 							print('It\'s a recent repost. Removing...')
 
-							remove_post(reddit, comment,
-							            f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
-							            'Please [check here](https://reddit.com/r/wholesomehentai/wiki/posts) before posting to avoid posting reposts in the future.',
-							            'Repost.',
-							            'Rule 10 - Repost',
-							            True
-							            )
+							remove_post(
+								reddit, comment,
+								f'The link you provided has [already been posted](https://reddit.com{post[0]}) recently.\n\n'
+								'Please [check here](https://reddit.com/r/wholesomehentai/wiki/posts) before posting to avoid posting reposts in the future.',
+								'Repost.',
+								'Rule 10 - Repost',
+								True)
 
 						return
 
 			if 'e-hentai' in url:
-				token = re.search(r'([a-f0-9]{10})', url).group(1)
-
 				fetch_error = False
+
 				for attempt in range(3):
 					try:
 						magazine, market, data = await hentai_fetcher.check_link(url)
@@ -443,196 +276,32 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print("Failed to connect")
 							print(url)
 							comment.reply(
-								"Either that isn't a valid E-hentai page, or my connection to E-hentai has a problem currently. Try again?" f'\n\n{config["suffix"]}')
+								"Either that isn't a valid E-hentai page, or my connection to E-hentai has a problem currently. "
+								f'Try again? \n\n{config["suffix"]}')
 							return
 						else:
 							await asyncio.sleep(1)
 
 				if fetch_error:
-					god_list = ""
-					parody = ""
-					pages = ""
-					characters = ""
-					tags = ""
-					entry = {}
-					has_entry = False
+					body = await format_body(url)
+					comment.parent().edit(body)
+				else:
+					# Checks for the remaining rules related to the data
+					message, mod_note, note_message, strike = check_data(magazine, market, data)
 
-					try:
-						has_entry, entry = await wholesomelist_fetcher.process_nums(token)
-						if has_entry:
-							print(entry)
-							pages = f"\n\n {entry['pages']} pages\n\n"
-							parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
-							characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags'][
-								'characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-							tags = '' if (entry['siteTags'] == 'None' or 'tags' not in entry['siteTags']
-							              or not entry['siteTags'][
-										'tags']) else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}"
+					if message:
+						remove_post(reddit, comment, message, mod_note, note_message, strike)
+						return
 
-							god_list = get_god_list_str(entry, 'eh')
-					except Exception:
-						god_list = ""
-
-					comment.parent().edit(
-						f"The source OP provided:  \n> <{url}>" + (
-							f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
-						f'{config["suffix"]}'
-					)
-					approve_post(reddit, comment, url)
-					return
-
-				if magazine:
-					# It's licensed!
-					print("Licensed magazine detected.")
-
-					remove_post(reddit, comment,
-					            f'The provided source is licensed! It appears in the licensed magazine issue `{magazine}`.\n\n'
-					            f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
-					            '[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)',
-					            f'Licensed, appears in magazine {magazine}',
-					            f'Rule 4 - Licensed (appears in {magazine})',
-					            True
-					            )
-
-					return
-
-				if market:
-					# It literally has 2d-market.com in the title.
-					print("2d-market in title.")
-
-					remove_post(reddit, comment,
-					            f'The provided source is licensed! It has `2d-market.com` in the title.\n\n'
-					            f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
-					            '[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)',
-					            f'Licensed, has 2d-market.com in title',
-					            f'Rule 4 - Licensed (2d-market.com in title)',
-					            True
-					            )
-
-					return
-
-				if "english" not in data[6]:
-					print("The language of this doujin does not seem to be English.")
-					remove_post(reddit, comment,
-					            'The provided source does not seem to be in English.\n\n'
-					            'This subreddit only allows English submissions, as most people cannot understand other languages.\n\n'
-					            f'If you believe this was a mistake, you can [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).',
-					            'Not English',
-					            'Rule 2 - Non-English Source',
-					            False
-					            )
-
-					return
-
-				detected_artists = []
-				for artist in licensed_artists:
-					if artist in data[1].lower():
-						detected_artists.append(artist.title())
-
-				if len(detected_artists) != 0:
-					# Oh no, there's an illegal artist!
-					print("Illegal artists detected: " + ', '.join(detected_artists))
-
-					remove_post(reddit, comment,
-					            f'The provided source has the following disallowed artists:\n\n```\n{", ".join(detected_artists)}\n```\n\n'
-					            'These artists are banned because their works are always or almost always licensed. '
-					            f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is '
-					            'an unlicensed exception. '
-					            'Otherwise, make sure you understand Rule 4.',
-					            f'Has the licensed artist(s): {", ".join(detected_artists)}',
-					            f'Rule 4 - Has the artists {", ".join(detected_artists)}',
-					            True
-					            )
-
-					return
-
-				detected_tags = []
-				for tag in data[2]:
-					if tag in unwholesome_tags:
-						detected_tags.append(tag.title())
-
-				if len(detected_tags) != 0:
-					# Oh no, there's an illegal tag!
-					print("Illegal tags detected: " + ', '.join(detected_tags))
-
-					remove_post(reddit, comment,
-					            f'The provided source has the following disallowed tags:\n\n```\n{", ".join(detected_tags)}\n```\n\n'
-					            'These tags are banned because they are either almost never wholesome or almost always licensed. '
-					            f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
-					            'a mistagged doujin or a wholesome/unlicensed exception. '
-					            'Otherwise, make sure you understand Rules 1, 4, and 5.',
-					            f'Has the illegal tag(s): {", ".join(detected_tags)}',
-					            f'Rule 1/4/5 - Has the tags {", ".join(detected_tags)}',
-					            True
-					            )
-
-					return
-
-				detected_characters = []
-				for character in data[4]:
-					if character in underage_characters:
-						cur_list = underage_characters[character]
-						parodies = data[3]
-
-						for parody in parodies:
-							for item in cur_list:
-								series_list = item['series']
-								for series in series_list:
-									if series.lower().strip() == parody:
-										detected_characters.append(
-											[character.title(), series, item['age'], item['note']])
-
-				if len(detected_characters) != 0:
-					# Oh no, there's an illegal character!
-					chars_list = []
-					for character in detected_characters:
-						chars_list.append(character[0])
-
-					chars_str = ', '.join(chars_list)
-					print("Illegal characters detected: " + chars_str)
-
-					remove_post(reddit, comment,
-					            f'The provided source has the following disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
-					            'These characters are banned because they are underage.\n\n'
-					            f'If you believe one of these characters is actually 18+ (because either the Note exception applies, or the mod team made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
-					            'Otherwise, make sure you understand Rule 1, and have checked our [spreadsheet of underage characters.](https://docs.google.com/spreadsheets/d/1rnTIzml80kQJPlNCQzluuKHK8Dzejk2Xg7J4YYN4FaM/)',
-					            f'Has the underage char(s): {chars_str}',
-					            f'Rule 1 - Has the chars {chars_str}',
-					            True
-					            )
-
-					return
-
-				parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
-				characters = '' if len(
-					data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
-				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{format_site_tags(data[2])}\n\n"
-
-				god_list = ""
-
-				try:
-					has_entry, entry = await wholesomelist_fetcher.process_nums(token)
-					if has_entry:
-						print(entry)
-						god_list = get_god_list_str(entry, 'eh')
-				except Exception:
-					god_list = ""
-
-				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\n"
-					f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
-					f'{config["suffix"]}'
-				)
+					body = await format_body(url, data)
+					comment.parent().edit(body)
 
 			elif 'nhentai.net' in url:
-
-				if "nhentai.net/g/" not in url:
-					comment.reply(f'That\'s not a valid nhentai page!\n\n{config["suffix"]}')
+				if 'nhentai.net/g/' not in url:
+					comment.reply(
+						"That's not a valid nhentai page!"
+						f'\n\n{config["suffix"]}')
 					return
-
-				nums_regex = re.compile(r"https://nhentai\.net/g/(\d+)/")
-				nums_match = nums_regex.match(url)
-				nums = nums_match.group(1)
 
 				iuam = False
 
@@ -647,237 +316,33 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print("Invalid page.")
 							print(url)
 							comment.reply(
-								"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. Try again?" f'\n\n{config["suffix"]}')
+								"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. "
+								f'Try again? \n\n{config["suffix"]}')
 							return
 						else:
 							await asyncio.sleep(1)
 
 				if iuam:
-					god_list = ""
-					parody = ""
-					pages = ""
-					characters = ""
-					tags = ""
-					entry = {}
-					has_entry = False
+					body = await format_body(url)
+					comment.parent().edit(body)
+				else:
+					# Checks for the remaining rules related to the data
+					message, mod_note, note_message, strike = check_data(magazine, market, data)
 
-					try:
-						has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
-						if has_entry:
-							print(entry)
-							pages = f"\n\n {entry['pages']} pages\n\n"
-							parody = '' if entry['parody'] == 'None' else f"**Parodies:**  \n{entry['parody']}\n\n"
-							characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags'][
-								'characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-							tags = '' if (entry['siteTags'] == 'None' or 'tags' not in entry['siteTags']
-							              or not entry['siteTags'][
-										'tags']) else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}"
-							god_list = get_god_list_str(entry, 'nh')
-					except Exception:
-						god_list = ""
+					if message:
+						remove_post(reddit, comment, message, mod_note, note_message, strike)
+						return
 
-					comment.parent().edit(
-						f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)" + (
-							f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} {pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
-						"\-\-\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare protections currently. For more"
-						" details, see [this post.]"
-						"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
-						f'{config["suffix"]}'
-					)
-					approve_post(reddit, comment, url)
-					return
-
-				if magazine:
-					# It's licensed!
-					print("Licensed magazine detected.")
-
-					remove_post(reddit, comment,
-					            f'The provided source is licensed! It appears in the licensed magazine issue `{magazine}`.\n\n'
-					            f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
-					            '[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)',
-					            f'Licensed, appears in magazine {magazine}',
-					            f'Rule 4 - Licensed (appears in {magazine})',
-					            True
-					            )
-
-					return
-
-				if market:
-					# It literally has 2d-market.com in the title.
-					print("2d-market in title.")
-
-					remove_post(reddit, comment,
-					            f'The provided source is licensed! It has `2d-market.com` in the title.\n\n'
-					            f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is a mistake. Otherwise, please read the '
-					            '[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)',
-					            f'Licensed, has 2d-market.com in title',
-					            f'Rule 4 - Licensed (2d-market.com in title)',
-					            True
-					            )
-
-					return
-
-				if "english" not in data[6]:
-					print("The language of this doujin does not seem to be English.")
-					remove_post(reddit, comment,
-					            'The provided source does not seem to be in English.\n\n'
-					            'This subreddit only allows English submissions, as most people cannot understand other languages.\n\n'
-					            f'If you believe this was a mistake, you can [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).',
-					            'Not English',
-					            'Rule 2 - Non-English Source',
-					            False
-					            )
-
-					return
-
-				detected_artists = []
-				for artist in licensed_artists:
-					if artist in data[1].lower():
-						detected_artists.append(artist.title())
-
-				if len(detected_artists) != 0:
-					# Oh no, there's an illegal artist!
-					print("Illegal artists detected: " + ', '.join(detected_artists))
-
-					remove_post(reddit, comment,
-					            f'The provided source has the following disallowed artists:\n\n```\n{", ".join(detected_artists)}\n```\n\n'
-					            'These artists are banned because their works are always or almost always licensed. '
-					            f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is '
-					            'an unlicensed exception. '
-					            'Otherwise, make sure you understand Rule 4.',
-					            f'Has the licensed artist(s): {", ".join(detected_artists)}',
-					            f'Rule 4 - Has the artists {", ".join(detected_artists)}',
-					            True
-					            )
-
-					return
-
-				detected_tags = []
-				for tag in data[2]:
-					if tag in unwholesome_tags:
-						detected_tags.append(tag.title())
-
-				if len(detected_tags) != 0:
-					# Oh no, there's an illegal tag!
-					print("Illegal tags detected: " + ', '.join(detected_tags))
-
-					remove_post(reddit, comment,
-					            f'The provided source has the following disallowed tags:\n\n```\n{", ".join(detected_tags)}\n```\n\n'
-					            'These tags are banned because they are either almost never wholesome or almost always licensed. '
-					            f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) if you think this is either '
-					            'a mistagged doujin or a wholesome/unlicensed exception. '
-					            'Otherwise, make sure you understand Rules 1, 4, and 5.',
-					            f'Has the illegal tag(s): {", ".join(detected_tags)}',
-					            f'Rule 1/4/5 - Has the tags {", ".join(detected_tags)}',
-					            True
-					            )
-
-					return
-
-				detected_characters = []
-				for character in data[4]:
-					if character in underage_characters:
-						cur_list = underage_characters[character]
-						parodies = data[3]
-
-						for parody in parodies:
-							for item in cur_list:
-								series_list = item['series']
-								for series in series_list:
-									if series.lower().strip() == parody:
-										detected_characters.append(
-											[character.title(), series, item['age'], item['note']])
-
-				if len(detected_characters) != 0:
-					# Oh no, there's an illegal character!
-					chars_list = []
-					for character in detected_characters:
-						chars_list.append(character[0])
-
-					chars_str = ', '.join(chars_list)
-					print("Illegal characters detected: " + chars_str)
-
-					remove_post(reddit, comment,
-					            f'The provided source has the following disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
-					            'These characters are banned because they are underage.\n\n'
-					            f'If you believe one of these characters is actually 18+ (because either the Note exception applies, or the mod team made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
-					            'Otherwise, make sure you understand Rule 1, and have checked our [spreadsheet of underage characters.](https://docs.google.com/spreadsheets/d/1rnTIzml80kQJPlNCQzluuKHK8Dzejk2Xg7J4YYN4FaM/)',
-					            f'Has the underage char(s): {chars_str}',
-					            f'Rule 1 - Has the chars {chars_str}',
-					            True
-					            )
-
-					return
-
-				parodies = '' if len(data[3]) == 0 else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
-				characters = '' if len(
-					data[4]) == 0 else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
-				tags = '**Tags:**  \nNone\n\n' if len(data[2]) == 0 else f"**Tags:**  \n{', '.join(data[2])}\n\n"
-
-				god_list = ""
-
-				try:
-					has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
-					if has_entry:
-						print(entry)
-						god_list = get_god_list_str(entry, 'nh')
-				except Exception:
-					god_list = ""
-
-				comment.parent().edit(
-					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/nhentai/{nums}/1/1/)\n\n"
-					f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else "Unknown"}\n\n{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
-					f'{config["suffix"]}'
-				)
+					body = await format_body(url, data)
+					comment.parent().edit(body)
 
 			else:
-				imgur = re.compile(r"https://imgur\.com/a/(.{5,7})/")
-				imgur_match = imgur.match(url)
+				body = await format_body(url)
+				comment.parent().edit(body)
 
-				if imgur_match:
-					god_list = ""
-					imgur_body = ""
-					parody = ""
-					pages = ""
-					characters = ""
-					tags = ""
-					entry = {}
-					has_entry = False
-
-					try:
-						has_entry, entry = await wholesomelist_fetcher.process_nums(imgur_match.group(1))
-						if has_entry:
-							print(entry)
-							parody = '' if (entry['parody'] == 'None') else f"**Parodies:**  \n{entry['parody']}\n\n"
-							pages = f"\n\n {entry['pages']} pages\n\n"
-							characters = '' if (entry['siteTags'] == 'None' or not entry['siteTags'][
-								'characters']) else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n"
-							tags = f"**Tags:**  \n" + (
-								format_site_tags(entry['siteTags']['tags']) if (
-										entry['siteTags'] != 'None' and entry['siteTags'][
-									'tags']) else 'None' if not entry['tags'] else ", ".join(
-									entry['tags'])) + "\n\n"
-							god_list = get_god_list_str(entry, 'im')
-
-							imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n" + \
-							             f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}{pages}{parody}{characters}{tags}{god_list}"f'{config["suffix"]}'
-						else:
-							imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n{config['suffix']}"
-					except Exception:
-						god_list = ""
-						imgur_body = f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe](https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/)\n\n"f'{config["suffix"]}'
-
-					comment.parent().edit(
-						imgur_body
-					)
-				else:
-					comment.parent().edit(
-						f"The source OP provided:  \n> <{url}>\n\n"
-						f'{config["suffix"]}'
-					)
-					valid_sites = ["cubari.moe", "e-hentai.org", "hentai2read.com", "imgur.com", "nhentai.net", "tsumino.com"]
-					if not any(valid_site in url for valid_site in valid_sites):
-						comment.report("Unknown site. Potential spam post")
+				valid_sites = ["cubari.moe", "e-hentai.org", "hentai2read.com", "imgur.com", "nhentai.net", "tsumino.com"]
+				if not any(valid_site in url for valid_site in valid_sites):
+					comment.report("Unknown site. Potential spam post")
 
 			# If we made it here, the post is good. Clean up any trackers and add a post entry to the database.
 			print('Updating database and cleaning up...')
@@ -999,25 +464,25 @@ def update_wiki(reddit: Reddit):
 	print('Wiki page generated.')
 
 
-def extract_url(body: str):
-	# Check if there exists an unbroken string of 2-6 digits.
-	code_regex = re.compile(r"(?:\s+|^)(^\d{2,6}$)(?:\s+|$)")
+def extract_url(body: str) -> str | None:
+	# Check if there exists an unbroken string of 3-12 digits and slashes (the latter if they link to a specific page)
+	code_regex = re.compile(r"(?:\s+|^)(^[0-9/]{3,12}$)(?:\s+|$)")
 	code_search = code_regex.search(body)
 
 	if code_search:
-		body = f"https://nhentai.net/g/{code_search.group(1)}/"
+		body = f"https://nhentai.net/g/{code_search.group(1)}"
 
 	# Validate the URL
-	url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@!\-/]))?)')
+	url_extractor = re.compile(r'(https?://(?:\w+:?\w*@)?(\S+)(:[0-9]+)?(/|/([\w#!:.?+=&%@\-/]))?)')
 	url_verify = url_extractor.search(body)
 
 	if not url_verify:
 		return None
 
-	nhentai_url_extractor = re.compile(r'(https?://nhentai\.net/g/\d{1,6}/?)')
+	nhentai_url_extractor = re.compile(r'(https?://nhentai\.net/g/[0-9/]{3,12}/?)')
 	nhentai_url = nhentai_url_extractor.search(body)
 
-	markdown_extractor = re.compile(r'\[.*\]\((.*)\)')
+	markdown_extractor = re.compile(r'\[.*]\((.*)\)')
 	markdown_url = markdown_extractor.search(body)
 
 	if nhentai_url:
@@ -1038,87 +503,351 @@ def extract_url(body: str):
 	return url
 
 
-def get_god_list_str(entry, site):
-	god_list_str = ""
-
-	if site != 'im':
-		god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List - Entry #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})  \n" \
-		               '\n' + (  # f'**Tier: {entry["tier"]}**\n\n' + (
-			               '' if (entry['note'] == 'None') else f'**Note:** {entry["note"]}  \n') + \
-		               f'**Tags:** ' + ('None' if not entry['tags'] else ", ".join(entry['tags'])) + "\n\n"
-	else:
-		god_list_str = f"\\-\\-\\-\n\n[Wholesome Hentai God List - Entry #{entry['id']}](https://wholesomelist.com/list/{entry['uuid']})" + (
-			'' if (entry['note'] == 'None') else f'  \n\n**Note:** {entry["note"]}') + (
-			               '' if (entry['siteTags'] == 'None' or not entry['siteTags'][
-				               'tags']) else f" \n\n**Tags:** {'None' if not entry['tags'] else ', '.join(entry['tags'])}") + "\n\n"
-
+def get_god_list_str(entry: dict, url: str) -> str:
 	alt_links_md = []
+	list_link = f"https://wholesomelist.com/list/{entry['uuid']}"
+	note_str = '' if not entry.get('note') else f'**Note:** {entry["note"]}  \n\n'
+	tags_str = f"**Tags:** {'None' if not entry.get('tags') else ', '.join(entry['tags'])}"
+	im_tags_str = (
+		'' if not (entry.get('siteTags') and entry['siteTags'].get('tags'))
+		else f"**Tags:** {'None' if not entry.get('tags') else ', '.join(entry['tags'])}")
 
-	if site == 'nh' and (entry['im'] != 'None' or entry['eh'] != 'None'):
-		god_list_str += '**Alternate links:**\n'
-		if entry['eh'] != 'None': alt_links_md.append(f"[E-Hentai]({entry['eh']})")
-		if entry['im'] != 'None': alt_links_md.append(f"[Imgur]({entry['im']})")
+	god_list_str = (
+		f"\\-\\-\\-\n\n[Wholesome Hentai God List - Entry #{entry['id']}]({list_link})  \n\n"
+		f'{note_str}{tags_str if "imgur" not in url else im_tags_str}\n\n')
 
-	elif site == 'eh' and (entry['im'] != 'None' or entry['nh'] != 'None'):
-		god_list_str += '**Alternate links:**\n'
-		if entry['nh'] != 'None': alt_links_md.append(f"[nhentai]({entry['nh']})")
-		if entry['im'] != 'None': alt_links_md.append(f"[Imgur]({entry['im']})")
+	if entry.get('nh') or entry.get('eh') or entry.get('im'):
+		if entry.get('nh') and 'nhentai' not in url:
+			alt_links_md.append(f"[nhentai]({entry['nh']})")
+		if entry.get('eh') and 'e-hentai' not in url:
+			alt_links_md.append(f"[E-Hentai]({entry['eh']})")
+		if entry.get('im') and 'imgur' not in url:
+			alt_links_md.append(f"[Imgur]({entry['im']})")
 
-	elif site == 'im' and (entry['eh'] != 'None' or entry['nh'] != 'None'):
-		god_list_str += '**Alternate links:**\n'
-		if entry['nh'] != 'None': alt_links_md.append(f"[nhentai]({entry['nh']})")
-		if entry['eh'] != 'None': alt_links_md.append(f"[E-Hentai]({entry['eh']})")
-
-	if 'misc' in entry and 'altLinks' in entry['misc']:
-		if not alt_links_md:
-			god_list_str += '**Alternate links:**\n'
-
+	if entry.get('misc') and entry['misc'].get('altLinks'):
 		for link in entry['misc']['altLinks']:
 			alt_links_md.append(f"[{link['name']}]({link['link']})")
 
 	if alt_links_md:
-		god_list_str += " | ".join(alt_links_md) + "\n\n"
+		god_list_str += "**Alternate links:** " + " | ".join(alt_links_md) + "\n\n"
 
 	return god_list_str
 
 
-def format_site_tags(tags_array):
-	male_tags = []
-	female_tags = []
-	mixed_tags = []
-	other_tags = []
+def format_site_tags(tags_list: list) -> str:
+	sorted_tags = {
+		"male": [],
+		"female": [],
+		"mixed": [],
+		"other": []
+	}
 
-	for t in tags_array:
-		x = re.match("^(female|male|mixed|other):.*$", t)
-		if x is None:
-			continue
-		x = x.group(1)
-		t = re.sub(r'^.*:', '', t)
-		if 'threesome' in t:
-			t = t[:3].upper() + t[3:]
-		elif re.match(r'bbw|bbm|milf', t):
-			t = t.upper()
-		match x:
-			case 'female':
-				female_tags.append(t)
-			case 'male':
-				male_tags.append(t)
-			case 'mixed':
-				mixed_tags.append(t)
-			case 'other':
-				other_tags.append(t)
-			case _:
+	eh_regex = re.compile("^(female|male|mixed|other):.*$")
+	eh_tags = list(filter(eh_regex.match, tags_list))
+
+	# Not E-Hentai tags, so just join them
+	if not eh_tags:
+		str_tags = ', '.join(tags_list)
+		return str_tags
+
+	else:
+		for tag in eh_tags:
+			x = re.match(eh_regex, tag)
+			if x is None:
 				continue
+			tag_namespace = x.group(1)
+			tag = re.sub(r'^.*:', '', tag)
 
-	male_tags = '' if not male_tags else '* Male: ' + ', '.join(male_tags) + "\n\n"
-	female_tags = '' if not female_tags else '* Female: ' + ', '.join(female_tags) + "\n\n"
-	mixed_tags = '' if not mixed_tags else '* Mixed: ' + ', '.join(mixed_tags) + "\n\n"
-	other_tags = '' if not other_tags else '* Other: ' + ', '.join(other_tags)
+			if 'threesome' in tag:
+				tag = tag[:3].upper() + tag[3:]
+			elif re.match(r'bbw|bbm|milf|dilf', tag):
+				tag = tag.upper()
 
-	str_tags = "\n" + male_tags + female_tags + mixed_tags + other_tags
+			match tag_namespace:
+				case 'female' | "male" | "mixed" | "other":
+					sorted_tags[tag_namespace].append(tag)
+				case _:
+					continue
 
-	if len(str_tags) <= 2:
-		tags_array = ', '.join(tags_array)
-		return tags_array
+		str_tags = []
 
-	return str_tags
+		for namespace, tags in sorted_tags.items():
+			if sorted_tags[namespace]:
+				str_tags.append(f'* {namespace.capitalize()}: {", ".join(tags)}')
+
+		str_tags = "\n" + "\n\n".join(str_tags)
+
+		return str_tags
+
+
+async def format_body(url: str, data: tuple | None = None) -> str:
+	god_list = ""
+	parody = ""
+	pages = ""
+	characters = ""
+	tags = ""
+	entry = {}
+	has_entry = False
+
+	if 'e-hentai' in url:
+		token = re.search(r'([a-f0-9]{10})', url).group(1)
+
+		if data:
+			parodies = '' if not data[3] else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
+			characters = '' if not data[4] else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
+			tags = '**Tags:**  \nNone\n\n' if not data[2] else f"**Tags:**  \n{format_site_tags(data[2])}\n\n"
+
+			try:
+				has_entry, entry = await wholesomelist_fetcher.process_nums(token)
+
+				if has_entry:
+					print(entry)
+					god_list = get_god_list_str(entry, url)
+			except Exception:
+				god_list = ""
+
+			body = (
+				f"The source OP provided:  \n> <{url}>\n\n"
+				f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else entry.get("author", "Unknown")}\n\n'
+				f'{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
+				f'{config["suffix"]}')
+
+		else:
+			try:
+				has_entry, entry = await wholesomelist_fetcher.process_nums(token)
+
+				if has_entry:
+					print(entry)
+					pages = f"\n\n {entry['pages']} pages\n\n"
+					parody = '' if not entry.get('parody') else f"**Parodies:**  \n{entry['parody']}\n\n"
+					characters = (
+						'' if not (entry.get('siteTags') and entry['siteTags'].get('characters'))
+						else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n")
+					tags = (
+						'' if not (entry.get('siteTags') and entry['siteTags'].get('tags'))
+						else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}")
+					god_list = get_god_list_str(entry, url)
+			except Exception:
+				god_list = ""
+
+			body = (
+				f"The source OP provided:  \n> <{url}>" + (
+				f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']}"
+				f"{pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
+				f'{config["suffix"]}')
+
+	elif 'nhentai' in url:
+		nums_regex = re.compile(r"https://nhentai\.net/g/([0-9/]+)/")
+		nums_match = nums_regex.match(url)
+		nums = nums_match.group(1)
+
+		if '/' in nums:
+			nums_pages = nums.split('/')
+			cubari_link = f"https://cubari.moe/read/nhentai/{nums_pages[0]}/1/{nums_pages[1]}/"
+		else:
+			cubari_link = f"https://cubari.moe/read/nhentai/{nums}/1/1/"
+
+		if data:
+			parodies = '' if not data[3] else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
+			characters = '' if not data[4] else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
+			tags = '**Tags:**  \nNone\n\n' if not data[2] else f"**Tags:**  \n{', '.join(data[2])}\n\n"
+
+			try:
+				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+
+				if has_entry:
+					print(entry)
+					god_list = get_god_list_str(entry, url)
+			except Exception:
+				god_list = ""
+
+			body = (
+				f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
+				f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else entry.get("author", "Unknown")}\n\n'
+				f'{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
+				f'{config["suffix"]}')
+		else:
+			try:
+				has_entry, entry = await wholesomelist_fetcher.process_nums(nums)
+
+				if has_entry:
+					print(entry)
+					pages = f"\n\n {entry['pages']} pages\n\n"
+					parody = '' if not entry.get('parody') else f"**Parodies:**  \n{entry['parody']}\n\n"
+					characters = (
+						'' if not (entry.get('siteTags') and entry['siteTags'].get('characters'))
+						else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n")
+					tags = (
+						'' if not (entry.get('siteTags') and entry['siteTags'].get('tags'))
+						else f"**Tags:**  \n{format_site_tags(entry['siteTags']['tags'])}")
+					god_list = get_god_list_str(entry, url)
+			except Exception:
+				god_list = ""
+
+			body = (
+				f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe]({cubari_link})" + (
+				f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} "
+				f"{pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
+				"\\-\\-\\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare "
+				"protections currently. For more details, see [this post.]"
+				"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
+				f'{config["suffix"]}')
+
+	else:
+		imgur = re.compile(r"https://imgur\.com/a/(.{5,7})/")
+		imgur_match = imgur.match(url)
+
+		if imgur_match:
+			cubari_link = f"https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/"
+
+			try:
+				has_entry, entry = await wholesomelist_fetcher.process_nums(imgur_match.group(1))
+
+				if has_entry:
+					print(entry)
+					pages = f"\n\n {entry['pages']} pages\n\n"
+					parody = '' if not entry.get('parody') else f"**Parodies:**  \n{entry['parody']}\n\n"
+					characters = (
+						'' if not (entry.get('siteTags') and entry['siteTags'].get('characters'))
+						else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n")
+					tags = (
+						f"**Tags:**  \n" + (format_site_tags(entry['siteTags']['tags'])
+						if entry.get('siteTags') and entry['siteTags'].get('tags')
+						else 'None' if not entry.get('tags') else ", ".join(entry['tags'])) + "\n\n")
+					god_list = get_god_list_str(entry, url)
+
+					body = (
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
+						f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}"
+						f"{pages}{parody}{characters}{tags}{god_list}"
+						f'{config["suffix"]}')
+				else:
+					body = (
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
+						f"{config['suffix']}")
+			except Exception:
+				body = (
+					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
+					f'{config["suffix"]}')
+		else:
+			body = (
+				f"The source OP provided:  \n> <{url}>\n\n"
+				f'{config["suffix"]}')
+
+	return body
+
+
+# Checks the nhentai/E-Hentai data to see if it breaks rule 1/4/5
+def check_data(magazine: str | None, market: bool, data: list) -> tuple:
+	removal = (None, None, None, None)
+
+	if magazine:
+		# It's licensed!
+		print("Licensed magazine detected.")
+
+		removal = (
+			f'The provided source is licensed! It appears in the licensed magazine issue `{magazine}`.\n\n'
+			f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) '
+			'if you think this is a mistake. Otherwise, please read the '
+			'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)',
+			f'Licensed, appears in magazine {magazine}',
+			f'Rule 4 - Licensed (appears in {magazine})',
+			True)
+
+	if market:
+		# It literally has 2d-market.com in the title.
+		print("2d-market in title.")
+
+		removal = (
+			'The provided source is licensed! It has `2d-market.com` in the title.\n\n'
+			f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) '
+			'if you think this is a mistake. Otherwise, please read the '
+			'[guide on how to spot licensed doujins.](https://www.reddit.com/r/wholesomehentai/wiki/licensedguide)',
+			'Licensed, has 2d-market.com in title',
+			'Rule 4 - Licensed (2d-market.com in title)',
+			True)
+
+	if 'english' not in data[6]:
+		print("The language of this doujin does not seem to be English.")
+
+		removal = (
+			'The provided source does not seem to be in English.\n\n'
+			'This subreddit only allows English submissions, as most people cannot understand other languages.\n\n'
+			'If you believe this was a mistake, you can [contact the mods]'
+			f'(https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}).',
+			'Not English',
+			'Rule 2 - Non-English Source',
+			False)
+
+	detected_artists = []
+	for artist in licensed_artists:
+		if artist in data[1].lower():
+			detected_artists.append(artist.title())
+
+	if detected_artists:
+		# Oh no, there's an illegal artist!
+		print("Illegal artists detected: " + ', '.join(detected_artists))
+
+		removal = (
+			f'The provided source has the following disallowed artists:\n\n```\n{", ".join(detected_artists)}\n```\n\n'
+			'These artists are banned because their works are always or almost always licensed. '
+			f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) '
+			'if you think this is an unlicensed exception. Otherwise, make sure you understand Rule 4.',
+			f'Has the licensed artist(s): {", ".join(detected_artists)}',
+			f'Rule 4 - Has the artists {", ".join(detected_artists)}',
+			True)
+
+	detected_tags = []
+	for tag in data[2]:
+		if tag in unwholesome_tags:
+			detected_tags.append(tag.title())
+
+	if detected_tags:
+		# Oh no, there's an illegal tag!
+		print("Illegal tags detected: " + ', '.join(detected_tags))
+
+		removal = (
+			f'The provided source has the following disallowed tags:\n\n```\n{", ".join(detected_tags)}\n```\n\n'
+			'These tags are banned because they are either almost never wholesome or almost always licensed. '
+			f'Please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}) '
+			'if you think this is either a mistagged doujin or a wholesome/unlicensed exception. '
+			'Otherwise, make sure you understand Rules 1, 4, and 5.',
+			f'Has the illegal tag(s): {", ".join(detected_tags)}',
+			f'Rule 1/4/5 - Has the tags {", ".join(detected_tags)}',
+			True)
+
+	detected_characters = []
+	for character in data[4]:
+		if character in underage_characters:
+			cur_list = underage_characters[character]
+			parodies = data[3]
+
+			for parody in parodies:
+				for item in cur_list:
+					series_list = item['series']
+					for series in series_list:
+						if series.lower().strip() == parody:
+							detected_characters.append(
+								[character.title(), series, item['age'], item['note']])
+
+	if detected_characters:
+		# Oh no, there's an illegal character!
+		chars_list = []
+		for character in detected_characters:
+			chars_list.append(character[0])
+
+		chars_str = ', '.join(chars_list)
+		print("Illegal characters detected: " + chars_str)
+
+		removal = (
+			f'The provided source has the following disallowed characters:\n\n{generate_character_string(detected_characters)}\n'
+			'These characters are banned because they are underage.\n\n'
+			'If you believe one of these characters is actually 18+ (because either the Note exception applies, '
+			f'or the mod team made a mistake), please [contact the mods](https://www.reddit.com/message/compose?to=/r/{config["subreddit"]}). '
+			'Otherwise, make sure you understand Rule 1, and have checked our '
+			'[spreadsheet of underage characters.](https://docs.google.com/spreadsheets/d/1rnTIzml80kQJPlNCQzluuKHK8Dzejk2Xg7J4YYN4FaM/)',
+			f'Has the underage char(s): {chars_str}',
+			f'Rule 1 - Has the chars {chars_str}',
+			True)
+
+	return removal
