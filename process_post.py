@@ -4,16 +4,17 @@ import re
 from praw.models import Submission
 
 import sqlite3
-from sqlite3 import Error
+from sqlite3 import Error, Connection
 from praw import Reddit
 
-def create_connection(path):
+def create_connection(path: str) -> Connection:
 	connection = None
 	try:
 		connection = sqlite3.connect(path)
 		print("Connected to the posts database in process_post")
 	except Error as e:
 		print(f"The error '{e}' occurred")
+		raise Exception("Failed to connect to posts database")
 
 	return connection
 

@@ -7,7 +7,7 @@ import zlib
 import base64
 import datetime
 
-from sqlite3 import Error
+from sqlite3 import Error, Connection
 from praw.models import Comment
 from praw import Reddit
 
@@ -25,13 +25,14 @@ print("Loading underage character database...")
 underage_characters = json.load(open('underage.json'))
 
 
-def create_connection(path):
+def create_connection(path: str) -> Connection:
 	connection = None
 	try:
 		connection = sqlite3.connect(path)
 		print("Connected to the posts database in process_comment")
 	except Error as e:
 		print(f"The error '{e}' occurred")
+		raise Exception("Failed to connect to posts database")
 
 	return connection
 
