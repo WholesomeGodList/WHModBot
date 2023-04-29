@@ -59,13 +59,20 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				f'\n\n{config["suffix"]}')
 			return
 
-		if 'e-hentai' in url:
+		elif 'nhentai.net' in url or 'e-hentai' in url:
 			fetch_error = False
+			site = 'nhentai' if 'nhentai.net' in url else 'E-Hentai'
+
+			if 'nhentai.net/g/' not in url and 'e-hentai.org/g/' not in url:
+				comment.reply(
+					f"That's not a valid {site} page!"
+					f'\n\n{config["suffix"]}')
+				return
 
 			for attempt in range(3):
 				try:
 					magazine, market, data = await hentai_fetcher.check_link(url)
-					if data == "E-hentai error":
+					if data == "E-hentai error" or data == "Cloudflare IUAM":
 						fetch_error = True
 					break
 				except Exception:
@@ -73,36 +80,13 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						print("Failed to connect")
 						print(url)
 						comment.reply(
-							"Either that isn't a valid E-hentai page, or my connection to E-hentai has a problem currently. "
+							f"Either that isn't a valid {site} page, or my connection to {site} has a problem currently. "
 							f'Try again? \n\n{config["suffix"]}')
 						return
 					else:
 						await asyncio.sleep(1)
 
 			body = await format_body(url, None if fetch_error else data)
-			comment.parent().edit(body)
-
-		elif 'nhentai.net' in url:
-			iuam = False
-
-			for attempt in range(3):
-				try:
-					magazine, market, data = await hentai_fetcher.check_link(url)
-					if data == "Cloudflare IUAM":
-						iuam = True
-					break
-				except Exception:
-					if attempt == 2:
-						print("Invalid page.")
-						print(url)
-						comment.reply(
-							"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. "
-							f'Try again? \n\n{config["suffix"]}')
-						return
-					else:
-						await asyncio.sleep(1)
-
-			body = await format_body(url, None if iuam else data)
 			comment.parent().edit(body)
 
 		else:
@@ -263,13 +247,20 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 						return
 
-			if 'e-hentai' in url:
+			if 'e-hentai' in url or 'nhentai.net' in url:
 				fetch_error = False
+				site = 'nhentai' if 'nhentai.net' in url else 'E-Hentai'
+
+				if 'nhentai.net/g/' not in url and 'e-hentai.org/g/' not in url:
+					comment.reply(
+						f"That's not a valid {site} page!"
+						f'\n\n{config["suffix"]}')
+					return
 
 				for attempt in range(3):
 					try:
 						magazine, market, data = await hentai_fetcher.check_link(url)
-						if data == "E-hentai error":
+						if data == "E-hentai error" or data == "Cloudflare IUAM":
 							fetch_error = True
 						break
 					except Exception:
@@ -277,16 +268,13 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print("Failed to connect")
 							print(url)
 							comment.reply(
-								"Either that isn't a valid E-hentai page, or my connection to E-hentai has a problem currently. "
+								f"Either that isn't a valid {site} page, or my connection to {site} has a problem currently. "
 								f'Try again? \n\n{config["suffix"]}')
 							return
 						else:
 							await asyncio.sleep(1)
 
-				if fetch_error:
-					body = await format_body(url)
-					comment.parent().edit(body)
-				else:
+				if not fetch_error:
 					# Checks for the remaining rules related to the data
 					message, mod_note, note_message, strike = check_data(magazine, market, data)
 
@@ -294,48 +282,8 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						remove_post(reddit, comment, message, mod_note, note_message, strike)
 						return
 
-					body = await format_body(url, data)
-					comment.parent().edit(body)
-
-			elif 'nhentai.net' in url:
-				if 'nhentai.net/g/' not in url:
-					comment.reply(
-						"That's not a valid nhentai page!"
-						f'\n\n{config["suffix"]}')
-					return
-
-				iuam = False
-
-				for attempt in range(3):
-					try:
-						magazine, market, data = await hentai_fetcher.check_link(url)
-						if data == "Cloudflare IUAM":
-							iuam = True
-						break
-					except Exception:
-						if attempt == 2:
-							print("Invalid page.")
-							print(url)
-							comment.reply(
-								"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. "
-								f'Try again? \n\n{config["suffix"]}')
-							return
-						else:
-							await asyncio.sleep(1)
-
-				if iuam:
-					body = await format_body(url)
-					comment.parent().edit(body)
-				else:
-					# Checks for the remaining rules related to the data
-					message, mod_note, note_message, strike = check_data(magazine, market, data)
-
-					if message:
-						remove_post(reddit, comment, message, mod_note, note_message, strike)
-						return
-
-					body = await format_body(url, data)
-					comment.parent().edit(body)
+				body = await format_body(url, None if fetch_error else data)
+				comment.parent().edit(body)
 
 			else:
 				body = await format_body(url)
