@@ -1,4 +1,4 @@
-from praw import reddit
+from praw import Reddit
 from praw.models import Submission
 import sqlite3
 from sqlite3 import Error, Connection
@@ -22,7 +22,7 @@ conn = create_connection('posts.db')
 c = conn.cursor()
 
 
-def process_removal(removal_action, reddit: reddit):
+def process_removal(removal_action, reddit: Reddit):
 	c.execute('SELECT * FROM pendingposts WHERE submission_id=?', (Submission.id_from_url('https://reddit.com' + removal_action.target_permalink),))
 
 	# If post is pending now, don't bother

@@ -8,7 +8,7 @@ import asyncio
 from functional import seq
 
 
-def date_num_compare(magazine, issue):
+def date_num_compare(magazine: str, issue: str) -> bool:
 	global licensed_magazines
 
 	if " " in issue:
@@ -62,7 +62,7 @@ def date_num_compare(magazine, issue):
 		return startnum <= issuenum <= endnum
 
 
-def always_licensed(magazine, issue):
+def always_licensed():
 	return True
 
 
@@ -83,7 +83,7 @@ licensed_magazines = {
 
 
 # merge fetching everything lol
-async def process_site(link: str) -> tuple[str, list[str], str, list[str], list[str], int, list[str]]:
+async def process_site(link: str) -> tuple[str, list[str] | None, str | None, list[str] | None, list[str] | None, int | None, list[str] | None]:
 	async with aiohttp.ClientSession() as session:
 		title = ""
 		tags = list()

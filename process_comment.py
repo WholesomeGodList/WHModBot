@@ -350,11 +350,11 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			approve_post(reddit, comment, url)
 
 
-def markdown_escape(string: str):
+def markdown_escape(string: str) -> str:
 	return string.replace("~", "\\~").replace("*", "\\*").replace("_", "\\_")
 
 
-def generate_character_string(characters):
+def generate_character_string(characters: list[list[str]]) -> str:
 	final_str = ''
 
 	for character in characters:
