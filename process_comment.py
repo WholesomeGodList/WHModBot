@@ -247,7 +247,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 						return
 
-			if 'e-hentai' in url or 'nhentai.net' in url:
+			if 'nhentai.net' in url or 'e-hentai' in url:
 				fetch_error = False
 				site = 'nhentai' if 'nhentai.net' in url else 'E-Hentai'
 
