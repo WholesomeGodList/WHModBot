@@ -62,7 +62,7 @@ def date_num_compare(magazine: str, issue: str) -> bool:
 		return startnum <= issuenum <= endnum
 
 
-def always_licensed():
+def always_licensed(magazine, issue):
 	return True
 
 
