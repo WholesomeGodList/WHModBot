@@ -466,7 +466,7 @@ def get_god_list_str(entry: dict, url: str) -> str:
 
 	god_list_str = (
 		f"\\-\\-\\-\n\n[Wholesome Hentai God List - Entry #{entry['id']}]({list_link})  \n\n"
-		f'{note_str}{tags_str if "imgur" not in url and "imgchest" not in url else im_tags_str}\n\n')
+		f'{note_str}{tags_str if "imgchest" not in url else im_tags_str}\n\n')
 
 	if entry.get('hm') and 'hmarket' not in url:
 		alt_links_md.append(f"[Buy on Hmarket]({entry['hm']})")
@@ -474,9 +474,8 @@ def get_god_list_str(entry: dict, url: str) -> str:
 		alt_links_md.append(f"[nhentai]({entry['nh']})")
 	if entry.get('eh') and 'e-hentai' not in url:
 		alt_links_md.append(f"[E-Hentai]({entry['eh']})")
-	if entry.get('im') and "imgur" not in url and 'imgchest' not in url:
-		site = re.search(r"(imgur|imgchest)", url).group(1).capitalize()
-		alt_links_md.append(f"[{site}]({entry['im']})")
+	if entry.get('im') and 'imgchest' not in url:
+		alt_links_md.append(f"[Imgchest]({entry['im']})")
 
 	if entry.get('misc') and entry['misc'].get('altLinks'):
 		for link in entry['misc']['altLinks']:
@@ -645,47 +644,6 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				"\\-\\-\\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare "
 				"protections currently. For more details, see [this post.]"
 				"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
-				f'{config["suffix"]}')
-
-	elif 'imgur' in url:
-		imgur = re.compile(r"https://imgur\.com/a/(.{5,7})/")
-		imgur_match = imgur.match(url)
-
-		if imgur_match:
-			cubari_link = f"https://cubari.moe/read/imgur/{imgur_match.group(1)}/1/1/"
-
-			try:
-				has_entry, entry = await wholesomelist_fetcher.process_nums(imgur_match.group(1))
-
-				if has_entry:
-					print(entry)
-					pages = f"\n\n {entry['pages']} pages\n\n"
-					parody = '' if not entry.get('parody') else f"**Parodies:**  \n{entry['parody']}\n\n"
-					characters = (
-						'' if not (entry.get('siteTags') and entry['siteTags'].get('characters'))
-						else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n")
-					tags = (
-						f"**Tags:**  \n" + (format_site_tags(entry['siteTags']['tags'])
-						if entry.get('siteTags') and entry['siteTags'].get('tags')
-						else 'None' if not entry.get('tags') else ", ".join(entry['tags'])) + "\n\n")
-					god_list = get_god_list_str(entry, url)
-
-					body = (
-						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
-						f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}"
-						f"{pages}{parody}{characters}{tags}{god_list}"
-						f'{config["suffix"]}')
-				else:
-					body = (
-						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
-						f"{config['suffix']}")
-			except Exception:
-				body = (
-					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
-					f'{config["suffix"]}')
-		else:
-			body = (
-				f"The source OP provided:  \n> <{url}>\n\n"
 				f'{config["suffix"]}')
 
 	else:
