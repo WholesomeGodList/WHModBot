@@ -647,8 +647,7 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				f'{config["suffix"]}')
 
 	else:
-		imgchest = re.compile(r"https://www\.imgchest\.com/p/([0-9a-zA-Z]{11})/")
-		imgchest_match = imgchest.match(url)
+		imgchest_match = re.search(r'([0-9a-zA-Z]{11})', url)
 
 		if imgchest_match:
 			try:
