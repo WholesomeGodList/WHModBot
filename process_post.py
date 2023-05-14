@@ -4,16 +4,17 @@ import re
 from praw.models import Submission
 
 import sqlite3
-from sqlite3 import Error
+from sqlite3 import Error, Connection
 from praw import Reddit
 
-def create_connection(path):
+def create_connection(path: str) -> Connection:
 	connection = None
 	try:
 		connection = sqlite3.connect(path)
 		print("Connected to the posts database in process_post")
 	except Error as e:
 		print(f"The error '{e}' occurred")
+		raise Exception("Failed to connect to posts database")
 
 	return connection
 
@@ -41,7 +42,7 @@ async def process_post(submission: Submission):
 		return
 
 	# Make sure they have an author in the post.
-	author_matcher = re.compile(r'.*\[.*\].*')
+	author_matcher = re.compile(r'.*\[.*].*')
 	if not author_matcher.match(submission.title):
 		comment = submission.reply("**Post titles must have the author in square brackets.**\n\n To avoid getting your post removed, make sure the author is in the "
 		                 "title (i.e. [Author] Title).\n\n" + config['suffix'])
@@ -71,7 +72,7 @@ async def ask_for_sauce(submission: Submission):
 	comment = submission.reply('**Reply to this comment** with the source. This can be either just the digits,'
 	                           ' like 258133, or a URL, such as  \n\n```\nhttps://nhentai.net/g/(numbers).\n```\n\n'
 	                           'You may also reply with a link to most non-nhentai URLs. We prefer you use nhentai in'
-	                           ' most cases, but in certain cases, imgur is acceptable.'
+	                           ' most cases, but in certain cases, Imgchest is acceptable.'
 	                           '\n\n' + config['suffix'])
 	if comment is None:
 		print('Something wacky happened')

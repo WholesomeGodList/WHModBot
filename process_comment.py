@@ -7,7 +7,7 @@ import zlib
 import base64
 import datetime
 
-from sqlite3 import Error
+from sqlite3 import Error, Connection
 from praw.models import Comment
 from praw import Reddit
 
@@ -25,13 +25,14 @@ print("Loading underage character database...")
 underage_characters = json.load(open('underage.json'))
 
 
-def create_connection(path):
+def create_connection(path: str) -> Connection:
 	connection = None
 	try:
 		connection = sqlite3.connect(path)
 		print("Connected to the posts database in process_comment")
 	except Error as e:
 		print(f"The error '{e}' occurred")
+		raise Exception("Failed to connect to posts database")
 
 	return connection
 
@@ -58,13 +59,20 @@ async def process_comment(comment: Comment, reddit: Reddit):
 				f'\n\n{config["suffix"]}')
 			return
 
-		if 'e-hentai' in url:
+		elif 'nhentai.net' in url or 'e-hentai' in url:
 			fetch_error = False
+			site = 'nhentai' if 'nhentai.net' in url else 'E-Hentai'
+
+			if 'nhentai.net/g/' not in url and 'e-hentai.org/g/' not in url:
+				comment.reply(
+					f"That's not a valid {site} page!"
+					f'\n\n{config["suffix"]}')
+				return
 
 			for attempt in range(3):
 				try:
 					magazine, market, data = await hentai_fetcher.check_link(url)
-					if data == "E-hentai error":
+					if data == "E-hentai error" or data == "Cloudflare IUAM":
 						fetch_error = True
 					break
 				except Exception:
@@ -72,36 +80,13 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						print("Failed to connect")
 						print(url)
 						comment.reply(
-							"Either that isn't a valid E-hentai page, or my connection to E-hentai has a problem currently. "
+							f"Either that isn't a valid {site} page, or my connection to {site} has a problem currently. "
 							f'Try again? \n\n{config["suffix"]}')
 						return
 					else:
 						await asyncio.sleep(1)
 
 			body = await format_body(url, None if fetch_error else data)
-			comment.parent().edit(body)
-
-		elif 'nhentai.net' in url:
-			iuam = False
-
-			for attempt in range(3):
-				try:
-					magazine, market, data = await hentai_fetcher.check_link(url)
-					if data == "Cloudflare IUAM":
-						iuam = True
-					break
-				except Exception:
-					if attempt == 2:
-						print("Invalid page.")
-						print(url)
-						comment.reply(
-							"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. "
-							f'Try again? \n\n{config["suffix"]}')
-						return
-					else:
-						await asyncio.sleep(1)
-
-			body = await format_body(url, None if iuam else data)
 			comment.parent().edit(body)
 
 		else:
@@ -262,13 +247,20 @@ async def process_comment(comment: Comment, reddit: Reddit):
 
 						return
 
-			if 'e-hentai' in url:
+			if 'nhentai.net' in url or 'e-hentai' in url:
 				fetch_error = False
+				site = 'nhentai' if 'nhentai.net' in url else 'E-Hentai'
+
+				if 'nhentai.net/g/' not in url and 'e-hentai.org/g/' not in url:
+					comment.reply(
+						f"That's not a valid {site} page!"
+						f'\n\n{config["suffix"]}')
+					return
 
 				for attempt in range(3):
 					try:
 						magazine, market, data = await hentai_fetcher.check_link(url)
-						if data == "E-hentai error":
+						if data == "E-hentai error" or data == "Cloudflare IUAM":
 							fetch_error = True
 						break
 					except Exception:
@@ -276,16 +268,13 @@ async def process_comment(comment: Comment, reddit: Reddit):
 							print("Failed to connect")
 							print(url)
 							comment.reply(
-								"Either that isn't a valid E-hentai page, or my connection to E-hentai has a problem currently. "
+								f"Either that isn't a valid {site} page, or my connection to {site} has a problem currently. "
 								f'Try again? \n\n{config["suffix"]}')
 							return
 						else:
 							await asyncio.sleep(1)
 
-				if fetch_error:
-					body = await format_body(url)
-					comment.parent().edit(body)
-				else:
+				if not fetch_error:
 					# Checks for the remaining rules related to the data
 					message, mod_note, note_message, strike = check_data(magazine, market, data)
 
@@ -293,54 +282,14 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						remove_post(reddit, comment, message, mod_note, note_message, strike)
 						return
 
-					body = await format_body(url, data)
-					comment.parent().edit(body)
-
-			elif 'nhentai.net' in url:
-				if 'nhentai.net/g/' not in url:
-					comment.reply(
-						"That's not a valid nhentai page!"
-						f'\n\n{config["suffix"]}')
-					return
-
-				iuam = False
-
-				for attempt in range(3):
-					try:
-						magazine, market, data = await hentai_fetcher.check_link(url)
-						if data == "Cloudflare IUAM":
-							iuam = True
-						break
-					except Exception:
-						if attempt == 2:
-							print("Invalid page.")
-							print(url)
-							comment.reply(
-								"Either that isn't a valid nhentai page, or my connection to nhentai has a problem currently. "
-								f'Try again? \n\n{config["suffix"]}')
-							return
-						else:
-							await asyncio.sleep(1)
-
-				if iuam:
-					body = await format_body(url)
-					comment.parent().edit(body)
-				else:
-					# Checks for the remaining rules related to the data
-					message, mod_note, note_message, strike = check_data(magazine, market, data)
-
-					if message:
-						remove_post(reddit, comment, message, mod_note, note_message, strike)
-						return
-
-					body = await format_body(url, data)
-					comment.parent().edit(body)
+				body = await format_body(url, None if fetch_error else data)
+				comment.parent().edit(body)
 
 			else:
 				body = await format_body(url)
 				comment.parent().edit(body)
 
-				valid_sites = ["cubari.moe", "e-hentai.org", "hentai2read.com", "imgur.com", "nhentai.net", "tsumino.com"]
+				valid_sites = ["cubari.moe", "e-hentai.org", "hentai2read.com", "imgchest", "imgur", "nhentai.net", "tsumino.com"]
 				if not any(valid_site in url for valid_site in valid_sites):
 					comment.report("Unknown site. Potential spam post")
 
@@ -349,11 +298,11 @@ async def process_comment(comment: Comment, reddit: Reddit):
 			approve_post(reddit, comment, url)
 
 
-def markdown_escape(string: str):
+def markdown_escape(string: str) -> str:
 	return string.replace("~", "\\~").replace("*", "\\*").replace("_", "\\_")
 
 
-def generate_character_string(characters):
+def generate_character_string(characters: list[list[str]]) -> str:
 	final_str = ''
 
 	for character in characters:
@@ -497,6 +446,9 @@ def extract_url(body: str) -> str | None:
 		# Find the first URL, and enforce HTTPS
 		url = url_verify.group(1).replace('http://', 'https://')
 
+	if "imgur.io" in url:
+		url = url.replace(".io", ".com")
+
 	if not url[-1] == "/":
 		url = url + "/"
 
@@ -514,15 +466,17 @@ def get_god_list_str(entry: dict, url: str) -> str:
 
 	god_list_str = (
 		f"\\-\\-\\-\n\n[Wholesome Hentai God List - Entry #{entry['id']}]({list_link})  \n\n"
-		f'{note_str}{tags_str if "imgur" not in url else im_tags_str}\n\n')
+		f'{note_str}{tags_str if "imgur" not in url and "imgchest" not in url else im_tags_str}\n\n')
 
-	if entry.get('nh') or entry.get('eh') or entry.get('im'):
-		if entry.get('nh') and 'nhentai' not in url:
-			alt_links_md.append(f"[nhentai]({entry['nh']})")
-		if entry.get('eh') and 'e-hentai' not in url:
-			alt_links_md.append(f"[E-Hentai]({entry['eh']})")
-		if entry.get('im') and 'imgur' not in url:
-			alt_links_md.append(f"[Imgur]({entry['im']})")
+	if entry.get('hm') and 'hmarket' not in url:
+		alt_links_md.append(f"[Buy on Hmarket]({entry['hm']})")
+	if entry.get('nh') and 'nhentai' not in url:
+		alt_links_md.append(f"[nhentai]({entry['nh']})")
+	if entry.get('eh') and 'e-hentai' not in url:
+		alt_links_md.append(f"[E-Hentai]({entry['eh']})")
+	if entry.get('im') and "imgur" not in url and 'imgchest' not in url:
+		site = re.search(r"(imgur|imgchest)", url).group(1).capitalize()
+		alt_links_md.append(f"[{site}]({entry['im']})")
 
 	if entry.get('misc') and entry['misc'].get('altLinks'):
 		for link in entry['misc']['altLinks']:
@@ -693,7 +647,7 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				"(https://www.reddit.com/r/wholesomehentai/comments/t7gf2q/please_read_before_posting_an_nhentai_link/)\n\n"
 				f'{config["suffix"]}')
 
-	else:
+	elif 'imgur' in url:
 		imgur = re.compile(r"https://imgur\.com/a/(.{5,7})/")
 		imgur_match = imgur.match(url)
 
@@ -728,6 +682,45 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 			except Exception:
 				body = (
 					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
+					f'{config["suffix"]}')
+		else:
+			body = (
+				f"The source OP provided:  \n> <{url}>\n\n"
+				f'{config["suffix"]}')
+
+	else:
+		imgchest = re.compile(r"https://www\.imgchest\.com/p/([0-9a-zA-Z]{11})/")
+		imgchest_match = imgchest.match(url)
+
+		if imgchest_match:
+			try:
+				has_entry, entry = await wholesomelist_fetcher.process_nums(imgchest_match.group(1))
+
+				if has_entry:
+					print(entry)
+					pages = f"\n\n {entry['pages']} pages\n\n"
+					parody = '' if not entry.get('parody') else f"**Parodies:**  \n{entry['parody']}\n\n"
+					characters = (
+						'' if not (entry.get('siteTags') and entry['siteTags'].get('characters'))
+						else f"**Characters:**  \n{', '.join(i.capitalize() for i in entry['siteTags']['characters'])}\n\n")
+					tags = (
+						f"**Tags:**  \n" + (format_site_tags(entry['siteTags']['tags'])
+						if entry.get('siteTags') and entry['siteTags'].get('tags')
+						else 'None' if not entry.get('tags') else ", ".join(entry['tags'])) + "\n\n")
+					god_list = get_god_list_str(entry, url)
+
+					body = (
+						f"The source OP provided:  \n> <{url}>\n\n"
+						f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}"
+						f"{pages}{parody}{characters}{tags}{god_list}"
+						f'{config["suffix"]}')
+				else:
+					body = (
+						f"The source OP provided:  \n> <{url}>\n\n"
+						f"{config['suffix']}")
+			except Exception:
+				body = (
+					f"The source OP provided:  \n> <{url}>\n\n"
 					f'{config["suffix"]}')
 		else:
 			body = (

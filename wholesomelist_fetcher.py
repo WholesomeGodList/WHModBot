@@ -3,7 +3,7 @@ import json
 import asyncio
 
 
-async def process_nums(nums):
+async def process_nums(nums: int|str) -> tuple[bool, dict]:
 	link = "https://wholesomelist.com/api/check?code=" + str(nums)
 	async with aiohttp.ClientSession() as session:
 		resp = await session.get(link)
