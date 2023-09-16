@@ -18,8 +18,7 @@ with open('list.csv', encoding='utf8', newline='') as underage_list_csv:
 			name = character.strip().lower()
 			series = row['Series'].split("/")
 
-			for i in range(0, len(series)):
-				series[i] = series[i].strip()
+			series = [s.strip() for s in series]
 
 			if name in converted_list:
 				converted_list[name].append(
