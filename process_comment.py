@@ -44,11 +44,11 @@ config = json.load(open('config.json'))
 
 async def process_comment(comment: Comment, reddit: Reddit):
 	# Mod override - if the user is a moderator, has "override" in his comment, and
-	if not comment.is_root and comment.author.name in comment.subreddit.moderator() and "override" in comment.body:
+	if not comment.is_root and comment.author.name in comment.subreddit.moderator() and comment.parent().author.name == config['username'] and re.match(r"(?i)^override", comment.body):
 		print("Moderator override activated.")
 
 		# get rid of any override leftovers
-		body = comment.body.replace('override', '').strip()
+		body = re.sub(r"(?i)^override\s*", "", comment.body)
 
 		url = extract_url(body)
 
