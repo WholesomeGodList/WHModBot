@@ -749,6 +749,10 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			f'Rule 4 - Has the artists {", ".join(detected_artists)}',
 			True)
 
+	# If we are dealing with E-Hentai tags, remove the namespaces
+	if data[2] and ":" in data[2][0]:
+		data[2] = set([tag.split(":")[1] for tag in data[2]])
+
 	detected_tags = []
 	for tag in data[2]:
 		if tag in unwholesome_tags:
