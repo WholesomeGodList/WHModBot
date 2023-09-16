@@ -74,6 +74,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					magazine, market, data = await hentai_fetcher.check_link(url)
 					if data == "E-hentai error" or data == "Cloudflare IUAM":
 						fetch_error = True
+						data = None
 					break
 				except Exception:
 					if attempt == 2:
@@ -86,7 +87,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					else:
 						await asyncio.sleep(1)
 
-			body = await format_body(url, None if fetch_error else data)
+			body = await format_body(url, data)
 			comment.parent().edit(body)
 
 		else:
@@ -262,6 +263,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						magazine, market, data = await hentai_fetcher.check_link(url)
 						if data == "E-hentai error" or data == "Cloudflare IUAM":
 							fetch_error = True
+							data = None
 						break
 					except Exception:
 						if attempt == 2:
@@ -282,7 +284,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						remove_post(reddit, comment, message, mod_note, note_message, strike)
 						return
 
-				body = await format_body(url, None if fetch_error else data)
+				body = await format_body(url, data)
 				comment.parent().edit(body)
 
 			else:
