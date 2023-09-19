@@ -652,6 +652,8 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 		imgchest_match = re.search(r'([0-9a-zA-Z]{11})', url)
 
 		if imgchest_match:
+			cubari_link = f'https://cubari.moe/read/imgchest/{imgchest_match.group(1)}/1/1/'
+
 			try:
 				has_entry, entry = await wholesomelist_fetcher.process_nums(imgchest_match.group(1))
 
@@ -669,17 +671,17 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 					god_list = get_god_list_str(entry, url)
 
 					body = (
-						f"The source OP provided:  \n> <{url}>\n\n"
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 						f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}"
 						f"{pages}{parody}{characters}{tags}{god_list}"
 						f'{config["suffix"]}')
 				else:
 					body = (
-						f"The source OP provided:  \n> <{url}>\n\n"
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 						f"{config['suffix']}")
 			except Exception:
 				body = (
-					f"The source OP provided:  \n> <{url}>\n\n"
+					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 					f'{config["suffix"]}')
 		else:
 			body = (
