@@ -43,12 +43,12 @@ config = json.load(open('config.json'))
 
 
 async def process_comment(comment: Comment, reddit: Reddit):
-	# Mod override - if the user is a moderator, has "override" in his comment, and
-	if not comment.is_root and comment.author.name in comment.subreddit.moderator() and "override" in comment.body:
+	# Mod override - if the user is a moderator, the parent comment is from the bot, and starts with "override"
+	if not comment.is_root and comment.parent().is_root and comment.author.name in comment.subreddit.moderator() and comment.parent().author.name == config['username'] and re.match(r"(?i)^override", comment.body):
 		print("Moderator override activated.")
 
 		# get rid of any override leftovers
-		body = comment.body.replace('override', '').strip()
+		body = re.sub(r"(?i)^override\s*", "", comment.body)
 
 		url = extract_url(body)
 
@@ -74,6 +74,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					magazine, market, data = await hentai_fetcher.check_link(url)
 					if data == "E-hentai error" or data == "Cloudflare IUAM":
 						fetch_error = True
+						data = None
 					break
 				except Exception:
 					if attempt == 2:
@@ -86,7 +87,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 					else:
 						await asyncio.sleep(1)
 
-			body = await format_body(url, None if fetch_error else data)
+			body = await format_body(url, data)
 			comment.parent().edit(body)
 
 		else:
@@ -262,6 +263,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						magazine, market, data = await hentai_fetcher.check_link(url)
 						if data == "E-hentai error" or data == "Cloudflare IUAM":
 							fetch_error = True
+							data = None
 						break
 					except Exception:
 						if attempt == 2:
@@ -282,7 +284,7 @@ async def process_comment(comment: Comment, reddit: Reddit):
 						remove_post(reddit, comment, message, mod_note, note_message, strike)
 						return
 
-				body = await format_body(url, None if fetch_error else data)
+				body = await format_body(url, data)
 				comment.parent().edit(body)
 
 			else:
@@ -650,6 +652,8 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 		imgchest_match = re.search(r'([0-9a-zA-Z]{11})', url)
 
 		if imgchest_match:
+			cubari_link = f'https://cubari.moe/read/imgchest/{imgchest_match.group(1)}/1/1/'
+
 			try:
 				has_entry, entry = await wholesomelist_fetcher.process_nums(imgchest_match.group(1))
 
@@ -667,17 +671,17 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 					god_list = get_god_list_str(entry, url)
 
 					body = (
-						f"The source OP provided:  \n> <{url}>\n\n"
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 						f"**{markdown_escape(entry['title'])}**  \nby {entry['author']}"
 						f"{pages}{parody}{characters}{tags}{god_list}"
 						f'{config["suffix"]}')
 				else:
 					body = (
-						f"The source OP provided:  \n> <{url}>\n\n"
+						f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 						f"{config['suffix']}")
 			except Exception:
 				body = (
-					f"The source OP provided:  \n> <{url}>\n\n"
+					f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 					f'{config["suffix"]}')
 		else:
 			body = (
@@ -746,6 +750,10 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			f'Has the licensed artist(s): {", ".join(detected_artists)}',
 			f'Rule 4 - Has the artists {", ".join(detected_artists)}',
 			True)
+
+	# If we are dealing with E-Hentai tags, remove the namespaces
+	if data[2] and ":" in data[2][0]:
+		data[2] = set([tag.split(":")[1] for tag in data[2]])
 
 	detected_tags = []
 	for tag in data[2]:
