@@ -592,7 +592,7 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				f'{config["suffix"]}')
 
 	elif 'nhentai' in url:
-		nums_regex = re.compile(r"https://nhentai\.net/g/([0-9/]+)/")
+		nums_regex = re.compile(r"https://(?:www\.)?nhentai\.net/g/([0-9/]+)/")
 		nums_match = nums_regex.match(url)
 		nums = nums_match.group(1)
 
@@ -649,7 +649,8 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				f'{config["suffix"]}')
 
 	else:
-		imgchest_match = re.search(r'([0-9a-zA-Z]{11})', url)
+		imgchest_regex = re.compile(r'https?://(?:www\.)?imgchest\.com\/p\/([0-9a-zA-Z]{11})')
+		imgchest_match = imgchest_regex.match(url)
 
 		if imgchest_match:
 			cubari_link = f'https://cubari.moe/read/imgchest/{imgchest_match.group(1)}/1/1/'
