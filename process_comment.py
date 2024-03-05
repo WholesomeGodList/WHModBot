@@ -596,6 +596,12 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 		nums_match = nums_regex.match(url)
 		nums = nums_match.group(1)
 
+		if '/' in nums:
+			nums_pages = nums.split('/')
+			cubari_link = f"https://cubari.moe/read/nhentai/{nums_pages[0]}/1/{nums_pages[1]}/"
+		else:
+			cubari_link = f"https://cubari.moe/read/nhentai/{nums}/1/1/"
+
 		if data:
 			parodies = '' if not data[3] else f"**Parodies:**  \n{(', '.join(data[3])).title()}\n\n"
 			characters = '' if not data[4] else f"**Characters:**  \n{', '.join(i.capitalize() for i in data[4])}\n\n"
@@ -611,7 +617,7 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				god_list = ""
 
 			body = (
-				f"The source OP provided:  \n> <{url}>\n\n"
+				f"The source OP provided:  \n> <{url}>\n\nAlt link: [cubari.moe]({cubari_link})\n\n"
 				f'**{markdown_escape(data[0])}**  \nby {data[1] if data[1] else entry.get("author", "Unknown")}\n\n'
 				f'{data[5]} pages\n\n{parodies}{characters}{tags}{god_list}'
 				f'{config["suffix"]}')
@@ -634,7 +640,7 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				god_list = ""
 
 			body = (
-				f"The source OP provided:  \n> <{url}>" + (
+				f"The source OP provided:  \n> <{url}>" + f"\n\nAlt link: [cubari.moe]({cubari_link})" + (
 				f"\n\n**{markdown_escape(entry['title'])}**  \nby {entry['author']} "
 				f"{pages}{parody}{characters}{tags}" if has_entry else "") + "\n\n" + god_list +
 				"\\-\\-\\-\n\nNote: nhentai information fetching is broken, due to them enabling Cloudflare "
