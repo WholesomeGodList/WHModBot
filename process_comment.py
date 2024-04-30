@@ -754,12 +754,9 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 
 	# If we are dealing with E-Hentai tags, remove the namespaces
 	if data[2] and ":" in data[2][0]:
-		data[2] = set([tag.split(":")[1] for tag in data[2]])
+		tags_without_namespaces = set([tag.split(":")[1] for tag in data[2]])
 
-	detected_tags = []
-	for tag in data[2]:
-		if tag in unwholesome_tags:
-			detected_tags.append(tag.title())
+	detected_tags = [tag.title() for tag in tags_without_namespaces if tag in unwholesome_tags]
 
 	if detected_tags:
 		# Oh no, there's an illegal tag!
