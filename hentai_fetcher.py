@@ -244,6 +244,7 @@ async def check_link(link: str) -> tuple[str | None, bool | None, str | list[lis
 
 	magazine_name = None
 	magazine_issue = None
+	market = "2d-market.com" in title
 
 	match1 = MAGAZINE_REGEX.match(title)
 	match2 = GIRLS_FORM_REGEX.match(title)
