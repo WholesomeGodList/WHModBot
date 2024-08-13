@@ -489,40 +489,32 @@ def get_god_list_str(entry: dict, url: str) -> str:
 	return god_list_str
 
 
-def format_site_tags(tags_list: list) -> str:
-	sorted_tags = {
-		"male": [],
-		"female": [],
-		"mixed": [],
-		"other": []
-	}
-
-	eh_regex = re.compile("^(female|male|mixed|other):.*$")
-	eh_tags = list(filter(eh_regex.match, tags_list))
+def format_site_tags(tags_list: list[str]) -> str:
+	tags_list.sort()
 
 	# Not E-Hentai tags, so just join them
-	if not eh_tags:
+	if not any(':' in t for t in tags_list):
 		str_tags = ', '.join(tags_list)
 		return str_tags
 
 	else:
-		for tag in eh_tags:
-			x = re.match(eh_regex, tag)
-			if x is None:
-				continue
-			tag_namespace = x.group(1)
-			tag = re.sub(r'^.*:', '', tag)
+		sorted_tags = {
+			"male": [],
+			"female": [],
+			"mixed": [],
+			"other": []
+		}
 
-			if 'threesome' in tag:
-				tag = tag[:3].upper() + tag[3:]
-			elif re.match(r'bbw|bbm|milf|dilf', tag):
-				tag = tag.upper()
+		for tag in tags_list:
+			namespace, name = tag.split(':')
 
-			match tag_namespace:
-				case 'female' | "male" | "mixed" | "other":
-					sorted_tags[tag_namespace].append(tag)
-				case _:
-					continue
+			if namespace.lower() in sorted_tags:
+				if 'threesome' in name:
+					name = name[:3].upper() + name[3:]
+				elif name.lower() in ['bbw', 'bbm', 'milf', 'dilf']:
+					name = name.upper()
+
+					sorted_tags[namespace].append(name)
 
 		str_tags = []
 
