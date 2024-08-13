@@ -114,6 +114,10 @@ async def process_site(link: str) -> tuple[str, list[str] | None, str | None, li
 
 		if 'nhentai' in link:
 			numbers_match = NUMBERS_REGEX.search(link)
+
+			if numbers_match is None:
+					raise AttributeError('Failed to find nhentai numbers')
+
 			numbers = int(numbers_match.group(1))
 
 			api_url = f"https://nhentai.net/api/gallery/{numbers}"
