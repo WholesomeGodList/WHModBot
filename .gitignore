@@ -3,3 +3,5 @@ posts.db
 .idea/
 __pycache__/
 nohup.out
+.venv
+.vscode
