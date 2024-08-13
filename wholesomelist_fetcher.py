@@ -16,7 +16,7 @@ async def process_nums(nums: int|str) -> tuple[bool, dict]:
 
 		print(payload)
 
-		if payload['result']:
+		if payload.get('result'):
 			entry = payload['entry']
 
 			for key, value in entry.items():
