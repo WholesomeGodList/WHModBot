@@ -24,6 +24,8 @@ c = conn.cursor()
 
 config = json.load(open('config.json'))
 
+AUTHOR_MATCHER = re.compile(r'.*\[.*].*')
+
 
 async def process_post(submission: Submission):
 	print("New post: " + submission.title)
@@ -42,8 +44,8 @@ async def process_post(submission: Submission):
 		return
 
 	# Make sure they have an author in the post.
-	author_matcher = re.compile(r'.*\[.*].*')
-	if not author_matcher.match(submission.title):
+
+	if not AUTHOR_MATCHER.match(submission.title):
 		comment = submission.reply("**Post titles must have the author in square brackets.**\n\n To avoid getting your post removed, make sure the author is in the "
 		                 "title (i.e. [Author] Title).\n\n" + config['suffix'])
 
