@@ -695,6 +695,7 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 # Checks the nhentai/E-Hentai data to see if it breaks rule 1/4/5
 def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 	removal = (None, None, None, None)
+	artists, tags, parodies, characters, languages = data[1], data[2], data[3], data[4], data[6]
 
 	if magazine:
 		# It's licensed!
@@ -722,7 +723,7 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			'Rule 4 - Licensed (2d-market.com in title)',
 			True)
 
-	if 'english' not in data[6]:
+	if 'english' not in languages:
 		print("The language of this doujin does not seem to be English.")
 
 		removal = (
@@ -733,11 +734,8 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			'Not English',
 			'Rule 2 - Non-English Source',
 			False)
-
-	detected_artists = []
-	for artist in licensed_artists:
-		if artist in data[1].lower():
-			detected_artists.append(artist.title())
+	
+	detected_artists = [a.title() for a in licensed_artists if a in artists]
 
 	if detected_artists:
 		# Oh no, there's an illegal artist!
@@ -753,10 +751,10 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			True)
 
 	# If we are dealing with E-Hentai tags, remove the namespaces
-	if data[2] and ":" in data[2][0]:
-		tags_without_namespaces = set([tag.split(":")[1] for tag in data[2]])
+	if tags and ":" in tags[0]:
+		tags = set([tag.split(":")[1] for tag in tags])
 
-	detected_tags = [tag.title() for tag in tags_without_namespaces if tag in unwholesome_tags]
+	detected_tags = [tag.title() for tag in tags if tag in unwholesome_tags]
 
 	if detected_tags:
 		# Oh no, there's an illegal tag!
@@ -773,24 +771,21 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			True)
 
 	detected_characters = []
-	for character in data[4]:
+	for character in characters:
 		if character in underage_characters:
 			cur_list = underage_characters[character]
-			parodies = data[3]
 
 			for parody in parodies:
 				for item in cur_list:
 					series_list = item['series']
 					for series in series_list:
-						if series.lower().strip() == parody:
+						if series.lower().strip() == parody.lower().strip():
 							detected_characters.append(
 								[character.title(), series, item['age'], item['note']])
 
 	if detected_characters:
 		# Oh no, there's an illegal character!
-		chars_list = []
-		for character in detected_characters:
-			chars_list.append(character[0])
+		chars_list = [character[0] for character in detected_characters]
 
 		chars_str = ', '.join(chars_list)
 		print("Illegal characters detected: " + chars_str)
