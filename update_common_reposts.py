@@ -10,7 +10,7 @@ from process_comment import decode_blob, encode_blob
 
 config = json.load(open('config.json'))
 
-print(datetime.datetime.utcfromtimestamp(int(time.time())).strftime("%b %d, %Y %I:%M %p"))
+print(datetime.datetime.fromtimestamp(int(time.time()), tz=datetime.UTC).strftime("%b %d, %Y %I:%M %p"))
 print(str(b'test', 'utf-8'))
 
 

@@ -407,7 +407,7 @@ def update_wiki(reddit: Reddit):
 	)
 	id_extractor = re.compile(r'/comments/([^/]*)/')
 	for post in all_posts:
-		wiki_text += f'| {post[1] if len(post[1]) < 30 else ("[" + post[1][:30] + "...](" + post[1] + ")")} | {datetime.datetime.utcfromtimestamp(post[2]).strftime("%b %d, %Y %I:%M %p")} | https://redd.it/{id_extractor.search(post[0]).group(1)} |\n'
+		wiki_text += f'| {post[1] if len(post[1]) < 30 else ("[" + post[1][:30] + "...](" + post[1] + ")")} | {datetime.datetime.fromtimestamp(post[2], tz=datetime.UTC).strftime("%b %d, %Y %I:%M %p")} | https://redd.it/{id_extractor.search(post[0]).group(1)} |\n'
 
 	repostspage = subreddit_wiki['posts']
 	repostspage.edit(content=wiki_text)
