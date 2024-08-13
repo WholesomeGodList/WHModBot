@@ -1,7 +1,7 @@
+import sqlite3
 from praw import Reddit
 from praw.models import Submission
-import sqlite3
-from sqlite3 import Error, Connection
+from sqlite3 import Connection, Error
 
 import process_comment
 
@@ -32,4 +32,5 @@ def process_removal(removal_action, reddit: Reddit):
 	print('Removal detected. Updating database...')
 	c.execute('UPDATE posts SET removed=1 WHERE url=?', (removal_action.target_permalink,))
 	conn.commit()
+
 	process_comment.update_wiki(reddit)

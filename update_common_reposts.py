@@ -1,12 +1,13 @@
-import time
 import datetime
-import praw
 import json
+import praw
 import re
 import sqlite3
-from sqlite3 import Error, Connection
+import time
+from sqlite3 import Connection, Error
 
 from process_comment import decode_blob, encode_blob
+
 
 config = json.load(open('config.json'))
 

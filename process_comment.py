@@ -1,18 +1,19 @@
-import re
-import json
-import sqlite3
 import asyncio
-import time
-import zlib
 import base64
 import datetime
+import json
+import re
+import sqlite3
+import time
+import zlib
 
-from sqlite3 import Error, Connection
-from praw.models import Comment
 from praw import Reddit
+from praw.models import Comment
+from sqlite3 import Connection, Error
 
 import hentai_fetcher
 import wholesomelist_fetcher
+
 
 removals = json.load(open('removals.json'))
 

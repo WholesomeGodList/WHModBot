@@ -1,10 +1,11 @@
 import aiohttp
-import json
 import asyncio
+import json
 
 
 async def process_nums(nums: int|str) -> tuple[bool, dict]:
-	link = "https://wholesomelist.com/api/check?code=" + str(nums)
+	link = f"https://wholesomelist.com/api/check?code={nums}"
+
 	async with aiohttp.ClientSession() as session:
 		resp = await session.get(link)
 		data = await resp.text()
@@ -26,6 +27,7 @@ async def process_nums(nums: int|str) -> tuple[bool, dict]:
 			return True, entry
 		else:
 			return False, {}
+
 
 # result, test = asyncio.run(process_nums(258133))
 # print("tags" in test)
