@@ -507,12 +507,12 @@ def format_site_tags(tags_list: list[str]) -> str:
 		}
 
 		for tag in tags_list:
-			namespace, name = tag.split(':')
+			namespace, name = tag.lower().split(':')
 
-			if namespace.lower() in sorted_tags:
+			if namespace in sorted_tags:
 				if 'threesome' in name:
 					name = name[:3].upper() + name[3:]
-				elif name.lower() in ['bbw', 'bbm', 'milf', 'dilf']:
+				elif name in ['bbw', 'bbm', 'milf', 'dilf']:
 					name = name.upper()
 
 					sorted_tags[namespace].append(name)
