@@ -452,7 +452,7 @@ def extract_url(body: str) -> str | None:
 	if "imgur.io" in url:
 		url = url.replace(".io", ".com")
 
-	if not url[-1] == "/":
+	if url[-1] != "/":
 		url = url + "/"
 
 	return url

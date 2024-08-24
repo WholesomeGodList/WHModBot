@@ -116,7 +116,7 @@ async def process_site(link: str) -> tuple[str, list[str] | None, str | None, li
 			numbers_match = NUMBERS_REGEX.search(link)
 
 			if numbers_match is None:
-					raise AttributeError('Failed to find nhentai numbers')
+				raise AttributeError('Failed to find nhentai numbers')
 
 			numbers = int(numbers_match.group(1))
 
