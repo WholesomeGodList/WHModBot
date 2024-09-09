@@ -1,8 +1,8 @@
+import json
 import praw
 import sqlite3
-from sqlite3 import Error, Connection
-import json
 import time
+from sqlite3 import Connection, Error
 
 
 def create_connection(path: str) -> Connection:
@@ -31,6 +31,7 @@ reddit = praw.Reddit(client_id=config['id'],
 
 c.execute("SELECT * FROM posts")
 records = c.fetchall()
+
 for row in records:
 	print(f"Checking post: {row[0]}")
 	submission = reddit.submission(url=f'https://reddit.com{row[0]}')
@@ -40,8 +41,10 @@ for row in records:
 	if submission.removed:
 		print("This submission was removed.")
 		c.execute('UPDATE posts SET removed=1 WHERE source=?', (row[1],))
+
 c.execute('DELETE FROM posts WHERE timeposted<?', (int(time.time()) - (8 * 604800),))
 c.execute("DELETE FROM posts WHERE source LIKE '%hc.fyi%'")
 c.execute("DELETE FROM posts WHERE source LIKE '%hentainexus%'")
 c.execute("DELETE FROM posts WHERE source LIKE '%hentai.cafe%'")
+
 conn.commit()

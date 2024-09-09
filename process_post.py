@@ -4,11 +4,13 @@ import re
 from praw.models import Submission
 
 import sqlite3
-from sqlite3 import Error, Connection
 from praw import Reddit
+from sqlite3 import Connection, Error
+
 
 def create_connection(path: str) -> Connection:
 	connection = None
+
 	try:
 		connection = sqlite3.connect(path)
 		print("Connected to the posts database in process_post")
@@ -24,6 +26,8 @@ c = conn.cursor()
 
 config = json.load(open('config.json'))
 
+AUTHOR_MATCHER = re.compile(r'.*\[.*].*')
+
 
 async def process_post(submission: Submission):
 	print("New post: " + submission.title)
@@ -31,19 +35,20 @@ async def process_post(submission: Submission):
 	# Do not respond to memes!
 	# Or non-image posts.
 	# god I miss nullish coalescing
-	if (hasattr(submission, 'link_flair_text') and submission.link_flair_text and ('meme' in submission.link_flair_text.lower() or 'news' in submission.link_flair_text.lower())) or submission.is_self:
+	if (getattr(submission, 'link_flair_text', False) and any(f in submission.link_flair_text.lower() for f in ['meme', 'news'])) or submission.is_self:
 		print("Either this is flaired Meme or this is a self-post.")
 		return
 
 	# Never ask for sauce twice on the same post.
 	c.execute('SELECT * FROM allposts WHERE id=?', (submission.id,))
+
 	if c.fetchone():
 		print("Duplicate post. Not sure how this happened, but it did.")
 		return
 
 	# Make sure they have an author in the post.
-	author_matcher = re.compile(r'.*\[.*].*')
-	if not author_matcher.match(submission.title):
+
+	if not AUTHOR_MATCHER.match(submission.title):
 		comment = submission.reply("**Post titles must have the author in square brackets.**\n\n To avoid getting your post removed, make sure the author is in the "
 		                 "title (i.e. [Author] Title).\n\n" + config['suffix'])
 
@@ -55,6 +60,7 @@ async def process_post(submission: Submission):
 
 	# See if they have made 4 posts within the last day
 	c.execute('SELECT * FROM posts WHERE author=? AND timeposted>? AND removed=0', (str(submission.author), submission.created_utc - 86400))
+
 	if len(c.fetchall()) >= 4:
 		comment = submission.reply("**You have already posted 4 times within the last 24 hours.**\n\nPlease wait a bit before you post again.\n\n" + config['suffix'])
 
@@ -74,11 +80,13 @@ async def ask_for_sauce(submission: Submission):
 	                           'You may also reply with a link to most non-nhentai URLs. We prefer you use nhentai in'
 	                           ' most cases, but in certain cases, Imgchest is acceptable.'
 	                           '\n\n' + config['suffix'])
+
 	if comment is None:
 		print('Something wacky happened')
 		return
 
 	comment.mod.distinguish(how='yes', sticky=True)
+
 	c.execute('INSERT INTO allposts VALUES (?)', (submission.id,))
 	c.execute('INSERT INTO pendingposts VALUES (?, ?, ?)', (submission.id, submission.author.name, comment.id))
 	conn.commit()

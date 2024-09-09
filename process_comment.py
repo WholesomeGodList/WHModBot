@@ -1,18 +1,19 @@
-import re
-import json
-import sqlite3
 import asyncio
-import time
-import zlib
 import base64
 import datetime
+import json
+import re
+import sqlite3
+import time
+import zlib
 
-from sqlite3 import Error, Connection
-from praw.models import Comment
 from praw import Reddit
+from praw.models import Comment
+from sqlite3 import Connection, Error
 
 import hentai_fetcher
 import wholesomelist_fetcher
+
 
 removals = json.load(open('removals.json'))
 
@@ -407,7 +408,7 @@ def update_wiki(reddit: Reddit):
 	)
 	id_extractor = re.compile(r'/comments/([^/]*)/')
 	for post in all_posts:
-		wiki_text += f'| {post[1] if len(post[1]) < 30 else ("[" + post[1][:30] + "...](" + post[1] + ")")} | {datetime.datetime.utcfromtimestamp(post[2]).strftime("%b %d, %Y %I:%M %p")} | https://redd.it/{id_extractor.search(post[0]).group(1)} |\n'
+		wiki_text += f'| {post[1] if len(post[1]) < 30 else ("[" + post[1][:30] + "...](" + post[1] + ")")} | {datetime.datetime.fromtimestamp(post[2], tz=datetime.UTC).strftime("%b %d, %Y %I:%M %p")} | https://redd.it/{id_extractor.search(post[0]).group(1)} |\n'
 
 	repostspage = subreddit_wiki['posts']
 	repostspage.edit(content=wiki_text)
@@ -451,7 +452,7 @@ def extract_url(body: str) -> str | None:
 	if "imgur.io" in url:
 		url = url.replace(".io", ".com")
 
-	if not url[-1] == "/":
+	if url[-1] != "/":
 		url = url + "/"
 
 	return url
@@ -489,40 +490,32 @@ def get_god_list_str(entry: dict, url: str) -> str:
 	return god_list_str
 
 
-def format_site_tags(tags_list: list) -> str:
-	sorted_tags = {
-		"male": [],
-		"female": [],
-		"mixed": [],
-		"other": []
-	}
-
-	eh_regex = re.compile("^(female|male|mixed|other):.*$")
-	eh_tags = list(filter(eh_regex.match, tags_list))
+def format_site_tags(tags_list: list[str]) -> str:
+	tags_list.sort()
 
 	# Not E-Hentai tags, so just join them
-	if not eh_tags:
+	if not any(':' in t for t in tags_list):
 		str_tags = ', '.join(tags_list)
 		return str_tags
 
 	else:
-		for tag in eh_tags:
-			x = re.match(eh_regex, tag)
-			if x is None:
-				continue
-			tag_namespace = x.group(1)
-			tag = re.sub(r'^.*:', '', tag)
+		sorted_tags = {
+			"male": [],
+			"female": [],
+			"mixed": [],
+			"other": []
+		}
 
-			if 'threesome' in tag:
-				tag = tag[:3].upper() + tag[3:]
-			elif re.match(r'bbw|bbm|milf|dilf', tag):
-				tag = tag.upper()
+		for tag in tags_list:
+			namespace, name = tag.lower().split(':')
 
-			match tag_namespace:
-				case 'female' | "male" | "mixed" | "other":
-					sorted_tags[tag_namespace].append(tag)
-				case _:
-					continue
+			if namespace in sorted_tags:
+				if 'threesome' in name:
+					name = name[:3].upper() + name[3:]
+				elif name in ['bbw', 'bbm', 'milf', 'dilf']:
+					name = name.upper()
+
+					sorted_tags[namespace].append(name)
 
 		str_tags = []
 
@@ -592,7 +585,7 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				f'{config["suffix"]}')
 
 	elif 'nhentai' in url:
-		nums_regex = re.compile(r"https://nhentai\.net/g/([0-9/]+)/")
+		nums_regex = re.compile(r"https://(?:www\.)?nhentai\.net/g/([0-9/]+)/")
 		nums_match = nums_regex.match(url)
 		nums = nums_match.group(1)
 
@@ -649,7 +642,8 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 				f'{config["suffix"]}')
 
 	else:
-		imgchest_match = re.search(r'([0-9a-zA-Z]{11})', url)
+		imgchest_regex = re.compile(r'https?://(?:www\.)?imgchest\.com\/p\/([0-9a-zA-Z]{11})')
+		imgchest_match = imgchest_regex.match(url)
 
 		if imgchest_match:
 			cubari_link = f'https://cubari.moe/read/imgchest/{imgchest_match.group(1)}/1/1/'
@@ -694,6 +688,7 @@ async def format_body(url: str, data: tuple | None = None) -> str:
 # Checks the nhentai/E-Hentai data to see if it breaks rule 1/4/5
 def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 	removal = (None, None, None, None)
+	artists, tags, parodies, characters, languages = data[1], data[2], data[3], data[4], data[6]
 
 	if magazine:
 		# It's licensed!
@@ -721,7 +716,7 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			'Rule 4 - Licensed (2d-market.com in title)',
 			True)
 
-	if 'english' not in data[6]:
+	if 'english' not in languages:
 		print("The language of this doujin does not seem to be English.")
 
 		removal = (
@@ -732,11 +727,8 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			'Not English',
 			'Rule 2 - Non-English Source',
 			False)
-
-	detected_artists = []
-	for artist in licensed_artists:
-		if artist in data[1].lower():
-			detected_artists.append(artist.title())
+	
+	detected_artists = [a.title() for a in licensed_artists if a in artists]
 
 	if detected_artists:
 		# Oh no, there's an illegal artist!
@@ -752,13 +744,10 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			True)
 
 	# If we are dealing with E-Hentai tags, remove the namespaces
-	if data[2] and ":" in data[2][0]:
-		data[2] = set([tag.split(":")[1] for tag in data[2]])
+	if tags and ":" in tags[0]:
+		tags = set([tag.split(":")[1] for tag in tags])
 
-	detected_tags = []
-	for tag in data[2]:
-		if tag in unwholesome_tags:
-			detected_tags.append(tag.title())
+	detected_tags = [tag.title() for tag in tags if tag in unwholesome_tags]
 
 	if detected_tags:
 		# Oh no, there's an illegal tag!
@@ -775,24 +764,21 @@ def check_data(magazine: str | None, market: bool, data: list) -> tuple:
 			True)
 
 	detected_characters = []
-	for character in data[4]:
+	for character in characters:
 		if character in underage_characters:
 			cur_list = underage_characters[character]
-			parodies = data[3]
 
 			for parody in parodies:
 				for item in cur_list:
 					series_list = item['series']
 					for series in series_list:
-						if series.lower().strip() == parody:
+						if series.lower().strip() == parody.lower().strip():
 							detected_characters.append(
 								[character.title(), series, item['age'], item['note']])
 
 	if detected_characters:
 		# Oh no, there's an illegal character!
-		chars_list = []
-		for character in detected_characters:
-			chars_list.append(character[0])
+		chars_list = [character[0] for character in detected_characters]
 
 		chars_str = ', '.join(chars_list)
 		print("Illegal characters detected: " + chars_str)

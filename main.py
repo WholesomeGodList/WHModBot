@@ -1,12 +1,11 @@
+import asyncio
 import json
 import time
-import asyncio
 import traceback
 
 import praw
-from prawcore import ResponseException
 from http.client import HTTPException
-from prawcore import RequestException
+from prawcore import RequestException, ResponseException
 
 import process_comment
 import process_post
@@ -25,7 +24,7 @@ async def main():
 	                     username=config['username'],
 	                     password=config['password'],
 	                     check_for_async=False)
-	print('Logged in as u/' + str(reddit.user.me()))
+	print(f'Logged in as u/{reddit.user.me()}')
 
 	subreddit = reddit.subreddit(config['subreddit'])
 
