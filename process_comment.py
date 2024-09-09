@@ -515,7 +515,7 @@ def format_site_tags(tags_list: list[str]) -> str:
 				elif name in ['bbw', 'bbm', 'milf', 'dilf']:
 					name = name.upper()
 
-					sorted_tags[namespace].append(name)
+				sorted_tags[namespace].append(name)
 
 		str_tags = []
 
