@@ -130,7 +130,7 @@ async def process_site(link: str) -> tuple[str, list[str] | None, str | None, li
 
 			data = await response.json()
 
-			title = data["titles"]["english"] if data["titles"]["english"] else data["titles"]["pretty"] if data["titles"]["pretty"] else "None"
+			title = data["title"]["english"] if data["title"]["english"] else data["title"]["pretty"] if data["title"]["pretty"] else "None"
 
 			for tag in data["tags"]:
 				match tag["type"]:
@@ -139,7 +139,7 @@ async def process_site(link: str) -> tuple[str, list[str] | None, str | None, li
 							language.append(tag["name"])
 					case 'parody':
 						if tag["name"] != 'original':
-							parody_match = re.search(fr'(?i)({tag["name"]})', data["titles"]["english"])
+							parody_match = re.search(fr'(?i)({tag["name"]})', data["title"]["english"])
 
 							if parody_match:
 								parodies.append(parody_match.group(1))
@@ -150,7 +150,7 @@ async def process_site(link: str) -> tuple[str, list[str] | None, str | None, li
 					case 'tag':
 						tags.append(tag["name"])
 					case 'artist':
-						artist_match = re.search(fr'(?i)({tag["name"]})', data["titles"]["english"])
+						artist_match = re.search(fr'(?i)({tag["name"]})', data["title"]["english"])
 
 						if artist_match:
 							artists.append(artist_match.group(1))
