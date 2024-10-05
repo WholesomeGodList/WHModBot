@@ -1,4 +1,166 @@
 {
+    "akane maruyama": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "ayaka tachikawa": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "jun toda": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "maki igarashi": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "mikami kamiki": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "miko fumino": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "miu takigawa": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "miyako kono": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "momoji shiina": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "nana kimijima": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "nicole saito": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "reika sato": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "runa wakaizumi": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "sakura fujima": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "shion nanasaki": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "suzune mori": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "tsubomi hiiragi": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "yuki tojo": [
+        {
+            "series": [
+                "22 slash 7"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
     "hinata kawamoto": [
         {
             "series": [
@@ -59,6 +221,60 @@
                 "Accel World"
             ],
             "age": "11",
+            "note": ""
+        }
+    ],
+    "adachi sakura": [
+        {
+            "series": [
+                "Adachi and Shimamura"
+            ],
+            "age": "15-17",
+            "note": "Unless it takes place after timeskip"
+        }
+    ],
+    "shimamura hougetsu": [
+        {
+            "series": [
+                "Adachi and Shimamura"
+            ],
+            "age": "15-17",
+            "note": "Unless it takes place after timeskip"
+        }
+    ],
+    "raidou matsuboshi": [
+        {
+            "series": [
+                "Aharen-san wa Hakarenai"
+            ],
+            "age": "15-17",
+            "note": ""
+        }
+    ],
+    "reina aharen": [
+        {
+            "series": [
+                "Aharen-san wa Hakarenai"
+            ],
+            "age": "15-16",
+            "note": ""
+        }
+    ],
+    "aoi kiriya": [
+        {
+            "series": [
+                "Aikatsu"
+            ],
+            "age": "12-17",
+            "note": ""
+        }
+    ],
+    "ichigo hoshimiya": [
+        {
+            "series": [
+                "Aikatsu"
+            ],
+            "age": "12-17",
             "note": ""
         }
     ],
@@ -503,6 +719,15 @@
             "note": ""
         }
     ],
+    "andy w. hole": [
+        {
+            "series": [
+                "Aquarion Evol"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
     "kagura demuri": [
         {
             "series": [
@@ -719,7 +944,7 @@
             "note": ""
         }
     ],
-    "aika s. granzchesta": [
+    "aika s granzchesta": [
         {
             "series": [
                 "Aria"
@@ -753,6 +978,24 @@
             ],
             "age": "14~",
             "note": ""
+        }
+    ],
+    "shamare": [
+        {
+            "series": [
+                "Arknights"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "suzuran": [
+        {
+            "series": [
+                "Arknights"
+            ],
+            "age": "?",
+            "note": "Physically underage"
         }
     ],
     "aiko kudou": [
@@ -935,21 +1178,129 @@
             "note": ""
         }
     ],
+    "akemi asakawa": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "danjuro eiga": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "kirino chiba": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "makoto iwasa": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "mei ogawa": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "miyako miyazaki": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "satori azuma": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "sayako kuwahara": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "shinobu toyama": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "tamaki kawazoe": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "toyama": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "yuji nakata": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "yuri ando": [
+        {
+            "series": [
+                "Bamboo Blade"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
     "ako udagawa": [
         {
             "series": [
                 "Bang Dream"
             ],
             "age": "14-16",
-            "note": ""
-        }
-    ],
-    "arisa ichigaya": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "15-17",
             "note": ""
         }
     ],
@@ -978,51 +1329,6 @@
             "note": ""
         }
     ],
-    "eve wakamiya": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "hagumi kitazawa": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "himari uehara": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "kasumi toyama": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "15-17",
-            "note": ""
-        }
-    ],
-    "kokoro tsurumaki": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
     "mashiro kurata": [
         {
             "series": [
@@ -1032,84 +1338,12 @@
             "note": ""
         }
     ],
-    "masuki satou": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "masking": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "misaki okusawa": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "moca aoba": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
     "nanami hiromachi": [
         {
             "series": [
                 "Bang Dream"
             ],
             "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "natsuki umino": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "ran mitake": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "rei wakana": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "layer": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
             "note": ""
         }
     ],
@@ -1128,15 +1362,6 @@
                 "Bang Dream"
             ],
             "age": "13 / 14",
-            "note": ""
-        }
-    ],
-    "rimi ushigome": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "15-17",
             "note": ""
         }
     ],
@@ -1167,48 +1392,12 @@
             "note": ""
         }
     ],
-    "saaya yamabuki": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "15-17",
-            "note": ""
-        }
-    ],
-    "tae hanazono": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "15-17",
-            "note": ""
-        }
-    ],
-    "tomoe udagawa": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
     "touko kirigaya": [
         {
             "series": [
                 "Bang Dream"
             ],
             "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "tsugumi hazawa": [
-        {
-            "series": [
-                "Bang Dream"
-            ],
-            "age": "16 / 17",
             "note": ""
         }
     ],
@@ -1221,12 +1410,114 @@
             "note": ""
         }
     ],
+    "you satou": [
+        {
+            "series": [
+                "Ben-To"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "akihito kanbara": [
+        {
+            "series": [
+                "Beyond the Boundary",
+                "Kyoukai no Kanata"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "mirai kuriyama": [
+        {
+            "series": [
+                "Beyond the Boundary",
+                "Kyoukai no Kanata"
+            ],
+            "age": "14-15",
+            "note": ""
+        }
+    ],
+    "mitsuki nase": [
+        {
+            "series": [
+                "Beyond the Boundary",
+                "Kyoukai no Kanata"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "alois trancy": [
+        {
+            "series": [
+                "Black Butler"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
     "ciel phantomhive": [
         {
             "series": [
                 "Black Butler"
             ],
             "age": "13",
+            "note": ""
+        }
+    ],
+    "elizabeth midford": [
+        {
+            "series": [
+                "Black Butler"
+            ],
+            "age": "13-14",
+            "note": ""
+        }
+    ],
+    "ellery nixon": [
+        {
+            "series": [
+                "Black Butler"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
+    "finnian": [
+        {
+            "series": [
+                "Black Butler"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "margaret connor": [
+        {
+            "series": [
+                "Black Butler"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "sieglinde sullivan": [
+        {
+            "series": [
+                "Black Butler"
+            ],
+            "age": "11",
+            "note": ""
+        }
+    ],
+    "soma asman kadar": [
+        {
+            "series": [
+                "Black Butler"
+            ],
+            "age": "17",
             "note": ""
         }
     ],
@@ -1491,11 +1782,57 @@
             "note": ""
         }
     ],
+    "hitori gotou": [
+        {
+            "series": [
+                "Bocchi the Rock"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "bocchi": [
+        {
+            "series": [
+                "Bocchi the Rock"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "ikuyo kita": [
+        {
+            "series": [
+                "Bocchi the Rock"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "nijika ijichi": [
+        {
+            "series": [
+                "Bocchi the Rock"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "ryo yamada": [
+        {
+            "series": [
+                "Bocchi the Rock"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
     "eijiro kirishima": [
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "15 / 16",
             "note": ""
@@ -1505,7 +1842,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "16 / 17",
             "note": ""
@@ -1515,7 +1853,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "14-16",
             "note": ""
@@ -1525,7 +1864,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "14-16",
             "note": ""
@@ -1535,7 +1875,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "16",
             "note": ""
@@ -1545,7 +1886,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "15 / 16",
             "note": ""
@@ -1555,7 +1897,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "15 / 16",
             "note": ""
@@ -1565,7 +1908,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "15 / 16",
             "note": ""
@@ -1575,7 +1919,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "15 / 16",
             "note": ""
@@ -1585,7 +1930,8 @@
         {
             "series": [
                 "Boku No Hero Academia",
-                "My Hero Academia | Boku No Hero Academia"
+                "My Hero Academia | Boku No Hero Academia",
+                "My Hero Academia"
             ],
             "age": "15 / 16",
             "note": ""
@@ -1690,12 +2036,22 @@
             "note": ""
         }
     ],
+    "kou yamori": [
+        {
+            "series": [
+                "Call of the night",
+                "Yofukashi no Uta"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
     "denji": [
         {
             "series": [
                 "Chainsaw Man"
             ],
-            "age": "16 / 17",
+            "age": "17",
             "note": ""
         }
     ],
@@ -1789,7 +2145,7 @@
             "note": ""
         }
     ],
-    "c.c.": [
+    "c c": [
         {
             "series": [
                 "Code Geass"
@@ -1843,7 +2199,7 @@
             "note": ""
         }
     ],
-    "miya i. hillmick": [
+    "miya i hillmick": [
         {
             "series": [
                 "Code Geass"
@@ -1877,6 +2233,15 @@
             ],
             "age": "15 / 16",
             "note": ""
+        }
+    ],
+    "rebecca": [
+        {
+            "series": [
+                "Cyberpunk Edgerunners"
+            ],
+            "age": "?",
+            "note": "Physically underage"
         }
     ],
     "hotaru shidare": [
@@ -1987,13 +2352,22 @@
             "note": ""
         }
     ],
+    "baby bonnie hood": [
+        {
+            "series": [
+                "Darkstalkers"
+            ],
+            "age": "10-14",
+            "note": ""
+        }
+    ],
     "futoshi": [
         {
             "series": [
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         }
     ],
     "goro": [
@@ -2002,7 +2376,7 @@
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         }
     ],
     "hiro": [
@@ -2011,7 +2385,7 @@
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         },
         {
             "series": [
@@ -2027,7 +2401,7 @@
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         }
     ],
     "ikuno": [
@@ -2036,7 +2410,7 @@
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         }
     ],
     "kokoro": [
@@ -2045,7 +2419,7 @@
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         }
     ],
     "miku": [
@@ -2054,7 +2428,7 @@
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         }
     ],
     "mitsuru": [
@@ -2063,7 +2437,7 @@
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         }
     ],
     "zorome": [
@@ -2072,7 +2446,7 @@
                 "Darling in the FRANXX"
             ],
             "age": "14-17",
-            "note": "Unless it takes place after the timeskip"
+            "note": "Unless it takes place after the 10-year timeskip"
         }
     ],
     "ashley sinclair": [
@@ -2896,6 +3270,72 @@
             "note": ""
         }
     ],
+    "beni-enma": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "caster": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "medea lily": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "chacha": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "chloe von einzbern": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
+    "elizabeth bathory": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
     "euryale": [
         {
             "series": [
@@ -2907,6 +3347,28 @@
             "note": "No set age, but underage"
         }
     ],
+    "fairy lancelot": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "m\u00e9lusine": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
     "gray": [
         {
             "series": [
@@ -2916,6 +3378,28 @@
             ],
             "age": "15",
             "note": "Unless it takes place during / after Fate/strange Fake"
+        }
+    ],
+    "helena": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "ibaraki-douji": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
         }
     ],
     "illyasviel von einzbern": [
@@ -2951,6 +3435,83 @@
             "note": ""
         }
     ],
+    "jeanne (alter) (santa lily)": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "kama (1st ascension)": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "kiyohime": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "12 / 13",
+            "note": ""
+        }
+    ],
+    "leonardo b harwey": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "14",
+            "note": "Physically underage"
+        }
+    ],
+    "leonardo da vinci rider": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "medusa illy": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "miyu edelfelt": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
     "mordred pendragon": [
         {
             "series": [
@@ -2973,6 +3534,61 @@
             "note": "No set age, but underage"
         }
     ],
+    "paul bunyan": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "rin tosaka": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "17",
+            "note": "Unless it takes place during/after the Heaven's Feel/UBW's true ending epilogues"
+        }
+    ],
+    "saber lily": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "10~",
+            "note": ""
+        }
+    ],
+    "shirou emiya": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "17",
+            "note": "Unless it takes place during/after the Heaven's Feel/UBW's true ending epilogues"
+        }
+    ],
+    "shuten-douji": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
     "stheno": [
         {
             "series": [
@@ -2993,6 +3609,20 @@
             ],
             "age": "9-12~",
             "note": ""
+        }
+    ],
+    "sakura matou": [
+        {
+            "series": [
+                "Fate Grand Order",
+                "Fate Stay Night",
+                "Fate Apocrypha",
+                "Fate Extra",
+                "Fate Zero",
+                "Fate Hollow Ataraxia"
+            ],
+            "age": "16",
+            "note": "Unless it takes place during/after the Heaven's Feel true ending epilogue"
         }
     ],
     "garnet til alexandros xvii": [
@@ -3056,6 +3686,15 @@
             ],
             "age": "10",
             "note": ""
+        }
+    ],
+    "yuffie kisaragi": [
+        {
+            "series": [
+                "Final Fantasy VII"
+            ],
+            "age": "16",
+            "note": "Underage in Final Fantasy 7, Adult in the later games"
         }
     ],
     "irvine kinneas": [
@@ -3229,12 +3868,120 @@
             "note": ""
         }
     ],
+    "aiichiro nitori": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "aoba usami": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "ayumu kunikida": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "chigusa hanamura": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 - 16",
+            "note": ""
+        }
+    ],
+    "gou matsuoka": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "kazuki minami": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16 - 17",
+            "note": ""
+        }
+    ],
+    "momotaro mikoshiba": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
     "rei ryugazaki": [
         {
             "series": [
-                "Free"
+                "Free!"
             ],
-            "age": "15-17",
+            "age": "15 - 17",
+            "note": ""
+        }
+    ],
+    "romio hayahune": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "shizuru isurugi": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "shota nakagawa": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16 - 17",
+            "note": ""
+        }
+    ],
+    "takuya uozumi": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16 - 17",
+            "note": ""
+        }
+    ],
+    "toru iwashimizu": [
+        {
+            "series": [
+                "Free!"
+            ],
+            "age": "16 - 17",
             "note": ""
         }
     ],
@@ -3253,6 +4000,96 @@
                 "Fujiyama-san wa shishunki"
             ],
             "age": "14-15~",
+            "note": ""
+        }
+    ],
+    "kaname chidori": [
+        {
+            "series": [
+                "Full Metal Panic"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "sousuke sagara": [
+        {
+            "series": [
+                "Full Metal Panic"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kotaro onodera": [
+        {
+            "series": [
+                "Full Metal Panic!"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "kyoko tokiwa": [
+        {
+            "series": [
+                "Full Metal Panic!"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "leonard testarossa": [
+        {
+            "series": [
+                "Full Metal Panic!"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "mizuki inaba": [
+        {
+            "series": [
+                "Full Metal Panic!"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "ren mikihara": [
+        {
+            "series": [
+                "Full Metal Panic!"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "shinji kazama": [
+        {
+            "series": [
+                "Full Metal Panic!"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "teletha testarossa": [
+        {
+            "series": [
+                "Full Metal Panic!"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "xia yu fan": [
+        {
+            "series": [
+                "Full Metal Panic!"
+            ],
+            "age": "16",
             "note": ""
         }
     ],
@@ -3373,6 +4210,24 @@
             "note": ""
         }
     ],
+    "erika itsumi": [
+        {
+            "series": [
+                "Girls und Panzer"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "kiyomi sugiyama": [
+        {
+            "series": [
+                "Girls Und Panzer"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
     "miho nishizumi": [
         {
             "series": [
@@ -3391,12 +4246,30 @@
             "note": ""
         }
     ],
+    "kyouya shinomiya": [
+        {
+            "series": [
+                "GJ-bu"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
     "megumi amatsuka": [
         {
             "series": [
-                "gj-bu"
+                "GJ-bu"
             ],
             "age": "15-16",
+            "note": ""
+        }
+    ],
+    "tamaki kannazuki": [
+        {
+            "series": [
+                "GJ-bu"
+            ],
+            "age": "15 / 16",
             "note": ""
         }
     ],
@@ -3505,6 +4378,132 @@
                 "Granblue Fantasy"
             ],
             "age": "9~",
+            "note": ""
+        }
+    ],
+    "argo tsukishima": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "arisa kuhouin": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "ayase shinomiya": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "daryl yan": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "gai tsutsugami": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "hare menjou": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "inori yuzuriha": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "jun samukawa": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "kanon kusama": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kyo": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "shu ouma": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "souta tamadate": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "tsugumi": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "yahiro samukawa": [
+        {
+            "series": [
+                "Guilty Crown"
+            ],
+            "age": "17",
             "note": ""
         }
     ],
@@ -3722,6 +4721,15 @@
             ],
             "age": "17",
             "note": ""
+        }
+    ],
+    "shino inuzuka": [
+        {
+            "series": [
+                "Hakkenden"
+            ],
+            "age": "13",
+            "note": "Physically underage"
         }
     ],
     "chiho sasaki": [
@@ -4817,6 +5825,24 @@
             "note": ""
         }
     ],
+    "hime arikawa": [
+        {
+            "series": [
+                "Himegoto"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kaguya arikawa": [
+        {
+            "series": [
+                "Himegoto"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
     "hikari kongo": [
         {
             "series": [
@@ -4898,6 +5924,267 @@
             "note": ""
         }
     ],
+    "anya melfissa": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "14~",
+            "note": "Physically underage"
+        }
+    ],
+    "ayunda risu": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "gawr gura": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "14~",
+            "note": "Physically underage"
+        }
+    ],
+    "himemori luna": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "0",
+            "note": ""
+        }
+    ],
+    "houshou marine": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kureiji ollie": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "mano aloe": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "murasaki shion": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "14~",
+            "note": "Physically underage"
+        }
+    ],
+    "natsuiro matsuri": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "nekomata okayu": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "ninomae inanis": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "oozura subaru": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "roboco": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "tokoyami towa": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "uruha rushia": [
+        {
+            "series": [
+                "Hololive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "akane yanagi": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "honoka sawada": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "15-16",
+            "note": ""
+        }
+    ],
+    "ichirou watabe": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "izumi miyamura": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kakeru sengoku": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kouichi shindou": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kyouko hori": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "motoko iura": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "remi ayasaki": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "sakura kouno": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "souta hori": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
+    "syu iura": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "tooru ishikawa": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "yuki yoshikawa": [
+        {
+            "series": [
+                "Horimiya"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
     "ayumi nonomura": [
         {
             "series": [
@@ -4961,7 +6248,7 @@
             "note": ""
         }
     ],
-    "touma kazamatsuri": [
+    "torako kageyama": [
         {
             "series": [
                 "Hyakko"
@@ -4970,7 +6257,7 @@
             "note": ""
         }
     ],
-    "torako kageyama": [
+    "touma kazamatsuri": [
         {
             "series": [
                 "Hyakko"
@@ -5075,6 +6362,114 @@
                 "Hyouka"
             ],
             "age": "15",
+            "note": ""
+        }
+    ],
+    "blanc": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "nepgear": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "<14",
+            "note": ""
+        }
+    ],
+    "neptune": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "14",
+            "note": "Normal Form"
+        }
+    ],
+    "noire": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "16",
+            "note": "Normal Form"
+        }
+    ],
+    "peashy": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "11~",
+            "note": ""
+        }
+    ],
+    "plutia": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "14",
+            "note": "Normal Form"
+        }
+    ],
+    "ram": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "<14",
+            "note": ""
+        }
+    ],
+    "rom": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "<14",
+            "note": ""
+        }
+    ],
+    "uni": [
+        {
+            "series": [
+                "Hyperdimension Neptunia"
+            ],
+            "age": "<14",
+            "note": ""
+        }
+    ],
+    "jiro yamada": [
+        {
+            "series": [
+                "Hypnosis Mic"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "saburo yamada": [
+        {
+            "series": [
+                "Hypnosis Mic"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "taromaru rex": [
+        {
+            "series": [
+                "Hypnosis Mic"
+            ],
+            "age": "16",
             "note": ""
         }
     ],
@@ -5276,6 +6671,193 @@
             "note": ""
         }
     ],
+    "arata nitta": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "fumi": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "iguchi": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "junpei yoshino": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kasumi miwa": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kokichi muta": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "mai zenin": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "maki zenin": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "megumi fushiguro": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "mimiko hasaba": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "nanako hasaba": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "nobara kugisaki": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "rika orimoto": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "11",
+            "note": "Character died at age 11, but persisted as a spirit"
+        }
+    ],
+    "riko amanai": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "sasaki": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        },
+        {
+            "series": [
+                "The Melancholy of Haruhi Suzumiya"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "tadashi okazaki": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "toge inumaki": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "yu haibara": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "yuta okkotsu": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "yuuji itadori": [
+        {
+            "series": [
+                "Jujutsu Kaisen"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
     "azusa nakano": [
         {
             "series": [
@@ -5285,28 +6867,11 @@
             "note": "Underage if she's in HS"
         }
     ],
-    "ai hayasaka": [
-        {
-            "series": [
-                "Kaguya-sama wa Kokurasetai"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
     "chika fujiwara": [
         {
             "series": [
-                "Kaguya-sama wa Kokurasetai"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kaguya shinomiya": [
-        {
-            "series": [
-                "Kaguya-sama wa Kokurasetai"
+                "Kaguya-sama wa Kokurasetai",
+                "kaguya-sama wa kokurasetai | kaguya-sama love is war"
             ],
             "age": "17",
             "note": ""
@@ -5315,7 +6880,8 @@
     "koromo shiranui": [
         {
             "series": [
-                "Kaguya-sama wa Kokurasetai"
+                "Kaguya-sama wa Kokurasetai",
+                "kaguya-sama wa kokurasetai | kaguya-sama love is war"
             ],
             "age": "16 / 17",
             "note": ""
@@ -5324,7 +6890,8 @@
     "mikado shijo": [
         {
             "series": [
-                "Kaguya-sama wa Kokurasetai"
+                "Kaguya-sama wa Kokurasetai",
+                "kaguya-sama wa kokurasetai | kaguya-sama love is war"
             ],
             "age": "16 / 17",
             "note": ""
@@ -5333,25 +6900,18 @@
     "miko iino": [
         {
             "series": [
-                "Kaguya-sama wa Kokurasetai"
+                "Kaguya-sama wa Kokurasetai",
+                "kaguya-sama wa kokurasetai | kaguya-sama love is war"
             ],
             "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "miyuki shirogane": [
-        {
-            "series": [
-                "Kaguya-sama wa Kokurasetai"
-            ],
-            "age": "17",
             "note": ""
         }
     ],
     "yu ishigami": [
         {
             "series": [
-                "Kaguya-sama wa Kokurasetai"
+                "Kaguya-sama wa Kokurasetai",
+                "kaguya-sama wa kokurasetai | kaguya-sama love is war"
             ],
             "age": "16 / 17",
             "note": ""
@@ -5417,7 +6977,7 @@
                 "Karakai Jouzu no Takagi-san"
             ],
             "age": "12-14",
-            "note": ""
+            "note": "There's one spinoff where they are adults, but it should be easy to tell the difference (Middle Schoolers vs 25 yo)"
         }
     ],
     "mina hibino": [
@@ -5426,7 +6986,7 @@
                 "Karakai Jouzu no Takagi-san"
             ],
             "age": "12-14",
-            "note": ""
+            "note": "There's one spinoff where they are adults, but it should be easy to tell the difference (Middle Schoolers vs 25 yo)"
         }
     ],
     "nishikata": [
@@ -5435,7 +6995,7 @@
                 "Karakai Jouzu no Takagi-san"
             ],
             "age": "12-14",
-            "note": ""
+            "note": "There's one spinoff where they are adults, but it should be easy to tell the difference (Middle Schoolers vs 25 yo)"
         }
     ],
     "sanae tsukimoto": [
@@ -5444,7 +7004,7 @@
                 "Karakai Jouzu no Takagi-san"
             ],
             "age": "12-14",
-            "note": ""
+            "note": "There's one spinoff where they are adults, but it should be easy to tell the difference (Middle Schoolers vs 25 yo)"
         }
     ],
     "takagi": [
@@ -5453,7 +7013,7 @@
                 "Karakai Jouzu no Takagi-san"
             ],
             "age": "12-14",
-            "note": ""
+            "note": "There's one spinoff where they are adults, but it should be easy to tell the difference (Middle Schoolers vs 25 yo)"
         }
     ],
     "yukari tenkawa": [
@@ -5462,6 +7022,87 @@
                 "Karakai Jouzu no Takagi-san"
             ],
             "age": "12-14",
+            "note": "There's one spinoff where they are adults, but it should be easy to tell the difference (Middle Schoolers vs 25 yo)"
+        }
+    ],
+    "akira": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "aya tademaru": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "8",
+            "note": ""
+        }
+    ],
+    "homuramaru nowaki": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "kabane kusaka": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "kon": [
+        {
+            "series": [
+                "Kemono Jihen"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "phosphora": [
+        {
+            "series": [
+                "Kid Icarus"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "pit": [
+        {
+            "series": [
+                "Kid Icarus"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "dark pit": [
+        {
+            "series": [
+                "Kid Icarus"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "viridi": [
+        {
+            "series": [
+                "Kid Icarus"
+            ],
+            "age": "8",
             "note": ""
         }
     ],
@@ -5578,7 +7219,7 @@
             "note": ""
         }
     ],
-    "tanjirou kamado": [
+    "tanjiro kamado": [
         {
             "series": [
                 "Kimetsu no Yaiba",
@@ -5598,10 +7239,40 @@
             "note": ""
         }
     ],
+    "sayaka saeki": [
+        {
+            "series": [
+                "Kimi ni Naru",
+                "yagate kimi ni naru | bloom into you"
+            ],
+            "age": "16 / 17",
+            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
+        }
+    ],
+    "touko nanami": [
+        {
+            "series": [
+                "Kimi ni Naru",
+                "yagate kimi ni naru | bloom into you"
+            ],
+            "age": "16 / 17",
+            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
+        }
+    ],
+    "yuu koito": [
+        {
+            "series": [
+                "Kimi ni Naru",
+                "yagate kimi ni naru | bloom into you"
+            ],
+            "age": "15 / 16",
+            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
+        }
+    ],
     "mitsuha miyamizu": [
         {
             "series": [
-                "Kimi no Na wa.",
+                "Kimi no Na wa",
                 "Your name"
             ],
             "age": "17",
@@ -5611,7 +7282,7 @@
     "taki tachibana": [
         {
             "series": [
-                "Kimi no Na wa.",
+                "Kimi no Na wa",
                 "Your name"
             ],
             "age": "17",
@@ -5699,10 +7370,46 @@
             "note": ""
         }
     ],
+    "ilulu": [
+        {
+            "series": [
+                "Kobayashi-san-chi no maid dragon"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "kanna kamui": [
+        {
+            "series": [
+                "Kobayashi-san-chi no maid dragon"
+            ],
+            "age": "8",
+            "note": ""
+        }
+    ],
+    "riko saikawa": [
+        {
+            "series": [
+                "Kobayashi-san-chi no maid dragon"
+            ],
+            "age": "8",
+            "note": ""
+        }
+    ],
+    "shouta magatsuchi": [
+        {
+            "series": [
+                "Kobayashi-san-chi no maid dragon"
+            ],
+            "age": "11",
+            "note": ""
+        }
+    ],
     "hitohito tadano": [
         {
             "series": [
-                "Komi-san Wa Komyushou Desu."
+                "Komi-san Wa Komyushou Desu"
             ],
             "age": "15",
             "note": ""
@@ -5711,7 +7418,7 @@
     "komi shouko": [
         {
             "series": [
-                "Komi-san Wa Komyushou Desu."
+                "Komi-san Wa Komyushou Desu"
             ],
             "age": "16",
             "note": ""
@@ -5789,6 +7496,15 @@
             "note": ""
         }
     ],
+    "kazuma satou": [
+        {
+            "series": [
+                "Kono Subarashii Sekai ni Syukufuku o"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
     "megumin": [
         {
             "series": [
@@ -5798,12 +7514,39 @@
             "note": ""
         }
     ],
-    "kazuma satou": [
+    "ren": [
         {
             "series": [
-                "Kono Subarashii Sekai ni Syukufuku o"
+                "Konohana Kitan"
             ],
-            "age": "16 / 17",
+            "age": "~14",
+            "note": ""
+        }
+    ],
+    "sakura": [
+        {
+            "series": [
+                "Konohana Kitan"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "satsuki": [
+        {
+            "series": [
+                "Konohana Kitan"
+            ],
+            "age": "~16",
+            "note": ""
+        }
+    ],
+    "yuzu": [
+        {
+            "series": [
+                "Konohana Kitan"
+            ],
+            "age": "~14",
             "note": ""
         }
     ],
@@ -5820,6 +7563,78 @@
         {
             "series": [
                 "Koto no Ha no Niwa"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "ikoma": [
+        {
+            "series": [
+                "Koutetsujou no Kabaneri"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "mumei": [
+        {
+            "series": [
+                "Koutetsujou no Kabaneri"
+            ],
+            "age": "12",
+            "note": ""
+        }
+    ],
+    "fina": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
+    "misana farrengram": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "9",
+            "note": ""
+        }
+    ],
+    "noire foschurose": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
+    "shia foschurose": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "shuri": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
+            ],
+            "age": "7",
+            "note": ""
+        }
+    ],
+    "yuna": [
+        {
+            "series": [
+                "Kuma Kuma Kuma Bear"
             ],
             "age": "15",
             "note": ""
@@ -5921,47 +7736,6 @@
                 "Kuroko no Basuke"
             ],
             "age": "16",
-            "note": ""
-        }
-    ],
-    "akihito kanbara": [
-        {
-            "series": [
-                "Kyoukai no Kanata"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        },
-        {
-            "series": [
-                "Beyond the Boundary"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "mirai kuriyama": [
-        {
-            "series": [
-                "Kyoukai no Kanata"
-            ],
-            "age": "14 / 15",
-            "note": ""
-        },
-        {
-            "series": [
-                "Beyond the Boundary"
-            ],
-            "age": "14-15",
-            "note": ""
-        }
-    ],
-    "mitsuki nase": [
-        {
-            "series": [
-                "Kyoukai no Kanata"
-            ],
-            "age": "16 / 17",
             "note": ""
         }
     ],
@@ -6311,7 +8085,7 @@
                 "Love Plus"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "No entry on nhentai. The character doesn't have a name per se, but you can assume most, if not all, doujins have him as the MC"
         },
         {
             "series": [
@@ -6424,6 +8198,15 @@
                 "Lucky Star"
             ],
             "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "takina inoue": [
+        {
+            "series": [
+                "Lycoris Recoil"
+            ],
+            "age": "17",
             "note": ""
         }
     ],
@@ -6544,6 +8327,15 @@
             "note": ""
         }
     ],
+    "rosalie claudel": [
+        {
+            "series": [
+                "Mai-Otome"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
     "airi sena": [
         {
             "series": [
@@ -6589,12 +8381,84 @@
             "note": ""
         }
     ],
+    "hibari isora": [
+        {
+            "series": [
+                "Mawaru Penguindrum"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "hikari utada": [
+        {
+            "series": [
+                "Mawaru Penguindrum"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "himari takakura": [
+        {
+            "series": [
+                "Mawaru Penguindrum"
+            ],
+            "age": "<16",
+            "note": ""
+        }
+    ],
+    "kanba takakura": [
+        {
+            "series": [
+                "Mawaru Penguindrum"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "mario natsume": [
+        {
+            "series": [
+                "Mawaru Penguindrum"
+            ],
+            "age": "<16",
+            "note": ""
+        }
+    ],
+    "masako natsume": [
+        {
+            "series": [
+                "Mawaru Penguindrum"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
     "ringo oginome": [
         {
             "series": [
                 "Mawaru Penguindrum"
             ],
             "age": "16",
+            "note": ""
+        }
+    ],
+    "shoma takakura": [
+        {
+            "series": [
+                "Mawaru Penguindrum"
+            ],
+            "age": "<16",
+            "note": ""
+        }
+    ],
+    "yosuke yamashita": [
+        {
+            "series": [
+                "Mawaru Penguindrum"
+            ],
+            "age": "<16",
             "note": ""
         }
     ],
@@ -6694,6 +8558,87 @@
                 "Mobile Suit Gundam"
             ],
             "age": "14 / 15",
+            "note": ""
+        }
+    ],
+    "miorine rembran": [
+        {
+            "series": [
+                "Mobile Suit Gundam: The Witch from Mercury"
+            ],
+            "age": "16",
+            "note": "Unless it takes place after the epilogue"
+        }
+    ],
+    "suletta mercury": [
+        {
+            "series": [
+                "Mobile Suit Gundam: The Witch from Mercury"
+            ],
+            "age": "17",
+            "note": "Unless it takes place after the epilogue"
+        }
+    ],
+    "hitomi hino": [
+        {
+            "series": [
+                "Murenase Seton Gakuen"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "jin mazama": [
+        {
+            "series": [
+                "Murenase Seton Gakuen"
+            ],
+            "age": "15-16",
+            "note": ""
+        }
+    ],
+    "ranka ookami": [
+        {
+            "series": [
+                "Murenase Seton Gakuen"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "yukari komori": [
+        {
+            "series": [
+                "Murenase Seton Gakuen"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
+    "marin kitagawa": [
+        {
+            "series": [
+                "my dress-up darling | sono bisque doll wa koi o suru"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "sajuna inui": [
+        {
+            "series": [
+                "my dress-up darling | sono bisque doll wa koi o suru"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "wakana gojou": [
+        {
+            "series": [
+                "my dress-up darling | sono bisque doll wa koi o suru"
+            ],
+            "age": "15",
             "note": ""
         }
     ],
@@ -6874,12 +8819,264 @@
             "note": ""
         }
     ],
+    "emma august": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "8~",
+            "note": ""
+        }
+    ],
+    "honma himawari": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "16/17~",
+            "note": ""
+        }
+    ],
+    "ienaga mugi": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "lize helesta": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "makaino ririmu": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
+    "sasaki saku": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "shiina yuika": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "shizuka rin": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "takamiya rion": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "warabeda meiji": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "11",
+            "note": ""
+        }
+    ],
+    "yorumi rena": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "yuzuki roa": [
+        {
+            "series": [
+                "Nijisanji"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "haru onodera": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "kosaki onodera": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "marika tachibana": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "maruusha lu vieh nonbeeri": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "mikage shinohara": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "mimiko kiki": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "paula mccoy": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "raku ichijou": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "seishiro tsugumi": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "suzu ayakaji": [
+        {
+            "series": [
+                "Nisekoi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
     "shiro": [
         {
             "series": [
                 "No game No life"
             ],
             "age": "11",
+            "note": ""
+        }
+    ],
+    "hayu nukui": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "hemo midori": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "ino sakura": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "nina maehara": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "roko sekino": [
+        {
+            "series": [
+                "Ochikobore Fruit Tart"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "mahiro oyama": [
+        {
+            "series": [
+                "Onichan wa Oshimai"
+            ],
+            "age": "13-16",
             "note": ""
         }
     ],
@@ -6946,6 +9143,69 @@
             "note": ""
         }
     ],
+    "ayame reikadou": [
+        {
+            "series": [
+                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "chocolat": [
+        {
+            "series": [
+                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "furano yukihira": [
+        {
+            "series": [
+                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kanade amakusa": [
+        {
+            "series": [
+                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "konagi yawakaze": [
+        {
+            "series": [
+                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "oka yuouji": [
+        {
+            "series": [
+                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "utage douraku": [
+        {
+            "series": [
+                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
+            ],
+            "age": "10",
+            "note": ""
+        }
+    ],
     "amatsuyu kisaragi": [
         {
             "series": [
@@ -6982,6 +9242,51 @@
             "note": ""
         }
     ],
+    "kuroha shida": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "maria momosaka": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "shirokusa kachi": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "sueharu maru": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "tetsuhiko kai": [
+        {
+            "series": [
+                "Osananajimi ga Zettai ni Makenai Love Comedy"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
     "aigis": [
         {
             "series": [
@@ -7006,7 +9311,7 @@
                 "Persona 3"
             ],
             "age": "16 / 17",
-            "note": "Only underage in Persona 3"
+            "note": "Only underage in Persona 4"
         }
     ],
     "junpei iori": [
@@ -7015,7 +9320,7 @@
                 "Persona 3"
             ],
             "age": "16 / 17",
-            "note": "Only underage in Persona 3"
+            "note": "Only underage in Persona 4"
         }
     ],
     "ken amada": [
@@ -7041,7 +9346,7 @@
             "series": [
                 "Persona 3"
             ],
-            "age": "16 / 17",
+            "age": "16 / 17 ",
             "note": "Only underage in Persona 3, adult in the other games"
         }
     ],
@@ -7625,6 +9930,42 @@
             "note": ""
         }
     ],
+    "ange le carre": [
+        {
+            "series": [
+                "Princess Principle"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "beatrice": [
+        {
+            "series": [
+                "Princess Principle"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "chise todo": [
+        {
+            "series": [
+                "Princess Principle"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "princess charlotte": [
+        {
+            "series": [
+                "Princess Principle"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
     "hiro hiyorimi": [
         {
             "series": [
@@ -7832,6 +10173,87 @@
             "note": ""
         }
     ],
+    "anzu yokoyama": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "chiyo kurihara": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "jouji nezu": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "kiyoshi fujino": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "mayumi tanaka": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "reiji andou": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "satou": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "shingo wakamoto": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "takehito morokuzu": [
+        {
+            "series": [
+                "Prison School"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
     "homura akemi": [
         {
             "series": [
@@ -7841,7 +10263,7 @@
             "note": ""
         }
     ],
-    "kyoko sakura": [
+    "kyouko sakura": [
         {
             "series": [
                 "Puella Magi Madoka Magica"
@@ -8012,6 +10434,15 @@
             "note": ""
         }
     ],
+    "yume hasegawa": [
+        {
+            "series": [
+                "Pupa"
+            ],
+            "age": "?",
+            "note": "Physically underage"
+        }
+    ],
     "ayase ayatsuji": [
         {
             "series": [
@@ -8126,6 +10557,24 @@
                 "Re Zero Kara Hajimeru Isekai Seikatsu"
             ],
             "age": "11 / 12",
+            "note": ""
+        }
+    ],
+    "juugo yama": [
+        {
+            "series": [
+                "Ryuugajou Nanana no Maizoukin"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "tensai ikkyuu": [
+        {
+            "series": [
+                "Ryuugajou Nanana no Maizoukin"
+            ],
+            "age": "16",
             "note": ""
         }
     ],
@@ -8588,6 +11037,51 @@
             "note": ""
         }
     ],
+    "iori himemiya": [
+        {
+            "series": [
+                "Sakurasou no Pet na Kanojo"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "otoha nakano": [
+        {
+            "series": [
+                "Sakurasou no Pet na Kanojo"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "rita ainsworth": [
+        {
+            "series": [
+                "Sakurasou no Pet na Kanojo"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "ryuunosuke akasaka": [
+        {
+            "series": [
+                "Sakurasou no Pet na Kanojo"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "yuuko kanda": [
+        {
+            "series": [
+                "Sakurasou no Pet na Kanojo"
+            ],
+            "age": "13-14",
+            "note": ""
+        }
+    ],
     "kokoro katsura": [
         {
             "series": [
@@ -8720,6 +11214,15 @@
                 "Senki Zesshou Symphogear"
             ],
             "age": "15",
+            "note": ""
+        }
+    ],
+    "asuka": [
+        {
+            "series": [
+                "Senran Kagura"
+            ],
+            "age": "16 / 17",
             "note": ""
         }
     ],
@@ -8966,7 +11469,43 @@
             "note": "Unless the doujin happens after Le dessert. If it takes place while they are still in school or live at Polar Star, underage"
         }
     ],
+    "akira yukishiro": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "aruru otsuki": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
     "claudine saijo": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "elle nishino": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "?",
+            "note": "Has an adult body, but true form of a small child"
+        }
+    ],
+    "fumi yumeoji": [
         {
             "series": [
                 "Shoujo Kageki Revue Starlight"
@@ -8984,7 +11523,97 @@
             "note": ""
         }
     ],
+    "hikari kagura": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "hisame honami": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "ichie otonashi": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "junna hoshimi": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
     "kaoruko hanayagi": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "karen aijo": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "kiriko masai": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "koharu yanagi": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "lalafin nonomiya": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "liu mei fan": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "mahiru tsuyuzaki": [
         {
             "series": [
                 "Shoujo Kageki Revue Starlight"
@@ -8999,6 +11628,105 @@
                 "Shoujo Kageki Revue Starlight"
             ],
             "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "michiru ototi": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "misora kano": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "nana daiba": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "rui akikaze": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "shion amemiya": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "shizuha kocho": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "suzu minase": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "tamao tomoe": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "tsukasa ebisu": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "yachiyo tsuruhime": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "yuyuko tanaka": [
+        {
+            "series": [
+                "Shoujo Kageki Revue Starlight"
+            ],
+            "age": "15 / 16",
             "note": ""
         }
     ],
@@ -9026,6 +11754,33 @@
                 "Show by Rock"
             ],
             "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "langa hasegawa": [
+        {
+            "series": [
+                "SK8 The Infinity"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "miya chinen": [
+        {
+            "series": [
+                "SK8 The Infinity"
+            ],
+            "age": "13",
+            "note": ""
+        }
+    ],
+    "reki kyan": [
+        {
+            "series": [
+                "SK8 The Infinity"
+            ],
+            "age": "16-17",
             "note": ""
         }
     ],
@@ -9087,7 +11842,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "kawamura reo": [
@@ -9096,7 +11851,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "kimishima aya": [
@@ -9105,7 +11860,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "mai sawaguchi": [
@@ -9114,7 +11869,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "nagisa misawa": [
@@ -9123,7 +11878,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "16~",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "oda nanami": [
@@ -9132,7 +11887,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "15 / 16",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "onohara hazuki": [
@@ -9141,7 +11896,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "16 / 17",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "sara kitajima": [
@@ -9150,7 +11905,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "15 / 16",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "yuuna matsubara": [
@@ -9159,7 +11914,7 @@
                 "Sono hanabira ni kuchizuke o"
             ],
             "age": "16~",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "alpha omega nova": [
@@ -9196,6 +11951,60 @@
             ],
             "age": "15",
             "note": "Physically underage"
+        }
+    ],
+    "agent 3": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "14-17",
+            "note": ""
+        }
+    ],
+    "agent 8": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "14-16",
+            "note": ""
+        }
+    ],
+    "callie": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "17",
+            "note": "Only underage in Splatoon 1"
+        }
+    ],
+    "inklings": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "14-17",
+            "note": ""
+        }
+    ],
+    "marie": [
+        {
+            "series": [
+                "Splatoon"
+            ],
+            "age": "17",
+            "note": "Only underage in Splatoon 1"
+        }
+    ],
+    "ahsoka tano": [
+        {
+            "series": [
+                "Star Wars"
+            ],
+            "age": "14-17",
+            "note": "Adult in Rebels"
         }
     ],
     "mayuri shiina": [
@@ -9315,7 +12124,7 @@
             "note": ""
         }
     ],
-    "aleksandra i. pokryshkin": [
+    "aleksandra i pokryshkin": [
         {
             "series": [
                 "Strike Witches"
@@ -9351,7 +12160,7 @@
             "note": ""
         }
     ],
-    "charlotte e. yeager": [
+    "charlotte e yeager": [
         {
             "series": [
                 "Strike Witches"
@@ -9495,7 +12304,7 @@
             "note": ""
         }
     ],
-    "heidemarie w. schnaufer": [
+    "heidemarie w schnaufer": [
         {
             "series": [
                 "Strike Witches"
@@ -9540,7 +12349,7 @@
             "note": ""
         }
     ],
-    "jane t. godfrey": [
+    "jane t godfrey": [
         {
             "series": [
                 "Strike Witches"
@@ -9729,7 +12538,7 @@
             "note": ""
         }
     ],
-    "perrine h. clostermann": [
+    "perrine h clostermann": [
         {
             "series": [
                 "Strike Witches"
@@ -9738,7 +12547,7 @@
             "note": ""
         }
     ],
-    "raisa p\u00e3\u00b6ttgen": [
+    "raisa pottgen": [
         {
             "series": [
                 "Strike Witches"
@@ -9747,7 +12556,7 @@
             "note": ""
         }
     ],
-    "sanya v. litvyak": [
+    "sanya v litvyak": [
         {
             "series": [
                 "Strike Witches"
@@ -9801,7 +12610,7 @@
             "note": ""
         }
     ],
-    "vesna mikovi\u00e4\u008d": [
+    "vesna mikovic": [
         {
             "series": [
                 "Strike Witches"
@@ -9897,6 +12706,33 @@
                 "Sword Art Online"
             ],
             "age": "15",
+            "note": ""
+        }
+    ],
+    "hanabi natsuno": [
+        {
+            "series": [
+                "Tachibanakan Triangle"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "iori takamura": [
+        {
+            "series": [
+                "Tachibanakan Triangle"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "konomi fujiwara": [
+        {
+            "series": [
+                "Tachibanakan Triangle"
+            ],
+            "age": "14",
             "note": ""
         }
     ],
@@ -10053,6 +12889,15 @@
             "note": ""
         }
     ],
+    "katou": [
+        {
+            "series": [
+                "Tanaka-kun wa Itsumo Kedaruge"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
     "miyano": [
         {
             "series": [
@@ -10089,12 +12934,30 @@
             "note": ""
         }
     ],
+    "shimura": [
+        {
+            "series": [
+                "Tanaka-kun wa Itsumo Kedaruge"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
     "shiraishi": [
         {
             "series": [
                 "Tanaka-kun wa Itsumo Kedaruge"
             ],
             "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "sora miyano": [
+        {
+            "series": [
+                "Tanaka-kun wa Itsumo Kedaruge"
+            ],
+            "age": "12 / 13",
             "note": ""
         }
     ],
@@ -10167,7 +13030,16 @@
                 "Tejina Senpai"
             ],
             "age": "15 / 16",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
+        }
+    ],
+    "sempai": [
+        {
+            "series": [
+                "Tejina Senpai"
+            ],
+            "age": "17",
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "ai hidaka": [
@@ -11583,10 +14455,127 @@
             "note": ""
         }
     ],
+    "daigo kabuto": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "genbu kurono": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
     "hayato akiyama": [
         {
             "series": [
                 "The Idolmaster Sidem"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "jun fuyumi": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "kanon himeno": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "9",
+            "note": ""
+        }
+    ],
+    "nao okamura": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "11",
+            "note": ""
+        }
+    ],
+    "natsuki sakaki": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "pierre": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "rei kagura": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "reo igari": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "shiki iseya": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "shiro tachibana": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "11",
+            "note": ""
+        }
+    ],
+    "suzaku akai": [
+        {
+            "series": [
+                "The Idolmaster SideM"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "takeru taiga": [
+        {
+            "series": [
+                "The Idolmaster SideM"
             ],
             "age": "17",
             "note": ""
@@ -11598,7 +14587,7 @@
                 "The Legend of Zelda"
             ],
             "age": "12-17~",
-            "note": "Unless it takes place on Spirit Tracks"
+            "note": "Unless it takes place on Spirit Tracks or Tears of the Kingdom"
         }
     ],
     "zelda": [
@@ -11607,7 +14596,7 @@
                 "The Legend of Zelda"
             ],
             "age": "12-17~",
-            "note": "Unless it takes place on Spirit Tracks"
+            "note": "Unless it takes place on Spirit Tracks or Tears of the Kingdom"
         }
     ],
     "haruhi suzumiya": [
@@ -11652,22 +14641,6 @@
                 "The Melancholy of Haruhi Suzumiya"
             ],
             "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "sasaki": [
-        {
-            "series": [
-                "The Melancholy of Haruhi Suzumiya"
-            ],
-            "age": "16",
-            "note": ""
-        },
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "16 / 17",
             "note": ""
         }
     ],
@@ -12015,7 +14988,7 @@
                 "tonikaku kawaii | fly me to the moon"
             ],
             "age": "17",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "chitose kaginoji": [
@@ -12024,7 +14997,7 @@
                 "tonikaku kawaii | fly me to the moon"
             ],
             "age": "14",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "kaname arisugawa": [
@@ -12033,7 +15006,7 @@
                 "tonikaku kawaii | fly me to the moon"
             ],
             "age": "15",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "tsukasa tsukuyomi": [
@@ -12042,7 +15015,7 @@
                 "tonikaku kawaii | fly me to the moon"
             ],
             "age": "16",
-            "note": ""
+            "note": "No entry on nhentai, so manually check"
         }
     ],
     "ami kawashima": [
@@ -12171,13 +15144,409 @@
             "note": ""
         }
     ],
+    "chiya": [
+        {
+            "series": [
+                "Urara Meirochou"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "kon tatsumi": [
+        {
+            "series": [
+                "Urara Meirochou"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "koume yukimi": [
+        {
+            "series": [
+                "Urara Meirochou"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "nono natsume": [
+        {
+            "series": [
+                "Urara Meirochou"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "anelise gerhardt": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "ange": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "ariel foch": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "azelia eguna": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "emma brandoll": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "futaba kirii": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "henrietta baldini": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "hibiki kenjo": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "hyouko yundou": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "jeanne blanc": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "jennifer lynx": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "koharu tsukikage": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "konoe kirihara": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kotona misaki": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kusumi": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15-17",
+            "note": ""
+        }
+    ],
+    "lily brownwood": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "lydia godil": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "mamori tokonome": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "mana inagawa": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "manpuku maru-chan": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "marianne": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15-17",
+            "note": ""
+        }
+    ],
+    "marie sagiri": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "meifon sakura": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "miharu sasahara": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "miranda": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15-17",
+            "note": ""
+        }
+    ],
+    "mirei shikishima": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "momo kuzuryu": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "monroe": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15-17",
+            "note": ""
+        }
+    ],
+    "noe oya": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "patty rant": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "ranka kagurazaka": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "ria-sha mao": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "rinka kagurazaka": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "salifar risu": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "sanary lois": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
+    "setsuna kisaragi": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "tokonome mamori": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "torino kazami": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "urara sashou": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "yuuka tomoe": [
+        {
+            "series": [
+                "Valkyrie Drive"
+            ],
+            "age": "15",
+            "note": ""
+        }
+    ],
     "charlotte abelfreyja drossel": [
         {
             "series": [
                 "Violet Evergarden"
             ],
             "age": "14",
-            "note": ""
+            "note": "Only if it takes place before the movie"
         }
     ],
     "leon stephanotis": [
@@ -12195,6 +15564,15 @@
                 "Violet Evergarden"
             ],
             "age": "14",
+            "note": "Only if it takes place before the movie"
+        }
+    ],
+    "akari kizuna": [
+        {
+            "series": [
+                "Vocaloid"
+            ],
+            "age": "15",
             "note": ""
         }
     ],
@@ -12204,6 +15582,60 @@
                 "Vocaloid"
             ],
             "age": "16",
+            "note": ""
+        }
+    ],
+    "akane ryuuzouji": [
+        {
+            "series": [
+                "Walkure Romanze"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "bertille althusser": [
+        {
+            "series": [
+                "Walkure Romanze"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "lisa eostre": [
+        {
+            "series": [
+                "Walkure Romanze"
+            ],
+            "age": "15 / 16",
+            "note": ""
+        }
+    ],
+    "mio kisaki": [
+        {
+            "series": [
+                "Walkure Romanze"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "noel marres ascot": [
+        {
+            "series": [
+                "Walkure Romanze"
+            ],
+            "age": "16 / 17",
+            "note": ""
+        }
+    ],
+    "takahiro mizuno": [
+        {
+            "series": [
+                "Walkure Romanze"
+            ],
+            "age": "16 / 17",
             "note": ""
         }
     ],
@@ -12231,6 +15663,42 @@
                 "Whisper of the Heart"
             ],
             "age": "14 / 15",
+            "note": ""
+        }
+    ],
+    "ai ooto": [
+        {
+            "series": [
+                "Wonder Egg Priority"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "momoe sawaki": [
+        {
+            "series": [
+                "Wonder Egg Priority"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "neiru aonuma": [
+        {
+            "series": [
+                "Wonder Egg Priority"
+            ],
+            "age": "14",
+            "note": ""
+        }
+    ],
+    "rika kawai": [
+        {
+            "series": [
+                "Wonder Egg Priority"
+            ],
+            "age": "14",
             "note": ""
         }
     ],
@@ -12304,36 +15772,6 @@
             ],
             "age": "12",
             "note": ""
-        }
-    ],
-    "sayaka saeki": [
-        {
-            "series": [
-                "Yagate Kimi ni Naru",
-                "yagate kimi ni naru | bloom into you"
-            ],
-            "age": "16 / 17",
-            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
-        }
-    ],
-    "touko nanami": [
-        {
-            "series": [
-                "Yagate Kimi ni Naru",
-                "yagate kimi ni naru | bloom into you"
-            ],
-            "age": "16 / 17",
-            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
-        }
-    ],
-    "yuu koito": [
-        {
-            "series": [
-                "Yagate Kimi ni Naru",
-                "yagate kimi ni naru | bloom into you"
-            ],
-            "age": "15 / 16",
-            "note": "Unless it takes place after chapter 54 (where Nanami is a college student)"
         }
     ],
     "hachiman hikigaya": [
@@ -12615,6 +16053,42 @@
             "note": ""
         }
     ],
+    "ginko yurishiro": [
+        {
+            "series": [
+                "Yuri Kuma Arashi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "kureha tsubaki": [
+        {
+            "series": [
+                "Yuri Kuma Arashi"
+            ],
+            "age": "16-17",
+            "note": ""
+        }
+    ],
+    "lulu yurigasaki": [
+        {
+            "series": [
+                "Yuri Kuma Arashi"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "sumika izumino": [
+        {
+            "series": [
+                "Yuri Kuma Arashi"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
     "guang hong ji": [
         {
             "series": [
@@ -12654,8 +16128,7 @@
     "aoi inuyama": [
         {
             "series": [
-                "Yuru Camp",
-                "Yuru Camp | laid-back camp"
+                "Yuru Camp"
             ],
             "age": "14-16",
             "note": ""
@@ -12664,8 +16137,7 @@
     "chiaki oogaki": [
         {
             "series": [
-                "Yuru Camp",
-                "Yuru Camp | laid-back camp"
+                "Yuru Camp"
             ],
             "age": "14-16",
             "note": ""
@@ -12674,8 +16146,7 @@
     "ena saitou": [
         {
             "series": [
-                "Yuru Camp",
-                "Yuru Camp | laid-back camp"
+                "Yuru Camp"
             ],
             "age": "14-16",
             "note": ""
@@ -12684,8 +16155,7 @@
     "nadeshiko kagamihara": [
         {
             "series": [
-                "Yuru Camp",
-                "Yuru Camp | laid-back camp"
+                "Yuru Camp"
             ],
             "age": "14-16",
             "note": ""
@@ -12694,8 +16164,7 @@
     "rin shima": [
         {
             "series": [
-                "Yuru Camp",
-                "Yuru Camp | laid-back camp"
+                "Yuru Camp"
             ],
             "age": "14-16",
             "note": ""
@@ -12827,7 +16296,88 @@
             "note": ""
         }
     ],
+    "chiho aikawa": [
+        {
+            "series": [
+                "Yuyushiki"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "fumi hasegawa": [
+        {
+            "series": [
+                "Yuyushiki"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "kei okano": [
+        {
+            "series": [
+                "Yuyushiki"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "yui ichii": [
+        {
+            "series": [
+                "Yuyushiki"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "yukari hinata": [
+        {
+            "series": [
+                "Yuyushiki"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "yuzuko nonohara": [
+        {
+            "series": [
+                "Yuyushiki"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
     "henrietta de tristain": [
+        {
+            "series": [
+                "Zero no Tsukaima"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "henry stanford": [
+        {
+            "series": [
+                "Zero no Tsukaima"
+            ],
+            "age": "17",
+            "note": ""
+        }
+    ],
+    "jessica": [
+        {
+            "series": [
+                "Zero no Tsukaima"
+            ],
+            "age": "16",
+            "note": ""
+        }
+    ],
+    "julio chesare": [
         {
             "series": [
                 "Zero no Tsukaima"
@@ -12905,7 +16455,7 @@
                 ""
             ],
             "age": "17",
-            "note": ""
+            "note": "Vtuber, so no parody on nhentai"
         }
     ],
     "kizuna ai": [
@@ -12914,7 +16464,7 @@
                 ""
             ],
             "age": "16",
-            "note": ""
+            "note": "Vtuber, so no parody on nhentai"
         }
     ],
     "tsukino mito": [
@@ -12923,3478 +16473,7 @@
                 ""
             ],
             "age": "16",
-            "note": ""
-        }
-    ],
-    "shino inuzuka": [
-        {
-            "series": [
-                "Hakkenden"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "houshou marine": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "leonardo b harwey": [
-        {
-            "series": [
-                "Fate Grand Order",
-                "Fate Stay Night",
-                "Fate Apocrypha"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "elizabeth bathory": [
-        {
-            "series": [
-                "Fate Grand Order",
-                "Fate Stay Night",
-                "Fate Apocrypha"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "kiyohime": [
-        {
-            "series": [
-                "Fate Grand Order",
-                "Fate Stay Night",
-                "Fate Apocrypha"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "inori yuzuriha": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "hare menjou": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "shu ouma": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "tsugumi": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "gai tsutsugami": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "souta tamadate": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "argo tsukishima": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "ayase shinomiya": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kyo": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "arisa kuhouin": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "yahiro samukawa": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kanon kusama": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "daryl yan": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "jun samukawa": [
-        {
-            "series": [
-                "Guilty Crown"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "wakana gojou": [
-        {
-            "series": [
-                "my dress-up darling | sono bisque doll wa koi o suru"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "marin kitagawa": [
-        {
-            "series": [
-                "my dress-up darling | sono bisque doll wa koi o suru"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "sajuna inui": [
-        {
-            "series": [
-                "my dress-up darling | sono bisque doll wa koi o suru"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "takahiro mizuno": [
-        {
-            "series": [
-                "Walkure Romanze"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "akane ryuuzouji": [
-        {
-            "series": [
-                "Walkure Romanze"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "bertille althusser": [
-        {
-            "series": [
-                "Walkure Romanze"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "mio kisaki": [
-        {
-            "series": [
-                "Walkure Romanze"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "noel marres ascot": [
-        {
-            "series": [
-                "Walkure Romanze"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "lisa eostre": [
-        {
-            "series": [
-                "Walkure Romanze"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "erika itsumi": [
-        {
-            "series": [
-                "Girls und Panzer"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "caster": [
-        {
-            "series": [
-                "Fate Grand Order",
-                "Fate Stay Night",
-                "Fate Apocrypha"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "medea lily": [
-        {
-            "series": [
-                "Fate Grand Order",
-                "Fate Stay Night",
-                "Fate Apocrypha"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "jiro yamada": [
-        {
-            "series": [
-                "Hypnosis Mic"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "ayaka tachikawa": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "17",
-            "note": ""
-        },
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "mirei shikishima": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "mamori tokonome": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "kyouya shinomiya": [
-        {
-            "series": [
-                "GJ-bu"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "tamaki kannazuki": [
-        {
-            "series": [
-                "GJ-bu"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kiyomi sugiyama": [
-        {
-            "series": [
-                "Girls und Panzer"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "nobara kugisaki": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "yuuji itadori": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "roboco": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "natsuiro matsuri": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "murasaki shion": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "14~",
-            "note": ""
-        }
-    ],
-    "oozura subaru": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "nekomata okayu": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "uruha rushia": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "tokoyami towa": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "himemori luna": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "0",
-            "note": ""
-        }
-    ],
-    "mano aloe": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "ayunda risu": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kureiji ollie": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "anya melfissa": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "14~",
-            "note": ""
-        }
-    ],
-    "gawr gura": [
-        {
-            "series": [
-                "Hololive"
-            ],
-            "age": "14~",
-            "note": ""
-        }
-    ],
-    "ilulu": [
-        {
-            "series": [
-                "Kobayashi-san-chi no maid dragon"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "kanna kamui": [
-        {
-            "series": [
-                "Kobayashi-san-chi no maid dragon"
-            ],
-            "age": "8",
-            "note": ""
-        }
-    ],
-    "riko saikawa": [
-        {
-            "series": [
-                "Kobayashi-san-chi no maid dragon"
-            ],
-            "age": "8",
-            "note": ""
-        }
-    ],
-    "shouta magatsuchi": [
-        {
-            "series": [
-                "Kobayashi-san-chi no maid dragon"
-            ],
-            "age": "11",
-            "note": ""
-        }
-    ],
-    "emma august": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "8~",
-            "note": ""
-        }
-    ],
-    "honma himawari": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "16/17~",
-            "note": ""
-        }
-    ],
-    "ienaga mugi": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "lize helesta": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "makaino ririmu": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "10",
-            "note": ""
-        }
-    ],
-    "sasaki saku": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "shiina yuika": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "shizuka rin": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "takamiya rion": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "warabeda meiji": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "11",
-            "note": ""
-        }
-    ],
-    "yorumi rena": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "yuzuki roa": [
-        {
-            "series": [
-                "Nijisanji"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "sakura matou": [
-        {
-            "series": [
-                "Fate Grand Order",
-                "Fate Stay Night",
-                "Fate Apocrypha",
-                "Fate Extra",
-                "Fate Zero",
-                "Fate Hollow Ataraxia"
-            ],
-            "age": "16",
-            "note": "unless it takes place during/after Heaven's Feel true ending epilogue"
-        }
-    ],
-    "saber lily": [
-        {
-            "series": [
-                "Fate Grand Order",
-                "Fate Stay Night",
-                "Fate Apocrypha"
-            ],
-            "age": "10~",
-            "note": ""
-        }
-    ],
-    "akari kizuna": [
-        {
-            "series": [
-                "Vocaloid"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "kaname chidori": [
-        {
-            "series": [
-                "Full Metal Panic"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "sousuke sagara": [
-        {
-            "series": [
-                "Full Metal Panic"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "you satou": [
-        {
-            "series": [
-                "Ben-To"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "mumei": [
-        {
-            "series": [
-                "Koutetsujou no Kabaneri"
-            ],
-            "age": "12",
-            "note": ""
-        }
-    ],
-    "ikoma": [
-        {
-            "series": [
-                "Koutetsujou no Kabaneri"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "chocolat": [
-        {
-            "series": [
-                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kanade amakusa": [
-        {
-            "series": [
-                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "furano yukihira": [
-        {
-            "series": [
-                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "oka yuouji": [
-        {
-            "series": [
-                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "utage douraku": [
-        {
-            "series": [
-                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
-            ],
-            "age": "10",
-            "note": ""
-        }
-    ],
-    "ayame reikadou": [
-        {
-            "series": [
-                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "konagi yawakaze": [
-        {
-            "series": [
-                "Ore no Nounai Sentakushi ga Gakuen Love Comedy wo Zenryoku de Jama Shiteiru"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kiyoshi fujino": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "rosalie claudel": [
-        {
-            "series": [
-                "Mai-Otome"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "daigo kabuto": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "genbu kurono": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "jun fuyumi": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "kanon himeno": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "9",
-            "note": ""
-        }
-    ],
-    "nao okamura": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "11",
-            "note": ""
-        }
-    ],
-    "natsuki sakaki": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "pierre": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "rei kagura": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "reo igari": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "shiki iseya": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "shiro tachibana": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "11",
-            "note": ""
-        }
-    ],
-    "suzaku akai": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "takeru taiga": [
-        {
-            "series": [
-                "The Idolmaster SideM"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "alois trancy": [
-        {
-            "series": [
-                "Black Butler"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "elizabeth midford": [
-        {
-            "series": [
-                "Black Butler"
-            ],
-            "age": "13-14",
-            "note": ""
-        }
-    ],
-    "ellery nixon": [
-        {
-            "series": [
-                "Black Butler"
-            ],
-            "age": "10",
-            "note": ""
-        }
-    ],
-    "finnian": [
-        {
-            "series": [
-                "Black Butler"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "margaret connor": [
-        {
-            "series": [
-                "Black Butler"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "sieglinde sullivan": [
-        {
-            "series": [
-                "Black Butler"
-            ],
-            "age": "11",
-            "note": ""
-        }
-    ],
-    "soma asman kadar": [
-        {
-            "series": [
-                "Black Butler"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "baby bonnie hood": [
-        {
-            "series": [
-                "Darkstalkers"
-            ],
-            "age": "10-14",
-            "note": ""
-        }
-    ],
-    "akane maruyama": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "jun toda": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "maki igarashi": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "mikami kamiki": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "miko fumino": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "miu takigawa": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "miyako kono": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "momoji shiina": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "nana kimijima": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "nicole saito": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "reika sato": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "runa wakaizumi": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "sakura fujima": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "shion nanasaki": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "suzune mori": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "tsubomi hiiragi": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "yuki tojo": [
-        {
-            "series": [
-                "22 slash 7"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "akane yanagi": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "honoka sawada": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "15-16",
-            "note": ""
-        }
-    ],
-    "ichirou watabe": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "izumi miyamura": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kakeru sengoku": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kouichi shindou": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kyouko hori": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "motoko iura": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "remi ayasaki": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "sakura kouno": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "souta hori": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "10",
-            "note": ""
-        }
-    ],
-    "syu iura": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "tooru ishikawa": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "yuki yoshikawa": [
-        {
-            "series": [
-                "Horimiya"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "chiho aikawa": [
-        {
-            "series": [
-                "Yuyushiki"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "fumi hasegawa": [
-        {
-            "series": [
-                "Yuyushiki"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "kei okano": [
-        {
-            "series": [
-                "Yuyushiki"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "yui ichii": [
-        {
-            "series": [
-                "Yuyushiki"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "yukari hinata": [
-        {
-            "series": [
-                "Yuyushiki"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "yuzuko nonohara": [
-        {
-            "series": [
-                "Yuyushiki"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "henry stanford": [
-        {
-            "series": [
-                "Zero no Tsukaima"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "jessica": [
-        {
-            "series": [
-                "Zero no Tsukaima"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "julio chesare": [
-        {
-            "series": [
-                "Zero no Tsukaima"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "akemi asakawa": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "danjuro eiga": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "kirino chiba": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "makoto iwasa": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "mei ogawa": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "miyako miyazaki": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "satori azuma": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "sayako kuwahara": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "shinobu toyama": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "tamaki kawazoe": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "toyama": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "yuji nakata": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "yuri ando": [
-        {
-            "series": [
-                "Bamboo Blade"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "kotaro onodera": [
-        {
-            "series": [
-                "Full Metal Panic!"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "kyoko tokiwa": [
-        {
-            "series": [
-                "Full Metal Panic!"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "leonard testarossa": [
-        {
-            "series": [
-                "Full Metal Panic!"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "mizuki inaba": [
-        {
-            "series": [
-                "Full Metal Panic!"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "ren mikihara": [
-        {
-            "series": [
-                "Full Metal Panic!"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "shinji kazama": [
-        {
-            "series": [
-                "Full Metal Panic!"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "teletha testarossa": [
-        {
-            "series": [
-                "Full Metal Panic!"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "xia yu fan": [
-        {
-            "series": [
-                "Full Metal Panic!"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "saburo yamada": [
-        {
-            "series": [
-                "Hypnosis Mic"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "taromaru rex": [
-        {
-            "series": [
-                "Hypnosis Mic"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "arata nitta": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "fumi": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "iguchi": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "junpei yoshino": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kasumi miwa": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kokichi muta": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "mai zenin": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "maki zenin": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "megumi fushiguro": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "mimiko hasaba": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "nanako hasaba": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "rika orimoto": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "11",
-            "note": "Character died at age 11, but persisted as a spirit"
-        }
-    ],
-    "riko amanai": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "tadashi okazaki": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "toge inumaki": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "yu haibara": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "yuta okkotsu": [
-        {
-            "series": [
-                "Jujutsu Kaisen"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "hibari isora": [
-        {
-            "series": [
-                "Mawaru Penguindrum"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "hikari utada": [
-        {
-            "series": [
-                "Mawaru Penguindrum"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "himari takakura": [
-        {
-            "series": [
-                "Mawaru Penguindrum"
-            ],
-            "age": "<16",
-            "note": ""
-        }
-    ],
-    "kanba takakura": [
-        {
-            "series": [
-                "Mawaru Penguindrum"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "mario natsume": [
-        {
-            "series": [
-                "Mawaru Penguindrum"
-            ],
-            "age": "<16",
-            "note": ""
-        }
-    ],
-    "masako natsume": [
-        {
-            "series": [
-                "Mawaru Penguindrum"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "shoma takakura": [
-        {
-            "series": [
-                "Mawaru Penguindrum"
-            ],
-            "age": "<16",
-            "note": ""
-        }
-    ],
-    "yosuke yamashita": [
-        {
-            "series": [
-                "Mawaru Penguindrum"
-            ],
-            "age": "<16",
-            "note": ""
-        }
-    ],
-    "akira yukishiro": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "aruru otsuki": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "elle nishino": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "?",
-            "note": "Has an adult body, but true form of a small child"
-        }
-    ],
-    "fumi yumeoji": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "hikari kagura": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "hisame honami": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "ichie otonashi": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "junna hoshimi": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "karen aijo": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "kiriko masai": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "koharu yanagi": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "lalafin nonomiya": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "liu mei fan": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "mahiru tsuyuzaki": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "michiru ototi": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "misora kano": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "nana daiba": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "rui akikaze": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "shion amemiya": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "shizuha kocho": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "suzu minase": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "tamao tomoe": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "tsukasa ebisu": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "yachiyo tsuruhime": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "yuyuko tanaka": [
-        {
-            "series": [
-                "Shoujo Kageki Revue Starlight"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "katou": [
-        {
-            "series": [
-                "Tanaka-kun wa Itsumo Kedaruge"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "shimura": [
-        {
-            "series": [
-                "Tanaka-kun wa Itsumo Kedaruge"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "sora miyano": [
-        {
-            "series": [
-                "Tanaka-kun wa Itsumo Kedaruge"
-            ],
-            "age": "12 / 13",
-            "note": ""
-        }
-    ],
-    "anelise gerhardt": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "ange": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "ariel foch": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "azelia eguna": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "emma brandoll": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "futaba kirii": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "henrietta baldini": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "hibiki kenjo": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "hyouko yundou": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "jeanne blanc": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "jennifer lynx": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "koharu tsukikage": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "konoe kirihara": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kotona misaki": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kusumi": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15-17",
-            "note": ""
-        }
-    ],
-    "lily brownwood": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "lydia godil": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "mana inagawa": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "manpuku maru-chan": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "marianne": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15-17",
-            "note": ""
-        }
-    ],
-    "marie sagiri": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "meifon sakura": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "miharu sasahara": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "miranda": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15-17",
-            "note": ""
-        }
-    ],
-    "momo kuzuryu": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "monroe": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15-17",
-            "note": ""
-        }
-    ],
-    "noe oya": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "patty rant": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "ranka kagurazaka": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "ria-sha mao": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "rinka kagurazaka": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "salifar risu": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "sanary lois": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "setsuna kisaragi": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "tokonome mamori": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "torino kazami": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "urara sashou": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "yuuka tomoe": [
-        {
-            "series": [
-                "Valkyrie Drive"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "risa kamizaki": [
-        {
-            "series": [
-                "Amagami"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "iori himemiya": [
-        {
-            "series": [
-                "Sakurasou no Pet na Kanojo"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "otoha nakano": [
-        {
-            "series": [
-                "Sakurasou no Pet na Kanojo"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "rita ainsworth": [
-        {
-            "series": [
-                "Sakurasou no Pet na Kanojo"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "ryuunosuke akasaka": [
-        {
-            "series": [
-                "Sakurasou no Pet na Kanojo"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "yuuko kanda": [
-        {
-            "series": [
-                "Sakurasou no Pet na Kanojo"
-            ],
-            "age": "13-14",
-            "note": ""
-        }
-    ],
-    "ichigo hoshimiya": [
-        {
-            "series": [
-                "Aikatsu"
-            ],
-            "age": "12-17",
-            "note": ""
-        }
-    ],
-    "pit": [
-        {
-            "series": [
-                "Kid Icarus"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "dark pit": [
-        {
-            "series": [
-                "Kid Icarus"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "viridi": [
-        {
-            "series": [
-                "Kid Icarus"
-            ],
-            "age": "8",
-            "note": ""
-        }
-    ],
-    "phosphora": [
-        {
-            "series": [
-                "Kid Icarus"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "inklings": [
-        {
-            "series": [
-                "Splatoon"
-            ],
-            "age": "14-17",
-            "note": ""
-        }
-    ],
-    "agent 3": [
-        {
-            "series": [
-                "Splatoon"
-            ],
-            "age": "14-17",
-            "note": ""
-        }
-    ],
-    "callie": [
-        {
-            "series": [
-                "Splatoon"
-            ],
-            "age": "17",
-            "note": "Only underage in Splatoon 1"
-        }
-    ],
-    "marie": [
-        {
-            "series": [
-                "Splatoon"
-            ],
-            "age": "17",
-            "note": "Only underage in Splatoon 1"
-        }
-    ],
-    "agent 8": [
-        {
-            "series": [
-                "Splatoon"
-            ],
-            "age": "14 - 16",
-            "note": ""
-        }
-    ],
-    "peashy": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "11",
-            "note": ""
-        }
-    ],
-    "nepgear": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "<14",
-            "note": ""
-        }
-    ],
-    "uni": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "<14",
-            "note": ""
-        }
-    ],
-    "rom": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "<14",
-            "note": ""
-        }
-    ],
-    "ram": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "<14",
-            "note": ""
-        }
-    ],
-    "plutia": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "blanc": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "noire": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "neptune": [
-        {
-            "series": [
-                "Hyperdimension Neptunia"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "aiichiro nitori": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "aoba usami": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "ayumu kunikida": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "chigusa hanamura": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "15 - 16",
-            "note": ""
-        }
-    ],
-    "gou matsuoka": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "kazuki minami": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "16 - 17",
-            "note": ""
-        }
-    ],
-    "momotaro mikoshiba": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "romio hayahune": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "shizuru isurugi": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "shota nakagawa": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "16 - 17",
-            "note": ""
-        }
-    ],
-    "takuya uozumi": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "16 - 17",
-            "note": ""
-        }
-    ],
-    "toru iwashimizu": [
-        {
-            "series": [
-                "Free!"
-            ],
-            "age": "16 - 17",
-            "note": ""
-        }
-    ],
-    "haru onodera": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "kosaki onodera": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "marika tachibana": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "maruusha lu vieh nonbeeri": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "mikage shinohara": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "mimiko kiki": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "paula mccoy": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "raku ichijou": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "seishiro tsugumi": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "suzu ayakaji": [
-        {
-            "series": [
-                "Nisekoi"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "anzu yokoyama": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "16 / 17",
-            "note": ""
-        }
-    ],
-    "chiyo kurihara": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "jouji nezu": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "mayumi tanaka": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "reiji andou": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "satou": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "shingo wakamoto": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "takehito morokuzu": [
-        {
-            "series": [
-                "Prison School"
-            ],
-            "age": "15 / 16",
-            "note": ""
-        }
-    ],
-    "andy w. hole": [
-        {
-            "series": [
-                "Aquarion Evol"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "ahsoka tano": [
-        {
-            "series": [
-                "Star Wars"
-            ],
-            "age": "14-17",
-            "note": "Adult in Rebels"
-        }
-    ],
-    "sempai": [
-        {
-            "series": [
-                "Tejina Senpai"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "shamare": [
-        {
-            "series": [
-                "Arknights"
-            ],
-            "age": "?",
-            "note": "Physically underage"
-        }
-    ],
-    "suzuran": [
-        {
-            "series": [
-                "Arknights"
-            ],
-            "age": "?",
-            "note": "Physically underage"
-        }
-    ],
-    "yuffie kisaragi": [
-        {
-            "series": [
-                "Final Fantasy VII"
-            ],
-            "age": "16",
-            "note": "Underage in Final Fantasy 7, Adult in the later games"
-        }
-    ],
-    "adachi sakura": [
-        {
-            "series": [
-                "Adachi and Shimamura"
-            ],
-            "age": "15-17",
-            "note": "Unless it takes place after timeskip"
-        }
-    ],
-    "shimamura hougetsu": [
-        {
-            "series": [
-                "Adachi and Shimamura"
-            ],
-            "age": "15-17",
-            "note": "Unless it takes place after timeskip"
-        }
-    ],
-    "hime arikawa": [
-        {
-            "series": [
-                "Himegoto"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kaguya arikawa": [
-        {
-            "series": [
-                "Himegoto"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "akira": [
-        {
-            "series": [
-                "Kemono Jihen"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "kon": [
-        {
-            "series": [
-                "Kemono Jihen"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "kabane kusaka": [
-        {
-            "series": [
-                "Kemono Jihen"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "aya tademaru": [
-        {
-            "series": [
-                "Kemono Jihen"
-            ],
-            "age": "8",
-            "note": ""
-        }
-    ],
-    "homuramaru nowaki": [
-        {
-            "series": [
-                "Kemono Jihen"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "reina aharen": [
-        {
-            "series": [
-                "Aharen-san wa Hakarenai"
-            ],
-            "age": "15-16",
-            "note": ""
-        }
-    ],
-    "raidou matsuboshi": [
-        {
-            "series": [
-                "Aharen-san wa Hakarenai"
-            ],
-            "age": "15-17",
-            "note": ""
-        }
-    ],
-    "kuroha shida": [
-        {
-            "series": [
-                "Osananajimi ga Zettai ni Makenai Love Comedy"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "shirokusa kachi": [
-        {
-            "series": [
-                "Osananajimi ga Zettai ni Makenai Love Comedy"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "maria momosaka": [
-        {
-            "series": [
-                "Osananajimi ga Zettai ni Makenai Love Comedy"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "tetsuhiko kai": [
-        {
-            "series": [
-                "Osananajimi ga Zettai ni Makenai Love Comedy"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "sueharu maru": [
-        {
-            "series": [
-                "Osananajimi ga Zettai ni Makenai Love Comedy"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "ai ooto": [
-        {
-            "series": [
-                "Wonder Egg Priority"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "rika kawai": [
-        {
-            "series": [
-                "Wonder Egg Priority"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "neiru aonuma": [
-        {
-            "series": [
-                "Wonder Egg Priority"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "momoe sawaki": [
-        {
-            "series": [
-                "Wonder Egg Priority"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "ino sakura": [
-        {
-            "series": [
-                "Ochikobore Fruit Tart"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "roko sekino": [
-        {
-            "series": [
-                "Ochikobore Fruit Tart"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "hayu nukui": [
-        {
-            "series": [
-                "Ochikobore Fruit Tart"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "nina maehara": [
-        {
-            "series": [
-                "Ochikobore Fruit Tart"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "hemo midori": [
-        {
-            "series": [
-                "Ochikobore Fruit Tart"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "mahiro oyama": [
-        {
-            "series": [
-                "Onichan wa Oshimai"
-            ],
-            "age": "13-16",
-            "note": ""
-        }
-    ],
-    "sakura": [
-        {
-            "series": [
-                "Konohana Kitan"
-            ],
-            "age": "?",
-            "note": "Physically underage"
-        }
-    ],
-    "ren": [
-        {
-            "series": [
-                "Konohana Kitan"
-            ],
-            "age": "~14",
-            "note": ""
-        }
-    ],
-    "satsuki": [
-        {
-            "series": [
-                "Konohana Kitan"
-            ],
-            "age": "~16",
-            "note": ""
-        }
-    ],
-    "yuzu": [
-        {
-            "series": [
-                "Konohana Kitan"
-            ],
-            "age": "~14",
-            "note": ""
-        }
-    ],
-    "tensai ikkyuu": [
-        {
-            "series": [
-                "Ryuugajou Nanana no Maizoukin"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "juugo yama": [
-        {
-            "series": [
-                "Ryuugajou Nanana no Maizoukin"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "yume hasegawa": [
-        {
-            "series": [
-                "Pupa"
-            ],
-            "age": "?",
-            "note": "Physically underage"
-        }
-    ],
-    "ranka ookami": [
-        {
-            "series": [
-                "Murenase Seton Gakuen"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "jin mazama": [
-        {
-            "series": [
-                "Murenase Seton Gakuen"
-            ],
-            "age": "15-16",
-            "note": ""
-        }
-    ],
-    "hitomi hino": [
-        {
-            "series": [
-                "Murenase Seton Gakuen"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "yukari komori": [
-        {
-            "series": [
-                "Murenase Seton Gakuen"
-            ],
-            "age": "?",
-            "note": "Physically underage"
-        }
-    ],
-    "yuna": [
-        {
-            "series": [
-                "Kuma Kuma Kuma Bear"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "fina": [
-        {
-            "series": [
-                "Kuma Kuma Kuma Bear"
-            ],
-            "age": "10",
-            "note": ""
-        }
-    ],
-    "noire foschurose": [
-        {
-            "series": [
-                "Kuma Kuma Kuma Bear"
-            ],
-            "age": "10",
-            "note": ""
-        }
-    ],
-    "shuri": [
-        {
-            "series": [
-                "Kuma Kuma Kuma Bear"
-            ],
-            "age": "7",
-            "note": ""
-        }
-    ],
-    "misana farrengram": [
-        {
-            "series": [
-                "Kuma Kuma Kuma Bear"
-            ],
-            "age": "9",
-            "note": ""
-        }
-    ],
-    "shia foschurose": [
-        {
-            "series": [
-                "Kuma Kuma Kuma Bear"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "lulu yurigasaki": [
-        {
-            "series": [
-                "Yuri Kuma Arashi"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "ginko yurishiro": [
-        {
-            "series": [
-                "Yuri Kuma Arashi"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "kureha tsubaki": [
-        {
-            "series": [
-                "Yuri Kuma Arashi"
-            ],
-            "age": "16-17",
-            "note": ""
-        }
-    ],
-    "sumika izumino": [
-        {
-            "series": [
-                "Yuri Kuma Arashi"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "miya chinen": [
-        {
-            "series": [
-                "SK8 The Infinity"
-            ],
-            "age": "13",
-            "note": ""
-        }
-    ],
-    "langa hasegawa": [
-        {
-            "series": [
-                "SK8 The Infinity"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "reki kyan": [
-        {
-            "series": [
-                "SK8 The Infinity"
-            ],
-            "age": "16-17",
-            "note": ""
-        }
-    ],
-    "ange le carre": [
-        {
-            "series": [
-                "Princess Principle"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "princess charlotte": [
-        {
-            "series": [
-                "Princess Principle"
-            ],
-            "age": "17",
-            "note": ""
-        }
-    ],
-    "beatrice": [
-        {
-            "series": [
-                "Princess Principle"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "chise todo": [
-        {
-            "series": [
-                "Princess Principle"
-            ],
-            "age": "16",
-            "note": ""
-        }
-    ],
-    "hanabi natsuno": [
-        {
-            "series": [
-                "Tachibanakan Triangle"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "iori takamura": [
-        {
-            "series": [
-                "Tachibanakan Triangle"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "konomi fujiwara": [
-        {
-            "series": [
-                "Tachibanakan Triangle"
-            ],
-            "age": "14",
-            "note": ""
-        }
-    ],
-    "chiya": [
-        {
-            "series": [
-                "Urara Meirochou"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "kon tatsumi": [
-        {
-            "series": [
-                "Urara Meirochou"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "koume yukimi": [
-        {
-            "series": [
-                "Urara Meirochou"
-            ],
-            "age": "15",
-            "note": ""
-        }
-    ],
-    "nono natsume": [
-        {
-            "series": [
-                "Urara Meirochou"
-            ],
-            "age": "15",
-            "note": ""
+            "note": "Vtuber, so no parody on nhentai"
         }
     ]
 }
